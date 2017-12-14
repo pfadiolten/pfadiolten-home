@@ -51,6 +51,12 @@ gem 'carrierwave'
 # requires installation of ImageMagick (https://imagemagick.org) or GraphicsMagick (http://graphicsmagick.org)
 gem 'mini_magick', require: false
 
+# modular response extensions for controllers
+gem 'responders'
+
+# authorization
+gem 'pundit'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
