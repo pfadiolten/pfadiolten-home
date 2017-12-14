@@ -1,0 +1,35 @@
+de:
+  routes:
+    events: "aktivitäten"
+
+  activerecord:
+    models:
+      event:
+        zero: "Keine Aktivitäten"
+        one: "Aktivität"
+        other: "Aktivitäten"
+
+    attributes:
+      event:
+        name: "Titel"
+        starts_at: "Startzeit"
+        ends_at: "Endzeit"
+        start_location: "Startpunkt"
+        end_location: "Endpunkt"
+        bring_with_you: "Mitnehmen"
+        other_stuff: "Anderes"
+        user_in_charge_id: "Verantwortlicher"
+
+  events:
+    index:
+      title: "Alle Aktivitäten"
+      no_events: "Keine Aktivitäten gefunden"
+    new:
+      title: "Aktivität erfassen"
+    edit:
+      title: "Aktivität bearbeiten"
+    destroy:
+      confirm: "Diese Aktivität wirklich löschen?"
+
+    start: "Beginn"
+    end: "Ende"

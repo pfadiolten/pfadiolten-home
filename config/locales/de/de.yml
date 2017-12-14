@@ -1,0 +1,19 @@
+de:
+  routes:
+    new: "erfassen"
+    edit: "bearbeiten"
+    destroy: "löschen"
+
+  helpers:
+    submit:
+      create: "Bestätigen"
+      update: "Bestätigen"
+      submit: "Bestätigen"
+
+  errors:
+    messages:
+      missing_rights: "Du hast keine Rechte, um auf diese Aktion ausführen zu können"
+      unknown_user: "Kein Leiter mit dem Namen %{name} gefunden."
+
+  select_image: "%{attribute} auswählen"
+  created_by: "Website erstellt von"

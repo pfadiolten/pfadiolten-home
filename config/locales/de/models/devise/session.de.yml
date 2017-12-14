@@ -1,0 +1,10 @@
+de:
+  routes:
+    controllers:
+      sessions:
+        login: "anmelden"
+
+  devise:
+    sessions:
+      new:
+        title: "Anmelden"

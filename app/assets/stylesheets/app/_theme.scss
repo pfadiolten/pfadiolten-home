@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css?family=Encode+Sans+Expanded');
+
+$font-family-sans-serif: 'Encode Sans Expanded', sans-serif;
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.color-failure {
+  color: $brand-danger;
+}
+
+.color-success {
+  color: $brand-success;
+}
+
+label abbr[title] {
+  border-bottom: none;
+  text-decoration-line: none;
+  color: $brand-primary;
+}
+
+.label {
+  font-size: 0.9em;
+}
+
+.word-break {
+  @include hyphens;
+}

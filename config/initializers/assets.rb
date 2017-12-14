@@ -12,3 +12,9 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
+
+# precompile scss and coffee files
+Rails.application.config.assets.precompile += Dir[Rails.root.join('app/assets/{stylesheets,javascripts}/*.{scss,coffee}')]
+
+# file upload limit
+Rack::Utils.multipart_part_limit = 200

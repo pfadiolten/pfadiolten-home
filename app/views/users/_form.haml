@@ -1,0 +1,41 @@
+-# url: String|Null
+
+- url ||= nil
+
+.row
+  .col-md-8.col-md-offset-2
+    = simple_form_for @user, url: url do |f|
+      .row
+        .col-md-6
+          = f.input :first_name
+        .col-md-6
+          = f.input :last_name
+
+      .row
+        .col-md-12
+          = f.input :scout_name
+
+      - if @user.new_record?
+        .row
+          .col-md-6
+            = f.input :password, required: true, input_html: { autocomplete: 'off' }
+          .col-md-6
+            = f.input :password_confirmation, required: true, input_html: {autocomplete: 'off'}
+      - else
+        .row
+          .col-md-12
+            = f.input :description, label: false, input_html: { class: 'text-editor' }
+
+      .row
+        .col-md-12
+          = f.input :avatar, as: 'file_handle', input_html: { accept: 'image/*' }
+
+      .row
+        - if @user.persisted? && policy(@user).destroy?
+          .col-xs-8
+            = f.submit class: 'btn btn-primary col-xs-12'
+          .col-xs-4
+            = destroy_button
+        - else
+          .col-xs-12
+            = f.submit class: 'btn btn-primary col-xs-12'

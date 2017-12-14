@@ -1,0 +1,21 @@
+- title
+
+.row
+  .col-md-8.col-md-offset-2
+    = simple_form_for resource, as: resource_name, url: session_path(resource_name) do |f|
+      .row
+        .col-xs-12
+          = f.input :scout_name, input_html: { autofocus: true }
+
+      .row
+        .col-xs-12
+          = f.input :password,
+                    autocomplete: 'off'
+
+      .row
+        .col-md-12.text-center
+          = f.input :remember_me, as: 'boolean', input_html: { checked: true }
+
+      .row
+        .col-xs-12
+          = f.submit class: 'btn btn-primary col-xs-12'

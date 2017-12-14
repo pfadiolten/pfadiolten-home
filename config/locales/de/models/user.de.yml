@@ -1,0 +1,57 @@
+de:
+  routes:
+    users: "leiter"
+    controllers:
+      users:
+        edit_password: "passwort-ändern"
+        edit_image: "bild-ändern"
+        edit_admin: "adminrechte-verwalten"
+        forgot_password: "passwort-vergessen"
+
+  activerecord:
+    models:
+      user:
+        zero: "Keine Leiter"
+        one: "Leiter"
+        other: "Leiter"
+
+    attributes:
+      user:
+        first_name: "Vorname"
+        last_name: "Nachname"
+        scout_name: "Pfadiname"
+        password: "Passwort"
+        password_confirmation: "Passwort wiederholen"
+        remember_me: "angemeldet bleiben"
+        group_id: "Stufe"
+        avatar: "Avatar"
+
+  users:
+    index:
+      title: "Alle Leiter"
+      no_users: "Keine Leiter gefunden"
+      search_users: "Leiter suchen..."
+    new:
+      title: "Leiter erfassen"
+    edit:
+      title: "Profil bearbeiten"
+    edit_password:
+      title: "Passwort ändern"
+    edit_image:
+      title: "Avatar ändern"
+      select_image: "Bild auswählen"
+    edit_admin:
+      title: "Adminrechte verwalten"
+      not_admin: "%{scout_name} ist kein Administrator"
+      is_admin: "%{scout_name} ist ein Administrator"
+      set_admin: "Rechte vergeben"
+      unset_admin: "Rechte entziehen"
+      confirm_set: "Soll %{scout_name} wirklich ein Administrator sein?"
+      confirm_unset: "Soll %{scout_name} wirklich kein Administrator mehr sein?"
+    destroy:
+      confirm: "Wirklich löschen?"
+    destroy_image:
+      confirm: "Wirklich löschen?"
+    forgot_password:
+      title: "Passwort vergessen?"
+

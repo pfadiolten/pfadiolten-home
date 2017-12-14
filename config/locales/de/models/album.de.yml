@@ -1,0 +1,27 @@
+de:
+  routes:
+    albums: "alben"
+
+  activerecord:
+    models:
+      album:
+        zero: "Kein Album"
+        one: "Album"
+        other: "Alben"
+
+    attributes:
+      album:
+        name: "Name"
+        description: "Beschreibung"
+        images: "Bilder"
+
+  albums:
+    index:
+      title: "Alle Alben"
+      no_albums: "Keine Alben gefunden"
+    new:
+      title: "Album erfassen"
+    destroy:
+      confirm: "Album wirklich löschen?"
+
+    max_image_warning: "Nicht mehr als %{max} Bilder!"

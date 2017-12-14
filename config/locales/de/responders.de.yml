@@ -1,0 +1,19 @@
+de:
+  flash:
+    actions:
+      create:
+        success: '%{resource_name} wurde erfolgreich erstellt.'
+        failure: '%{resource_name} konnte nicht erstellt werden.'
+      update:
+        success: '%{resource_name} wurde erfolgreich geändert.'
+        failure: '%{resource_name} konnte nicht geändert werden.'
+      destroy:
+        success: '%{resource_name} wurde erfolgreich entfernt.'
+        failure: '%{resource_name} konnte nicht entfernt werden.'
+
+      members:
+        create:
+          success:
+            success: '%{resource_name} wurde erfolgreich hinzugefügt.'
+            failure: '%{resource_name} konnte nicht hinzugefügt werden.'
+

@@ -2,31 +2,23 @@ class CreateAlbums < ActiveRecord::Migration[5.1]
   def change
     create_table :albums do |t|
       #
-      t.column :title,
+      t.column :name,
                :string,
                null: false
 
+      t.index %i[ name ],
+              unique: true,
+              name: 'name_of_album'
+
       #
-      t.column :text,
+      t.column :description,
                :text,
-               null: false
-
-      #
-      t.column :image,
-               :string,
                null: true
 
       #
-      t.column :author_id,
-               :integer,
-               null: true # null = user deleted
-
-      t.index %i[ author_id ],
-              name: 'author_of_article'
-
-      t.foreign_key :users,
-                    column: :author_id,
-                    name: 'fk_author_of_article'
+      t.column :images,
+               :text,
+               null: true
 
       #
       t.timestamps

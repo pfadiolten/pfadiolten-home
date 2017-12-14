@@ -1,0 +1,30 @@
+de:
+  routes:
+    articles: "artikel"
+
+  activerecord:
+    models:
+      article:
+        zero: "Keine Artikel"
+        one: "Artikel"
+        other: "Artikel"
+
+    attributes:
+      article:
+        title: "Titel"
+        text: "Text"
+        image: "Bild"
+        author_id: "Autor"
+
+  articles:
+    index:
+      title: "Alle Artikel"
+      no_articles: "Keine Artikel gefunden"
+    new:
+      title: "Artikel erfassen"
+    edit:
+      title: "Artikel bearbeiten"
+    destroy:
+      confirm: "Artikel wirklich löschen?"
+
+    select_image: "Bild auswählen"

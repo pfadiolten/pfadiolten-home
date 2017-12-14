@@ -1,0 +1,19 @@
+!!! 5
+%html
+  %head
+    %meta{ content: 'text/html; charset=UTF-8', 'http-equiv': 'Content-Type'}
+    %title
+      Pfadi Olten
+      - if title = content_for(:title)
+        = "- #{title}"
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all'
+    = stylesheet_link_tag    controller_name, media: 'all'
+    = javascript_include_tag 'application'
+    = javascript_include_tag controller_name
+  %body
+    .container
+      = render 'layouts/components/title',
+          title:    content_for(:title),
+          subtitle: content_for(:subtitle)
+      = yield

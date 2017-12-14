@@ -1,0 +1,40 @@
+de:
+  routes:
+    groups: "stufen"
+    controllers:
+      groups:
+        edit_order: "ordnung-ändern"
+        edit_users: "leiter-ändern"
+
+  activerecord:
+    models:
+      group:
+        zero: "Keine Stufen"
+        one: "Stufe"
+        other: "Stufen"
+
+    attributes:
+      group:
+        name: "Name"
+        abbreviation: "Abkürzung"
+        what: "Was?"
+        who: "Wer?"
+        when: "Wann?"
+        index: "Ordnung"
+
+  groups:
+    index:
+      title: "Alle Stufen"
+      no_users: "Keine Stufen gefunden"
+    new:
+      title: "Stufe erfassen"
+    edit:
+      title: "Stufe bearbeiten"
+    edit_users:
+      title: "Leiter ändern"
+    edit_order:
+      title: "Stufen sortieren"
+    edit_roles:
+      title: "Rollen ändern"
+    destroy:
+      confirm: "Wirklich löschen?"

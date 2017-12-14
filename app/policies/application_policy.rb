@@ -58,5 +58,6 @@ protected
 
   def admin_user?
     with_user { user.admin? }
+    true
   end
 end

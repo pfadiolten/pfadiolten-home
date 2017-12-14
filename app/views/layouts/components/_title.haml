@@ -1,0 +1,9 @@
+-# title: String
+-# subtitle: String|Null
+
+- unless title.blank?
+  .row.text-center
+    .col-xs-12
+      %h1.no-margin-top= title
+      - unless subtitle.blank?
+        %h3.text-muted= subtitle

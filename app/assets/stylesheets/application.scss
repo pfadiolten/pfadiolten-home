@@ -1,3 +1,11 @@
+// components
 @import "jquery-ui";
 @import "font-awesome";
-@import "font-awesome-sprockets";
+@import 'plugins/checkbox-x';
+@import 'bootstrap-datetimepicker';
+@import "select2";
+@import "select2-bootstrap";
+
+// app
+@import "app/theme";
+@import "app/components";

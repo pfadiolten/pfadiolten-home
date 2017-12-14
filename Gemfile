@@ -57,6 +57,24 @@ gem 'responders'
 # authorization
 gem 'pundit'
 
+# i18n for routes
+gem 'route_translator'
+
+# allows i18n entries to lookup other entries
+gem 'i18n-recursive-lookup'
+
+# customizable form builder
+gem 'simple_form'
+
+# HTML select input replacement
+gem 'select2-rails'
+
+# HTML datetime input for bootstrap
+gem 'bootstrap3-datetimepicker-rails'
+
+# JS datetime library, required by 'bootstrap3-datetimepicker-rails'
+gem 'momentjs-rails'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
