@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -40,6 +40,16 @@ gem 'bcrypt', '~> 3.1.7', platforms: %i[ruby]
 
 # HTML template language
 gem 'haml-rails'
+
+# authentication
+gem 'devise'
+
+# file upload & storage
+gem 'carrierwave'
+
+# image manipulation
+# requires installation of ImageMagick (https://imagemagick.org) or GraphicsMagick (http://graphicsmagick.org)
+gem 'mini_magick', require: false
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
