@@ -1,0 +1,33 @@
+@function list-contains($list, $value) {
+  @each $element in $list {
+    @if "#{$element}" == "#{$value}" {
+      @return true;
+    }
+  }
+  @return false;
+}
+
+@mixin adapting($prefix) {
+  .#{$prefix} {
+    @content;
+  }
+
+  @each $size in $style-sizes {
+    $name: "#{$prefix}-#{$size}";
+    @include break-only($size) {
+      .#{$name} {
+        @content;
+      }
+    }
+    @include break-min($size) {
+      .#{$name}-up {
+        @content;
+      }
+    }
+    @include break-max($size) {
+      .#{$name}-down {
+        @content;
+      }
+    }
+  }
+}

@@ -13,7 +13,8 @@
     = javascript_include_tag controller_name
   %body
     .container
-      = render 'layouts/components/title',
-          title:    content_for(:title),
-          subtitle: content_for(:subtitle)
+      .text-center
+        = render 'layouts/components/title',
+            title:    content_for(:title),
+            subtitle: content_for(:subtitle)
       = yield

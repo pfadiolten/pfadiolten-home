@@ -1,0 +1,39 @@
+@include adapting(no-margin) {
+  margin: 0;
+}
+
+@include adapting(no-padding) {
+  padding: 0
+}
+
+@for $i from 1 through 12 {
+  @each $direction in $style-directions {
+    .gap-#{$direction}-#{$i} {
+      margin-#{$direction}: #{$i}rem;
+    }
+
+    @each $size in $style-sizes {
+      @include break-only($size) {
+        .gap-#{$direction}-#{$i}-#{$size} {
+          margin-#{$direction}: #{$i}rem;
+        }
+      }
+
+      @if $size != lg {
+        .gap-#{$direction}-#{$i}-#{$size}-up {
+          @include break-min($size) {
+            margin-#{$direction}: #{$i}rem;
+          }
+        }
+      }
+
+      @if $size != xs {
+        .gap-#{$direction}-#{$i}-#{$size}-down {
+          @include break-max($size) {
+            margin-#{$direction}: #{$i}rem;
+          }
+        }
+      }
+    }
+  }
+}

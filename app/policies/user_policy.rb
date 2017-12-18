@@ -35,7 +35,7 @@ class UserPolicy < ApplicationPolicy
 
   def update_admin?
     with_user do
-      user.admin? && user.id != record.id
+      user.admin?
     end
   end
 

@@ -75,6 +75,9 @@ gem 'bootstrap3-datetimepicker-rails'
 # JS datetime library, required by 'bootstrap3-datetimepicker-rails'
 gem 'momentjs-rails'
 
+# extends the mail generators with encoding capability
+gem 'actionview-encoded_mail_to'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

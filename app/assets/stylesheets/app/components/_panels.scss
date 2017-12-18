@@ -1,0 +1,7 @@
+.panel.panel-link {
+  color: $text-color;
+
+  &:hover {
+    border: 1px solid $brand-primary;
+  }
+}

@@ -1,0 +1,67 @@
+@mixin _check-size($size) {
+  @if false == list-contains($style-sizes, $size) {
+    @error "unknown size #{$size}";
+  }
+}
+
+@mixin break-only($size) {
+  @if $size == xs {
+    @include break-max($size) {
+      @content;
+    }
+  } @else if($size == lg) {
+    @include break-min($size) {
+      @content;
+    }
+  } @else {
+    @include break-between($size, $size) {
+      @content;
+    };
+  }
+}
+
+@mixin break-min($size) {
+  @include _check-size($size);
+
+  $min: map-get($style-breakpoints-min, $size);
+  @media (min-width: $min) {
+    @content;
+  }
+}
+
+@mixin break-max($size) {
+  @include _check-size($size);
+
+  @if $size == lg {
+    @include break-only($size) {
+      @content;
+    }
+  } @else {
+    $max: map-get($style-breakpoints-max, $size);
+    @media (max-width: $max) {
+      @content;
+    }
+  }
+}
+
+@mixin break-between($min-size, $max-size) {
+  @include _check-size($min-size);
+  @include _check-size($max-size);
+
+  $min: map-get($style-breakpoints-min, $min-size);
+  $max: map-get($style-breakpoints-max, $max-size);
+
+  @if $max == null {
+    @include break-min($min-size) {
+      @content;
+    };
+  } @else {
+    @if $min > $max {
+      @error "min-size (#{$min-size}) is greater than max-size (#{$max-size})";
+    }
+
+    @media (min-width: $min) and (max-width: $max) {
+      @content;
+    }
+  }
+}

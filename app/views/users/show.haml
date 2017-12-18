@@ -1,0 +1,35 @@
+.row
+  .col-xs-12
+    .row.text-center-xs
+      .col-md-5
+        .row
+          .col-xs-12
+            %img.img-thumbnail{ src: image_path(@user.avatar), width: '100%' }
+      .col-md-7
+        = render 'layouts/components/title',
+                 title:    @user.scout_name,
+                 subtitle: @user.name
+        .row
+          .col-xs-12
+            .btn-group
+              = mail_to @user.email, encode: :javascript, class: 'btn btn-primary' do
+                = fa_icon('envelope')
+
+              - if policy(@user).edit?
+                = link_to fa_icon('pencil'), edit_user_path, class: 'btn btn-primary'
+
+              - if policy(@user).edit_password?
+                = link_to fa_icon('key'), edit_password_user_path, class: 'btn btn-primary'
+
+              - if policy(@user).edit_admin?
+                = link_to fa_icon('bolt'), edit_admin_user_path, class: 'btn btn-primary'
+
+        - if @user.groups.any?
+          .row
+            .col-xs-12
+              - @user.groups.each do |group|
+                = link_to group.abbreviation, group_path(group), class: 'btn btn-default'
+
+        .row.gap-top-1
+          .col-xs-12
+            = @user.description&.html_safe

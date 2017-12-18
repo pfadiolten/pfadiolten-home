@@ -1,0 +1,26 @@
+$style-directions: (
+  top
+  bottom
+  left
+  right
+);
+
+$style-sizes: (
+  xs
+  sm
+  md
+  lg
+);
+
+$style-breakpoints-min: (
+  xs: $screen-xs-min,
+  sm: $screen-sm-min,
+  md: $screen-md-min,
+  lg: $screen-lg-min,
+);
+
+$style-breakpoints-max: (
+  xs: $screen-xs-max,
+  sm: $screen-sm-max,
+  md: $screen-md-max,
+);

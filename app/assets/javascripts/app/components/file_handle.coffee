@@ -1,10 +1,8 @@
-
 $ ->
-  $('.file_handle').each query arg ($handle) ->
-    $inputs = $handle.find('.inputs')
-    $buttons = $handle.find('.buttons')
-
-    $attrInput = $inputs.find('.attribute')
+  $('.form-group.file_handle').each query arg ($handle) ->
+    $inputs     = $handle.find('.inputs')
+    $buttons    = $handle.find('.buttons')
+    $attrInput  = $inputs.find('.attribute')
     $attrButton = $buttons.find('.attribute')
 
     attrText = $attrButton.text()

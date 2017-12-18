@@ -24,5 +24,22 @@ Rails.application.routes.draw do
         match 'update_admin', via: %i[ put patch ]
       end
     end
+
+    namespace :groups do
+      get 'edit_order'
+      match 'update_order', via: %i[ put patch ]
+    end
+
+    resources :groups, param: :abbreviation do
+      member do
+        get 'edit_users'
+        match 'update_users', via: %i[ put patch ]
+
+        resource :members, only: %i[ new create ]
+        resources :members, param: :scout_name, only: %i[ edit update destroy ]
+
+        resources :roles, param: :name
+      end
+    end
   end
 end

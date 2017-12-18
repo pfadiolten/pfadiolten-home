@@ -5,13 +5,8 @@ $font-family-sans-serif: 'Encode Sans Expanded', sans-serif;
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-.color-failure {
-  color: $brand-danger;
-}
-
-.color-success {
-  color: $brand-success;
-}
+@import "theme/variables";
+@import "theme/colors";
 
 label abbr[title] {
   border-bottom: none;
