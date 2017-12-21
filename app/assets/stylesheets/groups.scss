@@ -1,3 +1,20 @@
-// Place all the styles related to the groups controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "app/theme/variables";
+
+.switch-groups {
+  display: inline-block;
+  border: 1px solid $panel-inner-border;
+  width: 100%;
+  text-align: center;
+  height: 3rem;
+  line-height: 3rem;
+
+  border: {
+    top:    none;
+    bottom: none;
+  }
+
+  &:hover {
+    cursor: pointer;
+    background: $gray-lighter;
+  }
+}

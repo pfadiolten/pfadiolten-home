@@ -9,10 +9,10 @@
       .pull-left
         - if policy(User).create?
           = link_to fa_icon('plus'), new_user_path, class: 'btn btn-primary'
-  - if @users.any?
+  - if users.any?
     .row.gap-top-1
       %ul.rows
-        - @users.each do |user|
+        - users.each do |user|
           %li.col-md-3.col-xs-4.search-element{ data: { terms: [ user.scout_name, user.first_name, user.last_name ].to_json } }
             %a{ href: user_path(user) }
               .panel.panel-default.panel-link.gap-top-1

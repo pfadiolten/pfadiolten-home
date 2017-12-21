@@ -1,0 +1,22 @@
+- title @role.name
+- subtitle do
+  = link_to @group.abbreviation, group_path(@group)
+  = ' / '.html_safe
+  = link_to t('roles.index.title'), roles_path
+
+- if policy(@role).edit?
+  .row
+    .col-xs-12.text-center
+      .btn-group
+        = link_to fa_icon('pencil'), edit_role_path, class: 'btn btn-primary'
+
+.row.gap-top-2
+  .col-xs-12
+    - %i[ can_edit_group can_edit_members can_edit_roles ].each do |attribute|
+      - value = @role.read_attribute(attribute)
+      .text-center
+        .col-xs-4
+          .panel{ class: "panel-#{value ? 'success' : 'danger'}" }
+            .panel-heading
+              %strong= t("activerecord.attributes.role.#{attribute}")
+            .panel-body= iconize(value)

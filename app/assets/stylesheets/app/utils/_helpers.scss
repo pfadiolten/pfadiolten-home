@@ -7,26 +7,47 @@
   @return false;
 }
 
-@mixin adapting($prefix) {
-  .#{$prefix} {
+@mixin inject-map($map, $suffix: '') {
+  @each $key, $value in $map {
+    #{$key}#{$suffix}: $value;
+  }
+}
+
+@mixin inject-breakpoints($prefix) {
+  #{$prefix} {
     @content;
   }
 
   @each $size in $style-sizes {
     $name: "#{$prefix}-#{$size}";
+
     @include break-only($size) {
-      .#{$name} {
+      #{$name} {
         @content;
       }
     }
     @include break-min($size) {
-      .#{$name}-up {
+      #{$name}-up {
         @content;
       }
     }
     @include break-max($size) {
-      .#{$name}-down {
+      #{$name}-down {
         @content;
+      }
+    }
+  }
+}
+
+@mixin adapting($prefix, $attributes, $directions: false) {
+  @include inject-breakpoints(".#{$prefix}") {
+    @include inject-map($attributes)
+  }
+
+  @if $directions {
+    @each $direction in $style-directions {
+      @include inject-breakpoints(".#{$prefix}-#{$direction}") {
+        @include inject-map($attributes, $suffix: "-#{$direction}")
       }
     }
   }

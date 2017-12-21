@@ -1,11 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Encode+Sans+Expanded');
 
-$font-family-sans-serif: 'Encode Sans Expanded', sans-serif;
+@import "theme/variables";
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-@import "theme/variables";
 @import "theme/colors";
 @import "theme/offsets";
 

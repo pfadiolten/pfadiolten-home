@@ -1,3 +1,13 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+$ ->
+  $switches = $('.sort-order .switch-groups')
+
+  $switches.click query arg ($switch) ->
+    $prevGroup = $switch.prev('.group')
+    $nextGroup = $switch.next('.group')
+
+    $prevContents = $prevGroup.children().detach()
+    $nextContents = $nextGroup.children().detach()
+
+    $prevGroup.append($nextContents)
+    $nextGroup.append($prevContents)
+

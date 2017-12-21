@@ -1,6 +1,6 @@
 - title
 
-.row.gap-bottom-1
+.row
   .col-xs-12.text-center
     - if policy(@groups).create?
       = link_to fa_icon('plus'), new_group_path, class: 'btn btn-primary'
@@ -11,10 +11,10 @@
   .col-md-6.col-md-offset-3
     - if @groups.any?
       - @groups.each do |group|
-        .row
+        .row.gap-top-1
           .col-xs-12
             %a{ href: group_path(group) }
-              .panel.panel-default.panel-link.text-center
+              .panel.panel-default.panel-link.text-center.no-margin-bottom
                 .panel-heading
                   = group.name
                 - if group.who.present?

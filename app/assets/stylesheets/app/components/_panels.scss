@@ -1,7 +1,23 @@
-.panel.panel-link {
-  color: $text-color;
+.panel {
+  a.panel-heading, a.panel-body {
+    display: block;
+    color: $text-color;
+    text-decoration: none;
+  }
 
+  &.panel-link {
+    color: $text-color;
+
+    &:hover {
+      border: 1px solid $brand-primary;
+    }
+  }
+}
+
+a > .panel:only-child {
   &:hover {
-    border: 1px solid $brand-primary;
+    .panel-heading {
+      background-color: darken(#f5f5f5, 5%)
+    }
   }
 }

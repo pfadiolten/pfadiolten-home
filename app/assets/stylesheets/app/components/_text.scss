@@ -1,5 +1,11 @@
 @each $align in (left, center, right, justify) {
-  @include adapting(text-#{$align}) {
-    text-align: $align;
+  @include adapting(text-#{$align}, (
+    text-align: $align
+  ));
+}
+
+a {
+  &:hover {
+    text-decoration: none;
   }
 }

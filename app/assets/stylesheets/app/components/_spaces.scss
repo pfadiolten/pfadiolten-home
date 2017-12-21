@@ -1,13 +1,13 @@
-@include adapting(no-margin) {
-  margin: 0;
-}
+@include adapting(no-margin, $directions: true, $attributes: (
+  margin: 0
+));
 
-@include adapting(no-padding) {
+@include adapting(no-padding, $directions: true, $attributes: (
   padding: 0
-}
+));
 
-@for $i from 1 through 12 {
-  @each $direction in $style-directions {
+@each $direction in $style-directions {
+  @for $i from 1 through 12 {
     .gap-#{$direction}-#{$i} {
       margin-#{$direction}: #{$i}rem;
     }
