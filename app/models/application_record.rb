@@ -25,7 +25,9 @@ class ApplicationRecord < ActiveRecord::Base
     def sanitize_html_of(*attributes)
       before_validation do
         attributes.each do |attribute|
-          send("#{attribute}=", Sanitize.fragment(send("#{attribute}"), Sanitize::Config::RELAXED))
+          value = send("#{attribute}")
+          break if value.blank?
+          send("#{attribute}=", Sanitize.fragment(value, Sanitize::Config::RELAXED))
         end
       end
     end

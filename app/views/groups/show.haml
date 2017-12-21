@@ -1,0 +1,61 @@
+- title @group.name
+- subtitle @group.abbreviation
+
+.row
+  .col-xs-12.text-center
+    .btn-group
+      - if policy(@group).update?
+        = link_to fa_icon('pencil'), edit_group_path, class: 'btn btn-primary'
+      - if policy(@group.roles).index?
+        = link_to fa_icon('star'), roles_path, class: 'btn btn-primary'
+
+- if @group.what || @group.who || @group.when
+  .row.text-center.gap-top-1.gap-bottom-1
+    .col-md-8.col-md-offset-2
+      - if what = @group.what
+        .row
+          .col-xs-12
+            = what.html_safe
+
+      - %i[ who when ].each do |attribute|
+        - if value = @group.read_attribute(attribute)
+          .row
+            .col-xs-12
+              %h3= t("activerecord.attributes.group.#{attribute}")
+              .row
+                .col-xs-12= value
+
+- roles = @group.roles.sorted_by_rights
+- roles_with_members = roles.count { |it| it.users.any? }
+- can_create = policy(Member).create?
+
+- if can_create || roles_with_members > 0
+  .row
+    .col-md-8.col-md-offset-2
+      .row
+        .col-xs-12.text-center
+          %h2= t('activerecord.models.user.other')
+        - if can_create
+          .row.gap-bottom-1
+            .col-xs-12.text-center
+              .btn-group
+                = link_to fa_icon('plus'), new_members_path, class: 'btn btn-primary'
+      .row
+        .col-xs-12
+          - if roles_with_members > 0
+            - show_role_names = roles.count { |it| it.users.any? } > 1
+            - roles.each do |role|
+              - next if role.users.count == 0
+              - if show_role_names
+                .row
+                  .col-xs-12.text-center
+                    %h3= role.name
+              .row
+                .col-xs-12
+                  = render 'users/list', users: role.users, none: nil do |user|
+                    - if (current_member && policy(current_member).update?) || policy(Member).update?
+                      .row.gap-top-1
+                        .col-xs-12
+                          = link_to fa_icon('pencil'), edit_member_path(@group, @group.members.find { |it| it.user_id == user.id }), class: 'btn btn-primary'
+          - else
+            .alert.alert-info.text-center= t('activerecord.models.user.zero')

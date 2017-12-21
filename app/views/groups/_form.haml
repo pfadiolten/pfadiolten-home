@@ -2,6 +2,8 @@
 
 - url ||= nil
 
+= @group.errors.to_h
+
 .row
   .col-md-8.col-md-offset-2
     = simple_form_for @group, url: url do |f|

@@ -33,7 +33,7 @@ class Group < ApplicationRecord
 # Callbacks
   before_validation :load_index, on: %i[ create ]
 
-  sanitize_html_of :what, :who, :when
+  sanitize_html_of :what
 
 # Validations
   validates :name,
