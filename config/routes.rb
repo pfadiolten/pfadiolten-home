@@ -41,5 +41,7 @@ Rails.application.routes.draw do
         resources :roles, param: :name
       end
     end
+
+    resources :articles
   end
 end

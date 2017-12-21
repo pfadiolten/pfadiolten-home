@@ -2,7 +2,7 @@ class RolesController < ApplicationController
   before_action :load_group
 
   before_action :load_role,
-                except: %I[ index new create ]
+                except: %I[index new create]
 
   enforce_login!
 

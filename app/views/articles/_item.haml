@@ -1,0 +1,10 @@
+-# article: Article
+-# yield
+
+.panel.panel-default.panel-link.no-margin{ data: { link: article_path(article) } }
+  .panel-heading
+    %h3.no-margin.text-center= article.title
+  .panel-body
+    = yield article
+  .panel-footer
+    .text-center= article_info(article)

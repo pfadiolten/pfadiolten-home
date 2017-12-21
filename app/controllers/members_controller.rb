@@ -2,7 +2,7 @@ class MembersController < ApplicationController
   before_action :load_group
 
   before_action :load_member,
-                only: %w[ edit update destroy ]
+                only: %i[edit update destroy]
 
   enforce_login!
 

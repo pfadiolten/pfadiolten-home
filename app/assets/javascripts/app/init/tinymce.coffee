@@ -25,11 +25,15 @@ $ ->
       'emoticons'
     ]
     toolbar: [
-      'fontselect fontsizeselect | bold italic underline | alignment | forecolor backcolor'
-      'undo redo |styleselect | outdent indent | table numlist bullist | emoticons'
+      'fontselect fontsizeselect | bold italic underline | forecolor backcolor'
+      ' styleselect | undo redo |styleselect | outdent indent | table numlist bullist | emoticons'
     ]
+
+    toolbar_align : "right"
 
     setup: (ed) ->
       ed.on 'init', ->
-        @getDoc().body.style.fontFamily = 'encode sans expanded'
+        style = @getDoc().body.style
+        style.fontFamily = 'encode sans expanded'
+        style.textAlign  = 'center'
   )

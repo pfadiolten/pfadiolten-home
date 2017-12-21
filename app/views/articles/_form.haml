@@ -1,0 +1,27 @@
+.row
+  .col-md-8.col-md-offset-2
+    = simple_form_for @article, html: { multipart: true } do |f|
+      .row
+        .col-xs-12
+          = f.input :title
+
+      .row
+        .col-xs-12
+          = f.input :image, as: 'file_handle',
+                    input_html: { accept: 'image/*' }
+
+      .row
+        .col-xs-12
+          = f.input :text, required: false,
+                    label: false,
+                    input_html: { class: 'text-editor' }
+
+      .row
+        - if @article.persisted? && policy(@article).destroy?
+          .col-xs-8
+            = f.submit class: 'btn btn-primary col-xs-12'
+          .col-xs-4
+            = destroy_button
+        - else
+          .col-xs-12
+            = f.submit class: 'btn btn-primary col-xs-12'

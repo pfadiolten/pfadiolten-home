@@ -1,14 +1,14 @@
 class GroupsController < ApplicationController
   before_action :load_group,
-                except: %i[ new create index edit_order update_order ]
+                except: %i[new create index edit_order update_order]
 
   before_action :load_groups,
-                only: %i[ index edit_order update_order ]
+                only: %i[index edit_order update_order]
 
   after_action :verify_policy_scoped,
-               only: %i[ index edit_order update_order ]
+               only: %i[index edit_order update_order]
 
-  enforce_login! except: %i[ index show ]
+  enforce_login! except: %i[index show]
 
   def index
   end
