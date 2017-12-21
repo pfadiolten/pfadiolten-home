@@ -12,6 +12,9 @@ class Article < ApplicationRecord
     order('created_at': 'desc', title: 'desc')
   }
 
+# Callbacks
+  sanitize_html_of :text
+
 # Validations
   validates :title, :text,
             length: { minimum: 1 },

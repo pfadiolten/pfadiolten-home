@@ -38,6 +38,8 @@ class User < ApplicationRecord
 
   default_for :admin?, is: false
 
+  sanitize_html_of :description
+
 # Validations
   validates :scout_name,
             uniqueness: { case_sensitive: false },

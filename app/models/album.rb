@@ -5,6 +5,14 @@ class Album < ApplicationRecord
 # Attributes
   serialize :images, JSON
 
+# Scopes
+  default_scope do
+    order(created_at: 'desc', name: 'desc')
+  end
+
+# Callbacks
+  sanitize_html_of :description
+
 # Validations
   validates :name,
             uniqueness: { case_sensitive: false },
@@ -14,10 +22,6 @@ class Album < ApplicationRecord
             presence: true,
             allow_nil: true
 
-# Scopes
-  default_scope do
-    order(created_at: 'desc', name: 'desc')
-  end
 
 # Actions
   def name_for_file

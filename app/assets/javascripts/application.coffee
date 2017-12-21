@@ -6,11 +6,11 @@
 #= require jquery-ui
 #= require jquery-ui/widgets/autocomplete
 
-# moment.js
+## moment.js
 #= require moment
 #= require moment/de
 
-# components
+## components
 #= require bootstrap-datetimepicker
 #= require select2-full
 #= require select2_locale_de
@@ -19,7 +19,10 @@
 ## boostrap
 #= require bootstrap-sprockets
 
-# app
+## tinymce
+#= require tinymce-jquery
+
+## app
 #= require app/globals
 #= require app/init
 #= require app/components

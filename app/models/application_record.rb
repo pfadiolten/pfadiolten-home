@@ -21,5 +21,13 @@ class ApplicationRecord < ActiveRecord::Base
       before_validation &defaultation
       before_save &defaultation
     end
+
+    def sanitize_html_of(*attributes)
+      before_validation do
+        attributes.each do |attribute|
+          send("#{attribute}=", Sanitize.fragment(send("#{attribute}"), Sanitize::Config::RELAXED))
+        end
+      end
+    end
   end
 end

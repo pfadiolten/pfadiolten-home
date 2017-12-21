@@ -33,6 +33,8 @@ class Group < ApplicationRecord
 # Callbacks
   before_validation :load_index, on: %i[ create ]
 
+  sanitize_html_of :what, :who, :when
+
 # Validations
   validates :name,
             uniqueness: { case_sensitive: false },

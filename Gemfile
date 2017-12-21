@@ -72,11 +72,18 @@ gem 'select2-rails'
 # HTML datetime input for bootstrap
 gem 'bootstrap3-datetimepicker-rails'
 
+# WYSIWYG text editor
+gem 'tinymce-rails'
+gem 'tinymce-rails-langs'
+
 # JS datetime library, required by 'bootstrap3-datetimepicker-rails'
 gem 'momentjs-rails'
 
 # extends the mail generators with encoding capability
 gem 'actionview-encoded_mail_to'
+
+# sanitize HTML values in models
+gem 'sanitize'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

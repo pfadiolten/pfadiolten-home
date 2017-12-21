@@ -28,6 +28,9 @@ class Event < ApplicationRecord
     where('ends_at >= (?)', Date.today)
   }
 
+# Callbacks
+  sanitize_html_of :bring_with_you, :other_stuff
+
 # Validations
   validates :name,
             length: { minimum: 1 },

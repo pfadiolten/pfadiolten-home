@@ -18,9 +18,13 @@
       - if @user.new_record?
         .row
           .col-md-6
-            = f.input :password, required: true, input_html: { autocomplete: 'off' }
+            = f.input :password,
+                      required: true,
+                      input_html: { autocomplete: 'off' }
           .col-md-6
-            = f.input :password_confirmation, required: true, input_html: {autocomplete: 'off'}
+            = f.input :password_confirmation,
+                      required: true,
+                      input_html: { autocomplete: 'off' }
       - else
         .row
           .col-md-12

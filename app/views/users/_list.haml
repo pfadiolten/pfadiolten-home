@@ -3,9 +3,9 @@
 
 .search-list
   .row.text-center
-    .col-xs-6.col-xs-offset-3
+    .col-md-4.col-md-offset-4.col-xs-6.col-xs-3
       %input{ type: 'text', placeholder: t('users.index.search_users'), class: 'form-control search-input' }
-    .col-xs-3
+    .col-md-4.col-xs-3
       .pull-left
         - if policy(User).create?
           = link_to fa_icon('plus'), new_user_path, class: 'btn btn-primary'
@@ -13,7 +13,7 @@
     .row.gap-top-1
       %ul.rows
         - @users.each do |user|
-          %li.col-xs-3.col-xs-4.search-element{ data: { terms: [ user.scout_name, user.first_name, user.last_name ].to_json } }
+          %li.col-md-3.col-xs-4.search-element{ data: { terms: [ user.scout_name, user.first_name, user.last_name ].to_json } }
             %a{ href: user_path(user) }
               .panel.panel-default.panel-link.gap-top-1
                 .panel-body.no-padding
