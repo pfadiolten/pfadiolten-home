@@ -9,7 +9,7 @@ end
 gem 'rails', '~> 5.1.4'
 
 # database
-gem 'sqlite3'
+gem 'sqlite3', '~> 1.3.13'
 
 # app server
 gem 'puma', '~> 3.7'
@@ -21,69 +21,69 @@ gem 'uglifier', '>= 1.3.0'
 gem 'sass-rails', '~> 5.0'
 
 # bootstrap - css framework
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', '~> 3.3.7'
 
 # font awesome - html/css icons
-gem 'font-awesome-rails'
+gem 'font-awesome-rails', '~> 4.7.0.2'
 
 # client-side programming language, compiles to js
 gem 'coffee-rails', '~> 4.2'
 
 # jquery - js framework / core
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 4.3.1'
 
 # jquery - js framework / ui components
-gem 'jquery-ui-rails'
+gem 'jquery-ui-rails', '~> 6.0.1'
 
 # password encryption
 gem 'bcrypt', '~> 3.1.7', platforms: %i[ruby]
 
 # HTML template language
-gem 'haml-rails'
+gem 'haml-rails', '~> 1.0.0'
 
 # authentication
-gem 'devise'
+gem 'devise', '~> 4.3.0'
 
 # file upload & storage
-gem 'carrierwave'
+gem 'carrierwave', '~> 1.2.1'
 
 # image manipulation
 # requires installation of ImageMagick (https://imagemagick.org) or GraphicsMagick (http://graphicsmagick.org)
-gem 'mini_magick', require: false
+gem 'mini_magick', '~> 4.8.0', require: false
 
 # modular response extensions for controllers
-gem 'responders'
+gem 'responders', '~> 2.4.0'
 
 # authorization
-gem 'pundit'
+gem 'pundit', '~> 1.1.0'
 
 # i18n for routes
-gem 'route_translator'
+gem 'route_translator', '~> 5.5.0'
 
 # allows i18n entries to lookup other entries
-gem 'i18n-recursive-lookup'
+gem 'i18n-recursive-lookup', '~> 0.0.5'
 
 # customizable form builder
-gem 'simple_form'
+gem 'simple_form', '~> 3.5.0'
 
 # HTML select input replacement
-gem 'select2-rails'
+gem 'select2-rails', '~> 4.0.3'
 
 # HTML datetime input for bootstrap
-gem 'bootstrap3-datetimepicker-rails'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
 
 # WYSIWYG text editor
-gem 'tinymce-rails'
-gem 'tinymce-rails-langs'
+gem 'tinymce-rails', '~> 4.7.4'
+gem 'tinymce-rails-langs', '~> 4.20160310'
 
 # JS datetime library, required by 'bootstrap3-datetimepicker-rails'
-gem 'momentjs-rails'
+gem 'momentjs-rails', '~> 2.17.1'
 
 # extends the mail generators with encoding capability
-gem 'actionview-encoded_mail_to'
+gem 'actionview-encoded_mail_to', '~> 1.0.9'
 
 # sanitize HTML values in models
-gem 'sanitize'
+gem 'sanitize', '~> 4.5.0'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
