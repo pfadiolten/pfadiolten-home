@@ -1,7 +1,22 @@
 $font-family-sans-serif: 'Encode Sans Expanded', sans-serif;
 
+// colors taken from the logo
+$brand-primary:   #00833B !default;
+$brand-secondary: #42A13F !default;
+$brand-ternary:   #8CC63F !default;
+
+// lets input fields glow in the theme color
+$input-border-focus:  $brand-ternary !default;
+
+// remove rounded borders
+$border-radius-base:        0px;
+$border-radius-large:       0px;
+$border-radius-small:       0px;
+
+// load after variable overrides!
 @import "bootstrap/variables";
 
+// helper variables
 $style-directions: (
   top
   bottom

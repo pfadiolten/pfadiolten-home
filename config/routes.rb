@@ -44,4 +44,6 @@ Rails.application.routes.draw do
 
     resources :articles
   end
+
+  root to: redirect('/home')
 end
