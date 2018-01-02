@@ -20,8 +20,6 @@ class Role < ApplicationRecord
 
   default_for :can_edit_group, is: false
 
-  default_for :can_edit_roles, is: false
-
 # Scopes
   scope :sorted_by_rights, ->{
     all.sort_by(&:rights_value).reverse
@@ -32,13 +30,12 @@ class Role < ApplicationRecord
             uniqueness: { scope: %i[ group_id ] },
             presence: true
 
-  validates :can_edit_members, :can_edit_group, :can_edit_roles,
+  validates :can_edit_members, :can_edit_group,
             inclusion: { in: [ true, false ] }
 
 # Actions
   def rights_value
     value = 0
-    value += 3 if can_edit_roles?
     value += 2 if can_edit_members?
     value += 1 if can_edit_group?
     value

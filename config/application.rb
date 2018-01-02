@@ -16,5 +16,8 @@ module PfadioltenHome
     # -- all .rb files in that directory are automatically loaded.
 
     config.i18n.default_locale = :de
+
+    config.time_zone = 'CET'
+    config.active_record.default_timezone = :local
   end
 end

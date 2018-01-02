@@ -9,12 +9,10 @@
           = f.input :name
 
       .row.text-center
-        .col-md-4.col-xs-12
+        .col-md-6.col-xs-12
           = f.input :can_edit_group, as: :boolean, required: false
-        .col-md-4.col-xs-12
+        .col-md-6.col-xs-12
           = f.input :can_edit_members, as: :boolean, required: false
-        .col-md-4.col-xs-12
-          = f.input :can_edit_roles, as: :boolean, required: false
 
       .row
         - if @role.persisted? && policy(@role).destroy?

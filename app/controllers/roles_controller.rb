@@ -60,8 +60,7 @@ class RolesController < ApplicationController
     params.require(:role).permit(
       :name,
       :can_edit_group,
-      :can_edit_members,
-      :can_edit_roles
+      :can_edit_members
     )
   end
 

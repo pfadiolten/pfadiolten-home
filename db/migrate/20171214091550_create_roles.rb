@@ -19,12 +19,6 @@ class CreateRoles < ActiveRecord::Migration[5.1]
                default: false
 
       #
-      t.column :can_edit_roles,
-               :boolean,
-               null: false,
-               default: false
-
-      #
       t.column :group_id,
                :integer,
                null: false

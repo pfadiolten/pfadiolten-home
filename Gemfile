@@ -35,14 +35,14 @@ gem 'jquery-rails', '~> 4.3.1'
 # jquery - js framework / ui components
 gem 'jquery-ui-rails', '~> 6.0.1'
 
-# HTML template language
+# haml - HTML template language
 gem 'haml-rails', '~> 1.0.0'
 
 # password encryption
 gem 'bcrypt', platform: :ruby
 
 # authentication
-gem 'devise', '~> 4.4.0'
+gem 'devise', '~> 4.3.0'
 
 # file upload & storage
 gem 'carrierwave', '~> 1.2.1'
@@ -84,9 +84,6 @@ gem 'actionview-encoded_mail_to', '~> 1.0.9'
 
 # sanitize HTML values in models
 gem 'sanitize', '~> 4.5.0'
-
-# manage application-specific settings in yml-files
-gem 'config'
 
 gem 'kaminari', '~> 1.0.1'
 
