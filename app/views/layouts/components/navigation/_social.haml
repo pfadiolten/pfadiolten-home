@@ -1,0 +1,8 @@
+-# add_class: String = ''
+
+- add_class ||= ''
+
+= link_to fa_icon('instagram'), Settings.social.instagram, class: "nav-icon #{add_class}", target: '_blank'
+= link_to fa_icon('facebook-official'), Settings.social.facebook, class: "nav-icon #{add_class}", target: '_blank'
+= mail_to Settings.social.mail, encode: :javascript, class: "nav-icon #{add_class}" do
+  = fa_icon('envelope')
