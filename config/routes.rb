@@ -42,6 +42,15 @@ Rails.application.routes.draw do
       end
     end
 
+
+    namespace :events do
+      Event.detail_types.each do |detail, _|
+        get "#{detail}/new", action: "new_#{detail}"
+      end
+    end
+
+    resources :events
+
     resources :articles
   end
 

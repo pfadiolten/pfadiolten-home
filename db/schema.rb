@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171214091952) do
+ActiveRecord::Schema.define(version: 20180102132157) do
 
   create_table "albums", force: :cascade do |t|
     t.string "name", null: false
@@ -31,6 +31,26 @@ ActiveRecord::Schema.define(version: 20171214091952) do
     t.index ["author_id"], name: "author_of_article"
   end
 
+  create_table "documents", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "link", null: false
+    t.string "context_type", null: false
+    t.integer "context_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["context_type", "context_id"], name: "context_of_document"
+  end
+
+  create_table "event_activity_details", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "event_camp_details", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "event_groups", force: :cascade do |t|
     t.integer "event_id", null: false
     t.integer "group_id", null: false
@@ -41,19 +61,8 @@ ActiveRecord::Schema.define(version: 20171214091952) do
     t.index ["group_id"], name: "group_of_event"
   end
 
-  create_table "events", force: :cascade do |t|
-    t.string "name", null: false
-    t.datetime "starts_at", null: false
-    t.string "start_location", null: false
-    t.datetime "ends_at", null: false
-    t.string "end_location", null: false
-    t.text "bring_with_you"
-    t.text "other_stuff"
-    t.integer "user_in_charge_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_in_charge_id"], name: "user_in_charge_of_event"
-  end
+# Could not dump table "events" because of following StandardError
+#   Unknown type 'bool' for column 'is_hidden'
 
   create_table "groups", force: :cascade do |t|
     t.string "name", null: false

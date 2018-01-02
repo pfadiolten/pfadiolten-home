@@ -1,22 +1,28 @@
 $ ->
-  $('[data-mirrors]').each query arg ($element) ->
-    $source = $($element.data('mirrors'))
+  $('[data-mirror]').each query arg ($element) ->
+    mirrorConfig = $element.data('mirror')
+    $source = $(mirrorConfig.source)
+
+    access = ($el, value) ->
+      if value?
+        $el.attr(mirrorConfig.destination, value)
+      else
+        $el.attr(mirrorConfig.destination)
 
     elementChanged = false
-    changeHandle =
-      ->
-        value = $element.val()
-        if value? && value.length > 0 && value != $source.value
-          elementChanged = true
-        else
-          elementChanged = false
+    changeHandle = ->
+      value = access($element)
+      if value? && value.length > 0 && value != $source.val()
+        elementChanged = true
+      else
+        elementChanged = false
 
     $element
       .keyup(changeHandle)
       .change(changeHandle)
 
     handle = ->
-      $element.val($source.val()) unless elementChanged
+      access($element, $source.val()) unless elementChanged
 
     $source
       .keyup(handle)

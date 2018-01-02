@@ -1,0 +1,51 @@
+
+.row
+  .col-md-8.col-md-offset-2
+    = simple_form_for @event, url: url_for(action: "create_#{@event.class.name.underscore.reverse.split('_', 1).join.reverse}") do |f|
+      .row
+        .col-xs-12
+          = f.input :name
+
+      = f.simple_fields_for :event_groups, EventGroup.new do |fe|
+        .row
+          .col-12.col-xs-12
+            = fe.input :group_id, selected: @event.event_groups.map(&:group_id),
+                             collection: policy_scope(Group),
+                             label_method: :abbreviation,
+                             include_blank: false,
+                             input_html: { multiple: true, name: 'event[event_groups_attributes][][group_id]' }
+
+      .row
+        .col-md-4
+          = f.input :starts_at, as: :date_time
+        .col-md-8
+          = f.input :start_location
+
+      .row
+        .col-md-4
+          = f.input :ends_at, as: :date_time
+        .col-md-8
+          = f.input :end_location, input_html: { data: { mirror: { source: '#event_start_location', destination: 'placeholder' } } }
+
+      .row
+        .col-xs-12
+          = f.input :user_in_charge_id, required: true,
+                    collection: [[Settings.social.mail, nil]] + policy_scope(User).map { |it| [it.all_names, it.id] }
+
+      = yield f
+
+      .row
+        .col-xs-6.text-center
+          = f.input :hidden?, as: :boolean
+        .col-xs-6.text-center
+          = f.input :private?, as: :boolean
+
+      .row
+        - if @event.persisted? && policy(@event).destroy?
+          .col-xs-8
+            = f.submit class: 'btn btn-primary col-xs-12'
+          .col-xs-4
+            = destroy_button
+        - else
+          .col-xs-12
+            = f.submit class: 'btn btn-primary col-xs-12'

@@ -1,0 +1,35 @@
+.select2,
+.select2-container--bootstrap.select2-container--open .select2-selection,
+.select2-dropdown .select2-dropdown--below {
+  @include form-control-focus;
+
+  font-family: $font-family-sans-serif;
+  border-radius: $border-radius-base;
+  border-color: $input-border-focus;
+}
+
+.select2-container--bootstrap .select2-selection,
+.select2-container--bootstrap .select2-search--dropdown .select2-search__field {
+  font-family: $font-family-sans-serif;
+}
+
+
+.select2-container--bootstrap .select2-selection {
+  @include form-control-focus;
+
+  border-radius: $border-radius-base;
+}
+
+.select2-container--bootstrap .select2-dropdown,
+.select2-container--bootstrap.select2-container--open .select2-selection {
+  @include form-control-focus;
+
+  border-color: $input-border-focus;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba($brand-ternary, 0.6);
+  border-radius: $border-radius-base;
+}
+
+.select2-container--bootstrap .select2-results__option--highlighted[aria-selected] {
+  background-color: $brand-primary;
+}
+

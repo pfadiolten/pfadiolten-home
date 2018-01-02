@@ -1,35 +1,33 @@
 de:
   routes:
-    events: "aktivitäten"
+    events: "kalender"
 
   activerecord:
     models:
       event:
-        zero: "Keine Aktivitäten"
-        one: "Aktivität"
-        other: "Aktivitäten"
+        zero: "Keine Ereignisse"
+        one: "Ereignis"
+        other: "Ereignisse"
+        nav: "Kalender"
 
     attributes:
       event:
         name: "Titel"
+        hidden?: "Permanent versteckt?"
+        private?: "Nur für Leiter relevant?"
         starts_at: "Startzeit"
-        ends_at: "Endzeit"
         start_location: "Startpunkt"
+        ends_at:   "Endzeit"
         end_location: "Endpunkt"
-        bring_with_you: "Mitnehmen"
-        other_stuff: "Anderes"
-        user_in_charge_id: "Verantwortlicher"
+        user_in_charge_id: "Kontakt"
 
   events:
     index:
-      title: "Alle Aktivitäten"
-      no_events: "Keine Aktivitäten gefunden"
+      title: "Kalender"
+      no_events: "Keine Ereignisse gefunden"
     new:
-      title: "Aktivität erfassen"
+      title: "Ereignis erfassen"
     edit:
-      title: "Aktivität bearbeiten"
+      title: "Ereignis bearbeiten"
     destroy:
-      confirm: "Diese Aktivität wirklich löschen?"
-
-    start: "Beginn"
-    end: "Ende"
+      confirm: "Ereignis wirklich löschen?"

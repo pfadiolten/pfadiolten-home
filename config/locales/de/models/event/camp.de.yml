@@ -1,0 +1,16 @@
+de:
+  routes:
+    camp: "lager"
+
+  activerecord:
+    models:
+      event:
+        camp:
+          zero: "Keine Lager"
+          one: "Lager"
+          other: "Lager"
+
+  events:
+    camps:
+      new:
+        title: "Lager erfassen"

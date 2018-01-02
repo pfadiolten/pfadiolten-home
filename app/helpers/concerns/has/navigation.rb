@@ -1,5 +1,5 @@
 module Has::Navigation
   def nav_entries
-    %i[ groups users articles  ] # events albums
+    %i[ events articles groups users ] # albums
   end
 end

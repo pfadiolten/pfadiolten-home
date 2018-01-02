@@ -16,7 +16,7 @@
         - nav_entries.each do |controller|
           %li{ class: ('active' if current_page?(controller: controller)) }
             %a{ href: url_for(controller: controller, action: 'index') }
-              = t("activerecord.models.#{controller.to_s.singularize}.other")
+              = t("activerecord.models.#{controller.to_s.singularize}.nav", default: t("activerecord.models.#{controller.to_s.singularize}.other"))
 
       %ul.nav.navbar-nav.navbar-right
         %li.hidden-sm.gap-right-2

@@ -1,0 +1,9 @@
+- title
+
+.row
+  .col-md-8.col-md-offset-2
+    .row
+      .col-xs-12.text-center
+        .btn-group
+          - if policy(@events).create?
+            = link_to fa_icon('plus'), new_event_path, class: 'btn btn-primary'

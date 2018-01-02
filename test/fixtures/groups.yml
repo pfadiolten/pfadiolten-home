@@ -1,0 +1,37 @@
+
+biber:
+  name: "Biberstufe"
+  abbreviation: "Biber"
+  index: 0
+
+woelfe:
+  name: "Wolfsstufe"
+  abbreviation: "Wölfe"
+  index: 1
+  what: >
+    Bei den Wölfen erlebt man Spiel, Spass und Abenteuer. Es
+    wird gebastelt, gebrätelt und herumgetollt. Oft sind wir auf der Suche
+    nach Gangstern, jagen Gespenster, helfen einem schiffbrüchigen Piraten
+    oder entschlüsseln als Detektive geheime Botschaften.
+    Dabei lernen wir z.B. auch Feuer zu machen und uns gegenseitig zu
+    helfen. Wer lange dabei ist und schon etwas erfahrener ist, kann auch
+    Leitwolf werden und die Leiter unterstützen. Unsere Wolfsstufe besteht aus drei Rudeln. Dies sind Kleingruppen von ungefähr 6 Kindern, in die sich die Kinder besser einbringen können. Die Rudel der Pfadi Olten heissen: Nahani (nur Mädchen), Shakori (nur Jungs) und Sioux (nur Jungs). Der Höhepunkt im Pfadijahr ist das Sommerlager, welches wir (meist) in einem Lagerhaus irgendwo in der Schweiz
+    verbringen.
+  who: Kinder von 6 - 10
+  when:  Praktisch jeden Samstag, dreitätiges Pfingstlager, einwöchiges Sommerlager und gelegentlich Weekends, sowie ab und zu Nachtaktivitäten.
+
+
+pfader:
+  name: "Pfadistufe"
+  abbreviation: "Pfader"
+  index: 2
+
+pios:
+  name: "Piostufe"
+  abbreviation: "Pios"
+  index: 3
+
+rover:
+  name: "Roverstufe"
+  abbreviation: "Rover"
+  index: 4
