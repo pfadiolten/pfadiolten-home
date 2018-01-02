@@ -85,7 +85,6 @@ ActiveRecord::Schema.define(version: 20171214091952) do
     t.string "name", null: false
     t.boolean "can_edit_members", default: false, null: false
     t.boolean "can_edit_group", default: false, null: false
-    t.boolean "can_edit_roles", default: false, null: false
     t.integer "group_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
