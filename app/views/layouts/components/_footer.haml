@@ -1,0 +1,18 @@
+%footer.footer
+  .container
+    .row
+      .footer-element.col-sm-4.text-center-xs.text-left-sm-up
+        .text-muted &copy; Pfadi Olten, 2017
+      .col-sm-4.gap-top-1-xs
+        .text-muted.text-center
+          %span
+            = t('hosted_by')
+          %a.oetiker-logo{ href: Settings.external.oetiker.homepage, target: '_blank' }
+            = 'OETIKER+PARTNER AG'
+      .footer-element.col-sm-4.gap-top-1-xs
+        .text-muted.text-center-xs.text-right-sm-up
+          %span
+            = t('source_code')
+          %a.label.label-default{ href: Settings.social.github, target: '_blank' }
+            = fa_icon('github', class: 'fa-lg')
+            GitHub

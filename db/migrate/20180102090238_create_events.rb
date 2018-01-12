@@ -8,38 +8,38 @@ class CreateEvents < ActiveRecord::Migration[5.1]
 
       #
       t.column :is_hidden,
-               :bool,
+               :boolean,
                null:    false,
                default: false
 
       #
       t.column :is_private,
-               :bool,
+               :boolean,
                null: false,
                default: false
 
       #
       t.column :starts_at,
                :datetime,
-               required: true
+               null: false
 
       #
       t.column :start_location,
-               :datetime,
-               required: false
+               :string,
+               null: false
 
       #
       t.column :ends_at,
                :datetime,
-               required: true
+               null: false
 
       #
       t.column :end_location,
-               :datetime,
-               required: false
+               :string,
+               null: true
 
       #
-      t.column :show_x_days_before_start,
+      t.column :display_days_amount,
                :long,
                null: true # null = show now
 
@@ -58,11 +58,11 @@ class CreateEvents < ActiveRecord::Migration[5.1]
       #
       t.column :detail_type,
                :string,
-               required: true
+               null: false
 
       t.column :detail_id,
                :integer,
-               required: true
+               null: false
 
       t.index %i[ detail_type detail_id ],
               name: 'detail_of_event'

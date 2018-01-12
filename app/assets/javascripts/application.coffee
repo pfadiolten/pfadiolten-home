@@ -22,6 +22,7 @@
 ## tinymce
 #= require tinymce-jquery
 
+
 ## app
 #= require app/globals
 #= require app/init

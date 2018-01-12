@@ -1,0 +1,13 @@
+de:
+  simple_calendar:
+    attributes:
+      start: "anfang"
+      end:   "ende"
+
+    types:
+      month: "Monat"
+      week:  "Woche"
+      day:   "Tag"
+
+    names:
+      week: "Woche"

@@ -1,24 +1,12 @@
-# README
+# Installation
+## Bugs & Fixes
+### `Devise` or `bcrypt` not found, but they are installed
+Rails or bundler may throw an error regarding either devise (eg. `class Devise not found` and similar) or bcrypt (eg. `unable to load bcrypt_ext` and similar).
+The fix to this is to reinstall both gems with the explicit platform `ruby`.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+1. `gem uninstall devise`
+2. `gem uninstall bcrypt`
+3. `gem install devise --platform ruby`
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+It is advised to uninstall all versions of devise and bcrypt, regardless of platform or version.
+The installation of devise may also have to be supplied with a version tag (eg. `devise-4.4.0`) 

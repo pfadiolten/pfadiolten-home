@@ -46,6 +46,7 @@ Rails.application.routes.draw do
     namespace :events do
       Event.detail_types.each do |detail, _|
         get "#{detail}/new", action: "new_#{detail}"
+        post "#{detail}/new", action: "create_#{detail}"
       end
     end
 

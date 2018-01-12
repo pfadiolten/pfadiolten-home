@@ -1,9 +1,35 @@
 - title
 
 .row
-  .col-md-8.col-md-offset-2
+  .col-xs-12
     .row
       .col-xs-12.text-center
         .btn-group
           - if policy(@events).create?
             = link_to fa_icon('plus'), new_event_path, class: 'btn btn-primary'
+
+
+    - calendar_type = params[:calendar] || calendar_types.month
+
+    .row.gap-top-2
+      .col-xs-12
+        - calendar_options = { events: @events, attribute: :starts_at, end_attribute: :ends_at }
+
+        - if calendar_type == calendar_types.month
+          = month_calendar calendar_options do |date, events|
+            = date.day
+            - events.each do |event|
+              .row.gap-top-1
+                .col-xs-12
+                  .panel.panel-default.panel-link.no-margin-bottom.text-center{ data: { link: event_path(event) } }
+                    .panel-heading
+                      .row
+                        = fa_icon(icons[event.detail.handle])
+                        &nbsp;
+                        = event.name
+                    .panel-body.no-padding
+                      = event.groups.map(&:abbreviation).join(', ')
+
+        - if calendar_type == calendar_types.week
+          = week_calendar calendar_options do |date, events|
+            = l(date, format: :short)

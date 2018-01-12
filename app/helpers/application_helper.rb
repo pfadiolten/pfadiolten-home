@@ -29,4 +29,12 @@ module ApplicationHelper
   def info(message)
     content_tag('div', message, class: 'alert alert-info text-center')
   end
+
+  def calendar_types
+    @calendar_types ||= OpenStruct.new(
+      month: 'month',
+      week:  'week',
+      day:   'day'
+    )
+  end
 end
