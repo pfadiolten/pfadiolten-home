@@ -1,10 +1,24 @@
 -# article: Article
+-# highlight: Bool
 -# yield
 
-.panel.panel-default.panel-link.no-margin{ data: { link: article_path(article) } }
+- highlight ||= false
+- panel_type = if highlight then 'panel-info' else 'panel-default' end
+
+.panel.panel-link.no-margin{ class: panel_type, data: { link: article_path(article) } }
   .panel-heading
-    %h3.no-margin.text-center= article.title
+    %h3.no-margin.text-center
+      = article.title
+      - if article.still_pinned?
+        .pull-right= fa_icon('thumb-tack')
+
   .panel-body
-    = yield article
+    - if article.image?
+      .row.gap-bottom-1
+        .col-xs-12
+          %img{ src: image_path(article.image), width: '50%' }
+      .row
+        .col-xs-12
+          .text-center= truncate(article.text, length: 300, escape: false).html_safe
   .panel-footer
     .text-center= article_info(article)

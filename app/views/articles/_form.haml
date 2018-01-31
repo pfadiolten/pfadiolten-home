@@ -17,6 +17,16 @@
                     input_html: { class: 'text-editor' }
 
       .row
+        .col-md-4
+          .gap-top-2= f.input :is_pinned, as: :boolean
+        .col-md-8
+          = f.input :pinned_till, as: :date_time,
+                    required: false,
+                    input_html: { date_type: :date,
+                                  data: { 'hidden-by': '#article_is_pinned',
+                                          'hidden-in': '.article_pinned_till' } }
+
+      .row
         - if @article.persisted? && policy(@article).destroy?
           .col-xs-8
             = f.submit class: 'btn btn-primary col-xs-12'

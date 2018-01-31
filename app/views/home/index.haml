@@ -1,0 +1,9 @@
+- title
+
+.row
+  .col-xs-12
+    %ul.rows
+      - @events.each do |event|
+        .panel.panel-default.panel-link{ data: { link: show_event(event) } }
+          .panel-heading
+            = event.title

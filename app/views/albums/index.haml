@@ -14,18 +14,17 @@
           - @albums.each do |album|
             .row
               .col-md-12
-                %a{ href: album_path(album) }
-                  .panel.panel-default.panel-link.text-center
-                    .panel-heading
-                      = album.name
-                    .panel-body.no-padding
-                      .row.gap-top-1
-                        .col-md-12
-                          .label.label-default
-                            = album.images.count
-                            = fa_icon('camera')
-                      .row.gap-top-1
-                        .col-md-12
-                          = album.description&.html_safe
+                .panel.panel-default.panel-link.text-center{ data: { link: album_path(album) } }
+                  .panel-heading
+                    = album.name
+                  .panel-body.no-padding
+                    .row.gap-top-1
+                      .col-md-12
+                        .label.label-default
+                          = album.images.count
+                          = fa_icon('camera')
+                    .row.gap-top-1
+                      .col-md-12
+                        = album.description&.html_safe
         - else
           = info t('.no_albums')

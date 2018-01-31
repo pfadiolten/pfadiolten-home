@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20180102132157) do
     t.text "text", null: false
     t.string "image"
     t.boolean "is_pinned", null: false
-    t.datetime "pinned_till"
+    t.date "pinned_till"
     t.integer "author_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

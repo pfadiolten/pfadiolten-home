@@ -8,8 +8,8 @@
 @import "theme/colors";
 @import "theme/offsets";
 @import "theme/select2";
-@import "theme/footer";
 @import "theme/hermitage";
+@import "theme/footer";
 
 label abbr[title] {
   border-bottom: none;
@@ -22,10 +22,10 @@ label abbr[title] {
   font-size: 0.9em;
 }
 
-.label {
-  font-size: 0.9em;
-}
-
 .word-break {
   @include hyphens;
+}
+
+.btn {
+  white-space: normal;
 }

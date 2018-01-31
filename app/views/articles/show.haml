@@ -7,9 +7,19 @@
         .btn-group.gap-bottom-1
           - if policy(@article).update?
             = link_to fa_icon('pencil'), edit_article_path, class: 'btn btn-primary'
+    - if @article.still_pinned?
+      .row.gap-bottom-1
+        .col-xs-12
+          .text-center
+            .label.label-default
+              = fa_icon('thumb-tack', class: 'fa-lg')
+              - if pinned_till = @article.pinned_till
+                &nbsp;
+                = "bis #{l(pinned_till)}"
     .row.gap-bottom-1
       .col-xs-12
-        .text-center= article_info(@article)
+        .text-center
+          = article_info(@article)
     - if @article.image?
       .row.gap-bottom-1
         .col-xs-12

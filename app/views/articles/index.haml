@@ -12,18 +12,12 @@
         .text-center= paginate(@articles)
     .row.gap-top-1
       .col-xs-12
-        - if @articles.any?
-          - @articles.each do |article|
-            .row
-              .col-xs-12.gap-bottom-1
-                = render 'item', article: article do
-                  - if article.image?
-                    .row.gap-bottom-1
-                      .col-xs-12.text-center
-                        .label.label-default{ style: 'font-size: 1.1em;' }= fa_icon('picture-o')
-                  .row
-                    .col-xs-12
-                      .text-center= truncate(article.text, length: 300, escape: false).html_safe
+        - if @articles.any? || @pinned_articles.any?
+          - [[@pinned_articles, true], [@articles, false]].each do |(articles, highlight)|
+            %ul.rows
+              - articles.each do |article|
+                %li.col-md-12.col-xs-12
+                  = render 'item', article: article, highlight: highlight
 
         - else
           = info t('.no_articles')

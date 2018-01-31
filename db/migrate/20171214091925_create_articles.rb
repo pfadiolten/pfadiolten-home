@@ -23,7 +23,7 @@ class CreateArticles < ActiveRecord::Migration[5.1]
 
       #
       t.column :pinned_till,
-               :datetime,
+               :date,
                null: true
 
       #

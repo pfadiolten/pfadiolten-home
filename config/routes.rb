@@ -59,6 +59,8 @@ Rails.application.routes.draw do
         get 'download'
       end
     end
+
+    get '/home', to: 'home#index'
   end
 
   root to: redirect('/home')

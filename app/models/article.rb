@@ -1,6 +1,8 @@
 class Article < ApplicationRecord
   mount_uploader :image, CoverUploader
 
+  paginates_per 10
+
 # Relations
   belongs_to :author,
              class_name: 'User',
@@ -15,6 +17,11 @@ class Article < ApplicationRecord
 # Scopes
   scope :order_by_release, ->{
     order('created_at': 'desc', title: 'desc')
+  }
+
+  scope :pinned, ->{
+    where('pinned?': true)
+    .where('pinned_till IS NULL OR pinned_till >= (?)', Date.today)
   }
 
 # Callbacks
@@ -32,8 +39,13 @@ class Article < ApplicationRecord
   validate :that_pin_is_correct
 
 
+# Actions
+  def still_pinned?
+    pinned? && (pinned_till.nil? || pinned_till >= Date.today)
+  end
+
 protected
   def that_pin_is_correct
-    errors.add(:pinned_till, :invalid) unless pinned? || pinned_till.nil?
+      errors.add(:pinned_till, :invalid) unless pinned? || pinned_till.nil?
   end
 end

@@ -14,12 +14,11 @@
       %ul.rows
         - users.each do |user|
           %li.col-md-3.col-xs-4.search-element{ data: { terms: [ user.scout_name, user.first_name, user.last_name ].to_json } }
-            %a{ href: user_path(user) }
-              .panel.panel-default.panel-link.gap-top-1
-                .panel-body.no-padding
-                  %img.img.img-rounded{ src: image_path(user.avatar), width: '100%' }
-                .panel-footer.text-center
-                  = user.scout_name
-                  = yield user if block_given?
+            .panel.panel-default.panel-link.gap-top-1{ data: { link: user_path(user) } }
+              .panel-body.no-padding
+                %img.img.img-rounded{ src: image_path(user.avatar), width: '100%' }
+              .panel-footer.text-center
+                = user.scout_name
+                = yield user if block_given?
   - else
     .alert.alert-info.text-center= none
