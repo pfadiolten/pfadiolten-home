@@ -1,4 +1,4 @@
-class AlbumUploader < CarrierWave::Uploader::Base
+class AlbumUploader < ApplicationUploader
   include CarrierWave::MiniMagick
 
   storage :file

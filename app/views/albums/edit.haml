@@ -1,0 +1,9 @@
+- title
+- subtitle_to @original_album, :name
+
+= render 'form' do |f|
+  .editable-gallery
+    = f.input :remove_images, as: 'hidden', input_html: { class: 'remove-images' }
+
+    .gap-top-2
+      = render 'list_images', images: @album.images

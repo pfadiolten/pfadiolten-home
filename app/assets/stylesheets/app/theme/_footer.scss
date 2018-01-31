@@ -1,0 +1,55 @@
+.footer {
+  width: 100%;
+  background-color: $panel-footer-bg;
+
+    padding: {
+      top: 2rem;
+      bottom: 2rem;
+    }
+
+
+  .oetiker-logo {
+    font-weight: 700;
+    color: $text-color;
+    text-decoration: none;
+    &:hover {
+      cursor: pointer;
+      color: $brand-primary;
+    }
+  }
+
+  /*
+  @include break-min(sm) {
+    bottom: 0;
+    border-width: 1px 0 0;
+    border-radius: 0;
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+  }
+  */
+}
+/*
+@include break-min(sm) {
+  body {
+    margin-bottom: 7rem;
+  }
+}
+*/
+
+@include break-min(xs) {
+  html {
+    position: relative;
+    min-height: 100%;
+  }
+
+  body {
+    margin-bottom: 9rem;
+  }
+
+  .footer {
+    position: absolute;
+    bottom: 0;
+  }
+}

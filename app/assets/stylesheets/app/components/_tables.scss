@@ -1,0 +1,30 @@
+.table.table-borderless {
+  background-color: transparent;
+
+  & > thead {
+    color: $brand-secondary;
+  }
+
+  & > tbody, tfoot, thead {
+    & > th, tr, td {
+      border: none;
+    }
+    & > tr {
+      & > th, td {
+        border: none;
+      }
+    }
+    border: none;
+  }
+  border: none;
+}
+
+.simple-calendar th {
+  &.text-center {
+    text-align: center;
+  }
+
+  &.text-right {
+    text-align: right;
+  }
+}

@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 20180102132157) do
     t.string "title", null: false
     t.text "text", null: false
     t.string "image"
+    t.boolean "is_pinned", null: false
+    t.datetime "pinned_till"
     t.integer "author_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -62,7 +64,7 @@ ActiveRecord::Schema.define(version: 20180102132157) do
   end
 
 # Could not dump table "events" because of following StandardError
-#   Unknown type 'bool' for column 'is_hidden'
+#   Unknown type 'long' for column 'display_days_amount'
 
   create_table "groups", force: :cascade do |t|
     t.string "name", null: false

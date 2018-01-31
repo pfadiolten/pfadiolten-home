@@ -1,3 +1,39 @@
-// Place all the styles related to the events controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "app/imports";
+
+.simple-calendar .table.table-events {
+  & > tbody {
+    & > tr {
+      & > td {
+        padding: {
+          top: 0;
+          bottom: 0;
+        }
+
+        border: none;
+
+        &.time {
+          text-align: right;
+          width: 10%;
+          padding: {
+            top: 0;
+            bottom: 0;
+          }
+        }
+
+        &.event {
+          &.event-info {
+            background-color: $brand-secondary;
+          }
+        }
+      }
+
+
+      &.minute-0 > td.time {
+        border-bottom: 1px solid $table-border-color;
+        border-right: 1px solid $table-border-color;
+        padding: 8px;
+      }
+    }
+  }
+}
+

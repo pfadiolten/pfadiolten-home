@@ -42,10 +42,13 @@ gem 'haml-rails', '~> 1.0.0'
 gem 'bcrypt', platform: :ruby
 
 # authentication
-gem 'devise', '~> 4.3.0'
+gem 'devise', '~> 4.4.0'
 
 # file upload & storage
 gem 'carrierwave', '~> 1.2.1'
+
+# error translations for carrierwave
+gem 'carrierwave-i18n'
 
 # image manipulation
 # requires installation of ImageMagick (https://imagemagick.org) or GraphicsMagick (http://graphicsmagick.org)
@@ -85,7 +88,17 @@ gem 'actionview-encoded_mail_to', '~> 1.0.9'
 # sanitize HTML values in models
 gem 'sanitize', '~> 4.5.0'
 
+# pagination in in activrecord-queries
 gem 'kaminari', '~> 1.0.1'
+
+# global Settings configurable via yml-files
+gem 'config', '~> 1.6.1'
+
+# create HTML calendars, including rails helpers
+gem 'simple_calendar', '~> 2.0'
+
+# image gallery
+gem 'hermitage', '~> 0.0.7'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

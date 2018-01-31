@@ -1,9 +1,9 @@
 @include adapting(no-margin, $directions: true, $attributes: (
-  margin: 0
+  margin: 0 !important
 ));
 
 @include adapting(no-padding, $directions: true, $attributes: (
-  padding: 0
+  padding: 0 !important
 ));
 
 @each $direction in $style-directions {

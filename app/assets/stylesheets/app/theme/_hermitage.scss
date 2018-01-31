@@ -1,0 +1,20 @@
+.thumbnails {
+  list-style: none;
+  text-align: center;
+  padding-left: 0;
+
+  &:after {
+    clear: both;
+  }
+
+  &:before, &:after {
+    display: table;
+    line-height: 0;
+    content: "";
+  }
+
+  & > li {
+    display: inline-block;
+    float: none;
+  }
+}

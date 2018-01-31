@@ -23,11 +23,9 @@ $ ->
       'colorpicker'
       'table'
       'contextmenu'
-      'emoticons'
     ]
     toolbar: [
-      'undo redo | bold italic underline | forecolor backcolor | outdent indent'
-      'styleselect | table numlist bullist | emoticons'
+      'undo redo | styleselect | bold italic underline | forecolor backcolor | outdent indent | numlist bullist table'
     ]
 
     toolbar_align : 'right'

@@ -1,0 +1,31 @@
+- title
+
+.row
+  .col-md-8.col-md-offset-2
+    - if policy(@albums).create?
+      .row
+        .col-md-12.text-center
+          .btn-group
+            = link_to fa_icon('pencil'), new_album_path, class: 'btn btn-primary'
+
+    .row.gap-top-1
+      .col-md-12
+        - if @albums.any?
+          - @albums.each do |album|
+            .row
+              .col-md-12
+                %a{ href: album_path(album) }
+                  .panel.panel-default.panel-link.text-center
+                    .panel-heading
+                      = album.name
+                    .panel-body.no-padding
+                      .row.gap-top-1
+                        .col-md-12
+                          .label.label-default
+                            = album.images.count
+                            = fa_icon('camera')
+                      .row.gap-top-1
+                        .col-md-12
+                          = album.description&.html_safe
+        - else
+          = info t('.no_albums')

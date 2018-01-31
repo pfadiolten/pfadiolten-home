@@ -1,4 +1,4 @@
-class DocumentUploader < CarrierWave::Uploader::Base
+class DocumentUploader < ApplicationUploader
   storage :file
 
   def store_dir

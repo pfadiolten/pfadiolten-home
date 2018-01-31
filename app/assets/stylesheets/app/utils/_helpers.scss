@@ -50,5 +50,15 @@
         @include inject-map($attributes, $suffix: "-#{$direction}")
       }
     }
+
+    @include inject-breakpoints(".#{$prefix}-horizontal") {
+      @include inject-map($attributes, $suffix: "-left");
+      @include inject-map($attributes, $suffix: "-right");
+    }
+
+    @include inject-breakpoints(".#{$prefix}-vertical") {
+      @include inject-map($attributes, $suffix: "-top");
+      @include inject-map($attributes, $suffix: "-bottom");
+    }
   }
 }

@@ -2,3 +2,8 @@ social:
   mail:      "info@pfadiolten.ch"
   instagram: "https://instagram.com/pfadiolten"
   facebook:  "https://facebook.com/pfadiolten"
+  github:    "https://github.com/pfadiolten/pfadiolten-home"
+
+external:
+  oetiker:
+    homepage: "https://www.oetiker.ch"

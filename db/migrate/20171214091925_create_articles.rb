@@ -17,6 +17,16 @@ class CreateArticles < ActiveRecord::Migration[5.1]
                null: true
 
       #
+      t.column :is_pinned,
+               :boolean,
+               null: false
+
+      #
+      t.column :pinned_till,
+               :datetime,
+               null: true
+
+      #
       t.column :author_id,
                :integer,
                null: true # null = user deleted

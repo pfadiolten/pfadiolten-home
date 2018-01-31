@@ -1,3 +1,5 @@
+@import "app/imports";
+
 // components
 @import "jquery-ui";
 @import "font-awesome";
@@ -5,6 +7,7 @@
 @import 'bootstrap-datetimepicker';
 @import "select2";
 @import "select2-bootstrap";
+@import "simple_calendar";
 
 // app
 @import "app/utils";

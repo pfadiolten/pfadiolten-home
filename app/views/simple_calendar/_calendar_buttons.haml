@@ -1,0 +1,5 @@
+.row.gap-bottom-2
+  .col-xs-12.text-center
+    .btn-group
+      - calendar_types.each_pair do |name, type|
+        %a.btn.btn-default{ class: ('active' if params[:calendar] == type), href: url_for(calendar: type, start_date: params[:start_date]) }= t("simple_calendar.types.#{name}")

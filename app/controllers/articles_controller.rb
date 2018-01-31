@@ -48,7 +48,9 @@ private
       :title,
       :text,
       :image,
-      :remove_image
+      :is_pinned,
+      :pinned_till,
+      :remove_image,
     )
   end
 end

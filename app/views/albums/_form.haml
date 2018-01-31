@@ -1,0 +1,26 @@
+.row
+  .col-md-8.col-md-offset-2
+    = simple_form_for @album, multiple: true do |f|
+      .row
+        .col-md-12
+          = f.input :name
+
+      .row
+        .col-md-12
+          = f.input :description, required: false, input_html: { class: 'text-editor' }
+
+      .row
+        .col-md-12
+          = f.input :images, as: 'file_handle', input_html: { multiple: true, accept: 'image/*' }
+
+      .row
+        - if @album.persisted? && policy(@album).destroy?
+          .col-xs-8
+            = f.submit class: 'btn btn-primary col-xs-12'
+          .col-xs-4
+            = destroy_button
+        - else
+          .col-md-12
+            = f.submit class: 'btn btn-primary col-xs-12'
+
+      = yield f if block_given?

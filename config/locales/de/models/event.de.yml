@@ -13,12 +13,13 @@ de:
     attributes:
       event:
         name: "Titel"
-        hidden?: "Permanent versteckt?"
-        private?: "Nur für Leiter relevant?"
+        is_hidden: "Permanent versteckt?"
+        is_private: "Nur für Leiter relevant?"
         starts_at: "Startzeit"
         start_location: "Startpunkt"
         ends_at:   "Endzeit"
         end_location: "Endpunkt"
+        display_days_amount: "Anzahl Anzeigetage"
         user_in_charge_id: "Kontakt"
 
   events:

@@ -46,12 +46,19 @@ Rails.application.routes.draw do
     namespace :events do
       Event.detail_types.each do |detail, _|
         get "#{detail}/new", action: "new_#{detail}"
+        post "#{detail}/new", action: "create_#{detail}"
       end
     end
 
     resources :events
 
     resources :articles
+
+    resources :albums, param: :name do
+      member do
+        get 'download'
+      end
+    end
   end
 
   root to: redirect('/home')
