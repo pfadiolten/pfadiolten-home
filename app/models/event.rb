@@ -52,7 +52,7 @@ class Event < ApplicationRecord
     self
       .where(hidden?: false)
       .where('ends_at >= (?)', Date.today)
-      .where('(starts_at - display_days_amount) >= (?)', Date.today)
+      .where('display_days_amount IS NULL OR (starts_at - display_days_amount) >= (?)', Date.today)
   }
 
 # Validations
@@ -88,6 +88,15 @@ class Event < ApplicationRecord
 
   def same_location?
     start_location.downcase == end_location.downcase
+  end
+
+
+  def full_start_location
+    start_location
+  end
+
+  def full_end_location
+    end_location || full_start_location
   end
 
   class << self

@@ -14,7 +14,7 @@
     = javascript_include_tag controller_name
   %body
     = render 'layouts/components/navigation'
-    .container
+    %div{ class: content_for(:container_class) || 'container' }
       .text-center
         = render 'layouts/components/title',
                   title:    content_for(:title),

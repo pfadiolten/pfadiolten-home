@@ -56,6 +56,7 @@ private
   def article_params
     params.require(:article).permit(
       :title,
+      :summary,
       :text,
       :image,
       :is_pinned,

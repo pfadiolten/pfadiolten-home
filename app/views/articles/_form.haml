@@ -12,6 +12,10 @@
 
       .row
         .col-xs-12
+          = f.input :summary, as: 'text'
+
+      .row
+        .col-xs-12
           = f.input :text, required: false,
                     label: false,
                     input_html: { class: 'text-editor' }

@@ -317,7 +317,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   config (~> 1.6.1)
   devise (~> 4.4.0)
-  font-awesome-rails (~> 4.7.0.2)
+  font-awesome-rails
   haml-rails (~> 1.0.0)
   hermitage (~> 0.0.7)
   i18n-recursive-lookup (~> 0.0.5)

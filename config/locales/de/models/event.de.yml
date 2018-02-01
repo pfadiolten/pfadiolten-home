@@ -5,9 +5,9 @@ de:
   activerecord:
     models:
       event:
-        zero: "Keine Ereignisse"
-        one: "Ereignis"
-        other: "Ereignisse"
+        zero: "Keine Aktivitäten"
+        one: "Aktivität"
+        other: "Aktivitäten"
         nav: "Kalender"
 
     attributes:
@@ -23,12 +23,15 @@ de:
         user_in_charge_id: "Kontakt"
 
   events:
+    start: "Beginn"
+    end: "Ende"
+
     index:
       title: "Kalender"
-      no_events: "Keine Ereignisse gefunden"
+      no_events: "Keine Aktivitäten gefunden"
     new:
-      title: "Ereignis erfassen"
+      title: "Aktivität erfassen"
     edit:
-      title: "Ereignis bearbeiten"
+      title: "Aktivität bearbeiten"
     destroy:
       confirm: "Ereignis wirklich löschen?"

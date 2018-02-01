@@ -1,0 +1,12 @@
+
+
+@each $purpose, $color in $style-colors {
+  .underlined-#{$purpose} {
+    border-bottom: 1px solid $color;
+  }
+
+  .overlined-#{$purpose} {
+    border-top: 1px solid $color;
+  }
+}
+

@@ -1,7 +1,5 @@
-.color-failure {
-  color: $brand-danger;
-}
-
-.color-success {
-  color: $brand-success;
+@each $purpose, $color in $style-colors {
+  .color-#{$purpose} {
+    color: $color;
+  }
 }

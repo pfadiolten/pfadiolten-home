@@ -9,7 +9,7 @@
       .col-xs-4.text-center
         - if calendar.number_of_weeks == 1
           %span.calendar-title
-            = "#{t('simple_calendar.names.week')} #{calendar.week_number}"
+            = "#{t('simple_calendar.names.week')} #{calendar.week_number}, #{start_date.year}"
         - else
           %span.calendar-title
             Week #{calendar.week_number} - #{calendar.end_week}

@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20180102132157) do
 
   create_table "articles", force: :cascade do |t|
     t.string "title", null: false
+    t.text "summary", null: false
     t.text "text", null: false
     t.string "image"
     t.boolean "is_pinned", null: false

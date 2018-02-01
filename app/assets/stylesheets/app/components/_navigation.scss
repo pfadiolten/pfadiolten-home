@@ -108,12 +108,14 @@
     }
   }
 
-  &.navbar-fixed-top+.container {
-    @include break-min(md) {
-      margin-top: 16rem;
-    }
-    @include break-max(sm) {
-      margin-top: 7rem;
+  &.navbar-fixed-top {
+    &+.container, &+.container-fluid {
+      @include break-min(md) {
+        margin-top: 16rem;
+      }
+      @include break-max(sm) {
+        margin-top: 7rem;
+      }
     }
   }
 }

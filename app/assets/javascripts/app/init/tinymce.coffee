@@ -23,12 +23,24 @@ $ ->
       'colorpicker'
       'table'
       'contextmenu'
+      'paste'
     ]
     toolbar: [
-      'undo redo | styleselect | bold italic underline | forecolor backcolor | outdent indent | numlist bullist table'
+      'undo redo | styleselect | bold italic underline | forecolor backcolor | outdent indent | alignleft aligncenter alignright alignjustify | numlist bullist table'
     ]
+    font_formats: 'Encode Sans Expanded=encode sans expanded;' + fonts
 
     toolbar_align : 'right'
+
+    mode : "textareas"
+    force_br_newlines : false
+    force_p_newlines : false
+    forced_root_block : ''
+
+    paste_auto_cleanup_on_paste : true
+    paste_remove_styles: true
+    paste_remove_styles_if_webkit: true
+    paste_strip_class_attributes: true
 
     setup: (ed) ->
       ed.on 'init', ->

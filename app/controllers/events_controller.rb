@@ -9,6 +9,7 @@ class EventsController < ApplicationController
   end
 
   def show
+    authorize @event
   end
 
   def new
@@ -36,7 +37,14 @@ class EventsController < ApplicationController
       respond_with @event, action: "new_#{detail}", render: new_template, location: ->{ events_path }
     end
 
+    define_method "edit_#{detail}" do
+      authorize @event, :edit?
+      render 'events/edit'
+    end
+
     define_method "update_#{detail}" do
+      authorize @event, :update?
+
       new_params = event_params(detail)
       group_events = new_params[:event_groups_attributes] ||= []
       @event.event_groups.each do |group_event|
@@ -48,19 +56,19 @@ class EventsController < ApplicationController
       end
 
       @event.update(new_params)
-      respond_with @event, action: "edit_#{detail}", render: edit_template, location: ->{ events_path }
+      respond_with @event, action: "edit_#{detail}", render: 'edit', location: ->{ event_path(@event) }
     end
   end
 
   def destroy
+    authorize @event
     @event.destroy
-    respond_with @event, action: 'edit'
+    respond_with @event, action: "edit_#{@event.detail.handle}"
   end
 
 protected
   def load_event
     @event = Event.find_by(id: params[:id]) || not_found
-    authorize @event
   end
 
 private

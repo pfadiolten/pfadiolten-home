@@ -9,7 +9,7 @@ Rails.application.routes.draw do
                  sign_out: 'logout',
                  recover:  'recover'
                },
-               skip: %i[ passwords registrations ],
+               skip: %i[passwords registrations],
                path: ''
 
     get 'users/forgot_password', to: 'users#forgot_password'
@@ -18,25 +18,25 @@ Rails.application.routes.draw do
     resources :users, param: :scout_name do
       member do
         get 'edit_password'
-        match 'update_password', via: %i[ put patch ]
+        match 'update_password', via: %i[put patch]
 
         get 'edit_admin'
-        match 'update_admin', via: %i[ put patch ]
+        match 'update_admin', via: %i[put patch]
       end
     end
 
     namespace :groups do
       get 'edit_order'
-      match 'update_order', via: %i[ put patch ]
+      match 'update_order', via: %i[put patch]
     end
 
     resources :groups, param: :abbreviation do
       member do
         get 'edit_users'
-        match 'update_users', via: %i[ put patch ]
+        match 'update_users', via: %i[put patch]
 
-        resource :members, only: %i[ new create ]
-        resources :members, param: :scout_name, only: %i[ edit update destroy ]
+        resource :members, only: %i[new create]
+        resources :members, param: :scout_name, only: %i[edit update destroy]
 
         resources :roles, param: :name
       end
@@ -47,10 +47,17 @@ Rails.application.routes.draw do
       Event.detail_types.each do |detail, _|
         get "#{detail}/new", action: "new_#{detail}"
         post "#{detail}/new", action: "create_#{detail}"
+
+        scope ':id' do
+          get "#{detail}/edit", action: "edit_#{detail}"
+          match "#{detail}/edit", action: "update_#{detail}", via: %i[put patch]
+
+          delete detail, action: 'destroy'
+        end
       end
     end
 
-    resources :events
+    resources :events, except: %i[ edit ]
 
     resources :articles
 

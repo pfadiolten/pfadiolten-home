@@ -1,0 +1,40 @@
+-# event: Event
+
+.panel.panel-default.panel-link.text-center{ data: { link: event_path(event) } }
+  .panel-heading
+    .row
+      .col-xs-12
+        .lead.no-margin
+          = event.name
+
+    .row.gap-top-1
+      .col-xs-12
+        - event.groups.each do |group|
+          %a.label.label-info{ href: group_path(group) }= group.abbreviation
+  .panel-body
+    - %w[start end].each do |moment|
+      .row.gap-bottom-1
+        .col-xs-12
+          .row
+            .col-xs-12
+              %strong= t("events.#{moment}")
+          .row
+            .col-xs-12
+              - [event.send("full_#{moment}_location"), l(event.send("#{moment}s_at"), format: :long_no_year)].each do |value|
+                .row
+                  .col-xs-12
+                    = value
+
+    = render "events/#{event.detail.handle.to_s.pluralize}/#{event.detail.handle}", event.detail.handle => event.detail
+
+  .panel-footer
+    .row.text-center
+      .col-xs-12
+        .btn-group
+          - if user = event.user_in_charge
+            = mail_to user.email, encode: :javascript, class: 'btn btn-danger' do
+              Abmelden
+            = link_to "bei #{user.scout_name}", user_path(user), class: 'btn btn-default'
+        .btn-group
+          - if policy(event).update?
+            = link_to fa_icon('pencil'), url_for(action: "edit_#{event.detail.handle}", controller: 'events', id: event.id), class: 'btn btn-primary'

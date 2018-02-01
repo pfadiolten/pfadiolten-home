@@ -24,7 +24,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'bootstrap-sass', '~> 3.3.7'
 
 # font awesome - html/css icons
-gem 'font-awesome-rails', '~> 4.7.0.2'
+gem 'font-awesome-rails'
 
 # client-side programming language, compiles to js
 gem 'coffee-rails', '~> 4.2'

@@ -1,0 +1,29 @@
+-# article: Article
+-# show_pin: Bool
+
+- show_pin ||= false
+
+.row
+  .col-xs-12
+    .row
+      .col-xs-12
+        .text-left.lead.no-margin= article.title
+
+    .row.overlined-ternary.underlined-ternary.gap-top-1.gap-bottom-1
+      .col-xs-12.gap-top-1.gap-bottom-1
+        .text-center
+          = render 'articles/article_links', article: article
+    .row
+      .col-xs-12
+        .text-left
+          - if article.image?
+            %img.text-image{ src: image_path(article.image), width: '50%' }
+          .text= article.summary
+
+    .row
+      .col-xs-12.gap-top-1.text-right
+        %a.btn.btn-default{ type: 'button', href: article_path(article) }
+          = t('articles.open')
+          &nbsp;
+          = fa_icon('caret-right')
+

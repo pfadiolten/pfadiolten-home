@@ -1,0 +1,18 @@
+-# article: Article
+
+- if article.still_pinned?
+  .label.label-default.gap-right-1
+    = fa_icon('thumb-tack')
+    - if pinned_till = article.pinned_till
+      &nbsp;
+      = "bis #{l(pinned_till)}"
+
+- if author = article.author
+  %a.label.label-primary.gap-right-1{ href: user_path(author) }
+    = fa_icon('user')
+    &nbsp;
+    = author.scout_name
+  %a.label.label-primary{ href: events_path(start_date: article.created_at.to_date) }
+    = fa_icon('clock-o')
+    &nbsp;
+    = l(article.created_at, format: :short)

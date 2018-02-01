@@ -7,6 +7,11 @@ class CreateArticles < ActiveRecord::Migration[5.1]
                null: false
 
       #
+      t.column :summary,
+               :text,
+               null: false
+
+      #
       t.column :text,
                :text,
                null: false

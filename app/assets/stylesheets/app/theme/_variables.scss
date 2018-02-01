@@ -17,6 +17,15 @@ $border-radius-small:       0px;
 @import "bootstrap/variables";
 
 // helper variables
+$style-colors: (
+  primary: $brand-primary,
+  secondary: $brand-secondary,
+  ternary:   $brand-ternary,
+  success:   $brand-success,
+  info:   $brand-info,
+  warning:   $brand-warning,
+  danger:   $brand-danger
+);
 
 $style-directions: (
   top

@@ -12,10 +12,18 @@
       margin-#{$direction}: #{$i}rem;
     }
 
+    .pad-#{$direction}-#{$i} {
+      padding-#{$direction}: #{$i}rem;
+    }
+
     @each $size in $style-sizes {
       @include break-only($size) {
         .gap-#{$direction}-#{$i}-#{$size} {
           margin-#{$direction}: #{$i}rem;
+        }
+
+        .pad-#{$direction}-#{$i}-#{$size} {
+          padding-#{$direction}: #{$i}rem;
         }
       }
 
@@ -25,12 +33,24 @@
             margin-#{$direction}: #{$i}rem;
           }
         }
+
+        .pad-#{$direction}-#{$i}-#{$size}-up {
+          @include break-min($size) {
+            padding-#{$direction}: #{$i}rem;
+          }
+        }
       }
 
       @if $size != xs {
         .gap-#{$direction}-#{$i}-#{$size}-down {
           @include break-max($size) {
             margin-#{$direction}: #{$i}rem;
+          }
+        }
+
+        .pad-#{$direction}-#{$i}-#{$size}-down {
+          @include break-max($size) {
+            padding-#{$direction}: #{$i}rem;
           }
         }
       }

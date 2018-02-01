@@ -13,11 +13,11 @@
     .row.gap-top-1
       .col-xs-12
         - if @articles.any? || @pinned_articles.any?
-          - [[@pinned_articles, true], [@articles, false]].each do |(articles, highlight)|
+          - [[@pinned_articles, true], [@articles, false]].each do |(articles, show_pin)|
             %ul.rows
               - articles.each do |article|
                 %li.col-md-12.col-xs-12
-                  = render 'item', article: article, highlight: highlight
+                  = render 'article', article: article, show_pin: show_pin
 
         - else
           = info t('.no_articles')

@@ -9,6 +9,7 @@
 @import "theme/offsets";
 @import "theme/select2";
 @import "theme/hermitage";
+@import "theme/images";
 @import "theme/footer";
 
 label abbr[title] {
@@ -28,4 +29,8 @@ label abbr[title] {
 
 .btn {
   white-space: normal;
+}
+
+body#tinymce {
+  text-align: center;
 }

@@ -24,11 +24,16 @@ class Article < ApplicationRecord
     .where('pinned_till IS NULL OR pinned_till >= (?)', Date.today)
   }
 
+  scope :not_pinned, ->{
+    where('pinned?': false)
+    .or(where('pinned_till IS NOT NULL AND pinned_till < (?)', Date.today))
+  }
+
 # Callbacks
   sanitize_html_of :text
 
 # Validations
-  validates :title, :text,
+  validates :title, :text, :summary,
             length: { minimum: 1 },
             presence: true
 

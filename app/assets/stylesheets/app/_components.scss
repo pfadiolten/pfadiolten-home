@@ -7,3 +7,8 @@
 @import "components/hidden";
 @import "components/navigation";
 @import "components/tables";
+@import "components/decoration";
+
+.text {
+  word-wrap: break-word;
+}
