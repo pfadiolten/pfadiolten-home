@@ -18,7 +18,6 @@ class EventsController < ApplicationController
 
   Event.detail_types.each do |detail, type|
     new_template = "events/#{detail.to_s.pluralize}/new"
-    edit_template = "events/#{detail.to_s.pluralize}/edit"
 
     define_method "new_#{detail}" do
       @event = Event.new(detail: type.new, user_in_charge: current_user)
