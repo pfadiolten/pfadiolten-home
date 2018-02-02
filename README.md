@@ -6,7 +6,15 @@ The fix to this is to reinstall both gems with the explicit platform `ruby`.
 
 1. `gem uninstall devise`
 2. `gem uninstall bcrypt`
-3. `gem install devise --platform ruby`
+3. `gem install bcrypt --platform ruby`
+4. `gem install devise --platform ruby`
 
 It is advised to uninstall all versions of devise and bcrypt, regardless of platform or version.
-The installation of devise may also have to be supplied with a version tag (eg. `devise-4.4.0`) 
+The installation commands may also have to be supplied with a version tag.
+
+Some parts of rails (migrations and others) may still not work correctly even after applying this fix.
+Adding `ruby` as a valid platform for bundler should get rid of all remaining issues.
+
+```
+bundle lock --add-platform ruby
+```

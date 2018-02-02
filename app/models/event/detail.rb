@@ -10,4 +10,8 @@ class Event::Detail < ApplicationRecord
   def handle
     raise 'abstract method'
   end
+
+  def handles
+    handle.to_s.pluralize.to_sym
+  end
 end
