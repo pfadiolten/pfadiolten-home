@@ -8,18 +8,18 @@ de:
   activerecord:
     models:
       member:
-        zero: "Keine Leiter"
-        one: "Leiter"
-        other: "Leiter"
+        zero: "Keine LeiterInnen"
+        one: "LeiterIn"
+        other: "LeiterInnen"
 
     attributes:
       member:
-        user_id: "Leiter"
+        user_id: "LeiterInnen"
         role_id: "Rolle"
 
   members:
     new:
-      title: "Leiter zuweisen"
+      title: "LeiterInnen zuweisen"
     edit:
       title: "%{scout_name} bearbeiten"
     destroy:

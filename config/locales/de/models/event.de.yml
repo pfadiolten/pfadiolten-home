@@ -1,6 +1,6 @@
 de:
   routes:
-    events: "kalender"
+    events: "agenda"
 
   activerecord:
     models:
@@ -8,7 +8,7 @@ de:
         zero: "Keine Aktivitäten"
         one: "Aktivität"
         other: "Aktivitäten"
-        nav: "Kalender"
+        nav: "Agenda"
 
     attributes:
       event:
@@ -27,7 +27,7 @@ de:
     end: "Ende"
 
     index:
-      title: "Kalender"
+      title: "Agenda"
       no_events: "Keine Aktivitäten gefunden"
     new:
       title: "Aktivität erfassen"

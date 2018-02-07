@@ -15,9 +15,9 @@ de:
         summary: "Zusammenfassung"
         text: "Text"
         image: "Bild"
-        author_id: "Autor"
-        is_pinned: "angepinnt?"
-        pinned_till: "angepinnt bis und mit"
+        author_id: "AutorIn"
+        is_pinned: "unter Aktuelles erscheinen?"
+        pinned_till: "erscheint unter Aktuelles bis und mit"
 
   articles:
     index:
