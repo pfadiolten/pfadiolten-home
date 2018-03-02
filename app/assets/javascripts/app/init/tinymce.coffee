@@ -24,9 +24,10 @@ $ ->
       'table'
       'contextmenu'
       'paste'
+      'link'
     ]
     toolbar: [
-      'undo redo | styleselect | bold italic underline | forecolor backcolor | outdent indent | alignleft aligncenter alignright alignjustify | numlist bullist table'
+      'undo redo | styleselect | bold italic underline | forecolor backcolor | link | outdent indent | alignleft aligncenter alignright alignjustify | numlist bullist table'
     ]
     font_formats: 'Encode Sans Expanded=encode sans expanded;' + fonts
 

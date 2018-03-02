@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
 # actions
   def index
-    @users = policy_scope(User)
+    @users = policy_scope(User.order(scout_name: 'desc'))
     authorize @users
   end
 
