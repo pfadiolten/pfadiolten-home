@@ -100,8 +100,6 @@ gem 'simple_calendar', '~> 2.0'
 # image gallery
 gem 'hermitage', '~> 0.0.7'
 
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
@@ -112,6 +110,12 @@ group :development, :test do
 
   # better error view in browser
   gem 'better_errors'
+
+  gem 'capistrano'
+  gem 'capistrano-bundler'
+  gem 'capistrano-passenger', '>= 0.1.1'
+  gem 'capistrano-rails'
+  gem 'capistrano-rvm'
 end
 
 group :development do
