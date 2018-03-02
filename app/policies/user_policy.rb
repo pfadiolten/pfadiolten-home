@@ -4,7 +4,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def create?
-    admin_user?
+    admin_user? || User.count.none?
   end
 
   def update?
@@ -34,7 +34,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def update_admin?
-    with_user do
+    User.count == 1 || with_user do
       user.admin?
     end
   end
