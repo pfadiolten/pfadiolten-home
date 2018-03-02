@@ -51,7 +51,7 @@ class AlbumsController < ApplicationController
   def download
     respond_to do |format|
       format.html do
-        compressed_filestream = Zip::OutputStream.write_buffer do |zos|
+        compressed_filestream = ::Zip::OutputStream.write_buffer do |zos|
           @album.images.each_with_index do |image, i|
             zos.put_next_entry("#{i}#{File.extname(image.path)}")
             File.open(image.path, 'rb') { |file| zos.print(file.read) }
