@@ -57,7 +57,7 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :events, except: %i[ edit ]
+    resources :events, except: %i[ index, edit ]
 
     resources :articles
 
