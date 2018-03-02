@@ -9,4 +9,8 @@ class HomeController < ApplicationController
     @articles = policy_scope(Article.not_pinned.limit(10)).order_by_release
     authorize @articles
   end
+
+  def contact
+
+  end
 end

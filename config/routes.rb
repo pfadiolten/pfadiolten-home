@@ -68,6 +68,8 @@ Rails.application.routes.draw do
     end
 
     get '/home', to: 'home#index'
+
+    get '/contact', to: 'home#contact'
   end
 
   root to: redirect('/home')

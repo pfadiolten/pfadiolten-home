@@ -47,5 +47,5 @@ $ ->
       ed.on 'init', ->
         style = @getDoc().body.style
         style.fontFamily = 'encode sans expanded'
-        style.textAlign  = 'center'
+        style.textAlign  = 'left'
   )

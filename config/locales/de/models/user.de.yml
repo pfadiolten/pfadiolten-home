@@ -11,9 +11,9 @@ de:
   activerecord:
     models:
       user:
-        zero: "Keine Leiter"
-        one: "Leiter"
-        other: "Leiter"
+        zero: "Keine LeiterInnen"
+        one: "LeiterIn"
+        other: "LeiterInnen"
 
     attributes:
       user:
@@ -28,11 +28,11 @@ de:
 
   users:
     index:
-      title: "Alle Leiter"
-      no_users: "Keine Leiter gefunden"
-      search_users: "Leiter suchen..."
+      title: "Alle ${activerecord.models.user.other}"
+      no_users: "Keine ${activerecord.models.user.other} gefunden"
+      search_users: "${activerecord.models.user.one} suchen..."
     new:
-      title: "Leiter erfassen"
+      title: "${activerecord.models.user.one} erfassen"
     edit:
       title: "Profil bearbeiten"
     edit_password:
