@@ -31,7 +31,7 @@ role :db,  %w{deploy@login.oetiker.ch:46023}
 # http://capistranorb.com/documentation/getting-started/configuration/
 # Feel free to add new variables to customise your setup.
 
-set :rvm_custom_path, '/home/web/.rvm'
+set :rvm_custom_path, '/usr/local/rvm/'
 
 # Custom SSH Options
 # ==================
