@@ -1,7 +1,8 @@
 $ ->
   $('[data-link]').each query arg ($element) ->
     $element.click (e) ->
-      $parent = $(e.originalEvent.srcElement)
+
+      $parent = $(e.target)
       while ($parent = $parent.parent())[0] != $element[0]
         return if $parent.is('a')
 
@@ -12,5 +13,4 @@ $ ->
       event = e.originalEvent
       $a[0].dispatchEvent(new event.constructor(event.type, event))
       false
-
 
