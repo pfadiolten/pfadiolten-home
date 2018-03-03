@@ -104,10 +104,6 @@ gem 'hermitage', '~> 0.0.7'
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
 
-  gem 'capybara', '~> 2.13'
-
-  gem 'selenium-webdriver'
-
   # better error view in browser
   gem 'better_errors'
 
@@ -120,6 +116,12 @@ end
 
 group :development do
   gem 'web-console', '>= 3.3.0'
+end
+
+group :test do
+  gem 'capybara', '~> 2.13'
+
+  gem 'selenium-webdriver'
 end
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

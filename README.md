@@ -1,6 +1,15 @@
-# Installation
-## Bugs & Fixes
-### `Devise` or `bcrypt` not found, but they are installed
+
+# Deployment
+Deployment is handled via the `capistrano` gem.
+This command deploys the master branch to the production server:
+```
+$ cap production deploy
+```
+> The current configuration deploys the development branch.
+  This will be changed upon releasing the first live build.
+
+# Bugs & Fixes
+### `devise` or `bcrypt` not found, but they are installed  
 Rails or bundler may throw an error regarding either devise (eg. `class Devise not found` and similar) or bcrypt (eg. `unable to load bcrypt_ext` and similar).
 The fix to this is to reinstall both gems with the explicit platform `ruby`.
 
@@ -16,5 +25,5 @@ Some parts of rails (migrations and others) may still not work correctly even af
 Adding `ruby` as a valid platform for bundler should get rid of all remaining issues.
 
 ```
-bundle lock --add-platform ruby
+$ bundle lock --add-platform ruby
 ```

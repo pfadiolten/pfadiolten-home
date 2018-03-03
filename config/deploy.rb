@@ -9,7 +9,7 @@ set :branch, 'development'
 
 # Default deploy_to directory is /var/www/my_app_name
 # set :deploy_to, "/var/www/my_app_name"
-set :deploy_to, "/home/deploy/apps/pfadiolten-home/"
+set :deploy_to, "/var/www/pfadiolten-home"
 
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
@@ -42,5 +42,5 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', '
 # Uncomment the following to require manually verifying the host key before first deploy.
 # set :ssh_options, verify_host_key: :secure
 
-set :passenger_environment_variables, { path: '/var/lib/gems/2.3.0/gems/passenger-5.2.1/bin:$PATH' }
-set :passenger_restart_command, '/var/lib/gems/2.3.0/gems/passenger-5.2.1/bin/passenger-config restart-app'
+set :passenger_environment_variables, { path: '/usr/local/rvm/gems/ruby-2.4.1/bin/passenger/bin:$PATH' }
+set :passenger_restart_command, 'passenger-config restart-app'
