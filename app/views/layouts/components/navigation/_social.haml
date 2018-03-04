@@ -1,8 +1,9 @@
 -# add_class: String = ''
 
-- add_class ||= ''
+- for_size ||= ''
 
-= link_to fa_icon('instagram'), Settings.social.instagram, class: "nav-icon #{add_class}", target: '_blank'
-= link_to fa_icon('facebook-official'), Settings.social.facebook, class: "nav-icon #{add_class}", target: '_blank'
-= mail_to Settings.social.mail, encode: :javascript, class: "nav-icon #{add_class}" do
-  = fa_icon('envelope')
+.nav-icons{ class: "nav-icons-#{for_size}" }
+  = mail_to Settings.social.mail, encode: :javascript, class: "nav-icon" do
+    = fa_icon('envelope')
+  = link_to fa_icon('facebook-official'), Settings.social.facebook, class: "nav-icon", target: '_blank'
+  = link_to fa_icon('instagram'), Settings.social.instagram, class: "nav-icon", target: '_blank'

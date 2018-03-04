@@ -1,13 +1,12 @@
-%nav.navbar.navbar-default.navbar-fixed-top{ role: 'navigation' }
+%nav.navbar.navbar-default.navbar-main.navbar-fixed-top{ role: 'navigation' }
   .container
     .navbar-header
-      = render 'layouts/components/navigation/social', add_class: 'hidden-md-up'
       %button.navbar-toggle.collapsed{ data: { target: '#main-navbar', toggle: 'collapse', type: 'button' } }
         %span.sr-only Toggle navigation
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      %a.navbar-brand.brand-name{ href: root_path } Pfadi Olten
+      = render 'layouts/components/navigation/social', for_size: 'small'
       %a.navbar-brand.brand-logo{ href: root_path }
         %img{ src: image_path('logos/pfadi_olten-text.svg') }
 
@@ -18,12 +17,11 @@
           %li{ class: ('active' if is_page) }
             - view ||= 'index'
             %a{ href: url_for(controller: controller, action: view) }
-              - puts "hefo #{t("#{controller}.nav")}"
               = t("#{controller}.nav", default: t("activerecord.models.#{controller.to_s.singularize}.other"))
 
       %ul.nav.navbar-nav.navbar-right
-        %li.hidden-sm.gap-right-2
-          = render 'layouts/components/navigation/social'
+        %li.gap-right-2
+          = render 'layouts/components/navigation/social', for_size: 'big'
 
         - unless user_signed_in?
           %li{ class: ('active' if current_page?(controller: 'sessions', action: 'new')) }
