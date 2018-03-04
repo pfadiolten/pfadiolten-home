@@ -26,22 +26,25 @@ contacts:
     receiver: "Pfadi Olten, 4600 Olten"
 
 locations:
-  roetzmatt:
-    coordinates:
-      x: 47.34481
-      y: 7.89599
-    address:
-      name: "Pfadiheim Rötzmatt"
-      street: "Rötzmattweg 119"
-      city: "Olten"
-      zip_code: "4600"
+  maps:
+    - address:
+        name: "Pfadiheim Rötzmatt"
+        street: "Rötzmattweg 119"
+        city: "Olten"
+        zip_code: "4600"
+      coordinates:
+        x: 47.34481
+        y: 7.89599
 
-  tannwald:
-    coordinates:
-      x: 47.358
-      y: 7.91388
-    address:
-      name: "Pfadiheim Tannwald"
-      street: "Tannwaldstrasse 100"
-      city: "Olten"
-      zip_code: "4600"
+    - address:
+        name: "Pfadiheim Tannwald"
+        street: "Tannwaldstrasse 100"
+        city: "Olten"
+        zip_code: "4600"
+      coordinates:
+        x: 47.358
+        y: 7.91388
+
+  infos:
+    renting: "Aus organisatorischen Gründen kann das Heim momentan leider nicht vermietet werden."
+

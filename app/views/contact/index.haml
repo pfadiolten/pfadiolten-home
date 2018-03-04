@@ -32,8 +32,7 @@
         %h2.text-center= t('.locations')
 
     .row
-    - %w[ roetzmatt tannwald ].each do |location_name|
-      - location = Settings.locations.send(location_name)
+    - Settings.locations.maps.each_with_index do |location, i|
       .col-md-6.gap-bottom-2
         .row
           .col-xs-12.text-center
@@ -52,10 +51,19 @@
           .col-xs-12
             - coordinates = location.coordinates
 
-            = map container_id: "map-#{location_name}",
+            = map container_id: "location-map-#{i}",
                   center: { latlng: [ coordinates.x, coordinates.y ],
                             zoom: 16 },
                   markers: [ { latlng: [ coordinates.x, coordinates.y ] } ]
+
+    .row.text-center
+      .col-xs-12
+        .row
+          .col-xs-12
+            %h3= t('.infos.renting')
+        .row
+          .col-xs-12
+            = Settings.locations.infos.renting
 
 
 .row.gap-top-2
@@ -67,7 +75,6 @@
     .row
       .col-xs-12.text-center
         - banking = Settings.contacts.banking
-
         .row
           .col-xs-12
             = banking.address
