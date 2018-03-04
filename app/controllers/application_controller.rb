@@ -14,6 +14,7 @@ class ApplicationController < ActionController::Base
 
 # Callbacks
   after_action :verify_authorized,
+               except: %i[index],
                unless: ->{ is_a? SessionsController }
 
   after_action :verify_policy_scoped,

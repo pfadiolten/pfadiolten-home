@@ -44,4 +44,10 @@ class Role < ApplicationRecord
   def to_param
     name.downcase
   end
+
+  class << self
+    def rights_attributes
+      %i[can_edit_members can_edit_group]
+    end
+  end
 end

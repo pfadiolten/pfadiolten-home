@@ -12,10 +12,11 @@
 
 .row.gap-top-2
   .col-xs-12
-    - %i[ can_edit_group can_edit_members ].each do |attribute|
+
+    - Role.rights_attributes.each do |attribute|
       - value = @role.read_attribute(attribute)
       .text-center
-        .col-xs-4
+        %div{ class: "col-md-#{Role.rights_attributes.count % 12}" }
           .panel{ class: "panel-#{value ? 'success' : 'danger'}" }
             .panel-heading
               %strong= t("activerecord.attributes.role.#{attribute}")

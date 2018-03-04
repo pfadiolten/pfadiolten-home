@@ -1,4 +1,7 @@
 de:
+  routes:
+    home: "home"
+
   home:
     index:
       title: "Willkommen bei der Pfadi Olten!"

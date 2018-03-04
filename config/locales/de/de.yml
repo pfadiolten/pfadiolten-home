@@ -4,9 +4,6 @@ de:
     edit: "bearbeiten"
     destroy: "löschen"
 
-    home: "home"
-    contact: "kontakt"
-
   helpers:
     submit:
       create: "Bestätigen"

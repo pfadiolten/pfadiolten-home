@@ -1,0 +1,79 @@
+.row
+  .col-xs-12
+    .row
+      .col-xs-12
+        %h2.text-center= t('.people')
+
+    .row
+      .col-xs-12
+        - Settings.contacts.people.each do |person|
+          .row.gap-top-1
+            .col-xs-12.text-center
+              .row
+                .col-xs-12
+                  %strong= person.title
+              .row
+                .col-xs-12
+                  = person.name
+              .row
+                .col-xs-12
+                  = person.phone
+              .row
+                .col-xs-12
+                  = mail_to person.mail
+
+
+
+
+.row.gap-top-2
+  .col-xs-12
+    .row
+      .col-xs-12
+        %h2.text-center= t('.locations')
+
+    .row
+    - %w[ roetzmatt tannwald ].each do |location_name|
+      - location = Settings.locations.send(location_name)
+      .col-md-6.gap-bottom-2
+        .row
+          .col-xs-12.text-center
+            - address = location.address
+            .row
+              .col-xs-12
+                %strong= address.name
+            .row
+              .col-xs-12
+                = address.street
+            .row
+              .col-xs-12
+                = "#{address.zip_code} #{address.city}"
+
+        .row.leaflet-maps
+          .col-xs-12
+            - coordinates = location.coordinates
+
+            = map container_id: "map-#{location_name}",
+                  center: { latlng: [ coordinates.x, coordinates.y ],
+                            zoom: 16 },
+                  markers: [ { latlng: [ coordinates.x, coordinates.y ] } ]
+
+
+.row.gap-top-2
+  .col-xs-12
+    .row
+      .col-xs-12
+        %h2.text-center= t('.banking')
+
+    .row
+      .col-xs-12.text-center
+        - banking = Settings.contacts.banking
+
+        .row
+          .col-xs-12
+            = banking.address
+        .row
+          .col-xs-12
+            = banking.iban
+        .row
+          .col-xs-12
+            = banking.receiver

@@ -7,3 +7,41 @@ social:
 external:
   oetiker:
     homepage: "https://www.oetiker.ch"
+
+contacts:
+  people:
+    - title: "Abteilungsleiter"
+      name:  "Theo von Arx v/o Chap"
+      phone: "+41 79 415 79 23"
+      mail:  "chap@pfadiolten.ch"
+
+    - title: "Vereinspräsident"
+      name:  "Elias Niklaus v/o Tiki"
+      phone: "+41 76 320 71 56"
+      mail: "tiki@pfadiolten.ch"
+
+  banking:
+    address:  "Raiffeienbank Olten, 4603 Olten"
+    iban:     "CH56 8097 0000 0043 7345 6"
+    receiver: "Pfadi Olten, 4600 Olten"
+
+locations:
+  roetzmatt:
+    coordinates:
+      x: 47.34481
+      y: 7.89599
+    address:
+      name: "Pfadiheim Rötzmatt"
+      street: "Rötzmattweg 119"
+      city: "Olten"
+      zip_code: "4600"
+
+  tannwald:
+    coordinates:
+      x: 47.358
+      y: 7.91388
+    address:
+      name: "Pfadiheim Tannwald"
+      street: "Tannwaldstrasse 100"
+      city: "Olten"
+      zip_code: "4600"

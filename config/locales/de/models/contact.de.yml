@@ -1,0 +1,11 @@
+de:
+  routes:
+    contact: "kontakt"
+
+  contact:
+    nav: "Kontakt"
+
+    index:
+      people: "Kontakte"
+      locations: "Pfadiheime"
+      banking: "Zahlungsverbindung"

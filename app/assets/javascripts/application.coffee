@@ -22,6 +22,9 @@
 ## tinymce
 #= require tinymce-jquery
 
+## leaflet
+#= require leaflet
+
 ## app
 #= require app/globals
 #= require app/init

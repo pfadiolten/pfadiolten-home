@@ -13,10 +13,13 @@
 
     #main-navbar.collapse.navbar-collapse
       %ul.nav.navbar-nav
-        - nav_entries.each do |controller|
-          %li{ class: ('active' if current_page?(controller: controller)) }
-            %a{ href: url_for(controller: controller, action: 'index') }
-              = t("activerecord.models.#{controller.to_s.singularize}.nav", default: t("activerecord.models.#{controller.to_s.singularize}.other"))
+        - nav_entries.each do |(controller, view)|
+          - is_page = if view.nil? then current_page?(controller: controller) else current_page?(controller: controller, view: view) end
+          %li{ class: ('active' if is_page) }
+            - view ||= 'index'
+            %a{ href: url_for(controller: controller, action: view) }
+              - puts "hefo #{t("#{controller}.nav")}"
+              = t("#{controller}.nav", default: t("activerecord.models.#{controller.to_s.singularize}.other"))
 
       %ul.nav.navbar-nav.navbar-right
         %li.hidden-sm.gap-right-2

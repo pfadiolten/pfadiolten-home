@@ -17,7 +17,7 @@ module PfadioltenHome
 
     config.i18n.default_locale = :de
 
-    config.time_zone = 'CET'
+    config.time_zone = 'Zurich'
     config.active_record.default_timezone = :local
   end
 end

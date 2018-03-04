@@ -4,6 +4,3 @@
 #= require app/init/tinymce
 #= require app/init/hidden-by
 
-
-
-

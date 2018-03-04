@@ -8,7 +8,6 @@ de:
         zero: "Keine Aktivitäten"
         one: "Aktivität"
         other: "Aktivitäten"
-        nav: "Agenda"
 
     attributes:
       event:
@@ -23,6 +22,8 @@ de:
         user_in_charge_id: "Kontakt"
 
   events:
+    nav: "Agenda"
+
     start: "Beginn"
     end: "Ende"
 

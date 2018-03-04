@@ -1,0 +1,9 @@
+.row.leaflet-maps {
+  & > div {
+    height: 40rem;
+  }
+}
+
+.leaflet-container {
+  height: 100%;
+}
