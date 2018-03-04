@@ -1,121 +1,104 @@
-@mixin navbar-element {
-  color: #fff;
-  border-bottom: 4px solid transparent;
-  transition : border-color 100ms ease-out;
-  &:hover {
-    border-color: #fff;
-    transition : border-color 100ms ease-in;
-  }
-}
 
-.navbar.navbar-default {
-  $breakpoint: $screen-sm-max;
-
+nav.navbar.navbar-main {
   border: none;
   background-color: $brand-primary;
 
-  .navbar-brand {
-    @media (min-width: $breakpoint) {
+  // logo
+  .navbar-header .navbar-brand {
+    &.brand-logo {
+      padding: 0;
+      img {
+        &:hover {
+          $size: 4px;
+          $color: #fff;
+          filter: drop-shadow(#{$size} #{$size} 4px #{$color}) drop-shadow(-#{$size} -#{$size} 4px #{$color});
+        }
+      }
+    }
+  }
+
+  // social media buttons
+  .nav-icons .nav-icon {
+    color: #fff;
+    font-size: 1.5em;
+    display: inline-block;
+    padding: {
+      left: 8px;
+      right: 8px;
+    }
+  }
+
+  .navbar-nav > li {
+    & > a {
+      color: #fff;
+    }
+    &.active > a {
+      font-weight: bold;
+      background-color: $brand-primary;
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
+
+  // small navigation
+  @include break-max(sm) {
+    .navbar-header .navbar-brand.brand-logo {
+      img {
+        width: 15rem;
+      }
+    }
+
+    // social media buttons
+    .nav-icons {
+      &.nav-icons-small {
+        position: relative;
+        float: right;
+
+        .nav-icon {
+           &:last-of-type {
+             margin-right: 2rem;
+           }
+        }
+      }
+      &.nav-icons-big {
+        display: none;
+      }
+    }
+
+      // menu-dropdown button
+    .navbar-header .navbar-toggle {
+      border-color: #fff;
+      .icon-bar {
+        background-color: #fff;
+      }
+
+      &:focus, &:hover  {
+        background-color: #fff;
+        .icon-bar {
+          background-color: $brand-primary;
+        }
+      }
+    }
+  }
+
+  // big navigation
+  @include break-min(md) {
+    .navbar-header .navbar-brand.brand-logo {
+      img {
+        width: 20rem;
+      }
+    }
+
+    .navbar-header .navbar-brand {
       &.brand-name {
         display: none;
       }
-      &.brand-logo {
-        padding: 0;
-        img {
-          display: inline;
-          padding: {
-            top: 1.1rem;
-            right: 1.1rem;
-          }
-          width: 20rem;
-          &:hover {
-            $size: 4px;
-            $color: #fff;
-            filter: drop-shadow(#{$size} #{$size} 4px #{$color}) drop-shadow(-#{$size} -#{$size} 4px #{$color});
-          }
-        }
-      }
     }
 
-    @media (max-width: $breakpoint) {
-      @include navbar-element;
-      &.brand-logo {
-        display: none;
-      }
-    }
-  }
-
-  .navbar-toggle {
-    &:hover {
-      background-color: #fff;
-      .icon-bar {
-        background-color: $brand-primary;
-      }
-    }
-
-    .icon-bar {
-      background-color: #fff;
-    }
-  }
-
-  .navbar-nav {
-    @media (min-width: $breakpoint) {
-      padding: {
-        top: 4rem;
-        bottom: 4rem;
-      }
-    }
-
-    & > li {
-
-      & > a {
-        @include navbar-element;
-      }
-      &.active {
-        & > a {
-          // color: $brand-ternary;
-          font-weight: bold;
-          background-color: $brand-primary;
-          &:hover {
-            color: #fff;
-          }
-        }
-      }
-    }
-  }
-
-  .navbar-nav, .navbar-header {
-    .nav-icon {
-      color: #fff;
-      font-size: 1.5em;
-      display: inline-block;
-      padding: {
-        left: 8px;
-        right: 8px;
-      }
-
-      @include break-max(sm) {
-        @include navbar-element;
-        float: right;
-        font-size: 1.36em;
-        margin: 0;
-        padding: 10px 8px;
-
-        &:first-of-type {
-          margin-right: 2rem;
-        }
-      }
-    }
-  }
-
-  &.navbar-fixed-top {
-    &+.container, &+.container-fluid {
-      @include break-min(md) {
-        margin-top: 16rem;
-      }
-      @include break-max(sm) {
-        margin-top: 7rem;
-      }
+    // social media buttons
+    .nav-icons.nav-icons-small {
+      display: none;
     }
   }
 }
