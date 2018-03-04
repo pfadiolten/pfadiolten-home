@@ -8,6 +8,10 @@
       - if title = content_for(:title)
         = "- #{title}"
     = csrf_meta_tags
+
+    - [ 180, 96, 64, 48, 32, 16 ].each do |res|
+      = favicon_link_tag "favicons/#{res}x#{res}.ico"
+
     = tinymce_assets
 
     = stylesheet_link_tag    'application', media: 'all'
