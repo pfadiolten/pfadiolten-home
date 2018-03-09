@@ -76,7 +76,7 @@ class User < ApplicationRecord
 
 protected
   def make_first_user_an_admin
-    self.admin? = true if User.none?
+    self.is_admin = true if User.none?
   end
 
   class << self
