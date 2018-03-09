@@ -41,14 +41,7 @@ nav.navbar.navbar-main {
     }
   }
 
-  // small navigation
-  @include break-max(sm) {
-    .navbar-header .navbar-brand.brand-logo {
-      img {
-        width: 15rem;
-      }
-    }
-
+  @include break-max(xs) {
     // social media buttons
     .nav-icons {
       &.nav-icons-small {
@@ -82,8 +75,15 @@ nav.navbar.navbar-main {
     }
   }
 
-  // big navigation
-  @include break-min(md) {
+  @include break-max(sm) {
+    .navbar-header .navbar-brand.brand-logo {
+      img {
+        width: 15rem;
+      }
+    }
+  }
+
+  @include break-min(sm) {
     .navbar-header .navbar-brand.brand-logo {
       img {
         width: 20rem;

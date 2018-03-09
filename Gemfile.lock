@@ -331,47 +331,47 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
-  actionview-encoded_mail_to (~> 1.0.9)
+  actionview-encoded_mail_to (>= 1.0.9)
   bcrypt
   better_errors
-  bootstrap-sass (~> 3.3.7)
-  bootstrap3-datetimepicker-rails (~> 4.17.47)
+  bootstrap-sass (>= 3.3.7)
+  bootstrap3-datetimepicker-rails (>= 4.17.47)
   byebug
   capistrano
   capistrano-bundler
   capistrano-passenger (>= 0.1.1)
   capistrano-rails
   capistrano-rvm
-  capybara (~> 2.13)
-  carrierwave (~> 1.2.1)
+  capybara (>= 2.13)
+  carrierwave (>= 1.2.1)
   carrierwave-i18n
-  coffee-rails (~> 4.2)
-  config (~> 1.6.1)
-  devise (~> 4.4.0)
+  coffee-rails (>= 4.2)
+  config (>= 1.6.1)
+  devise (>= 4.4.0)
   font-awesome-rails
-  haml-rails (~> 1.0.0)
-  hermitage (~> 0.0.7)
-  i18n-recursive-lookup (~> 0.0.5)
-  jquery-rails (~> 4.3.1)
-  jquery-ui-rails (~> 6.0.1)
-  kaminari (~> 1.0.1)
-  leaflet-rails (~> 1.3.1)
-  mini_magick (~> 4.8.0)
-  momentjs-rails (~> 2.17.1)
-  puma (~> 3.7)
-  pundit (~> 1.1.0)
-  rails (~> 5.1.4)
-  responders (~> 2.4.0)
-  route_translator (~> 5.5.0)
-  sanitize (~> 4.5.0)
-  sass-rails (~> 5.0)
-  select2-rails (~> 4.0.3)
+  haml-rails (>= 1.0.0)
+  hermitage (>= 0.0.7)
+  i18n-recursive-lookup (>= 0.0.5)
+  jquery-rails (>= 4.3.1)
+  jquery-ui-rails (>= 6.0.1)
+  kaminari (>= 1.0.1)
+  leaflet-rails (>= 1.3.1)
+  mini_magick (>= 4.8.0)
+  momentjs-rails (>= 2.17.1)
+  puma (>= 3.7)
+  pundit (>= 1.1.0)
+  rails (>= 5.1.4)
+  responders (>= 2.4.0)
+  route_translator (>= 5.5.0)
+  sanitize (>= 4.5.0)
+  sass-rails (>= 5.0)
+  select2-rails (>= 4.0.3)
   selenium-webdriver
-  simple_calendar (~> 2.0)
-  simple_form (~> 3.5.0)
-  sqlite3 (~> 1.3.13)
-  tinymce-rails (~> 4.7.4)
-  tinymce-rails-langs (~> 4.20160310)
+  simple_calendar (>= 2.0)
+  simple_form (>= 3.5.0)
+  sqlite3 (>= 1.3.13)
+  tinymce-rails (>= 4.7.4)
+  tinymce-rails-langs (>= 4.20160310)
   tzinfo-data
   uglifier (>= 1.3.0)
   web-console (>= 3.3.0)

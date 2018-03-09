@@ -1,4 +1,11 @@
 %nav.navbar.navbar-default.navbar-main.navbar-fixed-top{ role: 'navigation' }
+  - if Rails.env == 'development'
+    %div{ style: 'position: fixed; top: 1rem; right: 1rem; z-index: 100; color: #fff;' }
+      .hidden-sm-up xs
+      .hidden-xs.hidden-md-up sm
+      .hidden-sm-down.hidden-lg-up md
+      .hidden-md-down lg
+
   .container
     .navbar-header
       %button.navbar-toggle.collapsed{ data: { target: '#main-navbar', toggle: 'collapse', type: 'button' } }
