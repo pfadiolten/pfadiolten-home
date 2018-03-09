@@ -2,8 +2,8 @@
 
 - for_size ||= ''
 
-.nav-icons{ class: "nav-icons-#{for_size}" }
-  = mail_to Settings.social.mail, encode: :javascript, class: "nav-icon" do
+.navbar-social{ class: "nav-#{for_size}" }
+  = mail_to Settings.social.mail, encode: :javascript, class: "navbar-icon" do
     = fa_icon('envelope')
-  = link_to fa_icon('facebook-official'), Settings.social.facebook, class: "nav-icon", target: '_blank'
-  = link_to fa_icon('instagram'), Settings.social.instagram, class: "nav-icon", target: '_blank'
+  = link_to fa_icon('facebook-official'), Settings.social.facebook, class: "navbar-icon", target: '_blank'
+  = link_to fa_icon('instagram'), Settings.social.instagram, class: "navbar-icon", target: '_blank'

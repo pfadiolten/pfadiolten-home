@@ -9,7 +9,7 @@
     @include break-max($size) {
       @content;
     }
-  } @else if($size == lg) {
+  } @else if $size == lg {
     @include break-min($size) {
       @content;
     }

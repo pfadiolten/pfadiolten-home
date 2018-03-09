@@ -15,7 +15,8 @@
         %span.icon-bar
       = render 'layouts/components/navigation/social', for_size: 'small'
       %a.navbar-brand.brand-logo{ href: root_path }
-        %img{ src: image_path('logos/pfadi_olten-text.svg') }
+        %img.nav-big{ src: image_path('logos/pfadi_olten-text.svg') }
+        %img.nav-small{ src: image_path('logos/pfadi_olten-textless.png') }
 
     #main-navbar.collapse.navbar-collapse
       %ul.nav.navbar-nav
@@ -27,18 +28,16 @@
               = t("#{controller}.nav", default: t("activerecord.models.#{controller.to_s.singularize}.other"))
 
       %ul.nav.navbar-nav.navbar-right
-        %li.gap-right-2
+        %li
           = render 'layouts/components/navigation/social', for_size: 'big'
 
         - unless user_signed_in?
-          %li{ class: ('active' if current_page?(controller: 'sessions', action: 'new')) }
+          %li.account{ class: ('active' if current_page?(controller: 'sessions', action: 'new')) }
             %a{ href: new_user_session_path }
-              = fa_icon('sign-in')
-              &nbsp;
-              = t('devise.sessions.new.title')
+              .account-symbol= fa_icon('sign-in')
+              .account-name= t('devise.sessions.new.title')
         - else
-          %li
+          %li.account
             %a{ href: destroy_user_session_path, data: { method: 'delete' } }
-              = current_user.scout_name
-              &nbsp;
-              = fa_icon('sign-out')
+              .account-symbol= current_user.scout_name
+              .account-name= fa_icon('sign-out')

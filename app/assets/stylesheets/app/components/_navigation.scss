@@ -1,13 +1,47 @@
+@mixin _navbar-size($offset) {
+  @if unit($offset) != rem {
+    @warn "mixin expects to work with 'rem', got '#{unit($offset)}'"
+  }
+
+  $height-base: 5rem;
+  $height-offset: $offset * 2;
+  $height-total: $height-base + $height-offset;
+
+  padding: {
+    top: $offset;
+    bottom: $offset;
+  }
+
+  &.navbar-fixed-top {
+    &+.container, &+.container-fluid {
+      margin-top: $height-total + 2rem;
+    }
+  }
+
+  .navbar-header .navbar-brand.brand-logo {
+    $height-image: $height-total - $offset;
+    font-size: 2.8rem;
+
+    img {
+      height: $height-image;
+    }
+  }
+}
 
 nav.navbar.navbar-main {
   border: none;
   background-color: $brand-primary;
+  color: #fff;
 
   // logo
   .navbar-header .navbar-brand {
+    margin-right: 1rem;
     &.brand-logo {
       padding: 0;
       img {
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%) perspective(1px);
         &:hover {
           $size: 4px;
           $color: #fff;
@@ -16,25 +50,41 @@ nav.navbar.navbar-main {
       }
     }
   }
+  .account {
+    .account-symbol, .account-name {
+      display: inline;
+    }
 
-  // social media buttons
-  .nav-icons .nav-icon {
-    color: #fff;
-    font-size: 1.5em;
-    display: inline-block;
-    padding: {
-      left: 8px;
-      right: 8px;
+    .account-name {
+      margin-left: 0.5rem;
     }
   }
 
+  .navbar-social .navbar-icon {
+    color: #fff;
+    font-size: 1.5em;
+    display: inline-block;
+    padding: 10px 8px;
+  }
+
   .navbar-nav > li {
-    & > a {
+    $selector: "a, .navbar-social > a";
+    & #{$selector} {
+      $border: 1px solid transparent;
       color: #fff;
+      border: {
+        top: $border;
+        bottom: $border;
+      }
+      transition : border-color 100ms ease-out;
+      &:hover {
+        border-color: #fff;
+        transition : border-color 100ms ease-in;
+      }
     }
-    &.active > a {
+    &.active > #{$selector}  {
+      background-color: transparent;
       font-weight: bold;
-      background-color: $brand-primary;
       &:hover {
         color: #fff;
       }
@@ -42,24 +92,22 @@ nav.navbar.navbar-main {
   }
 
   @include break-max(xs) {
-    // social media buttons
-    .nav-icons {
-      &.nav-icons-small {
+    .navbar-social {
+      &.nav-small {
         position: relative;
         float: right;
 
-        .nav-icon {
+        .navbar-icon {
            &:last-of-type {
              margin-right: 2rem;
            }
         }
       }
-      &.nav-icons-big {
+      &.nav-big {
         display: none;
       }
     }
 
-      // menu-dropdown button
     .navbar-header .navbar-toggle {
       border-color: #fff;
       .icon-bar {
@@ -73,31 +121,51 @@ nav.navbar.navbar-main {
         }
       }
     }
+
+    .container {
+      & > .navbar-collapse {
+        border-top-color: $brand-primary;
+
+        & > .nav.navbar-nav {
+          margin-bottom: 0;
+          &:not(:first-of-type) {
+            border-top: 1px solid #fff;
+            margin-top: 0;
+            padding-top: 7.5px;
+          }
+        }
+      }
+    }
   }
 
   @include break-max(sm) {
-    .navbar-header .navbar-brand.brand-logo {
-      img {
-        width: 15rem;
-      }
+    @include _navbar-size(1rem);
+
+    .container {
+      width: 95%;
+    }
+
+    .navbar-header .navbar-brand.brand-logo img.nav-big {
+      display: none;
     }
   }
 
   @include break-min(sm) {
-    .navbar-header .navbar-brand.brand-logo {
-      img {
-        width: 20rem;
-      }
-    }
-
     .navbar-header .navbar-brand {
       &.brand-name {
         display: none;
       }
     }
 
-    // social media buttons
-    .nav-icons.nav-icons-small {
+    .navbar-social.nav-small {
+      display: none;
+    }
+  }
+
+  @include break-min(md) {
+    @include _navbar-size(4rem);
+
+    .navbar-header .navbar-brand.brand-logo img.nav-small {
       display: none;
     }
   }

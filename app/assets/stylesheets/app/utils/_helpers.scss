@@ -39,6 +39,10 @@
   }
 }
 
+@function strip-units($number) {
+  @return $number / ($number * 0 + 1);
+}
+
 @mixin adapting($prefix, $attributes, $directions: false) {
   @include inject-breakpoints(".#{$prefix}") {
     @include inject-map($attributes)
