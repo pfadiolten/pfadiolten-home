@@ -40,6 +40,9 @@ class User < ApplicationRecord
 
   sanitize_html_of :description
 
+# Callbacks
+  before_validation :make_first_user_an_admin
+
 # Validations
   validates :scout_name,
             uniqueness: { case_sensitive: false },
@@ -69,6 +72,11 @@ class User < ApplicationRecord
 
   def to_param
     scout_name.downcase
+  end
+
+protected
+  def make_first_user_an_admin
+    self.admin? = true if User.none?
   end
 
   class << self

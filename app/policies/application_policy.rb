@@ -53,7 +53,7 @@ class ApplicationPolicy
 
 protected
   def with_user(&block)
-    user.present? && block.()
+    User.none? || user.present? && block.()
   end
 
   def admin_user?
