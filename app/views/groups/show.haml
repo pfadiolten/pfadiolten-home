@@ -35,11 +35,6 @@
       .row
         .col-xs-12.text-center
           %h2= t('activerecord.models.user.other')
-        - if can_create
-          .row.gap-bottom-1
-            .col-xs-12.text-center
-              .btn-group
-                = link_to fa_icon('plus'), new_members_path, class: 'btn btn-primary'
       .row
         .col-xs-12
           - if roles_with_members > 0
@@ -52,7 +47,8 @@
                     %h3= role.name
               .row
                 .col-xs-12
-                  = render 'users/list', users: role.users, none: nil do |user|
+                  - path_to_new = new_members_path if policy(Member).create?
+                  = render 'users/list', users: role.users, none: nil, path_to_new: path_to_new do |user|
                     - if (current_member && policy(current_member).update?) || policy(Member).update?
                       .row.gap-top-1
                         .col-xs-12

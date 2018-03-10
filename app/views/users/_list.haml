@@ -1,5 +1,6 @@
 -# users: [User]
 -# none: String
+-# path_to_new: String?
 
 .search-list
   .row.text-center
@@ -7,8 +8,8 @@
       %input{ type: 'text', placeholder: t('users.index.search_users'), class: 'form-control search-input' }
     .col-lg-4.col-md-3.col-xs-3.no-padding-left
       .pull-left
-        - if policy(User).create?
-          = link_to fa_icon('plus'), new_user_path, class: 'btn btn-primary'
+        - if path_to_new.present?
+          = link_to fa_icon('plus'), path_to_new, class: 'btn btn-primary'
   .row.gap-top-1
     - if users.any?
       %ul.rows

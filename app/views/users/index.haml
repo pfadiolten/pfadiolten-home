@@ -2,4 +2,4 @@
 
 .row
   = col(md: 10) do
-    = render 'list', users: @users, none: t('.no_users')
+    = render 'list', users: @users, none: t('.no_users'), path_to_new: (new_user_path if policy(User).create?)
