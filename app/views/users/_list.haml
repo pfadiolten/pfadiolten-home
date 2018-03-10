@@ -14,7 +14,7 @@
     - if users.any?
       %ul.rows
         - users.each do |user|
-          %li.col-xs-6.col-sm-4.col-md-3.search-element{ data: { terms: [ user.scout_name, user.first_name, user.last_name ].to_json } }
+          %li.col-xs-12.col-sm-6.col-md-3.search-element{ data: { terms: [ user.scout_name, user.first_name, user.last_name ].to_json } }
             .panel.panel-default.panel-link.gap-top-1{ data: { link: user_path(user) } }
               .panel-body.no-padding
                 %img.img.img-rounded{ src: image_path(user.avatar), width: '100%' }
