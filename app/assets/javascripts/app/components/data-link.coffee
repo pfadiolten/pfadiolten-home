@@ -1,8 +1,9 @@
 $ ->
   $('[data-link]').each query arg ($element) ->
-    $element.click (e) ->
+    $element.wrap($('<a>', href: $element.data('link')))
 
-      $parent = $(e.target)
+    ###
+    $element.click (e) ->
       while ($parent = $parent.parent())[0] != $element[0]
         return if $parent.is('a')
 
@@ -10,7 +11,7 @@ $ ->
       return if $to.is('a') || $to.data('link')?
 
       $a = $('<a/>', href: $element.data('link'))
-      event = e.originalEvent
       $a[0].dispatchEvent(new event.constructor(event.type, event))
       false
+    ###
 
