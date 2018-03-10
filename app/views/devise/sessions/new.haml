@@ -1,7 +1,7 @@
 - title
 
 .row
-  .col-md-8.col-md-offset-2
+  = col(lg: 6, sm: 8) do
     = simple_form_for resource, as: resource_name, url: session_path(resource_name) do |f|
       .row
         .col-xs-12

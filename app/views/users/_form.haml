@@ -3,12 +3,12 @@
 - url ||= nil
 
 .row
-  .col-md-8.col-md-offset-2
+  = col(md: 8, sm: 10) do
     = simple_form_for @user, url: url do |f|
       .row
-        .col-md-6
+        .col-sm-6
           = f.input :first_name
-        .col-md-6
+        .col-sm-6
           = f.input :last_name
 
       .row
@@ -17,11 +17,11 @@
 
       - if @user.new_record?
         .row
-          .col-md-6
+          .col-sm-6
             = f.input :password,
                       required: true,
                       input_html: { autocomplete: 'off' }
-          .col-md-6
+          .col-sm-6
             = f.input :password_confirmation,
                       required: true,
                       input_html: { autocomplete: 'off' }

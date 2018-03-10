@@ -6,6 +6,18 @@
   padding: 0 !important
 ));
 
+@include adapting(hidden, $attributes: (
+  display: none !important
+));
+
+@include adapting(pull-left, $directions: true, $attributes: (
+  float: left !important,
+));
+
+@include adapting(pull-right, $directions: true, $attributes: (
+  float: right !important,
+));
+
 @each $direction in $style-directions {
   @for $i from 1 through 12 {
     .gap-#{$direction}-#{$i} {

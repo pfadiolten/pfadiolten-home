@@ -3,6 +3,7 @@ module ApplicationHelper
   include Has::Alerts
   include Has::Navigation
   include Has::Calendar
+  include Has::Grid
 
   def model_name
     controller_name.singularize

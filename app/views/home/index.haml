@@ -1,8 +1,8 @@
 - title
-- content_for(:container_class, 'container-fluid')
+- content_for :container_type, 'container-fluid'
 
 .row
-  .col-md-8.col-md-offset-2
+  .col-lg-10.col-lg-offset-1
     .row
       .col-md-3
         .row.category-title
@@ -39,9 +39,9 @@
 
       .col-md-3
         .row.category-title
-          .col-xs-8.text-left
+          .col-xs-8.text-left.text-right-md-up.pull-right-md-up
             %h2.no-margin-top= t('activerecord.models.article.other')
-          .col-xs-4.text-right
+          .col-xs-4.text-left-md-up.text-right-sm-down
             - if policy(@articles).create?
               = link_to fa_icon('plus'), new_article_path, class: 'btn btn-primary'
 

@@ -21,7 +21,7 @@
 
   %body
     = render 'layouts/components/navigation'
-    %div{ class: content_for(:container_class) || 'container' }
+    .main-container{ class: content_for(:container_type) || 'container' }
       .text-center
         = render 'layouts/components/title',
                   title:    content_for(:title),

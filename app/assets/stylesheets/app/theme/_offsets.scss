@@ -7,3 +7,10 @@ h1 {
   }
 }
 
+.checkbox label {
+  padding-left: 1rem;
+
+  &.boolean {
+    padding-left: 0;
+  }
+}

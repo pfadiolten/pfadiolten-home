@@ -124,7 +124,7 @@ nav.navbar.navbar-main {
 
     .container {
       & > .navbar-collapse {
-        border-top-color: $brand-primary;
+        border-top-color: transparent;
 
         & > .nav.navbar-nav {
           margin-bottom: 0;
