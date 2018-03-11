@@ -21,7 +21,7 @@ class EventsController < ApplicationController
 
     define_method "new_#{detail}" do
       @event = Event.new(detail: type.new, user_in_charge: current_user)
-      @event.starts_at = (Date.today.sunday - 1.day).to_datetime + 14.hours
+      @event.starts_at = (Date.today.sunday.in_time_zone - 1.day).to_datetime + 14.hours
       @event.ends_at   = @event.starts_at + 3.hours
       current_user.groups.each { |group| @event.event_groups.build(group: group) }
       authorize @event, :new?
