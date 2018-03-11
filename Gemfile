@@ -6,7 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 # main rails gem
-gem 'rails', '>= 5.1.4'
+gem 'rails', '>= 5.1.5'
 
 # database
 gem 'sqlite3', '>= 1.3.13'
@@ -38,11 +38,11 @@ gem 'jquery-ui-rails', '>= 6.0.1'
 # haml - HTML template language
 gem 'haml-rails', '>= 1.0.0'
 
-# password encryption
-gem 'bcrypt', platform: :ruby
-
 # authentication
 gem 'devise', '>= 4.4.0'
+
+# password encryption
+gem 'bcrypt', platform: :ruby
 
 # file upload & storage
 gem 'carrierwave', '>= 1.2.1'
@@ -89,7 +89,7 @@ gem 'actionview-encoded_mail_to', '>= 1.0.9'
 gem 'sanitize', '>= 4.5.0'
 
 # pagination in in activrecord-queries
-gem 'kaminari', '>= 1.0.1'
+gem 'kaminari', '>= 1.1.1'
 
 # global Settings configurable via yml-files
 gem 'config', '>= 1.6.1'

@@ -16,7 +16,7 @@
 #= require select2_locale_de
 #= require plugins/checkbox-x
 
-## boostrap
+## bootsrap
 #= require bootstrap-sprockets
 
 ## tinymce
