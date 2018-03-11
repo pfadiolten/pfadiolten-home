@@ -1,7 +1,7 @@
 
 - action = if @event.new_record? then :create else :update end
 
-= @event.errors.to_s
+= @event.errors.to_a.to_s
 
 .row
   .col-md-8.col-md-offset-2
