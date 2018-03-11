@@ -55,6 +55,9 @@ class Event < ApplicationRecord
       .where('(display_days_amount IS NULL) OR (starts_at - display_days_amount) <= (?)', Date.today)
   }
 
+# Callbacks
+  before_validation :filter_event_groups
+
 # Validations
   validates :name,
             length: { minimum: 1 },
@@ -90,13 +93,17 @@ class Event < ApplicationRecord
     start_location.downcase == end_location.downcase
   end
 
-
   def full_start_location
     start_location
   end
 
   def full_end_location
     end_location || full_start_location
+  end
+
+protected
+  def filter_event_groups
+    self.event_groups = self.event_groups.select { |it| it.group_id.present? }
   end
 
   class << self
