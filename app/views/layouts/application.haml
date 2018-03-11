@@ -15,11 +15,10 @@
     = tinymce_assets
 
     = stylesheet_link_tag    'application', media: 'all'
-    = stylesheet_link_tag    controller_name, media: 'all'
     = javascript_include_tag 'application'
     = javascript_include_tag controller_name
 
-  %body
+  %body{ class: "view-#{controller_name}" }
     = render 'layouts/components/navigation'
     .main-container{ class: content_for(:container_type) || 'container' }
       .text-center

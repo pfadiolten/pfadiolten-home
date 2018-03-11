@@ -1,11 +1,10 @@
-@import "app/theme/variables";
-@import "app/components/decoration";
-
-
-.category-title {
-  // @extend .underlined-primary;
-  margin: {
-    bottom: 1rem;
-    top: 1rem;
+body.home {
+  .category-title {
+    // @extend .underlined-primary;
+    margin: {
+      bottom: 1rem;
+      top: 1rem;
+    }
   }
 }
+
