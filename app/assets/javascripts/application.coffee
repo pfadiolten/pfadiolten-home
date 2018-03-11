@@ -25,6 +25,9 @@
 ## leaflet
 #= require leaflet
 
+## fastclick
+#= require fastclick
+
 ## app
 #= require app/globals
 #= require app/init
