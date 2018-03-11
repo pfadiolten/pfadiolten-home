@@ -1,0 +1,17 @@
+form {
+  .help-block {
+    font-size: 0.9em;
+  }
+
+  label abbr[title] {
+    border-bottom: none;
+    text-decoration-line: none;
+    color: $brand-primary;
+  }
+
+  .label {
+    border-radius: 0;
+    font-size: 0.9em;
+  }
+}
+

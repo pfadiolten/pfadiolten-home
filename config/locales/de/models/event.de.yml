@@ -19,6 +19,7 @@ de:
         ends_at:   "Endzeit"
         end_location: "Endpunkt"
         display_days_amount: "Anzahl Anzeigetage"
+        display_days_amount_hint: "Anzahl der Tage vor dem Startdatum, die die ${activerecord.models.event.one} sichtbar ist."
         user_in_charge_id: "Kontakt"
 
   events:

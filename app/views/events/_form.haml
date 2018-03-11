@@ -32,6 +32,7 @@
       .row
         .col-md-4
           = f.input :display_days_amount, required: false,
+                    hint: t('activerecord.attributes.event.display_days_amount_hint'),
                     input_html: { min: 0 }
         .col-md-8
           = f.input :user_in_charge_id, required: true,

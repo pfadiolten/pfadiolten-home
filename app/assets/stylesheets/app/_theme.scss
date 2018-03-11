@@ -10,18 +10,9 @@
 @import "theme/hermitage";
 @import "theme/leaflet";
 @import "theme/images";
+@import "theme/form";
+@import "theme/tinymce";
 @import "theme/footer";
-
-label abbr[title] {
-  border-bottom: none;
-  text-decoration-line: none;
-  color: $brand-primary;
-}
-
-.label {
-  border-radius: 0;
-  font-size: 0.9em;
-}
 
 .word-break {
   @include hyphens;
@@ -29,8 +20,4 @@ label abbr[title] {
 
 .btn {
   white-space: normal;
-}
-
-body#tinymce {
-  text-align: center;
 }

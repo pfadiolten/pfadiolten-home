@@ -9,10 +9,8 @@ module Has::Grid
             ' '
           end
       string << "col-#{k}-#{v}"
-
-      if (offset = (12 - v) / 2) > 0
-        string << " col-#{k}-offset-#{offset}"
-      end
+      string << " col-#{k}-offset-#{(12 - v) / 2}"
+      string
     end
 
     content_tag('div', class: classes) do

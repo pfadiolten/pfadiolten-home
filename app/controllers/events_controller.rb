@@ -33,7 +33,7 @@ class EventsController < ApplicationController
       @event.detail ||= type.new
       authorize @event, :create?
       @event.save
-      respond_with @event, action: "new_#{detail}", render: new_template, location: ->{ events_path }
+      respond_with @event, action: "new_#{detail}", render: new_template, location: ->{ event_path(@event) }
     end
 
     define_method "edit_#{detail}" do
