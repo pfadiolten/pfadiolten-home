@@ -72,6 +72,8 @@ protected
 
 private
   def event_params(detail)
+    raise params.require(:event).permit!.to_h.to_s
+
     params.require(:event).permit(
       :name,
       :starts_at,
