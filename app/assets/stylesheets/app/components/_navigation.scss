@@ -76,22 +76,10 @@ nav.navbar.navbar-main {
         top: $border;
         bottom: $border;
       }
-      transition : border-color 100ms ease-out, background-color 100ms ease-out, color 100ms ease-out;
-      &.navbar-icon {
-        transition : color 100ms ease-out;
-        &:active {
-          color: $brand-primary;
-          transition : color 100ms ease-in;
-        }
-                                                                                                                                                         }
-      &:hover {
+      transition : border-color 100ms ease-out;
+      &:hover, &:active {
         border-color: #fff;
         transition : border-color 100ms ease-in;
-      }
-      &:active {
-        background-color: #fff;
-        color: $brand-primary;
-        transition : color 100ms ease-in, background-color 100ms ease-in;
       }
     }
     &.active > #{$selector}  {
