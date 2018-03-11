@@ -40,6 +40,11 @@ class User < ApplicationRecord
 
   sanitize_html_of :description
 
+# Scopes
+  default_scope do
+    order(scout_name: 'asc')
+  end
+
 # Callbacks
   before_validation :make_first_user_an_admin
 
