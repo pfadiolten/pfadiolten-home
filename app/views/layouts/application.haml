@@ -18,7 +18,7 @@
     = javascript_include_tag 'application'
     = javascript_include_tag controller_name
 
-  %body{ class: "view-#{controller_name}" }
+  %body{ class: "view-#{controller_name}",  ontouchstart: '' }
     = render 'layouts/components/navigation'
     .main-container{ class: content_for(:container_type) || 'container' }
       .text-center
