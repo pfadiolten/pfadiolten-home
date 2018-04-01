@@ -5,7 +5,6 @@
     top: 2rem;
     bottom: 2rem;
   }
-  margin-top: 1rem;
 
   .oetiker-logo {
     font-weight: 700;
@@ -27,5 +26,21 @@
   .footer {
     position: absolute;
     bottom: 0;
+  }
+}
+
+.main-container {
+  margin-bottom: 60px;
+}
+
+@include break-only(sm) {
+  .main-container {
+    margin-bottom: 80px;
+  }
+}
+
+@include break-only(xs) {
+  .main-container {
+    margin-bottom: 120px;
   }
 }
