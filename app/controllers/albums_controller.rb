@@ -1,3 +1,5 @@
+require 'zip'
+
 class AlbumsController < ApplicationController
   before_action :load_album, except: %i[ index new create ]
 
@@ -42,8 +44,8 @@ class AlbumsController < ApplicationController
       format.html do
         compressed_filestream = ::Zip::OutputStream.write_buffer do |zos|
           @album.images.each_with_index do |image, i|
-            zos.put_next_entry("#{i}#{File.extname(image.path)}")
-            File.open(image.path, 'rb') { |file| zos.print(file.read) }
+            zos.put_next_entry("#{i}#{File.extname(image.file.path)}")
+            File.open(image.file.path, 'rb') { |file| zos.print(file.read) }
           end
         end
         compressed_filestream.rewind

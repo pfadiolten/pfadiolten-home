@@ -18,7 +18,8 @@ protected
 
   def as_png
     manipulate! do |image|
-      image.format('png')
+      #image.format('png')
+      image.auto_orient
     end
   end
 
