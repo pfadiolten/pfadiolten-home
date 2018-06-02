@@ -1,5 +1,6 @@
 class CreateAlbums < ActiveRecord::Migration[5.1]
   def change
+    drop_table :albums if ActiveRecord::Base.connection.data_source_exists? :albums
     create_table :albums do |t|
       #
       t.column :name,
@@ -12,11 +13,6 @@ class CreateAlbums < ActiveRecord::Migration[5.1]
 
       #
       t.column :description,
-               :text,
-               null: true
-
-      #
-      t.column :images,
                :text,
                null: true
 

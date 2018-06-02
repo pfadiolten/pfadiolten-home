@@ -1,6 +1,4 @@
-class AlbumUploader < ApplicationUploader
-  include CarrierWave::MiniMagick
-
+class AlbumImageUploader < ApplicationUploader
   storage :file
 
   def store_dir
@@ -9,7 +7,11 @@ class AlbumUploader < ApplicationUploader
 
   version :thumbnail do
     process :equal_sides
-    process resize_to_fit: [500, 500]
+    process resize_to_fit: [ 500, 500 ]
+  end
+
+  version :gallery do
+    process resize_to_limit: [ 1000, 1000 ]
   end
 
   def extension_whitelist

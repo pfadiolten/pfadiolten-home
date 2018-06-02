@@ -17,9 +17,10 @@ class AlbumsController < ApplicationController
   end
 
   def create
-    @album = Album.new(album_params)
+    @album                = Album.new(album_params)
+    @album.new_images     = uploaded_images
     authorize @album
-    @album.save
+    @album.save_with_images
     respond_with @album
   end
 
@@ -28,23 +29,11 @@ class AlbumsController < ApplicationController
   end
 
   def update
-    @original_album = get_album
-    update_params = album_params
-
-    if indices_to_remove = params.dig(:album, :remove_images)
-      indices_to_remove.split(';').map!(&:to_i).sort!.reverse!.map do |i|
-        remain_images = @album.images
-        deleted_image = remain_images.delete_at(i)
-        deleted_image.try(:remove!)
-        @album.images = remain_images
-      end
-    end
-    if new_images = update_params.delete(:images)
-      images = @album.images
-      images += new_images
-      @album.images = images
-    end
-    @album.update(update_params)
+    @original_album       = get_album
+    @album.deleted_images = deleted_images
+    @album.new_images     = uploaded_images
+    @album.assign_attributes(album_params)
+    @album.save_with_images
     respond_with @album
   end
 
@@ -58,17 +47,17 @@ class AlbumsController < ApplicationController
           end
         end
         compressed_filestream.rewind
-        send_data compressed_filestream.read, filename: "#{@album.name_for_file}.zip"
+        send_data compressed_filestream.read, filename: "#{@album.name_for_zip}.zip"
       end
     end
   end
 
   def destroy
-    @album.destroy
+    @album.destroy_with_images
     respond_with @album, action: 'edit'
   end
 
-  protected
+protected
   def load_album
     @album = get_album || not_found
     authorize @album
@@ -78,12 +67,27 @@ class AlbumsController < ApplicationController
     Album.find_by('LOWER(name) = LOWER(?)', CGI::unescape(params[:name]))
   end
 
-  private
+private
   def album_params
     params.require(:album).permit(
       :name,
-      :description,
-      images: []
+      :description
     )
+  end
+
+  def uploaded_images
+    params.permit![:album][:new_images]
+  end
+
+  def deleted_images
+    ids = params.permit![:album][:deleted_images].split(';')
+    AlbumImage.where(id: ids, album_id: @album.id)
+  end
+
+  def delete_with_versions!(image)
+    image.remove!
+    image.versions.each_pair do |_name, version|
+      delete_with_versions!(version)
+    end
   end
 end

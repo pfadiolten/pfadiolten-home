@@ -2,11 +2,12 @@
 
 .row
   .col-md-8.col-md-offset-2
-    .row
-      .col-xs-12.text-center
-        .btn-group
-          - if policy(@articles).create?
-            = link_to fa_icon('plus'), new_article_path, class: 'btn btn-primary'
+    - if (can_create = policy(@articles).create?)
+      .row
+        .col-xs-12.text-center
+          .btn-group
+            - if can_create
+              = link_to fa_icon('plus'), new_article_path, class: 'btn btn-primary'
     .row.gap-top-1
       .col-xs-12
         .text-center= paginate(@articles)

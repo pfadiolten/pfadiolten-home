@@ -11,7 +11,7 @@
 
       .row
         .col-md-12
-          = f.input :images, as: 'file_handle', input_html: { multiple: true, accept: 'image/*' }
+          = f.input :new_images, as: 'file_handle', input_html: { multiple: true, accept: 'image/*' }
 
       .row
         - if @album.persisted? && policy(@album).destroy?

@@ -1,13 +1,13 @@
 de:
   routes:
-    articles: "artikel"
+    articles: "infos"
 
   activerecord:
     models:
       article:
-        zero: "Keine Artikel"
-        one: "Artikel"
-        other: "Artikel"
+        zero: "Keine Infos"
+        one: "Info"
+        other: "Infos"
 
     attributes:
       article:
@@ -21,14 +21,14 @@ de:
 
   articles:
     index:
-      title: "Alle Artikel"
-      no_articles: "Keine Artikel gefunden"
+      title: "Alle Infos"
+      no_articles: "Keine Infos gefunden"
     new:
-      title: "Artikel erfassen"
+      title: "Info erfassen"
     edit:
-      title: "Artikel bearbeiten"
+      title: "Info bearbeiten"
     destroy:
-      confirm: "Artikel wirklich löschen?"
+      confirm: "Info wirklich löschen?"
 
     select_image: "Bild auswählen"
     open: "weiterlesen"

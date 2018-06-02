@@ -9,13 +9,14 @@ noPixel = (value) ->
 $ ->
   # editing of albums, used in /edit
   $('.editable-gallery').each query arg ($gallery) ->
-    $removeInput = $gallery.find('input.remove-images')
-    removedIndices = {}
-    i = 0
+    $removeInput = $gallery.find('input#deletedImages')
+    ids        = $gallery.data('ids')
+    removedIds = {}
+    i          = 0
     $gallery.closest('form').submit (e) ->
       array = []
-      for own key of removedIndices
-        array.push(key)
+      for own id of removedIds
+        array.push(id)
       $removeInput.val(array.join(';'))
 
     $gallery.find('.thumbnail').each query arg ($thumb) ->
@@ -51,11 +52,11 @@ $ ->
           false
         .click (e) ->
           if isDestroyed
-            delete removedIndices[index]
+            delete removedIds[ids[index]]
             $window.off('resize', listener)
             $destroyButton.css(width: '', height: '', opacity: '', lineHeight: '')
           else
-            removedIndices[index] = true
+            removedIds[ids[index]] = true
             $window.resize(listener).resize()
 
           isDestroyed = !isDestroyed

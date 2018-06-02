@@ -1,4 +1,6 @@
 class ApplicationUploader < CarrierWave::Uploader::Base
+  include CarrierWave::MiniMagick
+
   process :as_png
 
   def store_dir

@@ -42,7 +42,7 @@ gem 'haml-rails', '>= 1.0.0'
 gem 'devise', '>= 4.4.0'
 
 # password encryption
-gem 'bcrypt', platform: :ruby
+gem 'bcrypt', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
 
 # file upload & storage
 gem 'carrierwave', '>= 1.2.1'
@@ -51,7 +51,7 @@ gem 'carrierwave', '>= 1.2.1'
 gem 'carrierwave-i18n'
 
 # image manipulation
-# requires installation of ImageMagick (https://imagemagick.org) or GraphicsMagick (http://graphicsmagick.org)
+# requires installation of ImageMagick (https://imagemagick.org) with all options.
 gem 'mini_magick', '>= 4.8.0', require: false
 
 # modular response extensions for controllers
