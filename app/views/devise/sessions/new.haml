@@ -19,3 +19,13 @@
       .row
         .col-xs-12
           = f.submit class: 'btn btn-primary col-xs-12'
+
+      .row.gap-top-1
+        .col-xs-12.text-right
+          .dropdown
+            %button.btn.btn-warning.dropdown-toggle{ type: 'button', data: { toggle: 'dropdown' } }
+              = t('users.forgot_password.title')
+              %span.caret
+            %ul.dropdown-menu
+              %li
+                %a= t('users.password_note').html_safe
