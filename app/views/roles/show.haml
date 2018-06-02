@@ -11,12 +11,12 @@
         = link_to fa_icon('pencil'), edit_role_path, class: 'btn btn-primary'
 
 .row.gap-top-2
-  .col-xs-12
+  .col-xs-12.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-3
 
     - Role.rights_attributes.each do |attribute|
       - value = @role.read_attribute(attribute)
       .text-center
-        %div{ class: "col-md-#{Role.rights_attributes.count % 12}" }
+        %div{ class: "col-md-#{12 / Role.rights_attributes.count}" }
           .panel{ class: "panel-#{value ? 'success' : 'danger'}" }
             .panel-heading
               %strong= t("activerecord.attributes.role.#{attribute}")
