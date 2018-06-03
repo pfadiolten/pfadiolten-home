@@ -1,11 +1,15 @@
-class AlbumImage < ApplicationRecord
+class Album::Image < ApplicationRecord
 # Relations
   belongs_to :album,
              class_name:  'Album',
              foreign_key: :album_id
 
-# Configuration
-  mount_uploader :file, AlbumImageUploader
+# Attributes
+  mount_uploader :file, Album::Image::Uploader
+
+# Validations
+  validates :file,
+            presence: true
 
 # Scopes
   default_scope do

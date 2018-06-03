@@ -1,9 +1,16 @@
 class Album < ApplicationRecord
+  require 'zip'
+
 # Relations
   has_many :images,
-           class_name:  'AlbumImage',
+           class_name:  'Album::Image',
            foreign_key: :album_id,
            dependent:   :destroy
+
+  has_one :archive,
+          class_name: 'Album::Archive',
+          foreign_key: :album_id,
+          dependent:   :destroy
 
 # Attributes
   attr_accessor :new_images,
@@ -17,12 +24,6 @@ class Album < ApplicationRecord
 # Callbacks
   sanitize_html_of :description
 
-  before_save do
-    images.each do |image|
-      false unless image.save
-    end
-  end
-
 # Validations
   validates :name,
             uniqueness: { case_sensitive: false },
@@ -33,17 +34,13 @@ class Album < ApplicationRecord
             allow_nil: true
 
 # Actions
-  def name_for_zip
-    name.gsub(/[^ a-zA-Z_\-0-9.]/, '_')
-  end
-
   def to_param
     CGI::escape(name.downcase)
   end
 
   def save_with_images
     transaction do
-      raise ActiveRecord::Rollback unless delete_requested_images && save && create_new_images
+      raise ActiveRecord::Rollback unless delete_requested_images && save && create_new_images && rebuild_archive
     end
   end
 
@@ -72,7 +69,7 @@ private
 
   def create_new_images
     (new_images || []).each do |image_file|
-      image = AlbumImage.new(album: self)
+      image = Album::Image.new(album: self)
       image.file = image_file
       unless image.save
         image.errors.each { |err| errors.add(:new_images, err) }
@@ -81,5 +78,11 @@ private
       images << image
     end
     true
+  end
+
+  def rebuild_archive
+    return false if archive.present? and not archive.destroy
+    self.archive = Archive.new(album: self)
+    archive.save
   end
 end

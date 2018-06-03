@@ -10,10 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180602191517) do
+ActiveRecord::Schema.define(version: 20180603154624) do
+
+# Could not dump table "album_archives" because of following StandardError
+#   Unknown type 'uuid' for column 'id'
 
   create_table "album_images", force: :cascade do |t|
-    t.string "file"
+    t.string "file", null: false
     t.integer "album_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

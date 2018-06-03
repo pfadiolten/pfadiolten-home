@@ -1,10 +1,4 @@
-class AvatarUploader < ApplicationUploader
-  include CarrierWave::MiniMagick
-
-  MiniMagick.logger.level = Logger::DEBUG
-
-  storage :file
-
+class AvatarUploader < ImageUploader
   def default_url(*_args)
     fallback [version_name, 'avatar.png'].compact.join('_')
   end
@@ -15,10 +9,6 @@ class AvatarUploader < ApplicationUploader
 
   def filename
     make_filename if original_filename.present?
-  end
-
-  def extension_whitelist
-    %w[ jpg jpeg png ]
   end
 
   process :equal_sides

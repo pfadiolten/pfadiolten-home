@@ -40,18 +40,7 @@ class AlbumsController < ApplicationController
   end
 
   def download
-    respond_to do |format|
-      format.html do
-        compressed_filestream = ::Zip::OutputStream.write_buffer do |zos|
-          @album.images.each_with_index do |image, i|
-            zos.put_next_entry("#{i}#{File.extname(image.file.path)}")
-            File.open(image.file.path, 'rb') { |file| zos.print(file.read) }
-          end
-        end
-        compressed_filestream.rewind
-        send_data compressed_filestream.read, filename: "#{@album.name_for_zip}.zip"
-      end
-    end
+    send_file @album.archive.file.path, filename: @album.archive.filename, type: @album.archive.mimetype
   end
 
   def destroy
@@ -83,7 +72,7 @@ private
 
   def deleted_images
     ids = params.permit![:album][:deleted_images].split(';')
-    AlbumImage.where(id: ids, album_id: @album.id)
+    Album::Image.where(id: ids, album_id: @album.id)
   end
 
   def delete_with_versions!(image)

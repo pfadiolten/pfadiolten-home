@@ -4,7 +4,7 @@ class CreateAlbumImages < ActiveRecord::Migration[5.1]
       #
       t.column :file,
                :string,
-               null: true
+               null: false
 
       #
       t.column :album_id,

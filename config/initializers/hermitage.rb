@@ -4,21 +4,8 @@
 # You can configure any of its options and they will be applied for every rendering.
 #
 Hermitage.configure :default do
-   original ->(item) { item.url }
-   thumbnail ->(item) { item.thumbnail.url }
-#   title nil
-#   list_tag :ul
-#   item_tag :li
-  list_class 'thumbnails row'
-  item_class 'col-md-3 col-sm-6'
-#   link_class 'thumbnail'
-#   image_class nil
-#   each_slice nil
-end
-
-Hermitage.configure :album_images do
-  original  ->(item) { item.file.gallery.url }
-  thumbnail ->(item) { item.file.thumbnail.url }
+  original  ->(item) { item.gallery.url }
+  thumbnail ->(item) { item.thumbnail.url }
 #   title nil
 #   list_tag :ul
 #   item_tag :li
@@ -28,8 +15,6 @@ Hermitage.configure :album_images do
 #   image_class nil
 #   each_slice nil
 end
-
-
 
 # Also you can create your own configs that will be merged with default config to overwrite default options.
 #

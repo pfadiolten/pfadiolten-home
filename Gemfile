@@ -103,7 +103,8 @@ gem 'hermitage', '>= 0.0.7'
 # openstreetmap.org javascript framework
 gem 'leaflet-rails', '>= 1.3.1'
 
-gem 'rubyzip'
+# easy zipping library
+gem 'zippy'
 
 # gem 'tui-editor-rails', path: '../tui-editor-rails'
 
