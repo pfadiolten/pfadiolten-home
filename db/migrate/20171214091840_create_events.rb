@@ -1,6 +1,6 @@
 class CreateEvents < ActiveRecord::Migration[5.1]
   def change
-    create_table :events do |t|
+    create_table :events, id: :uuid do |t|
       #
       t.column :name,
                :string,
@@ -40,12 +40,12 @@ class CreateEvents < ActiveRecord::Migration[5.1]
 
       #
       t.column :display_days_amount,
-               :long,
+               :integer,
                null: true # null = show now
 
       #
       t.column :user_in_charge_id,
-               :integer,
+               :uuid,
                null: true # null = user deleted, or default contact selected
 
       t.index %i[ user_in_charge_id ],
@@ -61,7 +61,7 @@ class CreateEvents < ActiveRecord::Migration[5.1]
                null: false
 
       t.column :detail_id,
-               :integer,
+               :uuid,
                null: false
 
       t.index %i[ detail_type detail_id ],

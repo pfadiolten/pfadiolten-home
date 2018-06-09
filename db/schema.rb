@@ -10,20 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180603154624) do
+ActiveRecord::Schema.define(version: 20180603154524) do
 
-# Could not dump table "album_archives" because of following StandardError
-#   Unknown type 'uuid' for column 'id'
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+  enable_extension "uuid-ossp"
+  enable_extension "pgcrypto"
 
-  create_table "album_images", force: :cascade do |t|
+  create_table "album_archives", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "file", null: false
-    t.integer "album_id", null: false
+    t.uuid "album_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["album_id"], name: "album_of_archive"
+  end
+
+  create_table "album_images", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "file", null: false
+    t.uuid "album_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["album_id"], name: "album_of_image"
   end
 
-  create_table "albums", force: :cascade do |t|
+  create_table "albums", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
     t.text "description"
     t.datetime "created_at", null: false
@@ -31,42 +41,42 @@ ActiveRecord::Schema.define(version: 20180603154624) do
     t.index ["name"], name: "name_of_album", unique: true
   end
 
-  create_table "articles", force: :cascade do |t|
+  create_table "articles", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "title", null: false
     t.text "summary", null: false
     t.text "text", null: false
     t.string "image"
     t.boolean "is_pinned", null: false
     t.date "pinned_till"
-    t.integer "author_id"
+    t.uuid "author_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["author_id"], name: "author_of_article"
   end
 
-  create_table "documents", force: :cascade do |t|
+  create_table "documents", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
     t.string "link", null: false
     t.string "context_type", null: false
-    t.integer "context_id", null: false
+    t.uuid "context_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["context_type", "context_id"], name: "context_of_document"
   end
 
-  create_table "event_activity_details", force: :cascade do |t|
+  create_table "event_activity_details", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "event_camp_details", force: :cascade do |t|
+  create_table "event_camp_details", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "event_groups", force: :cascade do |t|
-    t.integer "event_id", null: false
-    t.integer "group_id", null: false
+  create_table "event_groups", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "event_id", null: false
+    t.uuid "group_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["event_id", "group_id"], name: "unique_event_group", unique: true
@@ -74,10 +84,25 @@ ActiveRecord::Schema.define(version: 20180603154624) do
     t.index ["group_id"], name: "group_of_event"
   end
 
-# Could not dump table "events" because of following StandardError
-#   Unknown type 'long' for column 'display_days_amount'
+  create_table "events", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name", null: false
+    t.boolean "is_hidden", default: false, null: false
+    t.boolean "is_private", default: false, null: false
+    t.datetime "starts_at", null: false
+    t.string "start_location", null: false
+    t.datetime "ends_at", null: false
+    t.string "end_location"
+    t.integer "display_days_amount"
+    t.uuid "user_in_charge_id"
+    t.string "detail_type", null: false
+    t.uuid "detail_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["detail_type", "detail_id"], name: "detail_of_event"
+    t.index ["user_in_charge_id"], name: "user_in_charge_of_event"
+  end
 
-  create_table "groups", force: :cascade do |t|
+  create_table "groups", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
     t.string "abbreviation", null: false
     t.text "what"
@@ -91,10 +116,10 @@ ActiveRecord::Schema.define(version: 20180603154624) do
     t.index ["name"], name: "name_of_group", unique: true
   end
 
-  create_table "members", force: :cascade do |t|
-    t.integer "group_id", null: false
-    t.integer "user_id", null: false
-    t.integer "role_id", null: false
+  create_table "members", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "group_id", null: false
+    t.uuid "user_id", null: false
+    t.uuid "role_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["group_id", "user_id"], name: "unique_group_user_of_member", unique: true
@@ -103,18 +128,18 @@ ActiveRecord::Schema.define(version: 20180603154624) do
     t.index ["user_id"], name: "user_of_member"
   end
 
-  create_table "roles", force: :cascade do |t|
+  create_table "roles", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
     t.boolean "can_edit_members", default: false, null: false
     t.boolean "can_edit_group", default: false, null: false
-    t.integer "group_id", null: false
+    t.uuid "group_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["group_id"], name: "group_of_role"
     t.index ["name", "group_id"], name: "unique_name_of_role", unique: true
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "scout_name", null: false
     t.string "first_name", null: false
     t.string "last_name", null: false
@@ -136,4 +161,14 @@ ActiveRecord::Schema.define(version: 20180603154624) do
     t.index ["scout_name"], name: "scout_name_of_user", unique: true
   end
 
+  add_foreign_key "album_archives", "albums", name: "fk_album_of_archive"
+  add_foreign_key "album_images", "albums", name: "fk_album_of_image"
+  add_foreign_key "articles", "users", column: "author_id", name: "fk_author_of_article"
+  add_foreign_key "event_groups", "events", name: "fk_event_of_group"
+  add_foreign_key "event_groups", "groups", name: "fk_group_of_event"
+  add_foreign_key "events", "users", column: "user_in_charge_id", name: "fk_user_in_charge_of_event"
+  add_foreign_key "members", "groups", name: "fk_group_of_member"
+  add_foreign_key "members", "roles", name: "fk_role_of_member"
+  add_foreign_key "members", "users", name: "fk_user_of_member"
+  add_foreign_key "roles", "groups", name: "fk_group_of_role"
 end

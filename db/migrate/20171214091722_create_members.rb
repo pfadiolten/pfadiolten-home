@@ -1,9 +1,9 @@
 class CreateMembers < ActiveRecord::Migration[5.1]
   def change
-    create_table :members do |t|
+    create_table :members, id: :uuid do |t|
       #
       t.column :group_id,
-               :integer,
+               :uuid,
                null: false
 
       t.index %i[ group_id ],
@@ -15,7 +15,7 @@ class CreateMembers < ActiveRecord::Migration[5.1]
 
       #
       t.column :user_id,
-               :integer,
+               :uuid,
                null: false
 
       t.index %i[ user_id ],
@@ -27,7 +27,7 @@ class CreateMembers < ActiveRecord::Migration[5.1]
 
       #
       t.column :role_id,
-               :integer,
+               :uuid,
                null: false
 
       t.index %i[ role_id ],

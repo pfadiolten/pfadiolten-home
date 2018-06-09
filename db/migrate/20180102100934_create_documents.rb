@@ -1,6 +1,6 @@
 class CreateDocuments < ActiveRecord::Migration[5.1]
   def change
-    create_table :documents do |t|
+    create_table :documents, id: :uuid do |t|
       #
       t.column :name,
                :string,
@@ -17,7 +17,7 @@ class CreateDocuments < ActiveRecord::Migration[5.1]
                null: false
 
       t.column :context_id,
-               :integer,
+               :uuid,
                null: false
 
       t.index %i[ context_type context_id ],

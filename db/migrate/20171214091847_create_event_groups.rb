@@ -1,9 +1,9 @@
 class CreateEventGroups < ActiveRecord::Migration[5.1]
   def change
-    create_table :event_groups do |t|
+    create_table :event_groups, id: :uuid do |t|
       #
       t.column :event_id,
-               :integer,
+               :uuid,
                null: false
 
       t.index %i[ event_id ],
@@ -15,7 +15,7 @@ class CreateEventGroups < ActiveRecord::Migration[5.1]
 
       #
       t.column :group_id,
-               :integer,
+               :uuid,
                null: false
 
       t.index %i[ group_id ],

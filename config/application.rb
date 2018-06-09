@@ -19,5 +19,9 @@ module PfadioltenHome
 
     config.time_zone = 'Zurich'
     config.active_record.default_timezone = :local
+
+    config.generators do |g|
+      g.orm :active_record, primary_key_type: :uuid
+    end
   end
 end

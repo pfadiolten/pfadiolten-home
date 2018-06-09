@@ -39,7 +39,7 @@ private
     Zippy.open(file.path) do |zip|
       album.images.each_with_index do |image, i|
         File.open(image.file.path, 'rb') do |file|
-          zip["#{i}#{File.extname(image.file.path)}"] = file.read
+          zip["#{i + 1}#{File.extname(image.file.path)}"] = file.read
         end
       end
     end

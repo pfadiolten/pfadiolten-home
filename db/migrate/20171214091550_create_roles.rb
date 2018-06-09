@@ -1,6 +1,6 @@
 class CreateRoles < ActiveRecord::Migration[5.1]
   def change
-    create_table :roles do |t|
+    create_table :roles, id: :uuid do |t|
       #
       t.column :name,
                :string,
@@ -20,7 +20,7 @@ class CreateRoles < ActiveRecord::Migration[5.1]
 
       #
       t.column :group_id,
-               :integer,
+               :uuid,
                null: false
 
       t.index %i[ group_id ],

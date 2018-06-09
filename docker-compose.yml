@@ -1,0 +1,27 @@
+version: "3.5"
+services:
+  web:
+    build: .
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    environment:
+      - RAILS_ENV=development
+    volumes:
+      - .:/camplan
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    volumes:
+      - .:/pfadiolten-home
+  db:
+    image: postgres
+    volumes:
+      - data:/var/lib/postgresql/data
+
+volumes:
+  data:
+    name:     pfadiolten_home-data
+    external: true
+
+# docker volume create --name pfadiolten_home-data -d local
+# docker-compose run web <rails command>

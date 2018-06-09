@@ -1,6 +1,6 @@
 class CreateAlbumImages < ActiveRecord::Migration[5.1]
   def change
-    create_table :album_images do |t|
+    create_table :album_images, id: :uuid do |t|
       #
       t.column :file,
                :string,
@@ -8,7 +8,7 @@ class CreateAlbumImages < ActiveRecord::Migration[5.1]
 
       #
       t.column :album_id,
-               :integer,
+               :uuid,
                null: false
 
       t.index %i[ album_id ],

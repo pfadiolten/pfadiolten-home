@@ -9,7 +9,7 @@ set :branch, 'development'
 
 # Default deploy_to directory is /var/www/my_app_name
 # set :deploy_to, "/var/www/my_app_name"
-set :deploy_to, "/var/www/pfadiolten-home"
+set :deploy_to, "/var/www/pfadiolten-home-pg"
 
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
@@ -21,7 +21,7 @@ set :deploy_to, "/var/www/pfadiolten-home"
 # Default value for :pty is false
 # set :pty, true
 
-set :rvm_ruby_version, '2.4.1'
+# set :rvm_ruby_version, '2.4.1'
 
 # Default value for :linked_files is []
 append :linked_files, "config/database.yml", "config/secrets.yml"

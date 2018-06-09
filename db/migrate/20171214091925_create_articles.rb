@@ -1,6 +1,6 @@
 class CreateArticles < ActiveRecord::Migration[5.1]
   def change
-    create_table :articles do |t|
+    create_table :articles, id: :uuid do |t|
       #
       t.column :title,
                :string,
@@ -33,7 +33,7 @@ class CreateArticles < ActiveRecord::Migration[5.1]
 
       #
       t.column :author_id,
-               :integer,
+               :uuid,
                null: true # null = user deleted
 
       t.index %i[ author_id ],

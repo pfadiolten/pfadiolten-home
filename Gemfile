@@ -9,7 +9,7 @@ end
 gem 'rails', '>= 5.1.5'
 
 # database
-gem 'sqlite3', '>= 1.3.13'
+gem 'pg', '>= 1.0.0'
 
 # app server
 gem 'puma', '>= 3.7'
@@ -95,7 +95,7 @@ gem 'kaminari', '>= 1.1.1'
 gem 'config', '>= 1.6.1'
 
 # create HTML calendars, including rails helpers
-gem 'simple_calendar', '>= 2.0'
+gem 'simple_calendar', '>=  2.0'
 
 # image gallery
 gem 'hermitage', '>= 0.0.7'
@@ -104,7 +104,7 @@ gem 'hermitage', '>= 0.0.7'
 gem 'leaflet-rails', '>= 1.3.1'
 
 # easy zipping library
-gem 'zippy'
+gem 'zippy', '>= 0.2.3'
 
 # gem 'tui-editor-rails', path: '../tui-editor-rails'
 

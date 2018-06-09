@@ -52,7 +52,7 @@ class Event < ApplicationRecord
     self
       .where(hidden?: false)
       .where('ends_at >= (?)', Date.today)
-      .where('(display_days_amount IS NULL) OR (starts_at - display_days_amount) <= (?)', Date.today)
+      .where('(display_days_amount IS NULL) OR (CAST (starts_at AS DATE) - display_days_amount) <= (?)', Date.today)
   }
 
 # Callbacks
