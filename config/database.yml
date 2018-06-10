@@ -1,24 +1,15 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  pool: 5
-
-docker: &docker
-  <<: *default
   host: db
   username: postgres
   password:
+  pool: 5
 
 development:
-  <<: *docker
+  <<: *default
   database: pfadiolten_home-development
 
 test:
-  <<: *docker
-  database: pfadiolten_home-test
-
-production:
   <<: *default
-  host: http://localhost:5432
-  username: <%= ENV["PFADIOLTEN_HOME_DB_USER"] %>
-  password: <%= ENV["PFADIOLTEN_HOME_DB_PASS"] %>
+  database: pfadiolten_home-test

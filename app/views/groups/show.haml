@@ -7,7 +7,7 @@
       - if policy(@group).update?
         = link_to fa_icon('pencil'), edit_group_path, class: 'btn btn-primary'
       - if policy(@group.roles).index?
-        = link_to fa_icon('star'), roles_path, class: 'btn btn-primary'
+        = link_to fa_icon('star'), group_roles_path, class: 'btn btn-primary'
 
 - if @group.what || @group.who || @group.when
   .row.text-center.gap-top-1.gap-bottom-1
@@ -27,7 +27,7 @@
 
 - roles = @group.roles.sorted_by_rights
 - roles_with_members = roles.count { |it| it.users.any? }
-- can_create = policy(Member).create?
+- can_create = policy(Group::Member).create?
 
 - if can_create || roles_with_members > 0
   .row
@@ -47,11 +47,17 @@
                     %h3= role.name
               .row
                 .col-xs-12
-                  - path_to_new = new_members_path if policy(Member).create?
+                  - path_to_new = new_group_members_path if policy(Group::Member).create?
                   = render 'users/list', users: role.users, none: nil, path_to_new: path_to_new do |user|
-                    - if (current_member && policy(current_member).update?) || policy(Member).update?
+                    - if (current_member && policy(current_member).update?) || policy(Group::Member).update?
                       .row.gap-top-1
                         .col-xs-12
-                          = link_to fa_icon('pencil'), edit_member_path(@group, @group.members.find { |it| it.user_id == user.id }), class: 'btn btn-primary'
+                          = link_to fa_icon('pencil'), edit_group_member_path(@group, @group.members.find { |it| it.user_id == user.id }), class: 'btn btn-primary'
           - else
-            .alert.alert-info.text-center= t('activerecord.models.user.zero')
+            .row
+              .col-xs-12
+                - if policy(Group::Member).create?
+                  .text-center= link_to fa_icon('plus'), new_group_members_path, class: 'btn btn-primary'
+            .row.gap-top-1
+              .col-xs-12
+                .alert.alert-info.text-center= t('activerecord.models.user.zero')

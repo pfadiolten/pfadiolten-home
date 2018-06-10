@@ -1,0 +1,30 @@
+- title
+- subtitle_to @group, :abbreviation
+
+- if policy(@roles).create?
+  .row.gap-bottom-1
+    .col-xs-12.text-center
+      .btn-group
+        = link_to fa_icon('plus'), new_group_role_path, class: 'btn btn-primary'
+
+.row
+  .col-md-6.col-md-offset-3
+    - if @roles.any?
+      - @roles.sorted_by_rights.each do |role|
+        %a{ href: group_role_path(@group, role) }
+          .panel.panel-default.panel-link
+            .panel-heading.text-center
+              = role.name
+            .panel-body
+              .row.text-center
+                - Group::Role.rights_attributes.each do |attribute|
+                  - value = role.read_attribute(attribute)
+                  %div{ class: "col-xs-#{12 / Group::Role.rights_attributes.count}" }
+                    .row
+                      .col-xs-12
+                        %span{ class: "color-#{value ? 'success' : 'failure'}" }= t("activerecord.attributes.group.role.#{attribute}")
+                    .row
+                      .col-xs-12
+                        = iconize(value)
+    - else
+      .alert.alert-info.text-center= t('.no_roles')

@@ -54,16 +54,6 @@ ActiveRecord::Schema.define(version: 20180603154524) do
     t.index ["author_id"], name: "author_of_article"
   end
 
-  create_table "documents", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "name", null: false
-    t.string "link", null: false
-    t.string "context_type", null: false
-    t.uuid "context_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["context_type", "context_id"], name: "context_of_document"
-  end
-
   create_table "event_activity_details", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -102,6 +92,29 @@ ActiveRecord::Schema.define(version: 20180603154524) do
     t.index ["user_in_charge_id"], name: "user_in_charge_of_event"
   end
 
+  create_table "group_members", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "group_id", null: false
+    t.uuid "user_id", null: false
+    t.uuid "role_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id", "user_id"], name: "unique_group_user_of_member", unique: true
+    t.index ["group_id"], name: "group_of_member"
+    t.index ["role_id"], name: "role_of_member"
+    t.index ["user_id"], name: "user_of_member"
+  end
+
+  create_table "group_roles", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name", null: false
+    t.boolean "can_edit_members", default: false, null: false
+    t.boolean "can_edit_group", default: false, null: false
+    t.uuid "group_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "group_of_role"
+    t.index ["name", "group_id"], name: "unique_name_of_role", unique: true
+  end
+
   create_table "groups", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
     t.string "abbreviation", null: false
@@ -114,29 +127,6 @@ ActiveRecord::Schema.define(version: 20180603154524) do
     t.index ["abbreviation"], name: "abbreviation_of_group", unique: true
     t.index ["index"], name: "index_of_group", unique: true
     t.index ["name"], name: "name_of_group", unique: true
-  end
-
-  create_table "members", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.uuid "group_id", null: false
-    t.uuid "user_id", null: false
-    t.uuid "role_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["group_id", "user_id"], name: "unique_group_user_of_member", unique: true
-    t.index ["group_id"], name: "group_of_member"
-    t.index ["role_id"], name: "role_of_member"
-    t.index ["user_id"], name: "user_of_member"
-  end
-
-  create_table "roles", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "name", null: false
-    t.boolean "can_edit_members", default: false, null: false
-    t.boolean "can_edit_group", default: false, null: false
-    t.uuid "group_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["group_id"], name: "group_of_role"
-    t.index ["name", "group_id"], name: "unique_name_of_role", unique: true
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -167,8 +157,8 @@ ActiveRecord::Schema.define(version: 20180603154524) do
   add_foreign_key "event_groups", "events", name: "fk_event_of_group"
   add_foreign_key "event_groups", "groups", name: "fk_group_of_event"
   add_foreign_key "events", "users", column: "user_in_charge_id", name: "fk_user_in_charge_of_event"
-  add_foreign_key "members", "groups", name: "fk_group_of_member"
-  add_foreign_key "members", "roles", name: "fk_role_of_member"
-  add_foreign_key "members", "users", name: "fk_user_of_member"
-  add_foreign_key "roles", "groups", name: "fk_group_of_role"
+  add_foreign_key "group_members", "group_roles", column: "role_id", name: "fk_role_of_member"
+  add_foreign_key "group_members", "groups", name: "fk_group_of_member"
+  add_foreign_key "group_members", "users", name: "fk_user_of_member"
+  add_foreign_key "group_roles", "groups", name: "fk_group_of_role"
 end

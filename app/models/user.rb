@@ -9,7 +9,7 @@ class User < ApplicationRecord
 
 # Relations
   has_many :members,
-           class_name: 'Member',
+           class_name: 'Group::Member',
            foreign_key: :user_id,
            dependent: :destroy
 
@@ -19,7 +19,7 @@ class User < ApplicationRecord
            foreign_key: :group_id
 
   has_many :roles,
-           class_name: 'Role',
+           class_name: 'Group::Role',
            through: :members,
            foreign_key: :role_id
 

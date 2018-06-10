@@ -1,0 +1,23 @@
+- title @role.name
+- subtitle do
+  = link_to @group.abbreviation, group_path(@group)
+  = ' / '.html_safe
+  = link_to t('group.roles.index.title'), group_roles_path
+
+- if policy(@role).edit?
+  .row
+    .col-xs-12.text-center
+      .btn-group
+        = link_to fa_icon('pencil'), edit_group_role_path, class: 'btn btn-primary'
+
+.row.gap-top-2
+  .col-xs-12.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-3
+
+    - Group::Role.rights_attributes.each do |attribute|
+      - value = @role.read_attribute(attribute)
+      .text-center
+        %div{ class: "col-xs-#{12 / Group::Role.rights_attributes.count}" }
+          .panel{ class: "panel-#{value ? 'success' : 'danger'}" }
+            .panel-heading
+              %strong= t("activerecord.attributes.group.role.#{attribute}")
+            .panel-body= iconize(value)

@@ -1,0 +1,9 @@
+- show_path = group_role_path(@group, @original_role)
+
+- title
+- subtitle do
+  = link_to @group.abbreviation, group_path
+  = ' / '.html_safe
+  = link_to @original_role.name, show_path
+
+= render 'form', url: show_path

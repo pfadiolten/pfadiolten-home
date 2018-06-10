@@ -1,0 +1,30 @@
+de:
+  routes:
+    members: "leiter"
+    controllers:
+      group:
+        members:
+          new: "zuweisen"
+
+  activerecord:
+    models:
+      group:
+        member:
+          zero: "Keine LeiterInnen"
+          one: "LeiterIn"
+          other: "LeiterInnen"
+
+    attributes:
+      group:
+        member:
+          user_id: "LeiterIn"
+          role_id: "Rolle"
+
+  group:
+    members:
+      new:
+        title: "LeiterInnen zuweisen"
+      edit:
+        title: "%{scout_name} bearbeiten"
+      destroy:
+        confirm: "Soll dieser Leiter wirklich von der Stufe entfernt werden?"

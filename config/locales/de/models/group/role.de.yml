@@ -1,0 +1,31 @@
+de:
+  routes:
+    roles: "rollen"
+
+  activerecord:
+    models:
+      group:
+        role:
+          zero: "Keine Rollen"
+          one: "Rolle"
+          other: "Rollen"
+
+    attributes:
+      group:
+        role:
+          name: "Name"
+          can_edit_group: "Darf Stufe bearbeiten?"
+          can_edit_members: "Darf Leiter bearbeiten?"
+          can_edit_roles: "Darf Rollen bearbeiten?"
+
+  group:
+    roles:
+      index:
+        title: "Alle Rollen"
+        no_roles: "Keine Rollen gefunden"
+      new:
+        title: "Rolle erfassen"
+      edit:
+        title: "Rolle bearbeiten"
+      destroy:
+        confirm: "Rolle wirklich löschen? Zugewiesene Leiter werden von der Stufe entfernt werden."

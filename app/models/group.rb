@@ -1,7 +1,7 @@
 class Group < ApplicationRecord
 # Relations
   has_many :roles,
-           class_name: 'Role',
+           class_name: 'Group::Role',
            foreign_key: :group_id,
            dependent: :destroy
 
