@@ -22,7 +22,7 @@ module ApplicationHelper
     end
   end
 
-  def destroy_button(confirmation=t("#{controller_name}.destroy.confirm"), options={})
+  def destroy_button(confirmation=t("#{controller_path.gsub('/', '.')}.destroy.confirm"), options={})
     options = options.to_options
     action = options.delete(:action) || 'destroy'
     link_to fa_icon('trash'), url_for(action: action), method: 'delete', class: 'btn btn-danger col-xs-12', data: { confirm: confirmation }

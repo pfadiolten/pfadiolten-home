@@ -22,7 +22,7 @@ class Group::Role < ApplicationRecord
 
 # Scopes
   scope :sorted_by_rights, ->{
-    all.sort_by(&:rights_value).reverse
+    order(created_at: 'desc')g.sort_by(&:rights_value).reverse
   }
 
 # Validations

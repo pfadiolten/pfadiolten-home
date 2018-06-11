@@ -4,28 +4,36 @@ de:
 
   activerecord:
     models:
-      group:
-        role:
+      group/role: &role_model
           zero: "Keine Rollen"
           one: "Rolle"
           other: "Rollen"
-
-    attributes:
       group:
         role:
+          <<: *role_model
+
+    attributes:
+      group/role: &role_attributes
           name: "Name"
           can_edit_group: "Darf Stufe bearbeiten?"
           can_edit_members: "Darf Leiter bearbeiten?"
           can_edit_roles: "Darf Rollen bearbeiten?"
+      group:
+        role:
+          <<: *role_attributes
 
+
+
+  group/roles: &role_views
+    index:
+      title: "Alle Rollen"
+      no_roles: "Keine Rollen gefunden"
+    new:
+      title: "Rolle erfassen"
+    edit:
+      title: "Rolle bearbeiten"
+    destroy:
+      confirm: "Rolle wirklich löschen? Zugewiesene Leiter werden von der Stufe entfernt werden."
   group:
     roles:
-      index:
-        title: "Alle Rollen"
-        no_roles: "Keine Rollen gefunden"
-      new:
-        title: "Rolle erfassen"
-      edit:
-        title: "Rolle bearbeiten"
-      destroy:
-        confirm: "Rolle wirklich löschen? Zugewiesene Leiter werden von der Stufe entfernt werden."
+      <<: *role_views
