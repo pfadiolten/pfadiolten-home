@@ -27,6 +27,11 @@
 
     = render "events/#{event.detail.handle.to_s.pluralize}/#{event.detail.handle}", event.detail.handle => event.detail
 
+    - if (description = event.description)
+      .row
+        .col-xs-12
+          .well.well-no-margin.well-less-padding.gap-top-1= description.html_safe
+
   .panel-footer
     .row.text-center
       .col-xs-12

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180603154524) do
+ActiveRecord::Schema.define(version: 20180611192400) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(version: 20180603154524) do
     t.uuid "detail_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "description"
     t.index ["detail_type", "detail_id"], name: "detail_of_event"
     t.index ["user_in_charge_id"], name: "user_in_charge_of_event"
   end

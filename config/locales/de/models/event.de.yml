@@ -21,6 +21,7 @@ de:
         display_days_amount: "Anzahl Anzeigetage"
         display_days_amount_hint: "Anzahl der Tage vor dem Startdatum, die die ${activerecord.models.event.one} sichtbar ist."
         user_in_charge_id: "Kontakt"
+        description: "Beschreibung"
 
   events:
     nav: "Agenda"

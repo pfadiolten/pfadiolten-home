@@ -64,6 +64,11 @@ class Event < ApplicationRecord
   validates :starts_at, :start_location, :ends_at,
             presence: true
 
+  validates :description,
+            presence:  true,
+            allow_nil: true
+
+
   validate :that_start_is_before_end
 
 # Actions

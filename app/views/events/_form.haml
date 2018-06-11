@@ -30,6 +30,9 @@
           = f.input :end_location, as: :string, input_html: { data: { mirror: { source: '#event_start_location', destination: 'placeholder' } } }
 
       .row
+        .col-xs-12
+          = f.input :description, required: false, input_html: { class: 'text-editor' }
+      .row
         .col-md-4
           = f.input :display_days_amount, required: false,
                     hint: t('activerecord.attributes.event.display_days_amount_hint'),

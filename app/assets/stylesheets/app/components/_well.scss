@@ -1,0 +1,9 @@
+
+.well {
+  &.well-no-margin {
+    margin-bottom: 0;
+  }
+  &.well-less-padding {
+    padding: 1rem;
+  }
+}

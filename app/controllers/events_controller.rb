@@ -82,6 +82,7 @@ private
       :is_hidden,
       :is_private,
       :display_days_amount,
+      :description,
       event_groups_attributes: [
         :group_id,
       ],
