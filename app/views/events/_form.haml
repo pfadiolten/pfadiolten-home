@@ -41,9 +41,10 @@
       = yield f
 
       .row
-        .col-xs-6.text-center
-          = f.input :is_hidden, as: :boolean, required: false
-        .col-xs-6.text-center
+        - if false
+          .col-xs-6.text-center
+            = f.input :is_hidden, as: :boolean, required: false
+        .col-xs-12.text-center
           = f.input :is_private, as: :boolean, required: false
 
       .row
