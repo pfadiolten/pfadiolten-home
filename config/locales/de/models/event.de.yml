@@ -38,3 +38,7 @@ de:
       title: "Aktivität bearbeiten"
     destroy:
       confirm: "Ereignis wirklich löschen?"
+
+    cancel:
+      subject: "[Pfadi Olten] Abmeldung für \"%{event_name}\" (%{event_groups}) vom %{start_date}"
+      body: "Liebe/r %{user_in_charge}\n\nIch kann leider nicht kommen, weil <GRUND>.\n\nLiebe Pfadigrüsse\n<PFADINAME>"
