@@ -22,12 +22,6 @@ class Event < ApplicationRecord
            through:     :event_groups,
            foreign_key: :event_id
 
-  has_many :documents,
-           class_name:  'Document',
-           as:          'context',
-           foreign_key: :context_id,
-           dependent:   :destroy
-
 # Attributes
   accepts_nested_attributes_for :event_groups, allow_destroy: true
 

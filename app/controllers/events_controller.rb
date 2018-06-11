@@ -47,7 +47,7 @@ class EventsController < ApplicationController
       new_params = event_params(detail)
       group_events = new_params[:event_groups_attributes] ||= []
       @event.event_groups.each do |group_event|
-        if group_index = group_events.find_index { |it| it[:group_id].to_i == group_event.group_id }
+        if (group_index = group_events.find_index { |it| it[:group_id].to_i == group_event.group_id })
           group_events.delete_at(group_index)
         else
           group_events << { id: group_event.id, _destroy: true }
@@ -62,7 +62,7 @@ class EventsController < ApplicationController
   def destroy
     authorize @event
     @event.destroy
-    respond_with @event, action: "edit_#{@event.detail.handle}"
+    respond_with @event, action: "edit_#{@event.detail.handle}", location: ->{ root_path }
   end
 
 protected
