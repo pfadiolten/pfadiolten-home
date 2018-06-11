@@ -8,15 +8,13 @@ de:
 
   activerecord:
     models:
-      group:
-        member:
+      group/member:
           zero: "Keine LeiterInnen"
           one: "LeiterIn"
           other: "LeiterInnen"
 
     attributes:
-      group:
-        member:
+      group/member:
           user_id: "LeiterIn"
           role_id: "Rolle"
 
