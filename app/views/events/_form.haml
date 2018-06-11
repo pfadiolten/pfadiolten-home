@@ -1,8 +1,6 @@
 
 - action = if @event.new_record? then :create else :update end
 
-= @event.errors.to_a.to_s
-
 .row
   .col-md-8.col-md-offset-2
     = simple_form_for @event, url: url_for(action: "#{action}_#{@event.detail.handle}") do |f|
