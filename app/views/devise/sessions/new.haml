@@ -28,4 +28,4 @@
               %span.caret
             %ul.dropdown-menu
               %li
-                %a= t('users.password_note', mail: mail_to('it@pfadiolten.ch')).html_safe
+                = t('users.password_note', mail: mail_to('it@pfadiolten.ch', nil, class: 'visible-lg-inline', style: 'padding: 0;')).html_safe
