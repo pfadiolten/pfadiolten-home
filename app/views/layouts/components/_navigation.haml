@@ -31,14 +31,15 @@
       %ul.nav.navbar-nav.navbar-right
         %li
           = render 'layouts/components/navigation/social', for_size: 'big'
-
-        - unless user_signed_in?
-          %li.account{ class: ('active' if current_page?(controller: 'sessions', action: 'new')) }
-            %a{ href: new_user_session_path }
-              .account-symbol= fa_icon('sign-in')
-              .account-name= t('devise.sessions.new.title')
-        - else
+        - if user_signed_in?
+          %li.profile
+            = link_to fa_icon('user-circle-o', class: 'fa-lg'), user_path(current_user), class: 'navbar-icon'
           %li.account
             %a{ href: destroy_user_session_path, data: { method: 'delete' } }
               .account-symbol= current_user.scout_name
               .account-name= fa_icon('sign-out')
+        - else
+          %li.account{ class: ('active' if current_page?(controller: 'sessions', action: 'new')) }
+            %a{ href: new_user_session_path }
+              .account-symbol= fa_icon('sign-in')
+              .account-name= t('devise.sessions.new.title')

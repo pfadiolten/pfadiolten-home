@@ -50,6 +50,13 @@ nav.navbar.navbar-main {
       }
     }
   }
+
+  .profile {
+    @include break-min(sm) {
+      margin-left: 30px;
+    }
+  }
+
   .account {
     .account-symbol, .account-name {
       display: inline;
