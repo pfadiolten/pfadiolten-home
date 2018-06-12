@@ -2,7 +2,7 @@
 set :application, "pfadiolten-home"
 set :repo_url, "https://github.com/pfadiolten/pfadiolten-home.git"
 
-set :branch, 'development'
+set :branch, 'master'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp

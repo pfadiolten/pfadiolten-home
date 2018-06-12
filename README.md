@@ -1,14 +1,42 @@
 
-# Deployment
+# [pfadiolten.ch](https://pfadiolten.ch)
+
+## Deployment
 Deployment is handled via the `capistrano` gem.
 This command deploys the master branch to the production server:
 ```
 $ cap production deploy
 ```
-> The current configuration deploys the development branch.
-  This will be changed upon releasing the first live build.
 
-# Bugs & Fixes
+## Development
+Development is usually done in a [docker](https://www.docker.com) container.
+Use the container with the following commands:
+```bash
+# (re)build the image
+docker-compose build
+
+# start the server
+docker-compose up
+
+# start the server in the background
+docker-compose up -d
+```
+The container saves its database in an external volume.
+It has to be created before first using the website:
+```bash
+docker volume create --name pfadiolten_home-data -d local
+``` 
+Afterwards, the database has to be created and migrated.
+```bash
+docker-compose run web rails db:create db:migrate
+```
+Migrations on an existing database don't require the `db:create` part.
+```bash
+docker-compose run web rails db:migrate
+```
+Afterwards, the API should be available at `localhost:3000`.
+
+## Bugs & Fixes
 ### `devise` or `bcrypt` not found, but they are installed  
 Rails or bundler may throw an error regarding either devise (eg. `class Devise not found` and similar) or bcrypt (eg. `unable to load bcrypt_ext` and similar).
 The fix to this is to reinstall both gems with the explicit platform `ruby`.
