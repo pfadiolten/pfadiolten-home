@@ -41,6 +41,7 @@ class UsersController < ApplicationController
   end
 
   def update_password
+    @user.update(user_password_params)
     sign_in(@user, bypass: true) unless @user.errors.any?
     respond_with @user, action: 'edit_password'
   end
