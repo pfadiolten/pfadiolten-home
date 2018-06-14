@@ -1,7 +1,6 @@
 module ApplicationHelper
   include Has::Title
   include Has::Alerts
-  include Has::Navigation
   include Has::Calendar
   include Has::Grid
 

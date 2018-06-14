@@ -1,8 +1,7 @@
 #= require rails-ujs
 
 ## jquery
-#= require jquery
-#= require jquery_ujs
+#= require jquery3
 #= require jquery-ui
 #= require jquery-ui/widgets/autocomplete
 
@@ -12,12 +11,15 @@
 
 ## components
 #= require bootstrap-datetimepicker
-#= require select2-full
-#= require select2_locale_de
 #= require plugins/checkbox-x
 
 ## bootsrap
+#= require popper
 #= require bootstrap-sprockets
+
+## select2
+#= require select2-full
+#= require select2_locale_de
 
 ## tinymce
 #= require tinymce-jquery

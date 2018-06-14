@@ -3,10 +3,12 @@ class EventsController < ApplicationController
 
   enforce_login! except: %i[index show]
 
+  <<-COMMENT
   def index
     @events = policy_scope(Event.all)
     authorize @events
   end
+  COMMENT
 
   def show
     authorize @event

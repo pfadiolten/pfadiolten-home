@@ -69,10 +69,8 @@ Rails.application.routes.draw do
       end
     end
 
-    get '/home', to: 'home#index'
-
     get '/contact', to: 'contact#index'
-  end
 
-  root to: redirect('/home')
+    root to: 'home#index'
+  end
 end

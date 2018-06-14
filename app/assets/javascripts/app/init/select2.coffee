@@ -1,7 +1,7 @@
 $ ->
   $('select').each query arg ($select) ->
     $select.select2(
-      theme:    'bootstrap',
+      theme:    'bootstrap4',
       language: 'de'
     )
 

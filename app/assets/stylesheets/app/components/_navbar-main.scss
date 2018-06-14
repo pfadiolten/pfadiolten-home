@@ -1,0 +1,63 @@
+// navbar-main
+// ===
+// the main navigation bar
+
+@import "lib/bootstrap_styles";
+
+.navbar-main {
+  $text-color: $primary-inverse;
+
+  color: $text-color;
+  .navbar-main__brand {
+    .navbar-main__logo {
+      &.navbar-main__logo--large {
+        height:  6rem;
+        @include media-breakpoint-down(xs) {
+          display: none;
+        }
+      }
+
+      &.navbar-main__logo--small {
+        height: 4rem;
+        @include media-breakpoint-up(sm) {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .navbar-main__social {
+    .navbar-main__social__icon {
+      color:     $text-color;
+      font-size: 1.5em;
+      display:   inline-block;
+      padding:   10px 8px;
+    }
+  }
+
+  .navbar-main--clickable {
+    color: $text-color;
+    &:hover {
+      color: $text-color;
+    }
+    @include media-breakpoint-up(md) {
+      $border-style: 1px solid transparent;
+      border: {
+        top:    $border-style;
+        bottom: $border-style;
+      }
+      &:hover {
+        border-color: $primary-inverse;
+      }
+    }
+    @include media-breakpoint-down(sm) {
+
+    }
+  }
+
+  .collapse.navbar-collapse {
+    .nav-link {
+      color: $text-color;
+    }
+  }
+}

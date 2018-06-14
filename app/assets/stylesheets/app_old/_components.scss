@@ -1,0 +1,14 @@
+@import "components/file_handle";
+@import "components/data-link";
+@import "components/rows";
+@import "components/panels";
+@import "components/spaces";
+@import "components/text";
+@import "components/navigation";
+@import "components/tables";
+@import "components/decoration";
+@import "components/well";
+
+.text {
+  word-wrap: break-word;
+}

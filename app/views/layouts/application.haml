@@ -5,7 +5,7 @@
     %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1' }
     %title
       Pfadi Olten
-      - if title = content_for(:title)
+      - if (title = content_for(:title))
         = "- #{title}"
     = csrf_meta_tags
 
@@ -18,12 +18,13 @@
     = javascript_include_tag 'application'
     = javascript_include_tag controller_name
 
-  %body{ class: "view-#{controller_name}",  ontouchstart: '' }
+  %body{ class: "#{controller_name} #{controller_name}__#{action_name}",  ontouchstart: '' }
     = render 'layouts/components/navigation'
-    .main-container{ class: content_for(:container_type) || 'container' }
-      .text-center
-        = render 'layouts/components/title',
-                  title:    content_for(:title),
-                  subtitle: content_for(:subtitle)
-      = yield
-    = render 'layouts/components/footer'
+    - if false
+      .main-container{ class: content_for(:container_type) || 'container' }
+        .text-center
+          = render 'layouts/components/title',
+                    title:    content_for(:title),
+                    subtitle: content_for(:subtitle)
+        = yield
+      = render 'layouts/components/footer'

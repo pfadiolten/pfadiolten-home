@@ -1,5 +1,11 @@
 {
   "name": "pfadiolten-home",
-  "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "select2-bootstrap4-theme": "^1.0.0"
+  },
+  "version": "1.0.1",
+  "main": "index.js",
+  "repository": "https://github.com/pfadiolten/pfadiolten-home.git",
+  "author": "Daniel von Atzigen <daniel@vatz.ch>",
+  "license": "MIT"
 }

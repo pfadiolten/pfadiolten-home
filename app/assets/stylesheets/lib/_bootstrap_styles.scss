@@ -1,0 +1,15 @@
+// bootstrap
+//==========
+
+@import url('https://fonts.googleapis.com/css?family=Encode+Sans+Expanded');
+$font-family-sans-serif: 'Encode Sans Expanded', sans-serif;
+
+$primary:   #00833B !default;
+$secondary: #42A13F !default;
+$ternary:   #8CC63F !default;
+
+$input-border-focus: $ternary !default;
+
+@import "bootstrap";
+
+$primary-inverse: $gray-200 !default;

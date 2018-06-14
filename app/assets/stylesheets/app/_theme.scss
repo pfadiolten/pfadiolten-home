@@ -1,23 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Encode+Sans+Expanded');
+// theme
+//=======
+// modifications and extensions to the css framework
+// used by this application (bootstrap4)
 
-@import "theme/variables";
 
-@import "bootstrap";
 
-@import "theme/colors";
-@import "theme/offsets";
-@import "theme/select2";
-@import "theme/hermitage";
-@import "theme/leaflet";
-@import "theme/images";
-@import "theme/form";
-@import "theme/tinymce";
-@import "theme/footer";
-
-.word-break {
-  @include hyphens;
-}
-
-.btn {
-  white-space: normal;
-}
