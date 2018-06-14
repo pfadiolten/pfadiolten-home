@@ -1,5 +1,5 @@
 
-set :application, "pfadiolten-home"
+set :application, "pfadiolten.ch"
 set :repo_url, "https://github.com/pfadiolten/pfadiolten-home.git"
 
 set :branch, 'master'
@@ -9,7 +9,7 @@ set :branch, 'master'
 
 # Default deploy_to directory is /var/www/my_app_name
 # set :deploy_to, "/var/www/my_app_name"
-set :deploy_to, "/var/www/pfadiolten-home-pg"
+set :deploy_to, "/var/www/pfadiolten.ch"
 
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh

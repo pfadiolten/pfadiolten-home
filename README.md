@@ -1,11 +1,17 @@
-
 # [pfadiolten.ch](https://pfadiolten.ch)
 
 ## Deployment
 Deployment is handled via the `capistrano` gem.
 This command deploys the master branch to the production server:
+```bash
+cap production deploy
 ```
-$ cap production deploy
+
+### Staging
+The staging server can be found at [dev.pfadiolten.ch](https://dev.pfadiolten.ch).
+Deploy to it with the `staging` stage.
+```bash
+cap staging deploy
 ```
 
 ## Development
