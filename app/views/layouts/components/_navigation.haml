@@ -13,15 +13,26 @@
                                                     label: 'Toggle navigation' } }
       %span.navbar-toggler-icon
     .collapse.navbar-collapse#navbarMainCollapse
-      .navbar-nav
+      .navbar-nav.mr-auto
         - Application::Navigation::ItemPresenter.all_for(self).each do |nav_item|
           %a.nav-item.nav-link.navbar-main--clickable{ class: ('active' if nav_item.active?), href: nav_item.path }
             = nav_item.title
 
-    .navbar-main__social
-      - shared_classes = 'navbar-main__social__icon navbar-main--clickable'
-      = mail_to Settings.social.mail, encode: :javascript, class: shared_classes do
-        = fa_icon('envelope')
-      = link_to fa_icon('facebook-official'), Settings.social.facebook,  target: '_blank', class: shared_classes
-      = link_to fa_icon('instagram'),         Settings.social.instagram, target: '_blank', class: shared_classes
+      .navbar-nav
+        .nav-item.nav-link
+          .navbar-main__social
+            - shared_classes = 'navbar-main__social__icon navbar-main--clickable'
+            = mail_to Settings.social.mail, encode: :javascript, class: shared_classes do
+              = fa_icon('envelope')
+            = link_to fa_icon('facebook-official'), Settings.social.facebook,  target: '_blank', class: shared_classes
+            = link_to fa_icon('instagram'),         Settings.social.instagram, target: '_blank', class: shared_classes
+
+
+      - if false
+        .navbar-main__social
+          - shared_classes = 'navbar-main__social__icon navbar-main--clickable'
+          = mail_to Settings.social.mail, encode: :javascript, class: shared_classes do
+            = fa_icon('envelope')
+          = link_to fa_icon('facebook-official'), Settings.social.facebook,  target: '_blank', class: shared_classes
+          = link_to fa_icon('instagram'),         Settings.social.instagram, target: '_blank', class: shared_classes
 

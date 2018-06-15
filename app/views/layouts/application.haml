@@ -15,8 +15,12 @@
     = tinymce_assets
 
     = stylesheet_link_tag    'application', media: 'all'
+    = stylesheet_link_tag controller_asset if controller_css?
     = javascript_include_tag 'application'
-    = javascript_include_tag controller_name
+    = javascript_include_tag controller_asset if controller_js?
+    %script{ type: 'text/javascript' }
+      = "window.App.controller = '#{controller_name}'".html_safe
+      = "window.App.action     = '#{action_name}'".html_safe
 
   %body{ class: "#{controller_name} #{controller_name}__#{action_name}",  ontouchstart: '' }
     = render 'layouts/components/navigation'

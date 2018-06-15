@@ -38,4 +38,33 @@ module ApplicationHelper
       day:   'day'
     )
   end
+
+  def controller_asset
+    "views/#{controller_path}"
+  end
+
+  def controller_js?
+    exists_js?(controller_asset)
+  end
+
+  def controller_css?
+    exists_css?(controller_asset)
+  end
+
+private
+  def exists_js?(path)
+    %w[ .coffee .coffee.erb .js .js.erb .erb ].inject(false) do |found, ext|
+      found || asset_exists?('javascripts', "#{path}.#{ext}")
+    end
+  end
+
+  def exists_css?(path)
+    %w[ .scss .scss.erb .css .css.erb .sass .sass.erb .erb ].inject(false) do |found, ext|
+      found || asset_exists?('stylesheets', "#{path}.#{ext}")
+    end
+  end
+
+  def asset_exists?(subdirectory, filename)
+    File.exists?(File.join(Rails.root, 'app', 'assets', subdirectory, filename))
+  end
 end

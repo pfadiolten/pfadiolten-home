@@ -308,6 +308,8 @@ GEM
     sshkit (1.16.0)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
+    tabler-rubygem (0.1.2)
+      autoprefixer-rails (>= 6.0.3)
     temple (0.8.0)
     thor (0.20.0)
     thread_safe (0.3.6)
@@ -382,6 +384,7 @@ DEPENDENCIES
   select2-rails (>= 4.0.3)
   selenium-webdriver
   simple_form (>= 3.5.0)
+  tabler-rubygem
   tinymce-rails (>= 4.7.4)
   tinymce-rails-langs (>= 4.20160310)
   tzinfo-data

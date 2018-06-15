@@ -4,12 +4,23 @@
 
 @import "lib/bootstrap_styles";
 
+@mixin _illuminate {
+  $size: 4px;
+  $color: #fff;
+  filter: drop-shadow(#{$size} #{$size} 4px #{$color}) drop-shadow(-#{$size} -#{$size} 4px #{$color});
+}
+
 .navbar-main {
   $text-color: $primary-inverse;
 
   color: $text-color;
+
   .navbar-main__brand {
     .navbar-main__logo {
+      &:hover {
+        @include _illuminate;
+      }
+
       &.navbar-main__logo--large {
         height:  6rem;
         @include media-breakpoint-down(xs) {
@@ -27,18 +38,28 @@
   }
 
   .navbar-main__social {
+    @include media-breakpoint-down(sm) {
+       border-top: 1px solid $primary-inverse;
+    }
     .navbar-main__social__icon {
       color:     $text-color;
       font-size: 1.5em;
       display:   inline-block;
       padding:   10px 8px;
+      &:first-child {
+        @include media-breakpoint-down(sm) {
+          padding-left: 0;
+        }
+      }
     }
   }
 
   .navbar-main--clickable {
+    $padding-vertical: 1rem;
     color: $text-color;
-    &:hover {
-      color: $text-color;
+    padding: {
+      top:    $padding-vertical;
+      bottom: $padding-vertical;
     }
     @include media-breakpoint-up(md) {
       $border-style: 1px solid transparent;
@@ -48,10 +69,14 @@
       }
       &:hover {
         border-color: $primary-inverse;
+        color: $text-color;
       }
     }
     @include media-breakpoint-down(sm) {
-
+      &:hover, &:active, &:active {
+        @include _illuminate;
+        color: $black !important;
+      }
     }
   }
 

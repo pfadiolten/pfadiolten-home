@@ -27,8 +27,18 @@
 ## leaflet
 #= require leaflet
 
+## lib
+#= require lib
+
 ## app
 #= require app/globals
 #= require app/init
 #= require app/components
 
+window.App ?=
+  init: {}
+
+$ ->
+  for name, initialize of window.App.init
+    console.debug("initializing #{name}")
+    initialize()

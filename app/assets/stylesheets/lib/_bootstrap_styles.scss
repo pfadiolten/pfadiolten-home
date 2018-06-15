@@ -1,15 +1,27 @@
 // bootstrap
 //==========
+@import "tabler/variables";
 
 @import url('https://fonts.googleapis.com/css?family=Encode+Sans+Expanded');
+
 $font-family-sans-serif: 'Encode Sans Expanded', sans-serif;
 
-$primary:   #00833B !default;
-$secondary: #42A13F !default;
-$ternary:   #8CC63F !default;
+$primary:   #00833B;
+$secondary: #42A13F;
+$ternary:   #8CC63F;
 
-$input-border-focus: $ternary !default;
+$input-border-focus: $ternary;
+
+$modified-theme-colors: (
+  "primary":   $primary,
+  "secondary": $secondary,
+  "ternary":   $ternary
+);
+
+$theme-colors: map-merge($theme-colors, $modified-theme-colors);
 
 @import "bootstrap";
+@import "tabler";
+@import "tabler.plugins";
 
-$primary-inverse: $gray-200 !default;
+$primary-inverse: $gray-200
