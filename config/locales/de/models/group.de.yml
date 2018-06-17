@@ -25,7 +25,9 @@ de:
   groups:
     index:
       title: "Alle Stufen"
-      no_users: "Keine Stufen gefunden"
+      no_groups: "Keine Stufen gefunden"
+    show:
+      no_events: "Es stehen keine Aktivitäten an"
     new:
       title: "Stufe erfassen"
     edit:

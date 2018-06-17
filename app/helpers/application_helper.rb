@@ -54,7 +54,7 @@ module ApplicationHelper
     if records.any?
       records.each(&block)
       return
-    else
+    elsif else_say.present?
       content_tag('div', class: 'col-12') do
         content_tag('div', class: 'alert alert-info text-center', role: 'alert') do
           else_say

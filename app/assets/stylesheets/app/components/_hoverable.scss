@@ -1,8 +1,8 @@
-// hover
+// hoverable
 // ========
-// hides an element inside a link unless a specific parent is hovered
+// hides an element inside a parent container unless the parent is hovered
 
-a {
+.hoverable {
   .hover {
     display: none;
   }

@@ -1,0 +1,9 @@
+-# group: Group
+
+.card.hoverable{ data: { link: group_path(group) } }
+  .card-status.card-status-left.bg-primary.hover
+  .card-header
+    .card-title= group.name
+  - if (who = group.who)
+    .card-body
+      = who

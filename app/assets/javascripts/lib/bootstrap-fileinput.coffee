@@ -7,7 +7,6 @@
 
 
 $ ->
-  console.log("ok")
   $('input[type=file]').fileinput(
     theme: 'fa'
     language: 'de'

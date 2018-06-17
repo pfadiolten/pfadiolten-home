@@ -2,33 +2,33 @@
 
 - url ||= nil
 
-.row
-  .col-md-8.col-md-offset-2
+.row.justify-content-center
+  .col-md-10.col-lg-8
     = simple_form_for @group, url: url do |f|
       .row
-        .col-sm-8.col-xs-12
+        .col-12.col-md-8
           = f.input :name
-        .col-sm-4.col-xs-12.gap-top-1-xs
+        .col-12.col-md-4
           = f.input :abbreviation
 
       - unless @group.new_record?
         .row
-          .col-xs-12
+          .col
             = f.input :what, required: false, input_html: { class: 'text-editor' }
 
         .row
-          .col-sm-6.col-xs-12
+          .col-12.col-sm
             = f.input :who, required: false
-          .col-sm-6.col-xs-12
+          .col-12.col-sm
             = f.input :when, required: false
 
       .row
         - if @group.persisted? && policy(@group).destroy?
-          .col-xs-8
-            = f.submit class: 'btn btn-primary col-xs-12'
-          .col-xs-4
+          .col-8
+            = f.submit class: 'btn btn-primary col-12'
+          .col-4
             = destroy_button
         - else
-          .col-xs-12
-            = f.submit class: 'btn btn-primary col-xs-12'
+          .col-12
+            = f.submit class: 'btn btn-primary col-12'
 

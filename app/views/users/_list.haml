@@ -1,7 +1,0 @@
--# users: [User]
--# none: String
-
-.row.row-cards.row-dock.justify-content-center
-  = list_any users, else_say: none do |user|
-    .col-6.col-md-4.col-lg-3
-      = render '/users/present', user: user

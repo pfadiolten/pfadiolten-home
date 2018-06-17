@@ -1,4 +1,5 @@
 $ ->
+  console.log("ok")
   $switches = $('.sort-order .switch-groups')
 
   $switches.click query arg ($switch) ->

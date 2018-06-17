@@ -25,19 +25,18 @@ html {
 }
 
 .container.container--main, .container-fluid.container--main {
-  overflow:auto;
-  padding-bottom: 1rem;
+  overflow:       auto;
+  padding-bottom: 6rem;
 }
 
 .footer {
-  position: absolute;
-  clear:    both;
-  width:    100%;
-  color:    $gray-600;
-  padding: {
-    top:    2rem;
-    bottom: 2rem;
-  }
+  position:    absolute;
+  clear:       both;
+  width:       100%;
+  color:       $gray-600;
+  height:      5rem;
+  margin-top:  -5rem;
+  line-height: 2.5rem;
 
   .footer__element {
     &.footer__element--copyright {

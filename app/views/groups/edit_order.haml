@@ -1,17 +1,20 @@
 - title
 
-.row
-  .col-md-8.col-md-offset-2.sort-order
+.row.justify-content-center
+  .col-12.col-md-8.sort-order
     = simple_form_for :groups, url: groups_update_order_path, method: 'put' do |f|
       .form-group
         - @groups.each_with_index do |group, i|
-          .clearfix.group
-            .panel.panel-default.no-margin
-              .panel-heading.text-center
-                %strong= group.name
-            %input{ type: 'hidden', required: true, value: group.id, name: "#{f.object_name}[][id]", id: "#{f.object_name}_#{group.id}" }
-          - if i < @groups.count - 1
-            .switch-groups= fa_icon('sort')
+          .row
+            .col-12
+              .card.mb-0
+                .card-header.justify-content-center.group
+                  .card-title= group.name
+                  %input{ type: 'hidden', required: true, value: group.id, name: "#{f.object_name}[][id]", id: "#{f.object_name}_#{group.id}" }
+                - if i < @groups.count - 1
+                  .card-body.p-0.d-flex.justify-content-center.row
+                    %button.btn.btn-secondary.col-12.switch-groups{ type: 'button' }= fa_icon('sort')
+
       .row
-        .col-xs-12
-          = f.submit class: 'btn btn-primary col-xs-12'
+        .col-12
+          = f.submit class: 'btn btn-primary col-12'

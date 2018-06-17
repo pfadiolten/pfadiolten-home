@@ -1,7 +1,15 @@
 -# user: User
+-# yield?
 
-%a.card.unstyle{ href: user_path(user) }
+.card.unstyle-link.hoverable{ data: { link: user_path(user) } }
   .card-status.card-status-left.bg-primary.hover.animated.animateIn
   %img.card-img-top{ src: image_path(user.avatar), width: '100%', alt: "avatar of #{user.scout_name}" }
   .card-header.justify-content-center
     .card-title= user.scout_name
+
+  - if block_given?
+    - content = capture do
+      = yield
+    - unless content.blank?
+      .card-body.p-0
+        = content

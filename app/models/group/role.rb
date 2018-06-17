@@ -21,6 +21,10 @@ class Group::Role < ApplicationRecord
   default_for :can_edit_group, is: false
 
 # Scopes
+  scope :with_members, ->{
+    joins(:members).having("COUNT(group_members.id) > 0").group(:id)
+  }
+
   scope :sorted_by_rights, ->{
     order(created_at: 'desc').sort_by(&:rights_value).reverse
   }

@@ -2,3 +2,4 @@
 #= require app/components/file_handle
 #= require app/components/input-mirror
 #= require app/components/hidden-by
+#= require app/components/element-link

@@ -1,63 +1,108 @@
 - title @group.name
 - subtitle @group.abbreviation
 
-.row
-  .col-xs-12.text-center
-    .btn-group
-      - if policy(@group).update?
-        = link_to fa_icon('pencil'), edit_group_path, class: 'btn btn-primary'
-      - if policy(@group.roles).index?
-        = link_to fa_icon('star'), group_roles_path, class: 'btn btn-primary'
+.row.justify-content-center
+  - if policy(@group).update? || policy(@group.roles).index?
+    .col-12
+      .row.mb-4
+        .col.d-flex.justify-content-center
+          .btn-group
+            - if policy(@group).update?
+              = link_to edit_group_path, class: 'btn btn-primary' do
+                %i.fe.fe-edit
+            - if policy(@group.roles).index?
+              = link_to group_roles_path, class: 'btn btn-primary' do
+                %i.fe.fe-star
 
-- if @group.what || @group.who || @group.when
-  .row.text-center.gap-top-1.gap-bottom-1
-    .col-md-8.col-md-offset-2
-      - if what = @group.what
+  .col-12
+    .row.justify-content-center
+
+      // event row
+      .col-12.col-lg-5.col-xl-4.order-2.order-lg-1
+        .row.justify-content-center
+          = list_any @group.events, else_say: t('.no_events') do |event|
+            .col-10.col-sm-9.col-md-6.col-lg-11
+              = render '/events/present', event: event
+
+      // info row
+      .col-12.col-lg-7.col-xl-8.order-1.order-lg-2
         .row
-          .col-xs-12
-            = what.html_safe
+          .col-12
+            - if @group.what || @group.who || @group.when
+              .row.mt-4.mb-6
+                .col-12
+                  - if (what = @group.what)
+                    .row
+                      .col-12
+                        = what.html_safe
 
-      - %i[ who when ].each do |attribute|
-        - if value = @group.read_attribute(attribute)
-          .row
-            .col-xs-12
-              %h3= t("activerecord.attributes.group.#{attribute}")
-              .row
-                .col-xs-12= value
+                  - %i[ who when ].each do |attribute|
+                    - if (value = @group.read_attribute(attribute))
+                      .row.mt-6
+                        .col-12
+                          %h3= t("activerecord.attributes.group.#{attribute}")
+                          .row
+                            .col-12= value
 
-- roles = @group.roles.sorted_by_rights
-- roles_with_members = roles.count { |it| it.users.any? }
-- can_create = policy(Group::Member).create?
-
-- if can_create || roles_with_members > 0
-  .row
-    .col-md-8.col-md-offset-2
-      .row
-        .col-xs-12.text-center
-          %h2= t('activerecord.models.user.other')
-      .row
-        .col-xs-12
-          - if roles_with_members > 0
-            - show_role_names = roles.count { |it| it.users.any? } > 1
-            - roles.each do |role|
-              - next if role.users.count == 0
-              - if show_role_names
-                .row
-                  .col-xs-12.text-center
-                    %h3= role.name
-              .row
-                .col-xs-12
-                  - path_to_new = new_group_members_path if policy(Group::Member).create?
-                  = render 'users/list', users: role.users, none: nil, path_to_new: path_to_new do |user|
-                    - if (current_member && policy(current_member).update?) || policy(Group::Member).update?
-                      .row.gap-top-1
-                        .col-xs-12
-                          = link_to fa_icon('pencil'), edit_group_member_path(@group, @group.members.find { |it| it.user_id == user.id }), class: 'btn btn-primary'
-          - else
             .row
-              .col-xs-12
-                - if policy(Group::Member).create?
-                  .text-center= link_to fa_icon('plus'), new_group_members_path, class: 'btn btn-primary'
-            .row.gap-top-1
-              .col-xs-12
-                .alert.alert-info.text-center= t('activerecord.models.user.zero')
+              .col-12
+                .card
+                  .card-header
+                    %h3.m-0= t('activerecord.models.user.other')
+                    - if policy(@group.roles).create?
+                      .card-options
+                        %a.btn.btn-primary{ href: new_group_members_path }
+                          %i.fe.fe-plus
+                  - roles = @group.roles.with_members.sorted_by_rights
+                  - list_any roles, else_say: ('activerecord.models.user.zero') do |role|
+                    .card-body.pb-0.pt-4
+                      - if roles.count > 1
+                        .row.mb-4
+                          .col-12
+                            .card-title= role.name
+                      .row
+                        .col-12
+                          .row.justify-content-center.justify-content-lg-start
+                            - role.members.each do |member|
+                              - user = member.user
+                              .col-6.col-md-4.col-lg-3
+                                = render '/users/present', user: user do
+                                  - if policy(role).update?
+                                    .d-flex.justify-content-end
+                                      %a.btn.btn-primary{ href: edit_group_member_path(@group, member) }
+                                        %i.fe.fe-edit
+
+
+- if false
+  - if can_create || roles_with_members > 0
+    .row.justify-content-center
+      .col-md-8
+        .row.justify-content-center.mt-8
+          .col-12.text-center
+            %h2= t('activerecord.models.user.other')
+        .row
+          .col-12
+            - if roles_with_members > 0
+              - show_role_names = roles.count { |it| it.users.any? } > 1
+              - roles.each do |role|
+                - next if role.users.count == 0
+                - if show_role_names
+                  .row
+                    .col-12.text-center
+                      %h3= role.name
+                .row
+                  .col-12
+                    - path_to_new = new_group_members_path if policy(Group::Member).create?
+                    = render 'users/list', users: role.users, none: nil, path_to_new: path_to_new do |user|
+                      - if (current_member && policy(current_member).update?) || policy(Group::Member).update?
+                        .row
+                          .col-12
+                            = link_to fa_icon('pencil'), edit_group_member_path(@group, @group.members.find { |it| it.user_id == user.id }), class: 'btn btn-primary'
+            - else
+              .row
+                .col-12
+                  - if policy(Group::Member).create?
+                    .text-center= link_to fa_icon('plus'), new_group_members_path, class: 'btn btn-primary'
+              .row
+                .col-12
+                  .alert.alert-info.text-center= t('activerecord.models.user.zero')

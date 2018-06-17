@@ -9,4 +9,7 @@
 
 .row.justify-content-center
   .col-md-10
-    = render 'list', users: @users, none: t('.no_users')
+    .row.row-cards.row-dock.justify-content-center
+      = list_any @users, else_say: t('.no_users') do |user|
+        .col-6.col-md-4.col-lg-3
+          = render '/users/present', user: user
