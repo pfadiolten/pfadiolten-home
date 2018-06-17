@@ -1,4 +1,4 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -22,6 +22,8 @@ gem 'devise', '>= 4.4.0'
 
 # password encryption
 gem 'bcrypt', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
+
+gem 'devise-i18n'
 
 # file upload & storage
 gem 'carrierwave', '>= 1.2.1'
@@ -117,6 +119,9 @@ gem 'hermitage', '>= 0.0.7'
 
 # openstreetmap.org javascript framework
 gem 'leaflet-rails', '>= 1.3.1'
+
+# pure css animation library
+gem "animate-rails"
 
 # gem 'tui-editor-rails', path: '../tui-editor-rails'
 

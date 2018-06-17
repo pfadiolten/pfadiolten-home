@@ -1,11 +1,16 @@
-%nav.navbar.navbar-expand-lg.navbar-dark.bg-primary.navbar-main
-  .container
-    %a.navbar-brand.navbar-main__brand{ href: root_path }
-      -#.d-none.d-sm-inline-block.align-top
-      -#.d-sm-none.d-inline-block.align-top
+%nav.navbar.navbar-expand-lg.fixed-top.navbar-dark.bg-primary.navbar--main
+  - if Rails.env.development?
+    %div{ style: 'position: fixed; top: 1rem; right: 1rem; z-index: 100; color: #fff;' }
+      .d-block.d-sm-none xs
+      .d-none.d-sm-block.d-md-none sm
+      .d-none.d-md-block.d-lg-none md
+      .d-none.d-lg-block.d-xl-none lg
+      .d-none.d-xl-block xl
 
-      %img.navbar-main__logo.navbar-main__logo--large{ src: image_path('logos/pfadi_olten-text.svg'), alt: 'Pfadi Olten Logo' }
-      %img.navbar-main__logo.navbar-main__logo--small{ src: image_path('logos/pfadi_olten-textless.svg'), alt: 'Pfadi Olten Logo'}
+  .container
+    %a.navbar-brand{ href: root_path }
+      %img.navbar-logo.navbar-logo--large{ src: image_path('logos/pfadi_olten-text.svg'), alt: 'Pfadi Olten Logo' }
+      %img.navbar-logo.navbar-logo--small{ src: image_path('logos/pfadi_olten-textless.svg'), alt: 'Pfadi Olten Logo'}
     %button.navbar-toggler{ type: 'button', data: { toggle: 'collapse',
                                                     target: '#navbarMainCollapse' },
                                             aria: { controls: '#navbarMainCollapse',
@@ -13,26 +18,35 @@
                                                     label: 'Toggle navigation' } }
       %span.navbar-toggler-icon
     .collapse.navbar-collapse#navbarMainCollapse
-      .navbar-nav.mr-auto
+      .navbar-nav.navbar-nav--left.mr-auto
         - Application::Navigation::ItemPresenter.all_for(self).each do |nav_item|
-          %a.nav-item.nav-link.navbar-main--clickable{ class: ('active' if nav_item.active?), href: nav_item.path }
+          %a.nav-item.nav-link{ class: ('active' if nav_item.active?), href: nav_item.path }
             = nav_item.title
 
-      .navbar-nav
-        .nav-item.nav-link
-          .navbar-main__social
-            - shared_classes = 'navbar-main__social__icon navbar-main--clickable'
-            = mail_to Settings.social.mail, encode: :javascript, class: shared_classes do
-              = fa_icon('envelope')
-            = link_to fa_icon('facebook-official'), Settings.social.facebook,  target: '_blank', class: shared_classes
-            = link_to fa_icon('instagram'),         Settings.social.instagram, target: '_blank', class: shared_classes
+      .navbar-nav.navbar-nav--right
+        .nav-item.nav-item--social
+          - classes = 'nav-link nav-icon'
+          = mail_to Settings.social.mail, encode: :javascript, class: classes do
+            %i{ class: 'fe fe-mail' }
+          = link_to Settings.social.facebook,  target: '_blank', class: classes do
+            %i{ class: 'fe fe-facebook' }
+          = link_to Settings.social.instagram, target: '_blank', class: classes do
+            %i{ class: 'fe fe-instagram' }
 
 
-      - if false
-        .navbar-main__social
-          - shared_classes = 'navbar-main__social__icon navbar-main--clickable'
-          = mail_to Settings.social.mail, encode: :javascript, class: shared_classes do
-            = fa_icon('envelope')
-          = link_to fa_icon('facebook-official'), Settings.social.facebook,  target: '_blank', class: shared_classes
-          = link_to fa_icon('instagram'),         Settings.social.instagram, target: '_blank', class: shared_classes
+        .nav-item.nav-item--account
+          - classes = 'nav-link'
+          - if user_signed_in?
+            = link_to user_path(current_user), class: "#{classes} nav-icon" do
+              %i.fe.fe-user
+            %a.nav-link--logout{ href: destroy_user_session_path, data: { method: 'delete' }, class: classes }
+              .nav-link--logout__name= current_user.scout_name
+              .nav-link--logout__icon.nav-icon
+                %i{ class: 'fe fe-log-out' }
+          - else
+            %a.nav-link--login{ href: new_user_session_path, class: classes }
+              .nav-link--login__icon.nav-icon
+                %i{ class: 'fe fe-log-in' }
+              .nav-link--login__name= t('devise.sessions.new.title')
+
 

@@ -1,31 +1,41 @@
 - title
 
-.row
-  = col(lg: 6, sm: 8) do
+.row.justify-content-center
+  .col-10.col-sm-9.col-md-7.col-lg-5
+    - if (alert = flash[:alert])
+      .row
+        .col-12
+          .alert.alert-danger.alert-icon.alert-dismissible{ role: 'alert' }
+            %i.fe.fe-alert-triangle.mr-2{ aria: { hidden: true } }
+            %button.close{ type: 'button', data: { dismiss: 'alert' } }
+            = alert
+
+
     = simple_form_for resource, as: resource_name, url: session_path(resource_name) do |f|
       .row
-        .col-xs-12
-          = f.input :scout_name, input_html: { autofocus: true }
+        .col-12
+          = f.input :scout_name,
+                    input_html: { autofocus: true }
 
       .row
-        .col-xs-12
+        .col-12
           = f.input :password,
                     autocomplete: 'off'
 
       .row
-        .col-md-12.text-center
-          = f.input :remember_me, as: 'boolean', input_html: { checked: true }
+        .col-12.text-center
+          = f.input :remember_me, as: 'boolean',
+                    input_html: { checked: true }
 
       .row
-        .col-xs-12
-          = f.submit class: 'btn btn-primary col-xs-12'
+        .col-12
+          = f.submit class: 'btn btn-primary col-12'
 
-      .row.gap-top-1
-        .col-xs-12.text-right
-          .dropdown
-            %button.btn.btn-warning.dropdown-toggle{ type: 'button', data: { toggle: 'dropdown' } }
+      .row.mt-2
+        .col-12.text-right
+          .btn-group
+            %button.btn.btn-warning.dropdown-toggle{ type: 'button', data: { toggle: 'dropdown' }, aria: { haspopup: true, expanded: false } }
               = t('users.forgot_password.title')
-              %span.caret
-            %ul.dropdown-menu
-              %li
-                = t('users.password_note', mail: mail_to('it@pfadiolten.ch', nil, class: 'visible-lg-inline', style: 'padding: 0;')).html_safe
+            .dropdown-menu.dropdown-menu-right
+              - mail = mail_to(Settings.social.it, nil, class: 'visible-lg-inline', style: 'padding: 0;')
+              %button.dropdown-item{ type: 'button', disabled: true }= t('users.password_note', mail: mail).html_safe

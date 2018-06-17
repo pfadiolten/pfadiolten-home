@@ -2,44 +2,44 @@
 
 - url ||= nil
 
-.row
-  = col(md: 8, sm: 10) do
+.row.justify-content-center
+  .col-sm-10.col-md-8
     = simple_form_for @user, url: url do |f|
       .row
-        .col-sm-6
-          = f.input :first_name
-        .col-sm-6
-          = f.input :last_name
+        .col-12
+          = f.input :scout_name
 
       .row
-        .col-md-12
-          = f.input :scout_name
+        .col-sm
+          = f.input :first_name
+        .col-sm
+          = f.input :last_name
 
       - if @user.new_record?
         .row
-          .col-sm-6
+          .col-sm
             = f.input :password,
                       required: true,
                       input_html: { autocomplete: 'off' }
-          .col-sm-6
+          .col-sm
             = f.input :password_confirmation,
                       required: true,
                       input_html: { autocomplete: 'off' }
       - else
         .row
-          .col-md-12
+          .col-12
             = f.input :description, label: false, input_html: { class: 'text-editor' }
 
       .row
-        .col-md-12
-          = f.input :avatar, as: 'file_handle', input_html: { accept: 'image/*' }
+        .col-12
+          = f.input :avatar, as: 'file', input_html: { accept: 'image/*', data: { show_preview: false } }
 
       .row
         - if @user.persisted? && policy(@user).destroy?
-          .col-xs-8
-            = f.submit class: 'btn btn-primary col-xs-12'
-          .col-xs-4
+          .col-8
+            = f.submit class: 'btn btn-primary col-12'
+          .col-4
             = destroy_button
         - else
-          .col-xs-12
-            = f.submit class: 'btn btn-primary col-xs-12'
+          .col-12
+            = f.submit class: 'btn btn-primary col-12'

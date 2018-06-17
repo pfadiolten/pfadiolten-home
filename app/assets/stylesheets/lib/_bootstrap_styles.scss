@@ -4,13 +4,15 @@
 
 @import url('https://fonts.googleapis.com/css?family=Encode+Sans+Expanded');
 
-$font-family-sans-serif: 'Encode Sans Expanded', sans-serif;
+$enable-rounded: false;
+
+$font-family-base: 'Encode Sans Expanded', $font-family-base;
 
 $primary:   #00833B;
 $secondary: #42A13F;
 $ternary:   #8CC63F;
 
-$input-border-focus: $ternary;
+$input-focus-border-color: $ternary;
 
 $modified-theme-colors: (
   "primary":   $primary,
@@ -20,8 +22,10 @@ $modified-theme-colors: (
 
 $theme-colors: map-merge($theme-colors, $modified-theme-colors);
 
+$headings-font-weight: normal;
+
 @import "bootstrap";
 @import "tabler";
 @import "tabler.plugins";
 
-$primary-inverse: $gray-200
+$primary-inverse: $gray-100

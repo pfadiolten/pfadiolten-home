@@ -1,0 +1,9 @@
+// has-error
+// ==========
+// applied to failed form elements
+
+.has-error {
+  & > input {
+    @extend .is-invalid;
+  }
+}

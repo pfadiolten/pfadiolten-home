@@ -1,6 +1,8 @@
 $ ->
   $('[data-link]').each query arg ($element) ->
-    $element.wrap($('<a>', href: $element.data('link')))
+    link = $element.data('link')
+    $linkElement = $('<a/>', href: link, class: 'element-link')
+    $element.prepend($linkElement)
 
     ###
     $element.click (e) ->

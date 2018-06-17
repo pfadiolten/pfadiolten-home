@@ -1,13 +1,14 @@
 class UsersController < ApplicationController
 # callbacks
   before_action :load_user,
-                except: %i[index new create forgot_password send_recover_token]
+                except: %i[ index new create forgot_password send_recover_token ]
 
-  enforce_login! except: %i[index show new create forgot_password send_recover_token]
+  enforce_login! except: %i[ index show new create forgot_password send_recover_token ]
+
 
 # actions
   def index
-    @users = policy_scope(User.all)
+    @users = present_all policy_scope(User.all)
     authorize @users
   end
 

@@ -35,10 +35,7 @@
 #= require app/init
 #= require app/components
 
-window.App ?=
-  init: {}
+$.extend window.App ?= {},
+  ready: $(document).ready
 
-$ ->
-  for name, initialize of window.App.init
-    console.debug("initializing #{name}")
-    initialize()
+App.ready ->

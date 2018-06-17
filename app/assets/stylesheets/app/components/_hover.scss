@@ -1,0 +1,15 @@
+// hover
+// ========
+// hides an element inside a link unless a specific parent is hovered
+
+a {
+  .hover {
+    display: none;
+  }
+
+  &:hover {
+    .hover {
+      display: unset;
+    }
+  }
+}

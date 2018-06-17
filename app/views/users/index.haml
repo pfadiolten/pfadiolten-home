@@ -1,5 +1,12 @@
 - title
 
-.row
-  = col(md: 10, lg: 10) do
-    = render 'list', users: @users, none: t('.no_users'), path_to_new: (new_user_path if policy(User).create?)
+- if (can_create = policy(User).create?)
+  .row.mb-4
+    .col-12.d-flex.justify-content-center
+      - if can_create
+        %a.btn.btn-primary{ href: new_user_path }
+          %i.fe.fe-plus
+
+.row.justify-content-center
+  .col-md-10
+    = render 'list', users: @users, none: t('.no_users')

@@ -1,6 +1,7 @@
 {
   "name": "pfadiolten-home",
   "dependencies": {
+    "bootstrap-fileinput": "^4.4.8",
     "select2-bootstrap4-theme": "^1.0.0"
   },
   "version": "1.0.1",

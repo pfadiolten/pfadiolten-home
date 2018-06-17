@@ -2,7 +2,6 @@ module ApplicationHelper
   include Has::Title
   include Has::Alerts
   include Has::Calendar
-  include Has::Grid
 
   def model_name
     controller_name.singularize
@@ -24,7 +23,7 @@ module ApplicationHelper
   def destroy_button(confirmation=t("#{controller_path.gsub('/', '.')}.destroy.confirm"), options={})
     options = options.to_options
     action = options.delete(:action) || 'destroy'
-    link_to fa_icon('trash'), url_for(action: action), method: 'delete', class: 'btn btn-danger col-xs-12', data: { confirm: confirmation }
+    link_to fa_icon('trash'), url_for(action: action), method: 'delete', class: 'btn btn-danger col-12', data: { confirm: confirmation }
   end
 
   def info(message)
@@ -49,6 +48,19 @@ module ApplicationHelper
 
   def controller_css?
     exists_css?(controller_asset)
+  end
+
+  def list_any(records, else_say:, &block)
+    if records.any?
+      records.each(&block)
+      return
+    else
+      content_tag('div', class: 'col-12') do
+        content_tag('div', class: 'alert alert-info text-center', role: 'alert') do
+          else_say
+        end
+      end
+    end
   end
 
 private

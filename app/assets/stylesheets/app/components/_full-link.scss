@@ -1,0 +1,23 @@
+// full-link
+// ===
+// A link spanning the full size of its parent element
+
+.full-link-container {
+  a.full-link {
+    position: absolute;
+    height:   100%;
+    width:    100%;
+    z-index:  1;
+  }
+
+  .full-link-free {
+    position:       relative;
+    pointer-events: none;     /* lets clicks fall through */
+    z-index:        10;       /* makes actual content be on top of the link */
+
+    button, a  {
+      pointer-events: auto;    /* lets clickable things be clickable */
+    }
+  }
+
+}

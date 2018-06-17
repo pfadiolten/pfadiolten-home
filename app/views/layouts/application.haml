@@ -22,13 +22,14 @@
       = "window.App.controller = '#{controller_name}'".html_safe
       = "window.App.action     = '#{action_name}'".html_safe
 
-  %body{ class: "#{controller_name} #{controller_name}__#{action_name}",  ontouchstart: '' }
-    = render 'layouts/components/navigation'
-    - if false
-      .main-container{ class: content_for(:container_type) || 'container' }
+  %body{ class: "#{controller_name} #{controller_name}--#{action_name}",  ontouchstart: '' }
+    %header
+      = render 'layouts/components/navigation'
+    %main
+      .container--main{ class: content_for(:container_type) || 'container' }
         .text-center
           = render 'layouts/components/title',
                     title:    content_for(:title),
                     subtitle: content_for(:subtitle)
         = yield
-      = render 'layouts/components/footer'
+    = render 'layouts/components/footer'

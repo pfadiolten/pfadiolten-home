@@ -1,0 +1,15 @@
+// h
+// =
+
+h1 {
+  & + h3 {
+    margin-top: -0.9rem;
+    a {
+      color: $secondary;
+      &:hover {
+        color:           $ternary;
+        text-decoration: none;
+      }
+    }
+  }
+}

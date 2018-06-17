@@ -1,26 +1,7 @@
 -# users: [User]
 -# none: String
--# path_to_new: String?
 
-.search-list
-  .row.text-center
-    .col-lg-4.col-lg-offset-4.col-md-6.col-md-offset-3.col-xs-6.col-xs-offset-3
-      %input{ type: 'text', placeholder: t('users.index.search_users'), class: 'form-control search-input' }
-    .col-lg-4.col-md-3.col-xs-3.no-padding-left
-      .pull-left
-        - if path_to_new.present?
-          = link_to fa_icon('plus'), path_to_new, class: 'btn btn-primary'
-  .row.gap-top-1
-    - if users.any?
-      %ul.rows
-        - users.each do |user|
-          %li.col-xs-12.col-sm-6.col-md-3.search-element{ data: { terms: [ user.scout_name, user.first_name, user.last_name ].to_json } }
-            .panel.panel-default.panel-link.gap-top-1{ data: { link: user_path(user) } }
-              .panel-body.no-padding
-                %img.img.img-rounded{ src: image_path(user.avatar), width: '100%' }
-              .panel-footer.text-center
-                = user.scout_name
-                = yield user if block_given?
-    - else
-      .col-xs-12
-        .alert.alert-info.text-center= none
+.row.row-cards.row-dock.justify-content-center
+  = list_any users, else_say: none do |user|
+    .col-6.col-md-4.col-lg-3
+      = render '/users/present', user: user

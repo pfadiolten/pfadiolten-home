@@ -1,20 +1,23 @@
 - title
 - subtitle_to @user, :scout_name
 
-.row
-  .col-xs-4.col-xs-offset-4.text-center
+.row.justify-content-center
+  .col-10.col-md-6.col-lg-4.text-center
     .row
-      .col-xs-12
+      .col-12
         - if @user.admin?
-          .panel.panel-success.no-margin
-            .panel-heading= t('.is_admin', scout_name: @user.scout_name)
+          .card
+            .card-header.bg-green-light.justify-content-center= t('.is_admin', scout_name: @user.scout_name)
+            .card-body.p-0
+              = link_to t('.unset_admin'), update_admin_user_path,
+                    class: 'btn btn-danger col-12',
+                    data: { method: 'put',
+                            confirm: t('.confirm_unset', scout_name: @user.scout_name) }
         - else
-          .panel.panel-danger.no-margin
-            .panel-heading= t('.not_admin', scout_name: @user.scout_name)
-
-    .row.gap-top-1
-      .col-xs-12
-        - if @user.admin?
-          = link_to t('.unset_admin'), update_admin_user_path, class: 'btn btn-danger col-xs-12', data: { method: 'put', confirm: t('.confirm_unset', scout_name: @user.scout_name) }
-        - else
-          = link_to t('.set_admin'), update_admin_user_path, class: 'btn btn-success col-xs-12', data: { method: 'put', confirm: t('.confirm_set', scout_name: @user.scout_name) }
+          .card
+            .card-header.bg-danger.text-white.justify-content-center= t('.not_admin', scout_name: @user.scout_name)
+            .card-body.p-0
+              = link_to t('.set_admin'), update_admin_user_path,
+                    class: 'btn btn-success col-12',
+                    data: { method: 'put',
+                            confirm: t('.confirm_set', scout_name: @user.scout_name) }

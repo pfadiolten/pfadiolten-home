@@ -1,0 +1,119 @@
+// navbar--main
+// ===
+// the main navigation bar
+
+@mixin _illuminate($color) {
+  $size: 4px;
+  filter: drop-shadow(#{$size} #{$size} 4px #{$color}) drop-shadow(-#{$size} -#{$size} 4px #{$color});
+}
+
+body {
+  padding-top: 9rem;
+  @include media-breakpoint-down(xs) {
+    padding-top: 7rem;
+  }
+}
+
+.navbar--main {
+  $text-color: $primary-inverse;
+
+  color: $text-color;
+
+  .navbar-brand {
+    .navbar-logo {
+      &:hover {
+        @include _illuminate($color: $white);
+      }
+
+      &.navbar-logo--large {
+        height:  6rem;
+        @include media-breakpoint-down(xs) {
+          display: none;
+        }
+      }
+
+      &.navbar-logo--small {
+        height: 4rem;
+        @include media-breakpoint-up(sm) {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .collapse.navbar-collapse {
+    .nav-link {
+      color: $text-color;
+    }
+
+    a.nav-link {
+      $padding-vertical: 1rem;
+      color: $text-color;
+      padding: {
+        top:    $padding-vertical;
+        bottom: $padding-vertical;
+      }
+      @include media-breakpoint-up(md) {
+        $border-style: 1px solid transparent;
+        border: {
+          top:    $border-style;
+          bottom: $border-style;
+        }
+        &:hover {
+          border-color: $primary-inverse;
+          color: $text-color;
+        }
+      }
+      @include media-breakpoint-down(sm) {
+        &:hover, &:active, &:active {
+          @include _illuminate($color: $black);
+        }
+      }
+    }
+
+    .navbar-nav.navbar-nav--right {
+      @include media-breakpoint-down(sm) {
+        border-top: 1px solid $primary-inverse;
+      }
+
+      .nav-icon {
+        color:     $text-color;
+        display:   inline-block;
+        font-size: 1.3em;
+        padding:   10px 8px;
+      }
+
+
+      // TODO: align these on one line in mobile mode
+      .nav-item {
+        &, .nav-link {
+          @include media-breakpoint-down(sm) {
+            display: inline-block;
+          }
+        }
+
+        &.nav-item--social {
+          @include media-breakpoint-down(sm) {
+            padding-left: 0;
+          }
+        }
+
+        &.nav-item--account {
+          @include media-breakpoint-down(sm) {
+            float: right;
+          }
+
+          .nav-link {
+            // --login and --logout do contain an icon, which already provides enough padding
+            &.nav-link--login, &.nav-link--logout {
+              padding: {
+                top: 0;
+                bottom: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,9 +1,0 @@
--# add_class: String = ''
-
-- for_size ||= ''
-
-.navbar-social{ class: "nav-#{for_size}" }
-  = mail_to Settings.social.mail, encode: :javascript, class: "navbar-icon" do
-    = fa_icon('envelope')
-  = link_to fa_icon('facebook-official'), Settings.social.facebook, class: "navbar-icon", target: '_blank'
-  = link_to fa_icon('instagram'), Settings.social.instagram, class: "navbar-icon", target: '_blank'

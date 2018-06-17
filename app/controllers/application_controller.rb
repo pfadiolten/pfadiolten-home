@@ -30,7 +30,11 @@ protected
 
   def missing_rights
     flash[:failure] = I18n.t('errors.messages.missing_rights')
-    redirect_back fallback_path: '/'
+    redirect_back fallback_location: '/'
+  end
+
+  def present_all(query, **kwargs, &block)
+    "#{query.model_name}Presenter::Collection".safe_constantize.present(present(query), **kwargs, &block)
   end
 
 # static

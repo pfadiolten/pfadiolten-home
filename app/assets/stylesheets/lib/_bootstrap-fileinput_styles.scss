@@ -1,0 +1,10 @@
+@import "bootstrap-fileinput/css/fileinput";
+
+.file-input {
+  .file-preview .fileinput-remove {
+    padding-top: 3px;
+    span {
+      display: none;
+    }
+  }
+}
