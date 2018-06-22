@@ -1,4 +1,5 @@
 $ ->
+  ###
   $switches = $('.sort-order .switch-groups')
 
 
@@ -13,4 +14,5 @@ $ ->
 
     $prevGroup.append($nextContents)
     $nextGroup.append($prevContents)
+    ###
 

@@ -42,7 +42,7 @@ class GroupsController < ApplicationController
   end
 
   def update_order
-    ids = order_params[:groups]&.map { |it| it[:id].to_i }
+    ids = order_params[:groups]&.map { |it| it[:id] }
     if ids.present?
       not_found unless Group.all.all? { |it| ids.any? { |id| id == it.id } }
 

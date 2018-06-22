@@ -1,9 +1,10 @@
 #= require rails-ujs
 
-## jquery
-#= require jquery3
-#= require jquery-ui
-#= require jquery-ui/widgets/autocomplete
+## leaflet
+#= require leaflet
+
+## lib
+#= require lib
 
 ## moment.js
 #= require moment
@@ -23,12 +24,6 @@
 
 ## tinymce
 #= require tinymce-jquery
-
-## leaflet
-#= require leaflet
-
-## lib
-#= require lib
 
 ## app
 #= require app/globals

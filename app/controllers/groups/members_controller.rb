@@ -1,4 +1,4 @@
-class Group::MembersController < ApplicationController
+class Groups::MembersController < ApplicationController
   before_action :load_group
 
   before_action :load_member,

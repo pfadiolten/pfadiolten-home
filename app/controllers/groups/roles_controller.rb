@@ -1,4 +1,4 @@
-class Group::RolesController < ApplicationController
+class Groups::RolesController < ApplicationController
   before_action :load_group
 
   before_action :load_role,
