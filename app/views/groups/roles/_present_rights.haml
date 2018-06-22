@@ -1,0 +1,14 @@
+-# role: Role
+
+.row.row-deck.justify-content-center
+  - rights = role.rights
+  - rights.each do |right, ok|
+    %div{ class: "col-#{12 / rights.count}" }
+      .card.mb-0{ class: "#{ if ok then 'bg-lime-light' else 'bg-red-light' end }" }
+        .card-header.justify-content-center.text-center{ style: 'min-height: 0;' }
+          = t("activerecord.attributes.group.role.#{right}")
+        .card-body.text-center.p-2
+          - if ok
+            %i.fe.fe-check
+          - else
+            %i.fe.fe-x

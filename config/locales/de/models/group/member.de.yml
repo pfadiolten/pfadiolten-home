@@ -2,23 +2,23 @@ de:
   routes:
     members: "leiter"
     controllers:
-      group:
+      groups:
         members:
           new: "zuweisen"
 
   activerecord:
     models:
-      group/member:
+      groups/member:
           zero: "Keine LeiterInnen"
           one: "LeiterIn"
           other: "LeiterInnen"
 
     attributes:
-      group/member:
+      groups/member:
           user_id: "LeiterIn"
           role_id: "Rolle"
 
-  group:
+  groups:
     members:
       new:
         title: "LeiterInnen zuweisen"

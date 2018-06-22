@@ -43,7 +43,7 @@ class Groups::RolesController < ApplicationController
 
   protected
   def load_group
-    @group = Group.find_by('LOWER(abbreviation) = LOWER(?)', params[:abbreviation]) || not_found
+    @group = Group.find_by('LOWER(abbreviation) = LOWER(?)', params[:group_abbreviation]) || not_found
   end
 
   def load_role

@@ -13,10 +13,10 @@ module ApplicationHelper
 
     if condition
       classes << 'color-success'
-      fa_icon('check', options)
+      content_tag('i', options)
     else
       classes << 'color-failure'
-      fa_icon('times', options)
+      content_tag('i', options)
     end
   end
 

@@ -34,15 +34,16 @@ Rails.application.routes.draw do
       member do
         get 'edit_users'
         match 'update_users', via: %i[put patch]
+      end
 
-        namespace :group, path: '' do
-          resource :members, only: %i[new create]
-          resources :members, param: :scout_name, only: %i[edit update destroy]
-
-          resources :roles, param: :name
-        end
+      scope module: 'groups' do
+        resource :members, only: %i[ new create ]
+        resources :members, param: :scout_name, only: %i[ edit update destroy ]
+        resources :roles, param: :name
       end
     end
+
+
 
 
     namespace :events do

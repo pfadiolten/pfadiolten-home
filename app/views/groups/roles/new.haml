@@ -1,7 +1,7 @@
 - title
 - subtitle do
-  = link_to @group.abbreviation, group_path
+  = link_to @group.abbreviation, url_for(@group)
   = ' / '.html_safe
-  = link_to t('group.roles.index.title'), group_roles_path
+  = link_to t('groups.roles.index.title'), group_roles_path
 
 = render 'form'

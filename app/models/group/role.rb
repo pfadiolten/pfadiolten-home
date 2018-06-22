@@ -45,6 +45,10 @@ class Group::Role < ApplicationRecord
     value
   end
 
+  def rights
+    Hash[self.class.rights_attributes.map { |it| [ it, send(it) ] }]
+  end
+
   def to_param
     name.downcase
   end

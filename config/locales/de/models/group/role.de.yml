@@ -24,7 +24,7 @@ de:
 
 
 
-  group/roles: &role_views
+  groups/roles: &role_views
     index:
       title: "Alle Rollen"
       no_roles: "Keine Rollen gefunden"
@@ -34,6 +34,6 @@ de:
       title: "Rolle bearbeiten"
     destroy:
       confirm: "Rolle wirklich löschen? Zugewiesene Leiter werden von der Stufe entfernt werden."
-  group:
+  groups:
     roles:
       <<: *role_views

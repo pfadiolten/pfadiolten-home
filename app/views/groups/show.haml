@@ -11,7 +11,7 @@
               = link_to edit_group_path, class: 'btn btn-primary' do
                 %i.fe.fe-edit
             - if policy(@group.roles).index?
-              = link_to group_roles_path, class: 'btn btn-primary' do
+              = link_to group_roles_path(@group), class: 'btn btn-primary' do
                 %i.fe.fe-star
 
   .col-12
@@ -52,7 +52,7 @@
                     %h3.m-0= t('activerecord.models.user.other')
                     - if policy(@group.roles).create?
                       .card-options
-                        %a.btn.btn-primary{ href: new_group_members_path }
+                        %a.btn.btn-primary{ href: new_group_members_path(@group) }
                           %i.fe.fe-plus
                   - roles = @group.roles.with_members.sorted_by_rights
                   - list_any roles, else_say: ('activerecord.models.user.zero') do |role|

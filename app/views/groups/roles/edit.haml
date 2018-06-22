@@ -2,7 +2,7 @@
 
 - title
 - subtitle do
-  = link_to @group.abbreviation, group_path
+  = link_to @group.abbreviation, url_for(@group)
   = ' / '.html_safe
   = link_to @original_role.name, show_path
 
