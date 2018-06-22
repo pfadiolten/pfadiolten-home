@@ -5,7 +5,7 @@ class Group::MemberPolicy < ApplicationPolicy
 
   def update?
     with_user do
-      user.admin? || record.role.can_edit_roles
+      user.admin?
     end
   end
 
