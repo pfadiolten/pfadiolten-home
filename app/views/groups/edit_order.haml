@@ -5,15 +5,15 @@
     = simple_form_for :groups, url: groups_update_order_path, method: 'put' do |f|
       .form-group
         - @groups.each_with_index do |group, i|
-          .row
+          .row.group
             .col-12
               .card.mb-0
-                .card-header.justify-content-center.group
+                .card-header.justify-content-center
                   .card-title= group.name
                   %input{ type: 'hidden', required: true, value: group.id, name: "#{f.object_name}[][id]", id: "#{f.object_name}_#{group.id}" }
-                - if i < @groups.count - 1
-                  .card-body.p-0.d-flex.justify-content-center.row
-                    %button.btn.btn-secondary.col-12.switch-groups{ type: 'button' }= fa_icon('sort')
+          - if i < @groups.count - 1
+            .card-body.p-0.d-flex.justify-content-center.row.switch-groups
+              = fa_icon('sort')
 
       .row
         .col-12

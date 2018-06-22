@@ -1,10 +1,12 @@
 $ ->
-  console.log("ok")
   $switches = $('.sort-order .switch-groups')
 
+
   $switches.click query arg ($switch) ->
-    $prevGroup = $switch.prev('.group')
-    $nextGroup = $switch.next('.group')
+    $prevGroup = $switch.parent().prev('.group')
+    $nextGroup = $switch.parent().next('.group')
+
+    console.log $prevGroup, $nextGroup
 
     $prevContents = $prevGroup.children().detach()
     $nextContents = $nextGroup.children().detach()

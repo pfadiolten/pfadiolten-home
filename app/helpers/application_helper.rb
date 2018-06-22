@@ -66,13 +66,13 @@ module ApplicationHelper
 private
   def exists_js?(path)
     %w[ .coffee .coffee.erb .js .js.erb .erb ].inject(false) do |found, ext|
-      found || asset_exists?('javascripts', "#{path}.#{ext}")
+      found || asset_exists?('javascripts', "#{path}#{ext}")
     end
   end
 
   def exists_css?(path)
     %w[ .scss .scss.erb .css .css.erb .sass .sass.erb .erb ].inject(false) do |found, ext|
-      found || asset_exists?('stylesheets', "#{path}.#{ext}")
+      found || asset_exists?('stylesheets', "#{path}#{ext}")
     end
   end
 

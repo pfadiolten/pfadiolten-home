@@ -15,6 +15,7 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 
 # precompile scss and coffee files
 Rails.application.config.assets.precompile += Dir[Rails.root.join('app/assets/{stylesheets,javascripts}/*.{scss,coffee}')]
+Rails.application.config.assets.precompile += Dir[Rails.root.join('app/assets/{stylesheets,javascripts}/views/*.{scss,coffee}')]
 
 # file upload limit
 Rack::Utils.multipart_part_limit = 200
