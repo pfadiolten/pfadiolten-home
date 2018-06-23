@@ -33,7 +33,7 @@ class Groups::RolesController < ApplicationController
   def update
     @original_role = get_role
     @role.update(role_params)
-    respond_with @role, location: make_show_path
+    respond_with @role, action: 'edit', location: make_show_path
   end
 
   def destroy

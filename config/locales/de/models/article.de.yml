@@ -28,7 +28,7 @@ de:
     edit:
       title: "Info bearbeiten"
     destroy:
-      confirm: "Info wirklich löschen?"
+      title: "Info wirklich löschen?"
 
     select_image: "Bild auswählen"
     open: "weiterlesen"

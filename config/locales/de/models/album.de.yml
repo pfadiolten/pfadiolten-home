@@ -23,6 +23,6 @@ de:
     new:
       title: "Album erfassen"
     destroy:
-      confirm: "Album wirklich löschen?"
+      title: "Album wirklich löschen?"
 
     max_image_warning: "Nicht mehr als %{max} Bilder!"

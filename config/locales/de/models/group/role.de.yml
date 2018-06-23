@@ -33,7 +33,8 @@ de:
     edit:
       title: "Rolle bearbeiten"
     destroy:
-      confirm: "Rolle wirklich löschen? Zugewiesene Leiter werden von der Stufe entfernt werden."
+      title:   "Rolle wirklich löschen?"
+      info: "Zugewiesene Leiter werden von der Stufe entfernt werden."
   groups:
     roles:
       <<: *role_views

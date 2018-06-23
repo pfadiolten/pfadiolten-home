@@ -18,10 +18,10 @@
     .row.justify-content-center
 
       // event row
-      - if @group.events.any?
+      - if (events = @group.events.active).any?
         .col-12.col-lg-5.col-xl-4.order-2.order-lg-1
           .row.justify-content-md-center.flex-nowrap.flex-md-wrap{ style: 'overflow-x: scroll;' }
-            - @group.events.each do |event|
+            - events.each do |event|
               .col-9.col-sm-8.col-md-6.col-lg-11
                 = render '/events/present', event: event
 
@@ -30,7 +30,7 @@
         .row
           .col-12
             - if @group.what || @group.who || @group.when
-              .row.mt-4.mb-6
+              .row.mb-6
                 .col-12
                   - if (what = @group.what)
                     .row

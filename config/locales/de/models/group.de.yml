@@ -39,4 +39,4 @@ de:
     edit_roles:
       title: "Rollen ändern"
     destroy:
-      confirm: "Wirklich löschen?"
+      title: "Wirklich löschen?"

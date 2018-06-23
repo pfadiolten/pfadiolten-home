@@ -25,4 +25,4 @@ de:
       edit:
         title: "%{scout_name} bearbeiten"
       destroy:
-        confirm: "Soll dieser Leiter wirklich von der Stufe entfernt werden?"
+        title: "Soll dieser Leiter wirklich von der Stufe entfernt werden?"

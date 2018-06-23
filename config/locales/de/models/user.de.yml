@@ -49,9 +49,9 @@ de:
       confirm_set: "Soll %{scout_name} wirklich ein Administrator sein?"
       confirm_unset: "Soll %{scout_name} wirklich kein Administrator mehr sein?"
     destroy:
-      confirm: "Wirklich löschen?"
+      title: "Wirklich löschen?"
     destroy_image:
-      confirm: "Wirklich löschen?"
+      title: "Wirklich löschen?"
     forgot_password:
       title: "Passwort vergessen?"
     password_note: >
