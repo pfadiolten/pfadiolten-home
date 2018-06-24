@@ -15,7 +15,7 @@ class Groups::MembersController < ApplicationController
     @member = Group::Member.new(member_params.merge(group: @group))
     authorize @member
     @member.save
-    respond_with @member, location: group_path
+    respond_with @member, location: group_path(@group)
   end
 
   def edit
@@ -23,12 +23,12 @@ class Groups::MembersController < ApplicationController
 
   def update
     @member.update(params.require(:group_member).permit(:role_id))
-    respond_with @member, location: group_path
+    respond_with @member, location: group_path(@group)
   end
 
   def destroy
     @member.destroy
-    respond_with @member, action: 'edit', location: group_path
+    respond_with @member, action: 'edit', location: group_path(@group)
   end
 
   protected

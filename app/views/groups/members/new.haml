@@ -1,19 +1,19 @@
 - title
 - subtitle_to @group, :abbreviation
 
-.row
-  .col-md-8.col-md-offset-2
+.row.justify-content-center
+  .col-12.col-lg-8.col-xl-7
     = simple_form_for @member do |f|
       .row
-        .col-md-8.col-xs-12
+        .col-12.col-md-8
           = f.input :user_id, required: true,
                     collection: User.all.reject { |user| @group.users.any? { |it| it.id == user.id } },
                     label_method: :all_names
-        .col-md-4.col-xs-12
+        .col-12.col-md-4
           = f.input :role_id, required: true,
                     collection: @group.roles.sorted_by_rights,
                     label_method: ->(role) { role.name }
 
       .row
-        .col-xs-12
-          = f.submit class: 'btn btn-primary col-xs-12'
+        .col-12
+          = f.submit class: 'btn btn-primary col'
