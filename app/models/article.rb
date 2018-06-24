@@ -1,7 +1,7 @@
 class Article < ApplicationRecord
   mount_uploader :image, CoverUploader
 
-  paginates_per 10
+  paginates_per 5
 
 # Relations
   belongs_to :author,

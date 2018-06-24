@@ -64,8 +64,12 @@ GEM
       autoprefixer-rails (>= 6.0.3)
       popper_js (>= 1.12.9, < 2)
       sass (>= 3.5.2)
-    bootstrap3-datetimepicker-rails (4.17.47)
-      momentjs-rails (>= 2.8.1)
+    bootstrap4-datetime-picker-rails (0.1.7)
+      jquery-rails (~> 4.2, >= 4.2.0)
+      momentjs-rails (~> 2.10, >= 2.10.5)
+    bootstrap4-kaminari-views (1.0.0)
+      kaminari (>= 0.13)
+      rails (>= 3.1)
     builder (3.2.3)
     byebug (10.0.1)
     capistrano (3.10.1)
@@ -353,7 +357,8 @@ DEPENDENCIES
   bcrypt!
   better_errors
   bootstrap (~> 4.1.1)
-  bootstrap3-datetimepicker-rails (>= 4.17.47)
+  bootstrap4-datetime-picker-rails
+  bootstrap4-kaminari-views
   byebug
   capistrano
   capistrano-bundler

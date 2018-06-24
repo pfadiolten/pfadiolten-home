@@ -3,15 +3,14 @@
 ## leaflet
 #= require leaflet
 
-## lib
-#= require lib
-
 ## moment.js
 #= require moment
 #= require moment/de
 
+## lib
+#= require lib
+
 ## components
-#= require bootstrap-datetimepicker
 #= require plugins/checkbox-x
 
 ## bootsrap

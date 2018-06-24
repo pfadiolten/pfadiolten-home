@@ -10,8 +10,8 @@ $ ->
     $hideSwitch = $($hiddenElement.data('hidden-by'))
     $hideSwitch.change ->
       if $hideSwitch.val() == "0"
-        $hiddenParent.css(visibility: 'hidden')
+        $hiddenParent.css(display: 'none')
       else
-        $hiddenParent.css(visibility: '')
+        $hiddenParent.css(display: '')
 
     $hideSwitch.change().change()

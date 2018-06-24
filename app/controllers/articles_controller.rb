@@ -6,16 +6,7 @@ class ArticlesController < ApplicationController
   def index
     page = params[:page]
     @articles = policy_scope(Article.page(page)).order_by_release
-    @pinned_articles =
-      if page.nil? || page == 1
-        @articles = @articles.where.not('pinned?': true)
-
-        policy_scope(Article.pinned).order_by_release
-      else
-        []
-      end
     authorize @articles
-    authorize @pinned_articles
   end
 
   def show

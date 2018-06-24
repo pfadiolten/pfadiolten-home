@@ -1,0 +1,55 @@
+-# article: Article
+-# expanded: Bool = false
+
+- expanded ||= false
+
+.card
+  .card-header
+    .card-title
+      = article.title
+      - can = policy(article)
+    .card-options
+      - if can.edit?
+        %a.btn.btn-primary.ml-2{ href: edit_article_path(article) }
+          %i.fe.fe-edit
+
+      %a.btn.btn-primary.ml-2{ href: article_path(article) }
+        %i.fe.fe-eye
+
+      - if article.still_pinned?
+        .btn.btn-dark.disabled.ml-2{ style: 'cursor: default;' }
+          %i.fe.fe-sun
+
+
+  - if article.image?
+    %img.card-img-top{ src: image_path(article.image) }
+  .card-body
+    - if expanded
+      %article
+        = article.text.html_safe
+    - else
+      .js-expandable{ data: { limit: 100 } }
+        .row
+          .col-12
+            %article.js-expandable__text
+              = article.text.html_safe
+        .row
+          .col-12
+            .js-expandable__toggle
+              .row.justify-content-center
+                .col-4
+                  .js-expandable__toggle__show-more.mt-4
+                    %button.btn.btn-black.col{ type: 'button' }
+                      %i.fe.fe-chevron-down
+                  .js-expandable__toggle__show-less
+                    %button.btn.btn-black.col{ type: 'button' }
+                      %i.fe.fe-chevron-up
+  .card-footer.p-0
+    - if (author = article.author)
+      = link_to url_for(author), class: 'btn btn-white d-flex align-items-center justify-content-end' do
+        %div.text-right.mr-4
+          = author.scout_name
+          %small.d-block.text-muted= time_ago_in_words(article.created_at)
+        %img.avatar.avatar-lg{ src: image_path(author.avatar) }
+    - else
+      %small.d-block.text-muted.text-left= time_ago_in_words(article.created_at)

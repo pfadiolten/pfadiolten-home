@@ -16,5 +16,5 @@ de:
       unknown_user: "Kein Leiter mit dem Namen %{name} gefunden."
 
   select_image: "%{attribute} auswählen"
-  hosted_by: "gehosted bei"
-  source_code: "Source Code @"
+  hosted_by:    "gehosted bei"
+  source_code:  "Source Code @"

@@ -1,24 +1,22 @@
 - title
 
 .row
-  .col-md-8.col-md-offset-2
-    - if (can_create = policy(@articles).create?)
-      .row
-        .col-xs-12.text-center
+  .col-12
+    - if (can = policy(@articles)) && can.create?
+      .row.mb-4
+        .col-12.d-flex.justify-content-center
           .btn-group
-            - if can_create
-              = link_to fa_icon('plus'), new_article_path, class: 'btn btn-primary'
-    .row.gap-top-1
-      .col-xs-12
-        .text-center= paginate(@articles)
-    .row.gap-top-1
-      .col-xs-12
-        - if @articles.any? || @pinned_articles.any?
-          - [[@pinned_articles, true], [@articles, false]].each do |(articles, show_pin)|
-            %ul.rows
-              - articles.each do |article|
-                %li.col-md-12.col-xs-12
-                  = render 'article', article: article, show_pin: show_pin
+            - if can.create?
+              = link_to new_article_path, class: 'btn btn-primary' do
+                %i.fe.fe-plus
 
-        - else
-          = info t('.no_articles')
+    .row
+      .col-12.d-flex.justify-content-center
+        = paginate @articles, theme: 'twitter-bootstrap-4'
+
+    .row.justify-content-center
+      .col-12.col-lg-10.col-xl-8
+        .row.justify-content-center
+          - list_any @articles, else_say: t('.no_articles') do |article|
+            .col-12
+              = render '/articles/present', article: article

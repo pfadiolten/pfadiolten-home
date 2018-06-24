@@ -1,29 +1,30 @@
-.row
-  .col-md-8.col-md-offset-2
+.row.justify-content-center
+  .col.col-md-8
     = simple_form_for @article, html: { multipart: true } do |f|
       .row
-        .col-xs-12
+        .col-12
           = f.input :title
 
       .row
-        .col-xs-12
-          = f.input :image, as: 'file_handle',
-                    input_html: { accept: 'image/*' }
-
-      .row
-        .col-xs-12
+        .col-12
           = f.input :summary, as: 'text'
 
       .row
-        .col-xs-12
+        .col-12
+          = f.input :image, as: 'file',
+                    input_html: { accept: 'image/*',
+                                  data:   { show_preview: false } }
+
+      .row
+        .col-12
           = f.input :text, required: false,
                     label: false,
                     input_html: { class: 'text-editor' }
 
       .row
-        .col-sm-5
-          .gap-top-2= f.input :is_pinned, as: :boolean
-        .col-sm-7
+        .col-12.col-sm-5.mt-6
+          = f.input :is_pinned, as: :boolean
+        .col-12.col-sm-7
           = f.input :pinned_till, as: :date_time,
                     required: false,
                     input_html: { date_type: :date,
@@ -32,10 +33,10 @@
 
       .row
         - if @article.persisted? && policy(@article).destroy?
-          .col-xs-8
-            = f.submit class: 'btn btn-primary col-xs-12'
-          .col-xs-4
+          .col-8
+            = f.submit class: 'btn btn-primary col'
+          .col-4
             = destroy_button
         - else
-          .col-xs-12
-            = f.submit class: 'btn btn-primary col-xs-12'
+          .col-12
+            = f.submit class: 'btn btn-primary col'

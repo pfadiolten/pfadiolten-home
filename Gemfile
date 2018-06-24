@@ -53,6 +53,9 @@ gem 'sanitize', '>= 4.5.0'
 # pagination in in activrecord-queries
 gem 'kaminari', '>= 1.1.1'
 
+# kaminari bootstrap 4 theme
+gem 'bootstrap4-kaminari-views'
+
 # global Settings configurable via yml-files
 gem 'config', '>= 1.6.1'
 
@@ -104,8 +107,8 @@ gem 'font-awesome-rails'
 # HTML select input replacement
 gem 'select2-rails', '>= 4.0.3'
 
-# HTML datetime input for bootstrap
-gem 'bootstrap3-datetimepicker-rails', '>= 4.17.47'
+# HTML datetime input for bootstrap (a.k.a. Tempus Dominus)
+gem 'bootstrap4-datetime-picker-rails'
 
 # WYSIWYG text editor
 gem 'tinymce-rails', '>= 4.7.4'
