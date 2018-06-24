@@ -1,0 +1,17 @@
+-# id:     String
+-# title: String|Nil
+-# yield
+
+- title ||= nil
+
+.modal.fade{ id: id, tabindex: -1, role: 'dialog', aria: { labelledby: id, hidden: true } }
+  .modal-dialog{ role: 'document' }
+    .modal-content
+      - if title.present?
+        .modal-header
+          %h5.modal-title
+            = title
+          %button{ type: 'button', class: 'close', data: { dismiss: 'modal' }, aria: { label: 'Close' }}
+            %span{ aria: { hidden: true } }
+
+      = yield

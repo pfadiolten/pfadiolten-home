@@ -27,35 +27,24 @@ module ApplicationHelper
     modal_id = 'destroyModal'
     options = options.to_options
     action = options.delete(:action) || 'destroy'
-    modal = content_tag('div', id: modal_id, class: 'modal fade', tabindex: '-1', role: 'dialog', aria: { labelledby: modal_id, hidden: true }) do
-      content_tag('div', class: 'modal-dialog', role: 'document') do
-        content_tag('div', class: 'modal-content') do
-          result = ''.html_safe
+    modal = capture do
+      render '/shared/modal', id: modal_id, title: title do
+        result = ''.html_safe
 
-          result << content_tag('div', class: 'modal-header') do
-            content_tag('h5', class: 'modal-title') do
-              title
-            end <<
-            content_tag('button', type: 'button', class: 'close', data: { dismiss: 'modal' }, aria: { label: 'Close' }) do
-              tag('span', aria: { hidden: true })
-            end
-          end if title.present?
+        result << content_tag('div', class: 'modal-body') do
+          confirmation
+        end if confirmation.present?
 
-          result << content_tag('div', class: 'modal-body') do
-            confirmation
-          end if confirmation.present?
-
-          result << content_tag('div', class: 'modal-footer') do
-            link_to(url_for(action: action), method: 'delete', class: 'btn btn-danger') do
-              t('modal.confirm')
-            end <<
-            content_tag('button', class: 'btn btn-primary', data: { dismiss: 'modal' }) do
-              t('modal.abort')
-            end
+        result << content_tag('div', class: 'modal-footer') do
+          link_to(url_for(action: action), method: 'delete', class: 'btn btn-danger') do
+            t('modal.confirm')
+          end <<
+          content_tag('button', class: 'btn btn-primary', data: { dismiss: 'modal' }) do
+            t('modal.abort')
           end
-
-          result
         end
+
+        result
       end
     end
     content_tag('button', class: 'btn btn-danger col-12', type: 'button', data: { toggle: 'modal', target: "##{modal_id}" }) do
