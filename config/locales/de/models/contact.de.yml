@@ -6,9 +6,10 @@ de:
     nav: "Kontakt"
 
     index:
-      people: "Kontakte"
+      people:    "Kontakte"
       locations: "Pfadiheime"
-      banking: "Zahlungsverbindung"
+      banking:   "Zahlungsverbindung"
 
       infos:
         renting: "Vermietung"
+
