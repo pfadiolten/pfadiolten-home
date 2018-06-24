@@ -12,9 +12,9 @@
       - if can.edit?
         %a.btn.btn-primary.ml-2{ href: edit_article_path(article) }
           %i.fe.fe-edit
-
-      %a.btn.btn-primary.ml-2{ href: article_path(article) }
-        %i.fe.fe-eye
+      - if (path = article_path(article)) && !current_page?(path)
+        %a.btn.btn-primary.ml-2{ href: path }
+          %i.fe.fe-eye
 
       - if article.still_pinned?
         .btn.btn-dark.disabled.ml-2{ style: 'cursor: default;' }
