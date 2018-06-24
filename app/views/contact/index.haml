@@ -1,6 +1,6 @@
 - title
 
-.row
+.row.justify-content-center
   .col-12.col-xl-10
     .row.mb-4
       .col-12
@@ -29,32 +29,34 @@
     .row.mb-6
       .col-12
         .row
-          .col-12.text-center
-            %h2= t('.locations')
+          .col-12
+            .row
+              .col-12.text-center
+                %h2= t('.locations')
 
-        .row.mb-4
-          - Settings.locations.maps.each_with_index do |location, i|
-            .col-12.col-md
-              .row
-                .col-12.text-center
-                  - address = location.address
-                  .row
-                    .col-12
-                      %strong= address.name
-                  .row
-                    .col-12
-                      = address.street
-                  .row
-                    .col-12
-                      = "#{address.zip_code} #{address.city}"
+            .row
+              - Settings.locations.maps.each_with_index do |location, i|
+                .col-12.col-md.mb-4
+                  .row.mb-2
+                    .col-12.text-center
+                      - address = location.address
+                      .row
+                        .col-12
+                          %strong= address.name
+                      .row
+                        .col-12
+                          = address.street
+                      .row
+                        .col-12
+                          = "#{address.zip_code} #{address.city}"
 
-              .row.leaflet-maps
-                .col-12
-                  - coordinates = location.coordinates
-                  = map container_id: "location-map-#{i}",
-                        center: { latlng: [ coordinates.x, coordinates.y ],
-                                  zoom: 16 },
-                        markers: [ { latlng: [ coordinates.x, coordinates.y ] } ]
+                  .row.leaflet-maps
+                    .col-12
+                      - coordinates = location.coordinates
+                      = map container_id: "location-map-#{i}",
+                            center: { latlng: [ coordinates.x, coordinates.y ],
+                                      zoom: 16 },
+                            markers: [ { latlng: [ coordinates.x, coordinates.y ] } ]
 
 
         .row
