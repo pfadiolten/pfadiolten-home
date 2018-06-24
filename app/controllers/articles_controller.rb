@@ -39,7 +39,8 @@ class ArticlesController < ApplicationController
 
 protected
   def load_article
-    @article = Article.find_by(id: params[:id]) || not_found
+    id = params[:id].split('@')[1] || not_found
+    @article = Article.find_by(id: id) || not_found
     authorize @article
   end
 

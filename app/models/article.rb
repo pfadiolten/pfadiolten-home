@@ -49,6 +49,10 @@ class Article < ApplicationRecord
     pinned? && (pinned_till.nil? || pinned_till >= Date.today)
   end
 
+  def to_param
+    "#{title}@#{id}"
+  end
+
 protected
   def that_pin_is_correct
       errors.add(:pinned_till, :invalid) unless pinned? || pinned_till.nil?
