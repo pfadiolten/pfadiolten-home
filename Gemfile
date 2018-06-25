@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -77,6 +77,9 @@ gem 'oprah'
 # customizable form builder
 gem 'simple_form', '>= 3.5.0'
 
+# utilites for better/easier meta tags
+gem 'meta-tags'
+
 ## HTML/CSS/JS
 # ---------
 
@@ -125,6 +128,9 @@ gem 'leaflet-rails', '>= 1.3.1'
 
 # pure css animation library
 gem "animate-rails"
+
+# js service worker for rails
+gem 'serviceworker-rails'
 
 # gem 'tui-editor-rails', path: '../tui-editor-rails'
 

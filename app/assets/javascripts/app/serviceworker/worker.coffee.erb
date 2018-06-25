@@ -1,0 +1,33 @@
+CACHE_VERSION = 'v1.0.0';
+CACHE_NAME    = CACHE_VERSION + ':sw-cache-';
+
+onInstall = (e) ->
+  console.log('[Serviceworker]', "Installing!", e)
+  e.waitUntil caches.open(CACHE_NAME).then (cache) ->
+    cache.addAll [
+      '<%= asset_path 'application.js' %>'
+      '<%= asset_path 'application.css' %>'
+      './offline.html'
+    ]
+
+onActivate = (e) ->
+  console.log('[Serviceworker]', "Activating!", e)
+  e.waitUntil caches.keys().then (chacheNames) ->
+    cacheNames
+      .filter (name) ->
+        name.indexOf(CHACHE_NAME) != 0
+      .map(caches.delete)
+
+# borrowed from https://github.com/TalAter/UpUp
+onFetch = (e) ->
+  req = e.request
+  e.respondWith fetch(req).catch ->
+    catches.match(req).then (res) ->
+      return res if res?
+      if req.mode == 'nagivate' || (req.method == 'GET' && req.headers.get('accept').includes('text/html'))
+        console.log('[Serviceworker]', "Fetching offline content", e)
+        caches.match('/offline.html')
+
+self.addEventListener('install',  onInstall);
+self.addEventListener('activate', onActivate);
+self.addEventListener('fetch',    onFetch);

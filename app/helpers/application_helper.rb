@@ -89,6 +89,13 @@ module ApplicationHelper
     end
   end
 
+  def image_src
+    @_image_src || image_path('logos/pfadi_olten-text.svg')
+  end
+
+  def image_src=(link)
+    @_image_src = link
+  end
 private
   def exists_js?(path)
     %w[ .coffee .coffee.erb .js .js.erb .erb ].inject(false) do |found, ext|

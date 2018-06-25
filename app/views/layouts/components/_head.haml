@@ -1,0 +1,36 @@
+
+%meta{ content: 'text/html; charset=UTF-8', 'http-equiv': 'Content-Type'}
+%meta{ name: 'viewport', content: 'width=device-width,initial-scale=1' }
+= csrf_meta_tags
+= display_meta_tags site:        'Pfadi Olten',
+                    separator:   '⚜️',
+                    title:       content_for(:title),
+                    reverse:     true,
+                    description: t('meta.description', default: ''),
+                    image_src:   image_src,
+                    author:      "Daniel von Atzigen",
+                    og: { image:       image_src,
+                          site_name:   'Pfadi Olten',
+                          type:        'object',
+                          title:       content_for(:title),
+                          url:         request.original_url,
+                          description: t('.meta.description', default: '') }
+
+- [ 180, 96, 64, 48, 32, 16 ].each do |res|
+  - size = "#{res}x#{res}"
+  = favicon_link_tag "favicons/#{size}.ico", sizes: size
+
+- [ 57, 72, 114, 144 ].each do |res|
+  - size = "#{res}x#{res}"
+  = favicon_link_tag "icons/#{size}.png", rel: 'apple-touch-icon', type: 'image/png', sizes: size
+
+%link{ rel: 'manifest', href: '/manifest.json' }
+= tinymce_assets
+%script{ type: 'text/javascript' }
+  = "window.App = window.App || {};"
+  = "window.App.controller = '#{controller_name}';".html_safe
+  = "window.App.action     = '#{action_name}';".html_safe
+= stylesheet_link_tag    'application', media: 'all'
+= stylesheet_link_tag controller_asset if controller_css?
+= javascript_include_tag 'application'
+= javascript_include_tag controller_asset if controller_js?

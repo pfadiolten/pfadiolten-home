@@ -15,6 +15,11 @@ de:
       missing_rights: "Du hast keine Rechte, um auf diese Aktion ausführen zu können"
       unknown_user: "Kein Leiter mit dem Namen %{name} gefunden."
 
+  meta:
+    description: >
+      Die Homepage der Pfadi Olten. Hier findest du alle Infos zu den nächsten Aktivitäten, kommenden Lagern,
+      und vergangenen Abenteuern.
+
   select_image: "%{attribute} auswählen"
   hosted_by:    "gehosted bei"
   source_code:  "Source Code @"

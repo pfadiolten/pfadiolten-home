@@ -1,35 +1,16 @@
 !!! 5
-%html
-  %head
-    %meta{ content: 'text/html; charset=UTF-8', 'http-equiv': 'Content-Type'}
-    %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1' }
-    %title
-      Pfadi Olten
-      - if (title = content_for(:title))
-        = "- #{title}"
-    = csrf_meta_tags
-
-    - [ 180, 96, 64, 48, 32, 16 ].each do |res|
-      = favicon_link_tag "favicons/#{res}x#{res}.ico"
-
-    = tinymce_assets
-
-    = stylesheet_link_tag    'application', media: 'all'
-    = stylesheet_link_tag controller_asset if controller_css?
-    = javascript_include_tag 'application'
-    = javascript_include_tag controller_asset if controller_js?
-    %script{ type: 'text/javascript' }
-      = "window.App.controller = '#{controller_name}'".html_safe
-      = "window.App.action     = '#{action_name}'".html_safe
-
-  %body{ class: "#{controller_name} #{controller_name}--#{action_name}",  ontouchstart: '' }
+%html{ lang: locale }
+  %head= render '/layouts/components/head'
+  %body{ class: "#{controller_name} #{controller_name}--#{action_name}" }
     %header
       = render 'layouts/components/navigation'
     %main
       .container--main{ class: content_for(:container_type) || 'container' }
-        .text-center
-          = render 'layouts/components/title',
-                    title:    content_for(:title),
-                    subtitle: content_for(:subtitle)
-        = yield
+        %section.section--title
+          .text-center
+            = render 'layouts/components/title',
+                     title:    content_for(:title),
+                     subtitle: content_for(:subtitle)
+        %section.section--content
+          = yield
     = render 'layouts/components/footer'

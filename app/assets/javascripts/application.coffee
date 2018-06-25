@@ -29,7 +29,10 @@
 #= require app/init
 #= require app/components
 
+#= require app/serviceworker/companion.coffee.erb
+
 $.extend window.App ?= {},
   ready: $(document).ready
 
 App.ready ->
+  $('body')[0].addEventListener('touchstart', (->), passive: true)

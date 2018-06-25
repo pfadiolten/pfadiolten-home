@@ -13,7 +13,7 @@
       %img.navbar-logo.navbar-logo--small{ src: image_path('logos/pfadi_olten-textless.svg'), alt: 'Pfadi Olten Logo'}
     %button.navbar-toggler{ type: 'button', data: { toggle: 'collapse',
                                                     target: '#navbarMainCollapse' },
-                                            aria: { controls: '#navbarMainCollapse',
+                                            aria: { controls: 'navbarMainCollapse',
                                                     expands: false,
                                                     label: 'Toggle navigation' } }
       %span.navbar-toggler-icon
@@ -28,9 +28,9 @@
           - classes = 'nav-link nav-icon'
           = mail_to Settings.social.mail, encode: :javascript, class: classes do
             %i{ class: 'fe fe-mail' }
-          = link_to Settings.social.facebook,  target: '_blank', class: classes do
+          = link_to Settings.social.facebook,  target: '_blank', rel: 'noopener', class: classes do
             %i{ class: 'fe fe-facebook' }
-          = link_to Settings.social.instagram, target: '_blank', class: classes do
+          = link_to Settings.social.instagram, target: '_blank', rel: 'noopener', class: classes do
             %i{ class: 'fe fe-instagram' }
 
 
