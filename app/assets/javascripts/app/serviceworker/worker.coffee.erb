@@ -12,17 +12,17 @@ onInstall = (e) ->
 
 onActivate = (e) ->
   console.log('[Serviceworker]', "Activating!", e)
-  e.waitUntil caches.keys().then (chacheNames) ->
+  e.waitUntil caches.keys().then (cacheNames) ->
     cacheNames
       .filter (name) ->
-        name.indexOf(CHACHE_NAME) != 0
+        name.indexOf(CACHE_NAME) != 0
       .map(caches.delete)
 
 # borrowed from https://github.com/TalAter/UpUp
 onFetch = (e) ->
   req = e.request
   e.respondWith fetch(req).catch ->
-    catches.match(req).then (res) ->
+    caches.match(req).then (res) ->
       return res if res?
       if req.mode == 'nagivate' || (req.method == 'GET' && req.headers.get('accept').includes('text/html'))
         console.log('[Serviceworker]', "Fetching offline content", e)

@@ -8,6 +8,14 @@ module Has::Title
     end
   end
 
+  def tab_title=(value)
+    @_tab_title = value
+  end
+
+  def tab_title
+    @_tab_title || content_for(:title)
+  end
+
   def subtitle(subtitle=nil, &block)
     if subtitle.present?
       content_for(:subtitle, subtitle)
