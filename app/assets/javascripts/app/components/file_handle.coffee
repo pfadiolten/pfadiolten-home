@@ -22,17 +22,17 @@ $ ->
     $destroyInput = $inputs.find('._destroy')
     $destroyButton = $buttons.find('._destroy')
 
-    $backupIcon = $('<i>', class: 'fa fa-undo')
+    $backupIcon = $('<i>', class: 'fe fe-repeat')
     $destroyButton.click ->
       if $destroyInput.is(':checked')
         $destroyInput.click()
         $attrButton.show()
-        $destroyButton.removeClass('col-xs-12').addClass('col-xs-4')
+        $destroyButton.removeClass('col-12').addClass('col-4')
         $attrInput.val('').change()
       else
         $destroyInput.click()
         $attrButton.hide()
-        $destroyButton.removeClass('col-xs-4').addClass('col-xs-12')
+        $destroyButton.removeClass('col-4').addClass('col-12')
 
       $current = $destroyButton.find('i').detach()
       $destroyButton.append($backupIcon)

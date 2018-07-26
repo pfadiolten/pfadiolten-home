@@ -11,9 +11,8 @@
 
       .row
         .col-12
-          = f.input :image, as: 'file',
-                    input_html: { accept: 'image/*',
-                                  data:   { show_preview: false } }
+          = f.input :image, as: 'file_handle',
+                    input_html: { accept: 'image/*' }
 
       .row
         .col-12

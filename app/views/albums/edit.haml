@@ -5,5 +5,5 @@
   .editable-gallery{ data: { ids: @album.images.map(&:id) } }
     = f.input :deleted_images, as: 'hidden', input_html: { id: 'deletedImages' }
 
-    .gap-top-2
+    .mt-4
       = render 'gallery', album: @album

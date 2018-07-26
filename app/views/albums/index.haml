@@ -1,30 +1,37 @@
 - title
 
-.row
-  .col-md-8.col-md-offset-2
+.row.justify-content-center
+  .col-12.col-md-8
     - if policy(@albums).create?
-      .row
-        .col-md-12.text-center
+      .row.mb-4
+        .col-12.d-flex.justify-content-center
           .btn-group
-            = link_to fa_icon('pencil'), new_album_path, class: 'btn btn-primary'
+            = link_to new_album_path, class: 'btn btn-primary' do
+              %i.fe.fe-plus
 
-    .row.gap-top-1
-      .col-md-12
-        - if @albums.any?
-          - @albums.each do |album|
-            .row
-              .col-md-12
-                .panel.panel-default.panel-link.text-center{ data: { link: album_path(album) } }
-                  .panel-heading
-                    = album.name
-                  .panel-body.no-padding
-                    .row.gap-top-1
-                      .col-md-12
-                        .label.label-default
-                          = album.images.count
-                          = fa_icon('camera')
-                    .row.gap-top-1
-                      .col-md-12
-                        = album.description&.html_safe
-        - else
-          = info t('.no_albums')
+    .row
+      .col-12
+        - list_any @albums, else_say: t('.no_albums') do |album|
+          .card.mb-2
+            .card-header
+              .card-title
+                = album.name
+              .card-options
+                .tag
+                  = album.images.count
+                  %span.tag-addon
+                    %i.fe.fe-camera
+                .tag.ml-2
+                  = time_ago_in_words(album.created_at)
+                  %span.tag-addon
+                    %i.fe.fe-clock
+            .card-body.text-center
+              = album.description&.html_safe
+            .card-body
+              .row.justify-content-center
+                - album.images.first(3).each_with_index do |image, i|
+                  .col-3
+                    %img.img-thumbnail{ src: image_path(image.file.thumbnail), alt: "Image #{i}" }
+                .col-3
+                  %a.btn.btn-secondary.btn-block.d-flex.align-items-center.justify-content-center{ href: album_path(album), style: 'height: 100%' }
+                    %i.fe.fe-more-horizontal

@@ -7,9 +7,11 @@
 
 
 $ ->
+  ###
   $('input[type=file]').fileinput(
     theme: 'fa'
     language: 'de'
     showUpload: false
     showClose: 'false'
   )
+  ###

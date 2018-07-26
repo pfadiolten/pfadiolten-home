@@ -120,9 +120,6 @@ gem 'tinymce-rails-langs', '>= 4.20160310'
 # JS datetime library, required by 'bootstrap3-datetimepicker-rails'
 gem 'momentjs-rails', '>= 2.17.1'
 
-# image gallery
-gem 'hermitage', '>= 0.0.7'
-
 # openstreetmap.org javascript framework
 gem 'leaflet-rails', '>= 1.3.1'
 
@@ -131,6 +128,9 @@ gem "animate-rails"
 
 # js service worker for rails
 gem 'serviceworker-rails'
+
+# lightbox2 integration
+gem 'lightbox-bootstrap-rails', '5.1.0.1'
 
 # gem 'tui-editor-rails', path: '../tui-editor-rails'
 

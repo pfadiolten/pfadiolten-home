@@ -32,7 +32,7 @@
 
       .row
         .col-12
-          = f.input :avatar, as: 'file', input_html: { accept: 'image/*', data: { show_preview: false } }
+          = f.input :avatar, as: 'file_handle', input_html: { accept: 'image/*' }
 
       .row
         - if @user.persisted? && policy(@user).destroy?

@@ -1,3 +1,9 @@
 -# album: [Album]
 
-= render_gallery_for album.images.map(&:file)
+.row.justify-content-center
+  .col-12
+    .row.justify-content-center
+      - album.images.each do |image|
+        .col-6.col-md-4.col-lg-3.mb-2
+          %a{ href: image_path(image.file.gallery), data: { toggle: 'lightbox', gallery: "gallery-#{album.id}" } }
+            %img.img-thumbnail{ src: image_path(image.file.thumbnail) }

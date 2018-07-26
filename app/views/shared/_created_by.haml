@@ -1,0 +1,13 @@
+-# creator: User?
+-# created_at: DateTime|Date
+
+- creator ||= nil
+
+- if creator.present?
+  = link_to url_for(creator), class: 'btn btn-white d-flex align-items-center justify-content-end' do
+    %div.text-right.mr-4
+      = creator.scout_name
+      %small.d-block.text-muted= time_ago_in_words(created_at)
+    %img.avatar.avatar-lg{ src: image_path(creator.avatar) }
+- else
+  %small.d-block.text-muted.text-left= time_ago_in_words(created_at)

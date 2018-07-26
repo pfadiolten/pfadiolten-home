@@ -7,7 +7,7 @@
   .card-header
     .card-title
       = article.title
-      - can = policy(article)
+    - can = policy(article)
     .card-options
       - if can.edit?
         %a.btn.btn-primary.ml-2{ href: edit_article_path(article) }
@@ -19,6 +19,8 @@
       - if article.still_pinned?
         .btn.btn-dark.disabled.ml-2{ style: 'cursor: default;' }
           %i.fe.fe-sun
+          - if article.pinned_till.present?
+            %small.small.ml-1= l(article.pinned_till)
 
 
   - if article.image?
@@ -41,15 +43,10 @@
                   .js-expandable__toggle__show-more.mt-4
                     %button.btn.btn-black.col{ type: 'button' }
                       %i.fe.fe-chevron-down
-                  .js-expandable__toggle__show-less
+                  .js-expandable__toggle__show-less.mt-4
                     %button.btn.btn-black.col{ type: 'button' }
                       %i.fe.fe-chevron-up
   .card-footer.p-0
-    - if (author = article.author)
-      = link_to url_for(author), class: 'btn btn-white d-flex align-items-center justify-content-end' do
-        %div.text-right.mr-4
-          = author.scout_name
-          %small.d-block.text-muted= time_ago_in_words(article.created_at)
-        %img.avatar.avatar-lg{ src: image_path(author.avatar) }
-    - else
-      %small.d-block.text-muted.text-left= time_ago_in_words(article.created_at)
+    = render '/shared/created_by',
+             creator:    article.author,
+             created_at: article.created_at

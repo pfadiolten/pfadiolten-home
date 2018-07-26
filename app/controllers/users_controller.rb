@@ -60,29 +60,6 @@ class UsersController < ApplicationController
     respond_with @user, action: 'edit'
   end
 
-  def forgot_password
-    @user = User.new
-    authorize @user
-  end
-
-  def send_recover_token
-    scout_name = params.dig(:user, :scout_name)
-    @user = User.find_by_scout_name(scout_name)
-    authorize User, @user
-    # TODO
-    if @user.nil?
-      respond_to do |format|
-        self.failure_message =I18n.t('errors.messages.unknown_user', name: scout_name)
-        format.html { redirect_to '/' }
-      end
-    else
-      respond_to do |format|
-        self.failure_message =I18n.t('errors.messages.unknown_user', name: scout_name)
-        format.html { redirect_to '/' }
-      end
-    end
-  end
-
 # helpers
 protected
   def load_user

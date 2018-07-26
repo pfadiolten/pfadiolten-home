@@ -1,22 +1,24 @@
 - title @album.name
 
-.row
-  .col-md-10.col-md-offset-1
+.row.justify-content-center
+  .col-md-10
     .row
-      .col-xs-12.text-center
+      .col-12.d-flex.justify-content-center
         .btn-group
           - if policy(@album).download?
-            = link_to fa_icon('download'), download_album_path, class: 'btn btn-primary'
+            = link_to download_album_path, class: 'btn btn-primary' do
+              %i.fe.fe-download
 
           - if policy(@album).update?
-            = link_to fa_icon('pencil'), edit_album_path, class: 'btn btn-primary'
+            = link_to edit_album_path, class: 'btn btn-primary' do
+              %i.fe.fe-edit
 
     - if (description = @album.description)
-      .row.gap-top-1
-        .col-md-12
+      .row.mt-4
+        .col-12
           .text-center= description.html_safe
 
-    .row.gap-top-2
-      .col-md-12
+    .row.mt-4
+      .col-12
         = render 'gallery', album: @album
 
