@@ -17,6 +17,6 @@
     .row.justify-content-center
       .col-12.col-lg-10.col-xl-8
         .row.justify-content-center
-          - list_any @articles, else_say: t('.no_articles') do |article|
+          = list_any @articles, else_say: t('.no_articles') do |article|
             .col-12
               = render '/articles/present', article: article

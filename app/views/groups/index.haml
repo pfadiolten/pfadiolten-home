@@ -14,7 +14,7 @@
 
     .row.justify-content-center
       .col.col-md-10.col-lg-8.col-xl-6
-        - list_any @groups, else_say: t('.no_groups') do |group|
+        = list_any @groups, else_say: t('.no_groups') do |group|
           = render '/groups/present', group: group
 
 - if false

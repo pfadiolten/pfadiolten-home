@@ -1,7 +1,9 @@
 -# article: Article
 -# expanded: Bool = false
+-# editable: Bool = false
 
 - expanded ||= false
+- editable ||= false
 
 .card
   .card-header
@@ -9,12 +11,9 @@
       = article.title
     - can = policy(article)
     .card-options
-      - if can.edit?
-        %a.btn.btn-primary.ml-2{ href: edit_article_path(article) }
+      - if editable && can.edit?
+        %a.btn.btn-secondary.ml-2{ href: edit_article_path(article) }
           %i.fe.fe-edit
-      - if (path = article_path(article)) && !current_page?(path)
-        %a.btn.btn-primary.ml-2{ href: path }
-          %i.fe.fe-eye
 
       - if article.still_pinned?
         .btn.btn-dark.disabled.ml-2{ style: 'cursor: default;' }
@@ -30,7 +29,7 @@
       %article
         = article.text.html_safe
     - else
-      .js-expandable{ data: { limit: 100 } }
+      .js-expandable
         .row
           .col-12
             %article.js-expandable__text
@@ -41,12 +40,19 @@
               .row.justify-content-center
                 .col-4
                   .js-expandable__toggle__show-more.mt-4
-                    %button.btn.btn-black.col{ type: 'button' }
+                    %button.btn.btn-black.btn-block{ type: 'button' }
                       %i.fe.fe-chevron-down
                   .js-expandable__toggle__show-less.mt-4
-                    %button.btn.btn-black.col{ type: 'button' }
+                    %button.btn.btn-black.btn-block{ type: 'button' }
                       %i.fe.fe-chevron-up
   .card-footer.p-0
-    = render '/shared/created_by',
-             creator:    article.author,
-             created_at: article.created_at
+    .row
+      - show_more = (path = article_path(article)) && !current_page?(path)
+      .col{ class: ('pr-0' if show_more) }
+        = render '/shared/created_by',
+                 creator:    article.author,
+                 created_at: article.created_at
+      - if show_more
+        .col-2.pl-0
+          %a.btn.btn-white.d-flex.align-items-center.justify-content-center.h-100.w-100{ href: path }
+            %i.fe.fe-more-horizontal

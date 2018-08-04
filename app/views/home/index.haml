@@ -1,58 +1,144 @@
-- title
+- self.tab_title = t('.title')
 - content_for :container_type, 'container-fluid'
 
-.row
-  .col-lg-10.col-lg-offset-1
+.row.justify-content-center
+  .col-12.col-md-10
     .row
-      .col-md-3
-        .row.category-title
-          .col-xs-12
-            %h2.no-margin-top.text-center-sm-down
-              %span.gap-right-1-sm-down= t('activerecord.models.event.other')
-              - if policy(@events).create?
-                %span.pull-right-md-up
-                  = link_to fa_icon('plus'), new_event_path, class: 'btn btn-primary'
+      // events
+      .category.col-12.col-md-5.col-lg-4.col-xl-3
+        .row
+          .col-12
+            .row
+              .col-12.category__header
+                %h2.category__title
+                  = t('activerecord.models.event.other')
+                .category__options
+                  - if policy(@home.events).create?
+                    %a.btn.btn-primary{ href: new_event_path }
+                      %i.fe.fe-plus
+
+        .row.row-cards.row-deck.flex-nowrap.flex-md-wrap{ style: 'overflow-x: scroll;' }
+          = list_any @home.events, else_say: t('events.index.no_events') do |event|
+            .col-11.col-sm-7.col-md-12
+              = render '/events/present',
+                       event: event
+
+      .col
+        // news
+        .row.mb-6
+          .col-12
+            #newsCarousel.carousel.carousel--news.slide{ data: { ride: 'carousel' } }
+              %ol.carousel-indicators
+                %li.active{ data: { target: '#newsCarousel', slide_to: 0 } }
+                - @home.news.each_with_index do |_news, i|
+                  %li{ data: { target: '#newsCarousel', slide_to: i + 1 } }
+
+              .carousel-inner
+                .carousel-item.active
+                  %img.d-block{ src: image_path('welcome'), alt: 'welcome' }
+                  .carousel-caption
+                    %h1.mb-0= t('.welcome')
+
+                - @home.news.each do |news|
+                  .carousel-item
+                    - if news.image?
+                      %img.d-block{ src: image_path(news.image), alt: "Image for #{news.title}" }
+                    .carousel-caption
+                      %h2= news.title
+                      %p.carousel-text= news.text.html_safe
+                      %p.text-right.mb-0
+                        %a.btn.btn-secondary{ href: article_path(news) }
+                          %i.fe.fe-more-horizontal
 
         .row
-          .col-xs-12
-            - if @events.any?
-              - @events.each do |event|
-                .row
-                  = col(md: 12, sm: 6) do
-                    = render 'events/event', event: event
-            - else
-              = info t('events.index.no_events')
+          // non-news articles
+          .category.col-md-8
+            .row
+              .col
+                .category__header
+                  %h2.category__title
+                    = t('activerecord.models.article.other')
+                  .category__options
+                    - if policy(@home.articles).create?
+                      %a.btn.btn-primary{ href: new_article_path }
+                        %i.fe.fe-plus
+            .row
+              .col
+                = list_any @home.articles, else_say: t('articles.index.no_articles') do |article|
+                  = render '/articles/present',
+                           article: article
 
-      .col-md-6.pad-left-3-md-up.pad-right-3-md-up
-        .row.category-title
-          .col-xs-12.text-center
-            %h2.no-margin-top= t('.news')
+          // albums
+          .category.col-md-4
+            .row
+              .col
+                .category__header
+                  %h2.category__title
+                    = t('activerecord.models.album.other')
+                  .category__options
+                    - if policy(@home.albums).create?
+                      %a.btn.btn-primary{ href: new_album_path }
+                        %i.fe.fe-plus
+            .row
+              .col
+                = list_any @home.albums, else_say: t('albums.index.no_albums') do |album|
+                  = render '/albums/present',
+                           album: album
 
-        .row.gap-top-1
-          .col-xs-12
-            - if @news.any?
-              - @news.each do |article|
-                .row.gap-bottom-1
-                  .col-xs-12
-                    = render 'articles/article', article: article
-            - else
-              = info t('articles.index.no_articles')
 
-      .col-md-3
-        .row.category-title
-          .col-xs-12.text-right
-            %h2.no-margin-top.text-center-sm-down
-              %span.gap-right-1-sm-down= t('activerecord.models.article.other')
-              - if policy(@articles).create?
-                %span.pull-left-md-up
-                  = link_to fa_icon('plus'), new_article_path, class: 'btn btn-primary'
-
+  - if false
+    .row
+      .col-lg-10.col-lg-offset-1
         .row
-          .col-xs-12
-            - if @articles.any?
-              - @articles.each do |article|
-                .text-center.gap-bottom-1
-                  .panel.panel-default.panel-link.no-margin{ data: { link: article_path(article) } }
-                    .panel-body= article.title
-            - else
-              = info t('articles.index.no_articles')
+          .col-md-3
+            .row.category-title
+              .col-xs-12
+                %h2.no-margin-top.text-center-sm-down
+                  %span.gap-right-1-sm-down= t('activerecord.models.event.other')
+                  - if policy(@events).create?
+                    %span.pull-right-md-up
+                      = link_to fa_icon('plus'), new_event_path, class: 'btn btn-primary'
+
+            .row
+              .col-xs-12
+                - if @events.any?
+                  - @events.each do |event|
+                    .row
+                      = col(md: 12, sm: 6) do
+                        = render 'events/event', event: event
+                - else
+                  = info t('events.index.no_events')
+
+          .col-md-6.pad-left-3-md-up.pad-right-3-md-up
+            .row.category-title
+              .col-xs-12.text-center
+                %h2.no-margin-top= t('.news')
+
+            .row.gap-top-1
+              .col-xs-12
+                - if @news.any?
+                  - @news.each do |article|
+                    .row.gap-bottom-1
+                      .col-xs-12
+                        = render 'articles/article', article: article
+                - else
+                  = info t('articles.index.no_articles')
+
+          .col-md-3
+            .row.category-title
+              .col-xs-12.text-right
+                %h2.no-margin-top.text-center-sm-down
+                  %span.gap-right-1-sm-down= t('activerecord.models.article.other')
+                  - if policy(@articles).create?
+                    %span.pull-left-md-up
+                      = link_to fa_icon('plus'), new_article_path, class: 'btn btn-primary'
+
+            .row
+              .col-xs-12
+                - if @articles.any?
+                  - @articles.each do |article|
+                    .text-center.gap-bottom-1
+                      .panel.panel-default.panel-link.no-margin{ data: { link: article_path(article) } }
+                        .panel-body= article.title
+                - else
+                  = info t('articles.index.no_articles')

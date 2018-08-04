@@ -5,7 +5,7 @@ $  ->
     $showLess = $togglers.find('.js-expandable__toggle__show-less')
     $showMore = $togglers.find('.js-expandable__toggle__show-more')
 
-    minHeight = '15rem'
+    minHeight = '10rem'
 
     $showMore.click ->
       $text.animate(height: $text[0].scrollHeight, ->

@@ -1,0 +1,44 @@
+// .carousel--news
+// ===
+// a carousel showing recent news
+
+.carousel.carousel--news {
+  & > .carousel-indicators {
+    justify-content: left;
+    margin-left: 0;
+    left: 1.5rem;
+  }
+
+  & > .carousel-inner {
+    & > .carousel-item {
+      height: 350px;
+      background-color: rgba($secondary, .7);
+      & > img {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 100%;
+      }
+      & > .carousel-caption {
+        right:      0.5rem;
+        bottom:     0.5rem;
+        left:       auto;
+        text-align: left;
+        max-width:  60%;
+        padding: {
+          left: 1rem;
+          right: 1rem;
+        }
+        background: {
+          color: rgba($primary, .7)
+        }
+
+        & > .carousel-text {
+          position: relative;
+          height:   5em;
+          overflow: hidden;
+        }
+      }
+    }
+  }
+}

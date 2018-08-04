@@ -14,7 +14,7 @@ class FileHandleInput < SimpleForm::Inputs::Base
       handles_element << template.content_tag(:div, class: 'buttons mb-6') do
         buttons_element = ActiveSupport::SafeBuffer.new
         buttons_element << content_tag(:button, text, class: "btn btn-primary col-#{existing ? 8 : 12} attribute", type: 'button')
-        buttons_element << content_tag(:button, template.content_tag('i', class: 'fe fe-x'), class: 'btn btn-danger col-4 _destroy', type: 'button') if existing
+        buttons_element << content_tag(:button, template.content_tag('i', nil, class: 'fe fe-x'), class: 'btn btn-danger col-4 _destroy', type: 'button') if existing
         buttons_element
       end
     end

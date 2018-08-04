@@ -1,0 +1,23 @@
+// .category
+// ===
+// a category of elements
+
+.category {
+  .category__header {
+    display:         flex;
+    justify-content: space-between;
+    align-items:     center;
+    border-bottom:   1px solid $secondary;
+    padding-bottom:  0.5rem;
+    margin-bottom:   1rem;
+
+    .category__title {
+      margin-bottom: 0;
+    }
+
+    .category__options {
+    }
+  }
+}
+
+

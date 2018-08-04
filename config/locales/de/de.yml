@@ -20,6 +20,10 @@ de:
       Die Homepage der Pfadi Olten. Hier findest du alle Infos zu den nächsten Aktivitäten, kommenden Lagern,
       und vergangenen Abenteuern.
 
+  controls:
+    prev: "Rückwärts"
+    next: "Vorwärts"
+
   select_image: "%{attribute} auswählen"
   hosted_by:    "gehosted bei"
   source_code:  "Source Code @"

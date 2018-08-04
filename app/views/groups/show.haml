@@ -55,7 +55,7 @@
                         %a.btn.btn-primary{ href: new_group_members_path(@group) }
                           %i.fe.fe-plus
                   - roles = @group.roles.with_members.sorted_by_rights
-                  - list_any roles, else_say: ('activerecord.models.user.zero') do |role|
+                  = list_any roles, else_say: ('activerecord.models.user.zero') do |role|
                     .card-body.pb-0.pt-4
                       - if roles.count > 1
                         .row.mb-4
