@@ -1,12 +1,15 @@
 - title
 
-.row.gap-top-1
-  .col-md-6.col-md-offset-3
-    - Event.detail_types.each do |detail, _|
-      .col-xs-6
-        .panel.panel-default.panel-link.text-center{ data: { link: url_for(action: "new_#{detail}") } }
-          .panel-body
-            = fa_icon(icons[detail], class: 'fa-3x')
-          .panel-footer
-            = t("activerecord.models.event.#{detail}.one")
+.row.justify-content-center
+  .col-12.col-md-8.col-lg-6.col-xl-5
+    .row
+      - Event.detail_types.each do |detail, _|
+        %div{ class: "col-#{12 / Event.detail_types.count}" }
+          .card.text-center.hoverable{ data: { link: url_for(action: "new_#{detail}") } }
+            .card-status.card-status-left.bg-primary.hover
+            .card-body{ style: 'font-size: 2em;' }
+              %i.fe{ class: "fe-#{icons[detail]}" }
+            .card-header.justify-content-center
+              .card-title= t("activerecord.models.event.#{detail}.one")
+
 

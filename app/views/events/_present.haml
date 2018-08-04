@@ -9,7 +9,7 @@
     .row.mt-2
       .col.d-flex.justify-content-center
         - event.groups.each do |group|
-          %a.tag.tag-info{ href: group_path(group) }
+          %a.tag.tag-info.mr-1{ href: group_path(group) }
             = group.abbreviation
   .card-body.px-4.py-2.justify-content-center
     - if (description = event.description)

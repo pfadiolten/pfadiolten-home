@@ -3,17 +3,6 @@ class EventsController < ApplicationController
 
   enforce_login! except: %i[index show]
 
-  <<-COMMENT
-  def index
-    @events = policy_scope(Event.all)
-    authorize @events
-  end
-  COMMENT
-
-  def show
-    authorize @event
-  end
-
   def new
     authorize Event
   end
@@ -35,7 +24,7 @@ class EventsController < ApplicationController
       @event.detail ||= type.new
       authorize @event, :create?
       @event.save
-      respond_with @event, action: "new_#{detail}", render: new_template, location: ->{ event_path(@event) }
+      respond_with @event, action: "new_#{detail}", render: new_template, location: ->{ root_path }
     end
 
     define_method "edit_#{detail}" do
@@ -57,7 +46,7 @@ class EventsController < ApplicationController
       end
 
       @event.update(new_params)
-      respond_with @event, action: "edit_#{detail}", render: 'edit', location: ->{ event_path(@event) }
+      respond_with @event, action: "edit_#{detail}", render: 'edit', location: ->{ root_path }
     end
   end
 

@@ -1,16 +1,15 @@
-
 - action = if @event.new_record? then :create else :update end
 
-.row
-  .col-md-8.col-md-offset-2
+.row.justify-content-center
+  .col-12.col-md-8
     = simple_form_for @event, url: url_for(action: "#{action}_#{@event.detail.handle}") do |f|
       .row
-        .col-xs-12
+        .col-12
           = f.input :name
 
       = f.simple_fields_for :event_groups, EventGroup.new do |fe|
         .row
-          .col-md-12
+          .col-12
             = fe.input :group_id,
                        selected: @event.event_groups.map(&:group_id),
                        collection: policy_scope(Group),
@@ -18,26 +17,26 @@
                        include_blank: false,
                        input_html: { multiple: true, name: 'event[event_groups_attributes][][group_id]' }
       .row
-        .col-md-4
+        .col-12.col-md-4
           = f.input :starts_at, as: :date_time
-        .col-md-8
+        .col-12.col-md-8
           = f.input :start_location, as: :string
 
       .row
-        .col-md-4
+        .col-12.col-md-4
           = f.input :ends_at, as: :date_time
-        .col-md-8
+        .col-12.col-md-8
           = f.input :end_location, as: :string, input_html: { data: { mirror: { source: '#event_start_location', destination: 'placeholder' } } }
 
       .row
-        .col-xs-12
+        .col-12
           = f.input :description, required: false, input_html: { class: 'text-editor' }
       .row
         .col-md-4
           = f.input :display_days_amount, required: false,
                     hint: t('activerecord.attributes.event.display_days_amount_hint'),
                     input_html: { min: 0 }
-        .col-md-8
+        .col-12.col-md-8
           = f.input :user_in_charge_id, required: true,
                     collection: [[Settings.social.mail, nil]] + policy_scope(User).map { |it| [it.all_names, it.id] }
 
@@ -45,17 +44,14 @@
 
       .row
         - if false
-          .col-xs-6.text-center
+          .col-6.text-center
             = f.input :is_hidden, as: :boolean, required: false
-        .col-xs-12.text-center
+        .col-12.text-center
           = f.input :is_private, as: :boolean, required: false
 
       .row
+        .col
+          = f.submit class: 'btn btn-primary btn-block'
         - if @event.persisted? && policy(@event).destroy?
-          .col-xs-8
-            = f.submit class: 'btn btn-primary col-xs-12'
-          .col-xs-4
+          .col-4
             = destroy_button
-        - else
-          .col-xs-12
-            = f.submit class: 'btn btn-primary col-xs-12'

@@ -2,8 +2,8 @@ module EventsHelper
 
   def icons
     @icons ||= {
-      camp:     'map-signs',
-      activity: 'rocket',
+      camp:     'compass',
+      activity: 'zap',
     }
   end
 
