@@ -8,6 +8,7 @@ services:
       - http_proxy
       - https_proxy
       - no_proxy
+      - PFADIOLTEN_OSM_ACCESS_TOKEN
     volumes:
       - .:/pfadiolten-home
     ports:

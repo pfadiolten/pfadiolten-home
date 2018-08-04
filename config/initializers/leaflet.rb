@@ -1,5 +1,5 @@
 map_box = OpenStruct.new(
-  access_token: 'pk.eyJ1IjoicGZhZGlvbHRlbiIsImEiOiJjamVjcjNxMTQwcDE3MnJvOW1nYXB6ajhhIn0.kcgabJeJTJCTjzCn_A7uTw',
+  access_token: ENV['PFADIOLTEN_OSM_ACCESS_TOKEN'],
   id: 'mapbox.streets'
 )
 
