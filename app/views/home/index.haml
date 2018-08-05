@@ -45,7 +45,8 @@
                       %img.d-block{ src: image_path(news.image), alt: "Image for #{news.title}" }
                     .carousel-caption
                       %h2= news.title
-                      %p.carousel-text= news.text.html_safe
+                      .carousel-text
+                        = news.text.html_safe
                       %p.text-right.mb-0
                         %a.btn.btn-secondary{ href: article_path(news) }
                           %i.fe.fe-more-horizontal
