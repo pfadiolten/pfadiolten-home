@@ -1,5 +1,0 @@
-@each $purpose, $color in $style-colors {
-  .color-#{$purpose} {
-    color: $color;
-  }
-}
