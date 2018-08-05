@@ -11,8 +11,19 @@
 
   & > .carousel-inner {
     & > .carousel-item {
-      height: 350px;
       background-color: rgba($secondary, .7);
+      @include media-breakpoint-only(xl) {
+        height: 30rem;
+      }
+      @include media-breakpoint-only(lg) {
+        height: 20rem;
+      }
+      @include media-breakpoint-down(md) {
+        height: 15rem;
+      }
+      @include media-breakpoint-only(xs) {
+        height: 12rem;
+      }
       & > img {
         position: absolute;
         top: 50%;
@@ -25,6 +36,9 @@
         left:       auto;
         text-align: left;
         max-width:  60%;
+        @include media-breakpoint-only(xs) {
+          max-width: 80%;
+        }
         padding: {
           left: 1rem;
           right: 1rem;

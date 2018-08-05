@@ -23,30 +23,39 @@
           %a.nav-item.nav-link{ class: ('active' if nav_item.active?), href: nav_item.path }
             = nav_item.title
 
+
       .navbar-nav.navbar-nav--right
-        .nav-item.nav-item--social
-          - classes = 'nav-link nav-icon'
-          = mail_to Settings.social.mail, encode: :javascript, class: classes do
-            %i{ class: 'fe fe-mail' }
-          = link_to Settings.social.facebook,  target: '_blank', rel: 'noopener', class: classes do
-            %i{ class: 'fe fe-facebook' }
-          = link_to Settings.social.instagram, target: '_blank', rel: 'noopener', class: classes do
-            %i{ class: 'fe fe-instagram' }
+        .nav-item.nav-item--meta
+          .nav-item--meta__social
+            - classes = 'nav-link nav-icon'
+            = mail_to Settings.social.mail, encode: :javascript, class: classes do
+              %i{ class: 'fe fe-mail' }
+            = link_to Settings.social.facebook,  target: '_blank', rel: 'noopener', class: classes do
+              %i{ class: 'fe fe-facebook' }
+            = link_to Settings.social.instagram, target: '_blank', rel: 'noopener', class: classes do
+              %i{ class: 'fe fe-instagram' }
+
+          .nav-item--meta__account
+            - classes = 'nav-link'
+            - if user_signed_in?
+              = link_to user_path(current_user), class: "#{classes} nav-icon float-left nav-link--self" do
+                %i.fe.fe-user
+              %a.nav-link--logout.float-left{ href: destroy_user_session_path, data: { method: 'delete' }, class: classes }
+                .nav-link--logout__name= current_user.scout_name
+                .nav-link--logout__icon.nav-icon
+                  %i{ class: 'fe fe-log-out' }
+            - else
+              %a.nav-link--login.float-left{ href: new_user_session_path, class: classes }
+                .nav-link--login__icon.nav-icon
+                  %i{ class: 'fe fe-log-in' }
+                .nav-link--login__name= t('devise.sessions.new.title')
+
+        - if false
+          .nav-item.nav-item--social
 
 
-        .nav-item.nav-item--account
-          - classes = 'nav-link'
-          - if user_signed_in?
-            = link_to user_path(current_user), class: "#{classes} nav-icon" do
-              %i.fe.fe-user
-            %a.nav-link--logout{ href: destroy_user_session_path, data: { method: 'delete' }, class: classes }
-              .nav-link--logout__name= current_user.scout_name
-              .nav-link--logout__icon.nav-icon
-                %i{ class: 'fe fe-log-out' }
-          - else
-            %a.nav-link--login{ href: new_user_session_path, class: classes }
-              .nav-link--login__icon.nav-icon
-                %i{ class: 'fe fe-log-in' }
-              .nav-link--login__name= t('devise.sessions.new.title')
+
+          .nav-item.nav-item--account
+
 
 

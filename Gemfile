@@ -62,6 +62,15 @@ gem 'config', '>= 1.6.1'
 # easy zipping library
 gem 'zippy', '>= 0.2.3'
 
+## APIs
+# =====
+
+## instagram
+# ----------
+
+# instagram api client
+gem 'instagram_api_client'
+
 ## frontend
 # =========
 

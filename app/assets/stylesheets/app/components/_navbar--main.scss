@@ -85,20 +85,15 @@ body {
 
 
       // TODO: align these on one line in mobile mode
-      .nav-item {
-        &, .nav-link {
-          @include media-breakpoint-down(sm) {
-            display: inline-block;
-          }
+      .nav-item--meta {
+        justify-content: space-between;
+        @include media-breakpoint-down(sm) {
+          padding-left: 0;
         }
 
-        &.nav-item--social {
-          @include media-breakpoint-down(sm) {
-            padding-left: 0;
-          }
-        }
+        .nav-item--meta__account {
+          margin-left: 2rem;
 
-        &.nav-item--account {
           @include media-breakpoint-down(sm) {
             float: right;
           }

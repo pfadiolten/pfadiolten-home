@@ -10,4 +10,8 @@
       %small.d-block.text-muted= time_ago_in_words(created_at)
     %img.avatar.avatar-lg{ src: image_path(creator.avatar) }
 - else
-  %small.d-block.text-muted.text-left= time_ago_in_words(created_at)
+  .mr-4.p-2
+    %small.d-block.text-muted.text-right
+      = time_ago_in_words(created_at)
+      .tag.ml-2.py-1
+        %i.fe.fe-clock

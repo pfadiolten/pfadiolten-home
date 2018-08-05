@@ -42,6 +42,19 @@ docker-compose run web rails db:migrate
 ```
 Afterwards, the API should be available at `localhost:3000`.
 
+### API Keys
+The application requires access to a couple of APIs.
+Their respective access information can either be set with private credentials,
+or be copied from the deployment server.
+
+#### OpenStreetMap
+Requires a valid access token in the environment variable `PFADIOLTEN_OSM_ACCESS_TOKEN`.
+
+#### Instagram
+- **`PFADIOLTEN_INSTAGRAM_CLIENT_ID`**
+- **`PFADIOLTEN_INSTAGRAM_CLIENT_SECRET`**
+- **`PFADIOLTEN_INSTAGRAM_ACCESS_TOKEN`**
+
 ## Bugs & Fixes
 ### `devise` or `bcrypt` not found, but they are installed  
 Rails or bundler may throw an error regarding either devise (eg. `class Devise not found` and similar) or bcrypt (eg. `unable to load bcrypt_ext` and similar).

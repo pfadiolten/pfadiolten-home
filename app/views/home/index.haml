@@ -5,7 +5,7 @@
   .col-12.col-md-10
     .row
       // events
-      .category.col-12.col-md-5.col-lg-4.col-xl-3
+      .category.col-12.col-lg-4.col-xl-3
         .row
           .col-12
             .row
@@ -19,7 +19,7 @@
 
         .row.row-cards.row-deck.flex-nowrap.flex-md-wrap{ style: 'overflow-x: scroll;' }
           = list_any @home.events, else_say: t('events.index.no_events') do |event|
-            .col-11.col-sm-7.col-md-12
+            .col-11.col-sm-7.col-lg-12
               = render '/events/present',
                        event: event
 
@@ -52,93 +52,44 @@
 
         .row
           // non-news articles
-          .category.col-md-8
+          .category.col
             .row
               .col
                 .category__header
                   %h2.category__title
-                    = t('activerecord.models.article.other')
+                    = t('.info_title')
                   .category__options
                     - if policy(@home.articles).create?
                       %a.btn.btn-primary{ href: new_article_path }
                         %i.fe.fe-plus
+                        = t('activerecord.models.article.one')
+                    - if policy(@home.albums).create?
+                      %a.btn.btn-primary{ href: new_album_path }
+                        %i.fe.fe-plus
+                        = t('activerecord.models.album.one')
             .row
               .col
-                = list_any @home.articles, else_say: t('articles.index.no_articles') do |article|
-                  = render '/articles/present',
-                           article: article
+                = list_any @home.articles_and_albums, else_say: t('.no_infos') do |a|
+                  - if a.is_a?(Article)
+                    = render '/articles/present',
+                             article: a
+                  - else
+                    = render '/albums/present',
+                           album: a
 
-          // albums
-          .category.col-md-4
+          // instagram feed
+          .category.col-12.col-xl-4
             .row
               .col
                 .category__header
                   %h2.category__title
-                    = t('activerecord.models.album.other')
-                  .category__options
-                    - if policy(@home.albums).create?
-                      %a.btn.btn-primary{ href: new_album_path }
-                        %i.fe.fe-plus
+                    = t('.instagram')
             .row
               .col
-                = list_any @home.albums, else_say: t('albums.index.no_albums') do |album|
-                  = render '/albums/present',
-                           album: album
-
-
-  - if false
-    .row
-      .col-lg-10.col-lg-offset-1
-        .row
-          .col-md-3
-            .row.category-title
-              .col-xs-12
-                %h2.no-margin-top.text-center-sm-down
-                  %span.gap-right-1-sm-down= t('activerecord.models.event.other')
-                  - if policy(@events).create?
-                    %span.pull-right-md-up
-                      = link_to fa_icon('plus'), new_event_path, class: 'btn btn-primary'
-
-            .row
-              .col-xs-12
-                - if @events.any?
-                  - @events.each do |event|
-                    .row
-                      = col(md: 12, sm: 6) do
-                        = render 'events/event', event: event
-                - else
-                  = info t('events.index.no_events')
-
-          .col-md-6.pad-left-3-md-up.pad-right-3-md-up
-            .row.category-title
-              .col-xs-12.text-center
-                %h2.no-margin-top= t('.news')
-
-            .row.gap-top-1
-              .col-xs-12
-                - if @news.any?
-                  - @news.each do |article|
-                    .row.gap-bottom-1
-                      .col-xs-12
-                        = render 'articles/article', article: article
-                - else
-                  = info t('articles.index.no_articles')
-
-          .col-md-3
-            .row.category-title
-              .col-xs-12.text-right
-                %h2.no-margin-top.text-center-sm-down
-                  %span.gap-right-1-sm-down= t('activerecord.models.article.other')
-                  - if policy(@articles).create?
-                    %span.pull-left-md-up
-                      = link_to fa_icon('plus'), new_article_path, class: 'btn btn-primary'
-
-            .row
-              .col-xs-12
-                - if @articles.any?
-                  - @articles.each do |article|
-                    .text-center.gap-bottom-1
-                      .panel.panel-default.panel-link.no-margin{ data: { link: article_path(article) } }
-                        .panel-body= article.title
-                - else
-                  = info t('articles.index.no_articles')
+                .row.justify-content-center
+                  - @home.recent_instagram_posts.each do |post|
+                    .col-12.d-flex.justify-content-center
+                      .js-instagram-post{ data: { instagram: { link: post.link } } }
+                        .card
+                          .card-body.text-center
+                            %i.fe.fe-loader.animate.animate--spin
