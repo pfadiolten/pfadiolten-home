@@ -48,12 +48,12 @@ Their respective access information can either be set with private credentials,
 or be copied from the deployment server.
 
 #### OpenStreetMap
-Requires a valid access token in the environment variable `PFADIOLTEN_OSM_ACCESS_TOKEN`.
+- `PFADIOLTEN_OSM_ACCESS_TOKEN`.
 
 #### Instagram
-- **`PFADIOLTEN_INSTAGRAM_CLIENT_ID`**
-- **`PFADIOLTEN_INSTAGRAM_CLIENT_SECRET`**
-- **`PFADIOLTEN_INSTAGRAM_ACCESS_TOKEN`**
+- `PFADIOLTEN_INSTAGRAM_CLIENT_ID`
+- `PFADIOLTEN_INSTAGRAM_CLIENT_SECRET`
+- `PFADIOLTEN_INSTAGRAM_ACCESS_TOKEN`
 
 ## Bugs & Fixes
 ### `devise` or `bcrypt` not found, but they are installed  
