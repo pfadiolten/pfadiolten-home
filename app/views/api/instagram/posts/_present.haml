@@ -1,0 +1,8 @@
+-# post: Api::Instagram::PostPresenter
+
+- post_html, error = post.embedded
+- if error.nil?
+  = post_html
+- else
+  //TODO show nice error
+  = error

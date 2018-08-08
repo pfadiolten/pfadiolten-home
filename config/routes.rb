@@ -74,4 +74,10 @@ Rails.application.routes.draw do
 
     root to: 'home#index'
   end
+
+  namespace :api do
+    namespace :instagram do
+
+    end
+  end
 end

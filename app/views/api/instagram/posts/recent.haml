@@ -1,0 +1,6 @@
+
+.row
+  - @posts.each do |post|
+    .col-12.d-flex.justify-content-center
+      = render 'present',
+               post: post
