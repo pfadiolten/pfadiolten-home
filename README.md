@@ -48,29 +48,9 @@ Their respective access information can either be set with private credentials,
 or be copied from the deployment server.
 
 #### OpenStreetMap
-- `PFADIOLTEN_OSM_ACCESS_TOKEN`.
+- `PFADIOLTEN_OSM_ACCESS_TOKEN`
 
 #### Instagram
 - `PFADIOLTEN_INSTAGRAM_CLIENT_ID`
 - `PFADIOLTEN_INSTAGRAM_CLIENT_SECRET`
 - `PFADIOLTEN_INSTAGRAM_ACCESS_TOKEN`
-
-## Bugs & Fixes
-### `devise` or `bcrypt` not found, but they are installed  
-Rails or bundler may throw an error regarding either devise (eg. `class Devise not found` and similar) or bcrypt (eg. `unable to load bcrypt_ext` and similar).
-The fix to this is to reinstall both gems with the explicit platform `ruby`.
-
-1. `gem uninstall devise`
-2. `gem uninstall bcrypt`
-3. `gem install bcrypt --platform ruby`
-4. `gem install devise --platform ruby`
-
-It is advised to uninstall all versions of devise and bcrypt, regardless of platform or version.
-The installation commands may also have to be supplied with a version tag.
-
-Some parts of rails (migrations and others) may still not work correctly even after applying this fix.
-Adding `ruby` as a valid platform for bundler should get rid of all remaining issues.
-
-```
-$ bundle lock --add-platform ruby
-```
