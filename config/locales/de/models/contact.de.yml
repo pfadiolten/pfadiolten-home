@@ -6,10 +6,10 @@ de:
     nav: "Kontakt"
 
     index:
-      people:    "Kontakte"
-      locations: "Pfadiheime"
-      banking:   "Zahlungsverbindung"
-      mail:      "E-Mail"
+      people:       "Kontakte"
+      locations:    "Pfadiheime"
+      banking:      "Zahlungsverbindung"
+      general_mail: "für allgemeine Fragen"
 
       infos:
         renting: "Vermietung"
