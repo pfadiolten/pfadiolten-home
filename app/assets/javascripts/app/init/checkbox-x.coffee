@@ -1,5 +1,5 @@
-$ ->
-  $('.checkbox input[type=checkbox]').checkboxX(
+App.onLoad ($root) ->
+  $root.find('.checkbox input[type=checkbox]').checkboxX(
     threeState:    false
     enclosedLabel: true
     iconChecked:   '<i class="fe fe-check text-success"></i>'

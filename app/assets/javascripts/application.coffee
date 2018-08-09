@@ -27,12 +27,11 @@
 ## app
 #= require app/globals
 #= require app/init
+#= require app/inputs
 #= require app/components
 
 #= require app/serviceworker/companion.coffee.erb
 
-$.extend window.App ?= {},
-  ready: $(document).ready
-
-App.ready ->
+App.onPageLoad ->
   $('body')[0].addEventListener('touchstart', (->), passive: true)
+

@@ -36,15 +36,14 @@
               = article.text.html_safe
         .row
           .col-12
-            .js-expandable__toggle
-              .row.justify-content-center
-                .col-4
-                  .js-expandable__toggle__show-more.mt-4
-                    %button.btn.btn-black.btn-block{ type: 'button' }
-                      %i.fe.fe-chevron-down
-                  .js-expandable__toggle__show-less.mt-4
-                    %button.btn.btn-black.btn-block{ type: 'button' }
-                      %i.fe.fe-chevron-up
+            .row.justify-content-center
+              .col-4
+                .js-expandable__show-more.mt-4
+                  %button.btn.btn-black.btn-block{ type: 'button' }
+                    %i.fe.fe-chevron-down
+                .js-expandable__show-less.mt-4
+                  %button.btn.btn-black.btn-block{ type: 'button' }
+                    %i.fe.fe-chevron-up
   .card-footer.p-0
     .row
       - show_more = (path = article_path(article)) && !current_page?(path)

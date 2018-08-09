@@ -1,3 +1,5 @@
+
+
 $ ->
   $('.js-lazy-element').each query arg ($element) ->
     api = $element.data('url')

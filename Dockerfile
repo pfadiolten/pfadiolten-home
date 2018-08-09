@@ -5,7 +5,7 @@ WORKDIR /pfadiolten-home
 COPY Gemfile      /pfadiolten-home/Gemfile
 COPY Gemfile.lock /pfadiolten-home/Gemfile.lock
 
-RUN gem update bundler
+#RUN gem update bundler
 RUN bundle install
 
 COPY . /pfadiolten-home

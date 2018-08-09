@@ -11,7 +11,7 @@
 
       .row
         .col-12
-          = f.input :image, as: 'file_handle',
+          = f.input :image, as: 'filehandle',
                     input_html: { accept: 'image/*' }
 
       .row
@@ -24,11 +24,10 @@
         .col-12.col-sm-5.mt-6
           = f.input :is_pinned, as: :boolean
         .col-12.col-sm-7
-          = f.input :pinned_till, as: :date_time,
-                    required: false,
-                    input_html: { date_type: :date,
-                                  data: { 'hidden-by': '#article_is_pinned',
-                                          'hidden-in': '.article_pinned_till' } }
+          .js-toggleable.invisible{ data: { toggler: '#article_is_pinned', 'toggle-on': 'visible', 'toggle-off': 'invisible' } }
+            = f.input :pinned_till, as: :date_time,
+                      required: false,
+                      input_html: { date_type: :date }
 
       .row
         - if @article.persisted? && policy(@article).destroy?

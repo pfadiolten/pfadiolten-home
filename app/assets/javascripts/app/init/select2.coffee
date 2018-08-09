@@ -1,5 +1,5 @@
-$ ->
-  $('select').each query arg ($select) ->
+App.onLoad ($root) ->
+  $root.find('select').each query arg ($select) ->
     $select.select2(
       theme:    'bootstrap4'
       language: 'de'

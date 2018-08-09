@@ -1,9 +1,8 @@
 class PostPresenter < ApplicationPresenter
-  require 'net/http'
-
   def embedded
-    uri = URI("https://api.instagram.com/oembed?url=#{link}")
-    res = Net::HTTP.get_response(uri)
+    response = HTTParty.get("https://api.instagram.com/oembed?url=#{link}")
+    raise response.methods.to_s
+
     if res.is_a?(Net::HTTPSuccess)
       [ res.body.html.html_safe, nil ]
     else

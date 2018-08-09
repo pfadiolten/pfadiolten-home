@@ -11,7 +11,7 @@
 .row.justify-content-center
   .col.col-sm-11.col-md-10.col-lg-7.col-xl-6
     = list_any @roles.sorted_by_rights, else_say: t('.no_roles') do |role|
-      .card.hoverable.mb-2{ data: { link: group_role_path(@group, role) } }
+      .card.hoverable.js-link.mb-2{ data: { url: group_role_path(@group, role) } }
         .card-status.card-status-left.bg-primary.hover
         .card-header.justify-content-center
           .card-title= role.name

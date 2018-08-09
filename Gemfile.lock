@@ -385,6 +385,7 @@ DEPENDENCIES
   devise-i18n
   font-awesome-rails
   haml-rails (>= 1.0.0)
+  httparty
   i18n-recursive-lookup (>= 0.0.5)
   instagram_api_client
   jquery-rails

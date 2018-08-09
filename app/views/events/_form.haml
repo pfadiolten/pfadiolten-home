@@ -26,7 +26,10 @@
         .col-12.col-md-4
           = f.input :ends_at, as: :date_time
         .col-12.col-md-8
-          = f.input :end_location, as: :string, input_html: { data: { mirror: { source: '#event_start_location', destination: 'placeholder' } } }
+          = f.input :end_location,
+                    as: :string,
+                    input_html: { class: 'js-mirror',
+                                  data: { 'mirror-of': '#event_start_location' } }
 
       .row
         .col-12

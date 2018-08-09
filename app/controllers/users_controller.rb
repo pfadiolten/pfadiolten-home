@@ -42,8 +42,9 @@ class UsersController < ApplicationController
   end
 
   def update_password
+    is_own_password = current_user.id == @user.id
     @user.update(user_password_params)
-    sign_in(@user, bypass: true) unless @user.errors.any?
+    sign_in(@user, bypass: true) unless !is_own_password || @user.errors.any?
     respond_with @user, action: 'edit_password'
   end
 

@@ -1,11 +1,11 @@
 - title
 
-.search-list
+.js-search-list
   .row.justify-content-center.mb-4
     .col-12.col-md-8.col-lg-6.col-xl-4
       .row
         .col
-          %input.form-control.search-input.h-100{ type: 'text', placeholder: t('users.index.search_users') }
+          %input.form-control.js-search-list__input.h-100{ type: 'text', placeholder: t('users.index.search_users') }
         - if policy(User).create?
           .col-2
             %a.btn.btn-primary.float-left{ href: new_user_path }
@@ -15,5 +15,5 @@
     .col-md-10
       .row.row-cards.row-deck.justify-content-center
         = list_any @users, else_say: t('.no_users') do |user|
-          .col-6.col-md-4.col-lg-3.search-element{ data: { terms: [ user.scout_name, user.first_name, user.last_name  ].to_json } }
+          .col-6.col-md-4.col-lg-3.js-search-list__element{ data: { terms: [ user.scout_name, user.first_name, user.last_name  ].to_json } }
             = render '/users/present', user: user

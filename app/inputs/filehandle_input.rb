@@ -1,4 +1,4 @@
-class FileHandleInput < SimpleForm::Inputs::Base
+class FilehandleInput < SimpleForm::Inputs::Base
   def input(wrapper_options)
     attribute = I18n.t("activerecord.attributes.#{lookup_model_names.join('.')}.#{attribute_name}", default: attribute_name.to_s.capitalize)
     text = options.delete(:text) || I18n.t('select_image', attribute: attribute)
