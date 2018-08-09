@@ -1,0 +1,11 @@
+
+.loader {
+  &.loader--box {
+    border: 1px solid $border-color;
+
+    &::content {
+      font-family: 'feather' !important;
+      content: "\e984";
+    }
+  }
+}

@@ -1,5 +1,5 @@
 #= require jquery-ui
 #= require jquery-ui/widgets/autocomplete
 
-$ ->
-  $('.sortable').sortable()
+App.onLoad ($root) ->
+  $root.find('.sortable').sortable()

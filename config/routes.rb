@@ -75,9 +75,11 @@ Rails.application.routes.draw do
     root to: 'home#index'
   end
 
-  namespace :api do
-    namespace :instagram do
-
+  scope :api do
+    scope :instagram do
+      scope :posts do
+        get 'recent', to: 'api/instagram/posts#recent', as: 'recent_instagram_posts_api'
+      end
     end
   end
 end

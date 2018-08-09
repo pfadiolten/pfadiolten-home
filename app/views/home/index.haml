@@ -88,9 +88,5 @@
             .row
               .col
                 .row.justify-content-center
-                  - @home.recent_instagram_posts.each do |post|
-                    .col-12.d-flex.justify-content-center
-                      .js-instagram-post{ data: { instagram: { link: post.link } } }
-                        .card
-                          .card-body.text-center
-                            %i.fe.fe-loader.animate.animate--spin
+                  .js-lazy-element{ data: { url: recent_instagram_posts_api_path } }
+                    .loader.loader--box

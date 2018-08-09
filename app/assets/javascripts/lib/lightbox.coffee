@@ -13,9 +13,9 @@ noPixel = (value) ->
   else
     parseInt(value.replace(/px/, ''))
 
-$ ->
+App.onLoad ($root) ->
 # editing of albums, used in /edit
-  $('.editable-gallery').each query arg ($gallery) ->
+  $root.find('.editable-gallery').each query arg ($gallery) ->
     $removeInput = $gallery.find('input#deletedImages')
     ids          = $gallery.data('ids')
     removedIds   = {}

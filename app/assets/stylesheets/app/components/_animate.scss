@@ -2,11 +2,16 @@
 // ===
 // animations
 
+@mixin animate-spin {
+  animation: animate--spin 2s infinite linear;
+}
+
 .animate {
   &.animate--spin {
-    animation: animate--spin 2s infinite linear;
+    @include animate-spin;
   }
 }
+
 
 @keyframes animate--spin {
   0% {

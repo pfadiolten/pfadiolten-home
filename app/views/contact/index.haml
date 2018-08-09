@@ -25,6 +25,14 @@
                   .row
                     .col-12
                       = mail_to person.mail, nil, encode: :javascript
+        .row.text-center.mt-2
+          .col
+            .row
+              .col-12
+                %strong= t('.mail')
+            .row
+              .col-12
+                = mail_to Settings.social.mail, nil, encode: :javascript
 
     .row.mb-6
       .col-12
@@ -59,7 +67,7 @@
                             markers: [ { latlng: [ coordinates.x, coordinates.y ] } ]
 
 
-        .row
+        .row.mt-2
           .col-12.text-center
             .row
               .col-12
