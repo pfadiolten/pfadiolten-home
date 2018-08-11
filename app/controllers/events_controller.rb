@@ -14,7 +14,17 @@ class EventsController < ApplicationController
       @event = Event.new(detail: type.new, user_in_charge: current_user)
       @event.starts_at = (Date.today.sunday.in_time_zone - 1.day).to_datetime + 14.hours
       @event.ends_at   = @event.starts_at + 3.hours
-      current_user.groups.each { |group| @event.event_groups.build(group: group) }
+
+      if (groups = params[:groups])
+        groups.each do |abbr|
+          group = Group.with_abbreviation(abbr).first || raise("group with abbreviation \"#{group}\" not found")
+          @event.event_groups.build(group: group)
+        end
+      else
+        current_user.groups.each do |group|
+          @event.event_groups.build(group: group)
+        end
+      end
       authorize @event, :new?
       render new_template
     end

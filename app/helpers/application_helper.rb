@@ -76,13 +76,30 @@ module ApplicationHelper
     exists_css?(controller_asset)
   end
 
-  def list_any(records, else_say:, &block)
+  def list_any(records, else_say:, alert_options: {}, &block)
     if records.any?
       records.each(&block)
       return
     elsif else_say.present?
+      options = { class: 'alert alert-info text-center', role: 'alert'}.with_indifferent_access
+      alert_options.each_pair do |k, v|
+        existing_v = options[k]
+        options[k] = v and return if existing_v.nil?
+
+        case v
+        when String
+          options[k] = "#{v} #{existing_v}"
+        when Hash
+          options[k] = v.merge(v)
+        when Array
+          options[k] = v + existing_v
+        else
+          options[k] = v
+        end
+      end
+
       content_tag('div', class: 'col-12') do
-        content_tag('div', class: 'alert alert-info text-center', role: 'alert') do
+        content_tag('div', options) do
           else_say
         end
       end

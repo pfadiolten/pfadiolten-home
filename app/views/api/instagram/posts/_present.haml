@@ -1,6 +1,9 @@
 -# post: Api::Instagram::PostPresenter
+-# include_script: Boolean = true
 
-- post_html, error = post.embedded
+- include_script = true unless defined? include_script
+
+- post_html, error = post.embedded(include_script: include_script)
 - if error.nil?
   = post_html
 - else

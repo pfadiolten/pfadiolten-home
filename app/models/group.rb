@@ -30,6 +30,10 @@ class Group < ApplicationRecord
     order(index: 'asc')
   end
 
+  scope :with_abbreviation, ->(abbr) {
+    where('LOWER(abbreviation) = LOWER(?)', abbr)
+  }
+
 # Callbacks
   before_validation :load_index, on: %i[ create ]
 

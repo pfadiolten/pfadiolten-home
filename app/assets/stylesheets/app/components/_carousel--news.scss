@@ -13,7 +13,7 @@
     & > .carousel-item {
       background-color: rgba($secondary, .7);
       @include media-breakpoint-only(xl) {
-        height: 30rem;
+        height: 25rem;
       }
       @include media-breakpoint-only(lg) {
         height: 20rem;

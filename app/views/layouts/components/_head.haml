@@ -26,10 +26,10 @@
 
 %link{ rel: 'manifest', href: '/manifest.json' }
 = tinymce_assets
-%script{ type: 'text/javascript' }
-  = "window.App = window.App || {};"
-  = "window.App.controller = '#{controller_name}';".html_safe
-  = "window.App.action     = '#{action_name}';".html_safe
+%script
+  window.App = window.App || {};
+  window.App.controller = '#{controller_name}';
+  window.App.action     = '#{action_name}';
 = stylesheet_link_tag    'application', media: 'all'
 = stylesheet_link_tag controller_asset if controller_css?
 = javascript_include_tag 'application'
