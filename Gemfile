@@ -141,7 +141,7 @@ gem 'serviceworker-rails'
 gem 'lightbox-bootstrap-rails', '5.1.0.1'
 
 # wysiwyg editor
-gem 'ckeditor'
+gem 'summernote-rails'
 
 # gem 'tui-editor-rails', path: '../tui-editor-rails'
 
