@@ -18,7 +18,7 @@
           %img.img-thumbnail{ src: image_path(image.file.thumbnail), alt: "Image #{i}" }
       .col-3
         %a.btn.btn-secondary.btn-block.d-flex.align-items-center.justify-content-center{ href: album_path(album), style: 'height: 100%' }
-          %i.fe.fe-more-horizontal
+          = render '/shared/more'
   .card-footer.p-0
     = render '/shared/created_by',
              created_at: album.created_at

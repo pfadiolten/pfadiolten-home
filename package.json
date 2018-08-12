@@ -2,6 +2,7 @@
   "name": "pfadiolten-home",
   "dependencies": {
     "bootstrap-fileinput": "^4.4.8",
+    "jquery-hammerjs": "^2.0.0",
     "select2-bootstrap4-theme": "^1.0.0"
   },
   "version": "1.0.1",

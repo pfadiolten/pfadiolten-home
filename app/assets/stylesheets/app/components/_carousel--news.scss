@@ -35,9 +35,10 @@
         bottom:     0.5rem;
         left:       auto;
         text-align: left;
-        max-width:  60%;
+        max-width:  80%;
         @include media-breakpoint-only(xs) {
-          max-width: 80%;
+          left: 0.5rem;
+          max-width: 100%;
         }
         padding: {
           left: 1rem;
@@ -47,12 +48,32 @@
           color: rgba($primary, .7)
         }
 
-        & > .carousel-text {
+        .carousel-text {
           position: relative;
           height:   5em;
           overflow: hidden;
+          @include media-breakpoint-down(md) {
+            height: 3em;
+          }
+        }
+
+        .carousel-caption__title {
+          @include media-breakpoint-down(md) {
+            font-size: 1.2em;
+          }
         }
       }
+    }
+  }
+
+  & > .carousel-indicators {
+    bottom:          auto;
+    top:             10px;
+    justify-content: center;
+    margin-right:    0;
+    @include media-breakpoint-up(sm) {
+      justify-content: left;
+      margin-top:      8px;
     }
   }
 }

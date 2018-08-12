@@ -13,6 +13,21 @@ bootstrap-fileinput@^4.4.8:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.1.1.tgz#3aec85000fa619085da8d2e4983dfd67cf2114cb"
 
+hammerjs@2.0.x:
+  version "2.0.8"
+  resolved "https://registry.yarnpkg.com/hammerjs/-/hammerjs-2.0.8.tgz#04ef77862cff2bb79d30f7692095930222bf60f1"
+
+jquery-hammerjs@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/jquery-hammerjs/-/jquery-hammerjs-2.0.0.tgz#08b518fa25fb1e8ce8fe3212c387da53bbe14048"
+  dependencies:
+    hammerjs "2.0.x"
+    jquery "2.1.x"
+
+jquery@2.1.x:
+  version "2.1.4"
+  resolved "https://registry.yarnpkg.com/jquery/-/jquery-2.1.4.tgz#228bde698a0c61431dc2630a6a154f15890d2317"
+
 "jquery@>= 1.9.0":
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.3.1.tgz#958ce29e81c9790f31be7792df5d4d95fc57fbca"

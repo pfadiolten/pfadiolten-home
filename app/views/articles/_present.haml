@@ -54,4 +54,5 @@
       - if show_more
         .col-2.pl-0
           %a.btn.btn-white.d-flex.align-items-center.justify-content-center.h-100.w-100{ href: path }
-            %i.fe.fe-more-horizontal
+            = render '/shared/more',
+                     text: t('articles.more')

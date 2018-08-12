@@ -125,10 +125,6 @@ gem 'select2-rails', '>= 4.0.3'
 # HTML datetime input for bootstrap (a.k.a. Tempus Dominus)
 gem 'bootstrap4-datetime-picker-rails'
 
-# WYSIWYG text editor
-gem 'tinymce-rails', '>= 4.7.4'
-gem 'tinymce-rails-langs', '>= 4.20160310'
-
 # JS datetime library, required by 'bootstrap3-datetimepicker-rails'
 gem 'momentjs-rails', '>= 2.17.1'
 
@@ -143,6 +139,9 @@ gem 'serviceworker-rails'
 
 # lightbox2 integration
 gem 'lightbox-bootstrap-rails', '5.1.0.1'
+
+# wysiwyg editor
+gem 'ckeditor'
 
 # gem 'tui-editor-rails', path: '../tui-editor-rails'
 

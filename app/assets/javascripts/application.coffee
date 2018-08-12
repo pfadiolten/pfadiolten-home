@@ -21,14 +21,12 @@
 #= require select2-full
 #= require select2_locale_de
 
-## tinymce
-#= require tinymce-jquery
-
 ## app
 #= require app/globals
 #= require app/init
 #= require app/inputs
 #= require app/components
+#= require app/types
 
 #= require app/serviceworker/companion.coffee.erb
 

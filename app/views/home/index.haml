@@ -27,7 +27,7 @@
         // news
         .row.mb-6
           .col-12
-            #newsCarousel.carousel.carousel--news.slide{ data: { ride: 'carousel' } }
+            #newsCarousel.carousel.carousel--news.carousel--swipeable.slide{ data: { ride: 'carousel' } }
               %ol.carousel-indicators
                 %li.active{ data: { target: '#newsCarousel', slide_to: 0 } }
                 - @home.news.each_with_index do |_news, i|
@@ -44,13 +44,17 @@
                     - if news.image?
                       %img.d-block{ src: image_path(news.image), alt: "Image for #{news.title}" }
                     .carousel-caption
-                      %h2= news.title
-                      .carousel-text
-                        = news.text.html_safe
-                      %p.text-right.mb-0
-                        %a.btn.btn-secondary{ href: article_path(news) }
-                          %i.fe.fe-more-horizontal
-
+                      .row
+                        .col
+                          %h2.carousel-caption__title= news.title
+                      .row
+                        .col
+                          .carousel-text
+                            = news.text.html_safe
+                        .col-auto.d-flex.justify-content-center.align-items-end
+                          %a.btn.btn-secondary{ href: article_path(news) }
+                            = render '/shared/more',
+                                     text: t('articles.more')
         .row
           // non-news articles
           .category.col
@@ -86,7 +90,6 @@
                   %h2.category__title
                     = t('.instagram')
             .row
-              .col
-                .row.justify-content-center
-                  .js-lazy-element{ data: { url: recent_instagram_posts_api_path } }
-                    .loader.loader--box
+              .col.d-flex.justify-content-center
+                .js-lazy-element{ data: { url: recent_instagram_posts_api_path } }
+                  .loader.loader--box

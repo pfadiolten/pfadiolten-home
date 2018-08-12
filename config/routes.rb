@@ -82,4 +82,6 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  mount Ckeditor::Engine => '/ckeditor'
 end
