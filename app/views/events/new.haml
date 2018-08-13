@@ -6,7 +6,7 @@
       - Event.detail_types.each do |detail, _|
         %div{ class: "col-#{12 / Event.detail_types.count}" }
           .card.text-center.hoverable.js-link{ data: { url: url_for(action: "new_#{detail}") } }
-            .card-status.card-status-left.bg-primary.hover
+            .card-status.card-status-left.bg-primary.hoverable__element
             .card-body{ style: 'font-size: 2em;' }
               %i.fe{ class: "fe-#{icons[detail]}" }
             .card-header.justify-content-center

@@ -3,6 +3,8 @@
 // a category of elements
 
 .category {
+  margin-bottom: 1rem;
+
   .category__header {
     display:         flex;
     justify-content: space-between;
@@ -17,6 +19,12 @@
     }
 
     .category__options {
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    &.category--events {
+      position: absolute;
     }
   }
 }

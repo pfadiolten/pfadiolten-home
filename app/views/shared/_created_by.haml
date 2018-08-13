@@ -4,11 +4,11 @@
 - creator ||= nil
 
 - if creator.present?
-  = link_to url_for(creator), class: 'btn btn-white d-flex align-items-center justify-content-end' do
+  %a.btn.btn-white.d-flex.align-items-center.justify-content-end.p-1{ href: url_for(creator) }
     %div.text-right.mr-4
       = creator.scout_name
       %small.d-block.text-muted= time_ago_in_words(created_at)
-    %img.avatar.avatar-lg{ src: image_path(creator.avatar) }
+    %img.avatar.avatar-md{ src: image_path(creator.avatar) }
 - else
   .mr-4.p-2
     %small.d-block.text-muted.text-right

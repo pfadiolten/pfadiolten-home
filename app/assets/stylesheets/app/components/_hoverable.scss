@@ -3,12 +3,12 @@
 // hides an element inside a parent container unless the parent is hovered
 
 .hoverable {
-  .hover {
+  .hoverable__element {
     display: none;
   }
 
   &:hover {
-    .hover {
+    .hoverable__element {
       display: unset;
     }
   }

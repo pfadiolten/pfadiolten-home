@@ -3,93 +3,41 @@
 
 .row.justify-content-center
   .col-12.col-md-10
-    .row
-      // events
-      .category.col-12.col-lg-4.col-xl-3
-        .row
-          .col-12
-            .row
-              .col-12.category__header
-                %h2.category__title
-                  = t('activerecord.models.event.other')
-                .category__options
-                  - if policy(@home.events).create?
-                    %a.btn.btn-primary{ href: new_event_path }
-                      %i.fe.fe-plus
+    .row.justify-content-lg-end
+      .order-lg-2.col-12.col-lg-8.col-xl-9
+        = render '/home/categories/carousel',
+                 articles: @home.news
 
-        .row.row-cards.row-deck.flex-nowrap.flex-md-wrap{ style: 'overflow-x: scroll;' }
-          = list_any @home.events, else_say: t('events.index.no_events') do |event|
-            .col-11.col-sm-7.col-lg-12
-              = render '/events/present',
-                       event: event
+      .order-lg-1.col-12.col-lg-4.col-xl-3
+        = render "/home/categories/events",
+               events: @home.events
 
-      .col
-        // news
-        .row.mb-6
-          .col-12
-            #newsCarousel.carousel.carousel--news.carousel--swipeable.slide{ data: { ride: 'carousel' } }
-              %ol.carousel-indicators
-                %li.active{ data: { target: '#newsCarousel', slide_to: 0 } }
-                - @home.news.each_with_index do |_news, i|
-                  %li{ data: { target: '#newsCarousel', slide_to: i + 1 } }
+      .order-lg-3.col-12.col-lg-8.col-xl-6
+        = render '/home/categories/news',
+                       news: @home.articles_and_albums
 
-              .carousel-inner
-                .carousel-item.active
-                  %img.d-block{ src: image_path('welcome'), alt: 'welcome' }
-                  .carousel-caption
-                    %h1.mb-0= t('.welcome')
+      .order-lg-4.col-12.col-lg-8.col-xl-3
+        = render '/home/categories/instagram_feed'
 
-                - @home.news.each do |news|
-                  .carousel-item
-                    - if news.image?
-                      %img.d-block{ src: image_path(news.image), alt: "Image for #{news.title}" }
-                    .carousel-caption
-                      .row
-                        .col
-                          %h2.carousel-caption__title= news.title
-                      .row
-                        .col
-                          .carousel-text
-                            = news.text.html_safe
-                        .col-auto.d-flex.justify-content-center.align-items-end
-                          %a.btn.btn-secondary{ href: article_path(news) }
-                            = render '/shared/more',
-                                     text: t('articles.more')
-        .row
-          // non-news articles
-          .category.col
-            .row
-              .col
-                .category__header
-                  %h2.category__title
-                    = t('.info_title')
-                  .category__options
-                    - if policy(@home.articles).create?
-                      %a.btn.btn-primary{ href: new_article_path }
-                        %i.fe.fe-plus
-                        = t('activerecord.models.article.one')
-                    - if policy(@home.albums).create?
-                      %a.btn.btn-primary{ href: new_album_path }
-                        %i.fe.fe-plus
-                        = t('activerecord.models.album.one')
-            .row
-              .col
-                = list_any @home.articles_and_albums, else_say: t('.no_infos') do |a|
-                  - if a.is_a?(Article)
-                    = render '/articles/present',
-                             article: a
-                  - else
-                    = render '/albums/present',
-                           album: a
 
-          // instagram feed
-          .category.col-12.col-xl-4
-            .row
-              .col
-                .category__header
-                  %h2.category__title
-                    = t('.instagram')
-            .row
-              .col.d-flex.justify-content-center
-                .js-lazy-element{ data: { url: recent_instagram_posts_api_path } }
-                  .loader.loader--box
+- if false
+  .row.justify-content-center
+    .col-12.col-md-10
+      .row
+        .col-12.col-xl-10
+          = render '/home/categories/carousel',
+                   articles: @home.news
+
+      .row.mt-4
+        .col-12.col-lg-4.col-xl-3
+          = render "/home/categories/events",
+                   events: @home.events
+
+        .col
+          .row
+            .col
+              = render '/home/categories/news',
+                       news: @home.articles_and_albums
+
+            .col-12.col-xl-4
+              = render '/home/categories/instagram_feed'

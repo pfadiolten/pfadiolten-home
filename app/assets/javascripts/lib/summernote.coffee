@@ -5,6 +5,7 @@ App.onLoad ($root) ->
   $('.text-editor').summernote
     lang: 'de-DE'
     height: 300
+    defaultFontName: 'Encode Sans Expanded'
     toolbar: [
       [
         'misc'

@@ -1,0 +1,26 @@
+-# news: [Article|Album]
+
+.category
+  .row
+    .col
+      .category__header
+        %h2.category__title
+          = t('home.index.news')
+        .category__options
+          - if policy(Article).create?
+            %a.btn.btn-primary{ href: new_article_path }
+              %i.fe.fe-plus
+              = t('activerecord.models.article.one')
+          - if policy(Album).create?
+            %a.btn.btn-primary{ href: new_album_path }
+              %i.fe.fe-plus
+              = t('activerecord.models.album.one')
+  .row
+    .col
+      = list_any news, else_say: t('.no_infos') do |a|
+        - if a.is_a?(Article)
+          = render '/articles/present_full',
+                             article: a
+        - else
+          = render '/albums/present',
+                           album: a
