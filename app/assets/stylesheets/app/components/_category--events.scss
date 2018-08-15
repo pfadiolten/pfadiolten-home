@@ -1,0 +1,36 @@
+// .category-events
+// ===
+// a list of event records
+
+.category.category--events {
+  & > .category__header {
+    @extend .row;
+
+    .category__title {
+
+    }
+    .category__options {
+
+    }
+  }
+
+  & > .category__body {
+    @extend .row;
+    overflow-x: scroll;
+    flex-wrap: nowrap;
+    & > .col, & > [class*='col-'] {
+      display: flex;
+      @include media-breakpoint-down(md) {
+        flex-direction: column;
+      }
+      @include media-breakpoint-up(lg) {
+        align-items: stretch;
+      }
+    }
+
+    @include media-breakpoint-up(lg) {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+}
