@@ -28,3 +28,8 @@ App.onLoad ($root) ->
         [ 'ol', 'ul', 'paragraph' ]
       ]
     ]
+    callbacks:
+      onPaste: (e) ->
+        bufferText = ((e.originalEvent || e).clipboardData || window.clipboardData).getData('Text')
+        e.preventDefault()
+        document.execCommand('insertText', false, bufferText);
