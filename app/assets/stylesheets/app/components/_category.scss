@@ -21,17 +21,6 @@
     .category__options {
     }
   }
-
-  @include media-breakpoint-up(lg) {
-    &.category--events {
-      position: absolute;
-      padding-bottom: 3rem;
-      padding: {
-        left:  inherit;
-        right: inherit;
-      }
-    }
-  }
 }
 
 

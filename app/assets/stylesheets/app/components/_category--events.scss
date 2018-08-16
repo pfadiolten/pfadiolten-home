@@ -4,8 +4,6 @@
 
 .category.category--events {
   & > .category__header {
-    @extend .row;
-
     .category__title {
 
     }
@@ -18,7 +16,12 @@
     @extend .row;
     overflow-x: scroll;
     flex-wrap: nowrap;
-    & > .col, & > [class*='col-'] {
+    & > .event {
+      @extend
+        .col-11,
+        .col-sm-7,
+        .col-lg-12;
+
       display: flex;
       @include media-breakpoint-down(md) {
         flex-direction: column;
@@ -31,6 +34,15 @@
     @include media-breakpoint-up(lg) {
       flex-wrap: wrap;
       justify-content: center;
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    position: absolute;
+    padding-bottom: 3rem;
+    padding: {
+      left:  inherit;
+      right: inherit;
     }
   }
 }
