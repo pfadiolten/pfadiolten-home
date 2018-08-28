@@ -31,8 +31,4 @@ protected
       image
     end
   end
-
-  def extension
-    'png'
-  end
 end

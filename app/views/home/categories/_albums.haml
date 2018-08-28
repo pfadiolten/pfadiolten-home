@@ -1,0 +1,14 @@
+-# albums: [Album]
+
+.category
+  .category__header
+    %h2.category__title
+      = t('home.index.albums')
+    .category__options
+      - if policy(Album).create?
+        %a.btn.btn-primary{ href: new_album_path }
+          %i.fe.fe-plus
+  .category__body
+    = list_any albums, else_say: t('albums.index.no_albums') do |a|
+      = render '/albums/present',
+               album: a

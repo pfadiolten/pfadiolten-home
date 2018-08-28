@@ -21,6 +21,10 @@
     .category__options {
     }
   }
+
+  .category__body {
+    @extend .row;
+  }
 }
 
 

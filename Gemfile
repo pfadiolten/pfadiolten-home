@@ -99,7 +99,7 @@ gem 'httparty'
 gem 'haml-rails', '>= 1.0.0'
 
 # css preprocessor
-gem 'sass-rails', '>= 5.0'
+gem 'sassc-rails'
 
 # client-side programming language, compiles to js
 gem 'coffee-rails', '>= 4.2'

@@ -21,6 +21,7 @@ class AlbumsController < ApplicationController
   def create
     @album                = Album.new(album_params)
     @album.new_images     = uploaded_images
+
     authorize @album
     @album.save_with_images
     respond_with @album
@@ -34,6 +35,7 @@ class AlbumsController < ApplicationController
     @original_album       = get_album
     @album.deleted_images = deleted_images
     @album.new_images     = uploaded_images
+
     @album.assign_attributes(album_params)
     @album.save_with_images
     respond_with @album

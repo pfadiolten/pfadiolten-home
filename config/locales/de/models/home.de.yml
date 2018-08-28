@@ -5,6 +5,8 @@ de:
   home:
     index:
       title:      "Home"
+      articles:   "Aktuelles"
+      albums:     "Alben"
       news:       "Aktuell"
       instagram:  "Instagram"
       no_infos:   "keine Neuigkeiten gefunden"

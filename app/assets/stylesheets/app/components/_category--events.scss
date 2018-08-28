@@ -13,14 +13,12 @@
   }
 
   & > .category__body {
-    @extend .row;
     overflow-x: scroll;
     flex-wrap: nowrap;
     & > .event {
-      @extend
-        .col-11,
-        .col-sm-7,
-        .col-lg-12;
+      @extend .col-11;
+      @extend .col-sm-7;
+      @extend .col-lg-12;
 
       display: flex;
       @include media-breakpoint-down(md) {
@@ -38,8 +36,11 @@
   }
 
   @include media-breakpoint-up(lg) {
-    position: absolute;
+    position:       absolute;
     padding-bottom: 3rem;
+    width:          100%;
+    left: 0;
+    right: 0;
     padding: {
       left:  inherit;
       right: inherit;

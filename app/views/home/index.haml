@@ -13,31 +13,10 @@
                events: @home.events
 
       .order-lg-3.col-12.col-lg-8.col-xl-6
-        = render '/home/categories/news',
-                       news: @home.articles_and_albums
+        = render '/home/categories/articles',
+                 articles: @home.articles
+
 
       .order-lg-4.col-12.col-lg-8.col-xl-3
-        = render '/home/categories/instagram_feed'
-
-
-- if false
-  .row.justify-content-center
-    .col-12.col-md-10
-      .row
-        .col-12.col-xl-10
-          = render '/home/categories/carousel',
-                   articles: @home.news
-
-      .row.mt-4
-        .col-12.col-lg-4.col-xl-3
-          = render "/home/categories/events",
-                   events: @home.events
-
-        .col
-          .row
-            .col
-              = render '/home/categories/news',
-                       news: @home.articles_and_albums
-
-            .col-12.col-xl-4
-              = render '/home/categories/instagram_feed'
+        = render '/home/categories/albums',
+                 albums: @home.albums

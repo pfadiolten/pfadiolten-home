@@ -1,0 +1,14 @@
+-# articles: [Article]
+
+.category
+  .category__header
+    %h2.category__title
+      = t('home.index.articles')
+    .category__options
+      - if policy(Article).create?
+        %a.btn.btn-primary{ href: new_article_path }
+          %i.fe.fe-plus
+  .category__body
+    = list_any articles, else_say: t('articles.index.no_articles') do |a|
+      = render '/articles/present',
+               article: a
