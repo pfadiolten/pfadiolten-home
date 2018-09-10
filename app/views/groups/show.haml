@@ -9,10 +9,10 @@
           .btn-group
             - if policy(@group).update?
               = link_to edit_group_path, class: 'btn btn-primary' do
-                %i.fe.fe-edit
+                = icons.edit
             - if policy(@group.roles).index?
               = link_to group_roles_path(@group), class: 'btn btn-primary' do
-                %i.fe.fe-star
+                = icons.permissions
 
   .col-12
     .row.justify-content-center
@@ -52,7 +52,7 @@
                     - if policy(@group.roles).create?
                       .card-options
                         %a.btn.btn-primary{ href: new_group_members_path(@group) }
-                          %i.fe.fe-plus
+                          = icons.new
 
                   - roles = @group.roles.with_members.sorted_by_rights
                   = list_any roles, else_say: t('activerecord.models.user.zero'), alert_options: { class: 'mt-4' } do |role|
@@ -71,4 +71,4 @@
                                   - if policy(role).update?
                                     .d-flex.justify-content-end
                                       %a.btn.btn-primary{ href: edit_group_member_path(@group, member) }
-                                        %i.fe.fe-edit
+                                        = icons.edit

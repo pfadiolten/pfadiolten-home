@@ -4,7 +4,6 @@
 #= require app/components/link
 #= require app/components/expandable
 #= require app/components/mirror
-#= require app/components/lazy-element
 
 App.components = {}
 

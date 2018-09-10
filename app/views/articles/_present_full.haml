@@ -13,11 +13,11 @@
     .card-options
       - if editable && can.edit?
         %a.btn.btn-secondary.ml-2{ href: edit_article_path(article) }
-          %i.fe.fe-edit
+          = icons.edit
 
       - if article.still_pinned?
         .btn.btn-dark.disabled.ml-2{ style: 'cursor: default;' }
-          %i.fe.fe-sun
+          = icons.pinned
           - if article.pinned_till.present?
             %small.small.ml-1= l(article.pinned_till)
 
@@ -40,10 +40,10 @@
               .col-4
                 .js-expandable__show-more.mt-4
                   %button.btn.btn-black.btn-block{ type: 'button' }
-                    %i.fe.fe-chevron-down
+                    = icons.expand
                 .js-expandable__show-less.mt-4
                   %button.btn.btn-black.btn-block{ type: 'button' }
-                    %i.fe.fe-chevron-up
+                    = icons.shrink
   .card-footer.p-0
     .row
       - show_more = (path = article_path(article)) && !current_page?(path)

@@ -3,9 +3,10 @@
 .category
   #newsCarousel.carousel.carousel--news.carousel--swipeable.slide{ data: { ride: 'carousel' } }
     %ol.carousel-indicators
-      %li.active{ data: { target: '#newsCarousel', slide_to: 0 } }
-      - articles.each_with_index do |_article, i|
-        %li{ data: { target: '#newsCarousel', slide_to: i + 1 } }
+      - if articles.any?
+        %li.active{ data: { target: '#newsCarousel', slide_to: 0 } }
+        - articles.each_with_index do |_article, i|
+          %li{ data: { target: '#newsCarousel', slide_to: i + 1 } }
 
     .carousel-inner
       .carousel-item.active

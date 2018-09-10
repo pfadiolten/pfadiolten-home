@@ -7,11 +7,11 @@
         .btn-group
           - if policy(@album).download?
             = link_to download_album_path, class: 'btn btn-primary' do
-              %i.fe.fe-download
+              = icons.download
 
           - if policy(@album).update?
             = link_to edit_album_path, class: 'btn btn-primary' do
-              %i.fe.fe-edit
+              = icons.edit
 
     - if (description = @album.description)
       .row.mt-4

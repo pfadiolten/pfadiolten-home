@@ -10,7 +10,7 @@
     .category__options
       - if policy(events).create?
         %a.btn.btn-primary{ href: new_event_path }
-          %i.fe.fe-plus
+          = icons.new
 
   .category__body
     = list_any events, else_say: t('events.index.no_events') do |event|

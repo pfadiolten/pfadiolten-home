@@ -1,12 +1,13 @@
 FROM ruby:2.5.1-alpine3.7
 
-RUN apk add --update \
-    build-base \
-    git \
-    linux-headers \
-    postgresql-dev \
-    nodejs \
-    tzdata
+RUN apk --update add    \
+    build-base          \
+    git                 \
+    linux-headers       \
+    postgresql-dev      \
+    nodejs              \
+    tzdata              \
+    imagemagick file
 
 WORKDIR /pfadiolten-home
 COPY Gemfile      .

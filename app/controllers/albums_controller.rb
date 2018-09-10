@@ -1,6 +1,6 @@
-require 'zip'
-
 class AlbumsController < ApplicationController
+  require 'zip'
+
   before_action :load_album, except: %i[ index new create ]
 
   enforce_login! except: %i[ index show download ]
@@ -21,7 +21,6 @@ class AlbumsController < ApplicationController
   def create
     @album                = Album.new(album_params)
     @album.new_images     = uploaded_images
-
     authorize @album
     @album.save_with_images
     respond_with @album

@@ -1,6 +1,10 @@
+# NOTE:
+# Any problems with this uploader or it's children might be related to minimagick.
+# Make sure either imagemagick or graphicsmagick is installed on the system.
+
 class ImageUploader < ApplicationUploader
   include CarrierWave::MiniMagick
-  # MiniMagick.logger.level = Logger::DEBUG
+  (MiniMagick.logger.level = Logger::DEBUG) if Rails.env.development?
 
   process :as_png
 

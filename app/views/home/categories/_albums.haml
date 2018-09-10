@@ -7,7 +7,7 @@
     .category__options
       - if policy(Album).create?
         %a.btn.btn-primary{ href: new_album_path }
-          %i.fe.fe-plus
+          = icons.new
   .category__body
     = list_any albums, else_say: t('albums.index.no_albums') do |a|
       = render '/albums/present',

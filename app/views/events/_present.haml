@@ -24,10 +24,10 @@
           %h4= t("events.start")
       .row
         .col-12
-          %i.fe.fe-clock
+          = icons.time
           = l(event.starts_at, format: :long_no_year)
         .col-12
-          %i.fe.fe-map-pin
+          = icons.location
           = event.full_start_location
 
     .card-body.px-4.py-2.text-right
@@ -37,10 +37,10 @@
       .row
         .col-12
           = l(event.ends_at, format: :long_no_year)
-          %i.fe.fe-clock
+          = icons.time
         .col-12
           = event.full_end_location
-          %i.fe.fe-map-pin
+          = icons.location
 
     - if (user = event.user_in_charge)
       .card-footer.p-0
@@ -48,7 +48,7 @@
           .btn-group.col-12
             - if policy(event).edit?
               %a.btn.btn-primary.col-2.order-3{ href: url_for(action: "edit_#{event.detail.handle}", controller: 'events', id: event.id) }
-                %i.fe.fe-edit
+                = icons.edit
 
             - subject = t('events.cancel.subject', event_name: event.name, event_groups: event.groups.map(&:abbreviation).join(', '), start_date: l(event.starts_at.to_date, format: :short))
             - body    = t('events.cancel.body', user_in_charge: event.user_in_charge.scout_name)

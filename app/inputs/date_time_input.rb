@@ -6,13 +6,11 @@ class DateTimeInput < SimpleForm::Inputs::Base
     date_type    = html_options.delete(:date_type) || 'datetime'
     html_options = merge_wrapper_options(html_options, wrapper_options)
 
-
-
     content_tag(:div, class: "input-group date #{date_type}-picker", data: { 'target-input': 'nearest' }) do
       concat @builder.text_field(attribute_name, html_options)
       concat(content_tag('div', aria: { hidden: true }, class: 'input-group-append', data: { toggle: 'datetimepicker' }) do
         content_tag('div', class: 'input-group-text') do
-          content_tag('i', nil, class: 'fe fe-calendar')
+          icons.date
         end
       end)
     end

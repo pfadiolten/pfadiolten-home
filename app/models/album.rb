@@ -70,9 +70,8 @@ private
   def create_new_images
     (new_images || []).each do |image_file|
       image = Album::Image.new(album: self)
-      image.file = image_file.tap(&:open)
+      image.file = image_file
       unless image.save
-        raise image.errors.to_hash.to_s
         image.errors.each { |err| errors.add(:new_images, err) }
         return false
       end

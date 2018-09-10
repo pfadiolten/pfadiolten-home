@@ -7,10 +7,10 @@
         .col-12.d-flex.justify-content-center
           - if policy.create?
             = link_to new_group_path, class: 'btn btn-primary' do
-              %i.fe.fe-plus
+              = icons.new
           - if policy.update_order?
             = link_to groups_edit_order_path, class: 'btn btn-primary' do
-              %i.fe.fe-more-vertical
+              = icons.order
 
     .row.justify-content-center
       .col.col-md-10.col-lg-8.col-xl-6

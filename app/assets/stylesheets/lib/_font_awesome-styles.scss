@@ -1,1 +1,8 @@
+@import "font-awesome-sprockets";
 @import "font-awesome";
+
+.btn {
+  & > i.far, & > i.fab, & > i.fas {
+    vertical-align: -1px;
+  }
+}

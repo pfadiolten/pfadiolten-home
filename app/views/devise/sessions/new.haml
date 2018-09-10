@@ -6,7 +6,8 @@
       .row
         .col-12
           .alert.alert-danger.alert-icon.alert-dismissible{ role: 'alert' }
-            %i.fe.fe-alert-triangle.mr-2{ aria: { hidden: true } }
+            %span.mr-2{ aria: { hidden: true } }
+              = icons.alert
             %button.close{ type: 'button', data: { dismiss: 'alert' } }
             = alert
 

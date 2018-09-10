@@ -21,7 +21,7 @@ App.inputs['.filehandle'] = ($handle) ->
   $destroyInput = $inputs.find('._destroy')
   $destroyButton = $buttons.find('._destroy')
 
-  $backupIcon = $('<i>', class: 'fe fe-repeat')
+  $backupIcon = $('<i>', class: 'fas fa-undo')
   $destroyButton.click ->
     if $destroyInput.is(':checked')
       $destroyInput.click()

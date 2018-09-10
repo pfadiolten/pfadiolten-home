@@ -48,7 +48,7 @@ module ApplicationHelper
       end
     end
     content_tag('button', class: 'btn btn-danger col-12', type: 'button', data: { toggle: 'modal', target: "##{modal_id}" }) do
-      '<i class="fe fe-trash"></i>'.html_safe
+      icons.destroy
     end << modal
   end
 
@@ -113,6 +113,11 @@ module ApplicationHelper
   def image_src=(link)
     @_image_src = link
   end
+
+  def icons
+    @_icons ||= ApplicationHelper::Icons.new(method(:icon))
+  end
+
 private
   def exists_js?(path)
     %w[ .coffee .coffee.erb .js .js.erb .erb ].inject(false) do |found, ext|

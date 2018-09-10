@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
-  "http://github.com/#{repo_name}.git"
+  "https://github.com/#{repo_name}.git"
 end
 
 # main rails gem
@@ -19,9 +19,6 @@ gem 'uglifier', '>= 1.3.0'
 
 # authentication
 gem 'devise', '>= 4.4.0'
-
-# password encryption
-gem 'bcrypt', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
 
 gem 'devise-i18n'
 
@@ -117,7 +114,7 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 
 # font awesome - html/css icons
-gem 'font-awesome-rails'
+gem 'font-awesome-sass', '~> 5.2.0'
 
 # HTML select input replacement
 gem 'select2-rails', '>= 4.0.3'
@@ -137,8 +134,8 @@ gem "animate-rails"
 # js service worker for rails
 gem 'serviceworker-rails'
 
-# lightbox2 integration
-gem 'lightbox-bootstrap-rails', '5.1.0.1'
+# image gallery
+gem 'photoswipe-rails'
 
 # wysiwyg editor
 gem 'summernote-rails'

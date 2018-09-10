@@ -7,7 +7,7 @@
     .category__options
       - if policy(Article).create?
         %a.btn.btn-primary{ href: new_article_path }
-          %i.fe.fe-plus
+          = icons.new
   .category__body
     = list_any articles, else_say: t('articles.index.no_articles') do |a|
       = render '/articles/present',
