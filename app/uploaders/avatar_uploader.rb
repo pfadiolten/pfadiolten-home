@@ -13,7 +13,15 @@ class AvatarUploader < ImageUploader
 
   process :equal_sides
 
-  process resize_to_fit: [1000, 1000]
+  process resize_to_fit: [ 1000, 1000 ]
+
+  version :normal do
+    process resize_to_fit: [ 500, 500 ]
+  end
+
+  version :thumbnail do
+    process resize_to_fit: [ 300, 300 ]
+  end
 
   private
   def make_filename

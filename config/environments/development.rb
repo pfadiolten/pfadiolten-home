@@ -6,7 +6,7 @@ Rails.application.configure do
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
 
-  config.sass.inline_source_maps = true
+  config.sass.inline_source_maps = false # setting this to true somehow breaks asset compilation
 
   # Do not eager load code on boot.
   config.eager_load = false

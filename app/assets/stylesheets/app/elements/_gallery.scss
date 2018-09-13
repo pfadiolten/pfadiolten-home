@@ -1,0 +1,18 @@
+.gallery {
+  .gallery__image {
+    cursor: pointer;
+
+    & > .gallery__image__overlay {
+      background-color: rgba(0, 0, 0, 0.1);
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      top: 0;
+      transition: background-color 0.15s ease 0s;
+    }
+    &:hover > .gallery__image__overlay {
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+  }
+}

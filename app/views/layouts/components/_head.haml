@@ -14,7 +14,7 @@
                           type:        'object',
                           title:       content_for(:title),
                           url:         request.original_url,
-                          description: t('.meta.description', default: '') }
+                          description: t('meta.description', default: '') }
 
 - [ 180, 96, 64, 48, 32, 16 ].each do |res|
   - size = "#{res}x#{res}"

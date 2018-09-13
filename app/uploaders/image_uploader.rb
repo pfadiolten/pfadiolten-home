@@ -6,14 +6,14 @@ class ImageUploader < ApplicationUploader
   include CarrierWave::MiniMagick
   (MiniMagick.logger.level = Logger::DEBUG) if Rails.env.development?
 
-  process :as_png
+  process :image_defaults
 
   def extension_whitelist
     %w[ jpg jpeg png ]
   end
 
 protected
-  def as_png
+  def image_defaults
     manipulate! do |image|
       #image.format('png')
       image.auto_orient

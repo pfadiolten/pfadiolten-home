@@ -134,9 +134,6 @@ gem "animate-rails"
 # js service worker for rails
 gem 'serviceworker-rails'
 
-# image gallery
-gem 'photoswipe-rails'
-
 # wysiwyg editor
 gem 'summernote-rails'
 
