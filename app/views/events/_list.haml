@@ -13,5 +13,9 @@
           = icons.new
 
   .category__body
-    = list_any events, else_say: t('events.index.no_events') do |event|
-      = render '/events/present', event: event
+    .row.justify-content-center
+      .col-11.col-sm-7.col-lg-12
+        .row
+          = list_any events, else_say: t('events.index.no_events') do |event|
+            .col
+              = render '/events/present', event: event

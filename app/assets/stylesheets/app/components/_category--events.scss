@@ -16,10 +16,6 @@
     overflow-x: scroll;
     flex-wrap: nowrap;
     & > .event {
-      @extend .col-11;
-      @extend .col-sm-7;
-      @extend .col-lg-12;
-
       display: flex;
       @include media-breakpoint-down(md) {
         flex-direction: column;

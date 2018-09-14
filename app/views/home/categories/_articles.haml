@@ -9,6 +9,8 @@
         %a.btn.btn-primary{ href: new_article_path }
           = icons.new
   .category__body
-    = list_any articles, else_say: t('articles.index.no_articles') do |a|
-      = render '/articles/present',
-               article: a
+    .row
+      = list_any articles, else_say: t('articles.index.no_articles') do |a|
+        .col
+          = render '/articles/present',
+                   article: a
