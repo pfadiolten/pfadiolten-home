@@ -3,7 +3,7 @@
 
 .card.hoverable.js-link{ data: { url: user_path(user) } }
   .card-status.card-status-left.bg-primary.hoverable__element
-  %img.card-img-top{ src: image_path(user.avatar), width: '100%', alt: "avatar of #{user.scout_name}" }
+  %img.card-img-top{ src: image_path(user.avatar.normal), width: '100%', alt: "avatar of #{user.scout_name}" }
   .card-header.justify-content-center
     .card-title= user.scout_name
     - if block_given?

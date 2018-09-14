@@ -1,6 +1,6 @@
 class AvatarUploader < ImageUploader
   def default_url(*_args)
-    fallback [version_name, 'avatar.png'].compact.join('_')
+    fallback [ version_name, 'avatar.png' ].compact.join('_')
   end
 
   def store_dir
