@@ -13,6 +13,7 @@ services:
       - PFADIOLTEN_INSTAGRAM_CLIENT_SECRET
       - PFADIOLTEN_INSTAGRAM_ACCESS_TOKEN
     volumes:
+      - gems:/usr/local/bundle
       - .:/pfadiolten-home
     ports:
       - '3000:3000'
@@ -27,6 +28,8 @@ volumes:
   data:
     external:
       name: pfadiolten-home.data
+  gems:
+    external:
+      name: pfadiolten-home.gems
 
-# docker volume create --name pfadiolten-home.data
-# docker-compose run web <rails command>
+# docker volume create pfadiolten-home.data pfadiolten-home.gems

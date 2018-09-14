@@ -246,7 +246,6 @@ GEM
     orm_adapter (0.5.0)
     pg (1.1.2)
     pg (1.1.2-x64-mingw32)
-    photoswipe-rails (4.1.2)
     plural (0.1.0)
     popper_js (1.14.3)
     public_suffix (3.0.3)
@@ -401,7 +400,6 @@ DEPENDENCIES
   momentjs-rails (>= 2.17.1)
   oprah
   pg (>= 1.0.0)
-  photoswipe-rails
   puma (>= 3.7)
   pundit (>= 1.1.0)
   rails (>= 5.1.5)

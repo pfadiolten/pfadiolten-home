@@ -27,10 +27,21 @@ docker-compose up
 # start the server in the background
 docker-compose up -d
 ```
+In development, Gems are mounted in a local docker volume.
+This makes it possible to just run a single command when modifying 
+the `Gemfile`, instead of rebuilding the complete image.
+```bash
+# create the gem volume, only required once
+docker volume create pfadiolten-home.gems
+
+docker-compose run web bundle --frozen
+```
+This always has to be done before running the container for the first time.
+
 The container saves its database in an external volume.
 It has to be created before first using the website:
 ```bash
-docker volume create --name pfadiolten_home-data -d local
+docker volume create pfadiolten-home.data
 ``` 
 Afterwards, the database has to be created and migrated.
 ```bash
