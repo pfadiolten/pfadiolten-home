@@ -1,7 +1,8 @@
 #= require lib/jquery
-#= require lib/jquery-ui
+
+#= require lib/hammerjs
+#= require lib/lightgallery
+#= require lib/sortable
+#= require lib/summernote
 #= require lib/tabler
 #= require lib/tempus-dominus
-#= require lib/hammerjs
-#= require lib/summernote
-#= require lib/lightgallery

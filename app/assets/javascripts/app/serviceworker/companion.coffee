@@ -1,4 +1,4 @@
 if navigator.serviceWorker?
   navigator.serviceWorker.register('/serviceworker.js', scope: './')
     .then (reg) ->
-      puts '[Companion]', 'Service worker registered!'
+      console.debug '[Companion]', 'Service worker registered!'

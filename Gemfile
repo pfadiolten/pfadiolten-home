@@ -110,9 +110,6 @@ gem 'tabler-rubygem'
 # jquery - js framework / core
 gem 'jquery-rails'
 
-# jquery - js framework / ui components
-gem 'jquery-ui-rails'
-
 # font awesome - html/css icons
 gem 'font-awesome-sass', '>= 5.2'
 

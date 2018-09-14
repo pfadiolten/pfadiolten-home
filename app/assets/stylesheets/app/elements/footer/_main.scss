@@ -10,8 +10,6 @@
   bottom:      0;
   line-height: 2.5rem;
 
-
-
   .footer__element {
     @mixin responsiveness {
       @include media-breakpoint-down(xs) {

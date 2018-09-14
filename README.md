@@ -34,7 +34,7 @@ the `Gemfile`, instead of rebuilding the complete image.
 # create the gem volume, only required once
 docker volume create pfadiolten-home.gems
 
-docker-compose run web bundle --frozen
+docker-compose run web bundle
 ```
 This always has to be done before running the container for the first time.
 

@@ -2,7 +2,7 @@ CACHE_VERSION = 'v1.0.0';
 CACHE_NAME    = CACHE_VERSION + ':sw-cache-';
 
 onInstall = (e) ->
-  console.log('[Serviceworker]', "Installing!", e)
+  console.debug('[Serviceworker]', "Installing!", e)
   e.waitUntil caches.open(CACHE_NAME).then (cache) ->
     cache.addAll [
       '<%= asset_path 'application.js' %>'
@@ -11,7 +11,7 @@ onInstall = (e) ->
     ]
 
 onActivate = (e) ->
-  console.log('[Serviceworker]', "Activating!", e)
+  console.debug('[Serviceworker]', "Activating!", e)
   e.waitUntil caches.keys().then (cacheNames) ->
     cacheNames
       .filter (name) ->
@@ -25,7 +25,7 @@ onFetch = (e) ->
     caches.match(req).then (res) ->
       return res if res?
       if req.mode == 'nagivate' || (req.method == 'GET' && req.headers.get('accept').includes('text/html'))
-        console.log('[Serviceworker]', "Fetching offline content", e)
+        console.debug('[Serviceworker]', "Fetching offline content", e)
         caches.match('/offline.html')
 
 self.addEventListener('install',  onInstall);
