@@ -12,21 +12,29 @@
   }
 
   & > .category__body {
-    overflow-x: scroll;
-    flex-wrap: nowrap;
+    // default, force top-to-bottom events
+    flex-wrap:       nowrap;
+    justify-content: center;
+    @include media-breakpoint-down(md) {
+
+    }
+    @include media-breakpoint-down(sm) {
+      // can't be center anymore, otherwise the middle event would show up first
+      justify-content: left;
+    }
     & > .event {
-      display: flex;
-      @include media-breakpoint-down(md) {
-        flex-direction: column;
-      }
+      display:        flex;
+      flex-direction: row;
       @include media-breakpoint-up(lg) {
+        // stretch items to same size if they are in a single-column row
         align-items: stretch;
       }
-    }
+      @include media-breakpoint-down(sm) {
+        flex-direction: column;
 
-    @include media-breakpoint-up(lg) {
-      flex-wrap: wrap;
-      justify-content: center;
+        // make body scrollable, since the events expand to the right
+        overflow-x:      scroll; //TODO: check if this is correct here, otherwise move to .category__body (sm down)
+      }
     }
   }
 }

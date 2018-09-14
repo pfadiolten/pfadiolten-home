@@ -1,17 +1,23 @@
-%footer.footer
+%footer.footer.footer--main
   .container
-    .row
-      .col-12.col-sm.footer__element.footer__element--copyright
-        %span &copy; Pfadi Olten, 2017
-      .col-12.col-sm.footer__element.footer__element--hosting
-        %span
-          = t('hosted_by')
-        %a.footer__link.footer__link--oetiker{ href: Settings.external.oetiker.homepage, target: '_blank', rel: 'noopener' }
-          = 'OETIKER+PARTNER AG'
-      .col-12.col-sm.footer__element.footer__element--source-code
-        %span
-          = t('source_code')
-          %a.tag{ href: Settings.social.github, target: '_blank', rel: 'noopener' }
-            GitHub
-            %span.tag-addon.tag-gray
-              = icons.github
+    .row.align-items-center
+
+      .col-12.col-sm
+        .footer__element.footer__element--left
+          %span &copy; Pfadi Olten, 2017
+
+      .col-12.col-sm
+        .footer__element.footer__element--center
+          %span
+            = t('hosted_by')
+          %a{ href: Settings.external.oetiker.homepage, target: '_blank', rel: 'noopener' }
+            = 'OETIKER+PARTNER AG'
+
+      .col-12.col-sm
+        .footer__element.footer__element--right
+          %span
+            = t('source_code')
+            %a.tag{ href: Settings.social.github, target: '_blank', rel: 'noopener' }
+              GitHub
+              %span.tag-addon.tag-gray
+                = icons.github

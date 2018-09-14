@@ -102,7 +102,7 @@ gem 'sassc-rails'
 gem 'coffee-rails', '>= 4.2'
 
 # bootstrap - css framework
-gem 'bootstrap', '~> 4.1.1'
+gem 'bootstrap', '>= 4.1'
 
 # dashboard ui kit for bootstrap4
 gem 'tabler-rubygem'
@@ -114,7 +114,7 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 
 # font awesome - html/css icons
-gem 'font-awesome-sass', '~> 5.2.0'
+gem 'font-awesome-sass', '>= 5.2'
 
 # HTML select input replacement
 gem 'select2-rails', '>= 4.0.3'

@@ -369,7 +369,7 @@ DEPENDENCIES
   actionview-encoded_mail_to (>= 1.0.9)
   animate-rails
   better_errors
-  bootstrap (~> 4.1.1)
+  bootstrap (>= 4.1)
   bootstrap4-datetime-picker-rails
   bootstrap4-kaminari-views
   byebug
@@ -386,7 +386,7 @@ DEPENDENCIES
   config (>= 1.6.1)
   devise (>= 4.4.0)
   devise-i18n
-  font-awesome-sass (~> 5.2.0)
+  font-awesome-sass (>= 5.2)
   haml-rails (>= 1.0.0)
   httparty
   i18n-recursive-lookup (>= 0.0.5)

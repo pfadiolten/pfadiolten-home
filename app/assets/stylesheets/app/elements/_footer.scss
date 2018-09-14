@@ -1,1 +1,15 @@
+.footer {
+  .footer__element {
+    &.footer__element--left {
+
+    }
+    &.footer__element--center {
+
+    }
+    &.footer__element--right {
+
+    }
+  }
+}
+
 @import "footer/main";
