@@ -13,7 +13,7 @@
 ## components
 #= require plugins/checkbox-x
 
-## bootsrap
+## bootstrap
 #= require popper
 #= require bootstrap-sprockets
 

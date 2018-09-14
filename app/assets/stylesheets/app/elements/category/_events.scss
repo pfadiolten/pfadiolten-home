@@ -1,14 +1,13 @@
-// .category-events
-// ===
-// a list of event records
-
 .category.category--events {
-  & > .category__header {
-    .category__title {
-
-    }
-    .category__options {
-
+  @include media-breakpoint-up(lg) {
+    position:       absolute;
+    padding-bottom: 3rem;
+    width:          100%;
+    left: 0;
+    right: 0;
+    padding: {
+      left:  inherit;
+      right: inherit;
     }
   }
 
@@ -28,18 +27,6 @@
     @include media-breakpoint-up(lg) {
       flex-wrap: wrap;
       justify-content: center;
-    }
-  }
-
-  @include media-breakpoint-up(lg) {
-    position:       absolute;
-    padding-bottom: 3rem;
-    width:          100%;
-    left: 0;
-    right: 0;
-    padding: {
-      left:  inherit;
-      right: inherit;
     }
   }
 }

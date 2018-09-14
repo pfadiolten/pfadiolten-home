@@ -29,4 +29,18 @@ $headings-font-weight: normal;
 @import "tabler";
 @import "tabler.plugins";
 
-$primary-inverse: $gray-100
+$primary-inverse: $gray-100;
+
+// make simple-form show up with bootstrap4 styles
+form {
+  .has-error {
+    & > input {
+      @extend .is-invalid;
+    }
+  }
+  label {
+    abbr {
+      color: $secondary;
+    }
+  }
+}

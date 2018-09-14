@@ -1,11 +1,11 @@
-// .category
-// ===
-// a category of elements
+// category
+// A category is list of same-type elements.
+// It may include a title.
 
 .category {
   margin-bottom: 1rem;
 
-  .category__header {
+  & > .category__header {
     display:         flex;
     justify-content: space-between;
     align-items:     center;
@@ -13,18 +13,18 @@
     padding-bottom:  0.5rem;
     margin-bottom:   1rem;
     min-height:      52px;
-
-    .category__title {
-      margin-bottom: 0;
-    }
-
-    .category__options {
-    }
   }
 
-  .category__body {
+  & > .category__body {
 
+  }
+
+  .category__title {
+    margin-bottom: 0;
+  }
+
+  .category__options {
   }
 }
 
-
+@import "category/events";

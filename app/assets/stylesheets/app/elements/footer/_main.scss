@@ -1,0 +1,46 @@
+// NOTE:
+// As long as there are no other footers, all footer-specific code will be in this file.
+// If there ever are other footers, this type should be rewritten to only contain `--main` styles.
+
+.footer.footer--main {
+  position:    absolute;
+  clear:       both;
+  width:       100%;
+  color:       $gray-600;
+  height:      5rem;
+  margin-top:  -5rem;
+  line-height: 2.5rem;
+
+  .footer__element {
+    @include media-breakpoint-down(xs) {
+      float: none;
+      text-align: center;
+      &:not(:first-child) {
+        padding-top: 1rem;
+      }
+    }
+
+    &.footer__element--copyright {
+      float:      left;
+      text-align: left;
+    }
+    &.footer__element--hosting {
+      float:      none;
+      text-align: center;
+    }
+    &.footer__element--source-code {
+      float:      right;
+      text-align: right;
+    }
+  }
+
+  .footer__link.footer__link--oetiker {
+    font-weight:     700;
+    color:           $body-color;
+    text-decoration: none;
+    &:hover {
+      cursor: pointer;
+      color:  $primary;
+    }
+  }
+}

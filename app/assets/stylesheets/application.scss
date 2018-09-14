@@ -1,12 +1,47 @@
-// components
-@import 'plugins/checkbox-x';
-@import "leaflet";
-
 @import "lib";
+@import "app";
 
-// app
-@import "app/theme";
-@import "app/components";
-@import "app/elements";
-
+// STYLING CONVENTIONS (BEM):
 // https://medium.freecodecamp.org/css-naming-conventions-that-will-save-you-hours-of-debugging-35cea737d849
+
+
+// makes the nav and footer work correctly
+html {
+  position: relative;
+
+  &, body {
+    height: 100%;
+
+    main {
+      min-height: 100%;
+    }
+  }
+}
+
+// TODO: remove this style
+// The unstyle class is only used in js-generated elements.
+// These elements should either set the necessary styles on the elements themselves,
+// or use non-specific css to reach the same goal.
+
+// unstyle
+// ===
+// Removes certain applied styles from specific elements.
+
+a.unstyle {
+  color: unset;
+  text-decoration: none;
+}
+
+// TODO: make an own class out of this (à la ".title--main")
+h1 {
+  & + h3 {
+    margin-top: -0.9rem;
+    a {
+      color: $secondary;
+      &:hover {
+        color:           $ternary;
+        text-decoration: none;
+      }
+    }
+  }
+}
