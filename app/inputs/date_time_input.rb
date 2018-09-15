@@ -10,7 +10,7 @@ class DateTimeInput < SimpleForm::Inputs::Base
       concat @builder.text_field(attribute_name, html_options)
       concat(content_tag('div', aria: { hidden: true }, class: 'input-group-append', data: { toggle: 'datetimepicker' }) do
         content_tag('div', class: 'input-group-text') do
-          icons.date
+          template.icons.date
         end
       end)
     end

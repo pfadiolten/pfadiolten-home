@@ -1,9 +1,17 @@
 -# album: [Album]
+-# limit: Int|Null
+-# disable_lightbox: Boolean = false
+
+- limit ||= nil
+- disable_lightbox = true unless defined? disable_lightbox
+
+- images = album.images
+- images = images.first(limit) if limit.present?
 
 .row.justify-content-center
-  .col.gallery
-    - album.images.each_with_index do |image, i|
-      %a.gallery__image{ data: { src: image_path(image.file.x1024) } }
+  .col.gallery{ class: [ ('gallery--no-lightbox' if disable_lightbox) ] }
+    - images.each_with_index do |image, i|
+      .gallery__image{ data: { src: image_path(image.file.x1024) } }
         .d-block.position-relative
           %img.d-sm-none{ src: image_path(image.file.x256), alt: "Album Thumbnail ##{i + 1}", data: {  id: image.id  } }
           %img.d-none.d-sm-block.d-lg-none{ src: image_path(image.file.x512), alt: "Album Thumbnail ##{i + 1}", data: {  id: image.id  } }
