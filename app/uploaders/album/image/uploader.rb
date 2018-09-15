@@ -5,6 +5,6 @@ class Album::Image::Uploader < ImageUploader
   end
 
   version :gallery do
-    process resize_to_limit: [ 500, 500 ]
+    process resize_to_limit: [ 1000, 1000 ]
   end
 end

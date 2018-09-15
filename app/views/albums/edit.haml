@@ -2,8 +2,8 @@
 - subtitle_to @original_album, :name
 
 = render 'form' do |f|
-  .editable-gallery{ data: { ids: @album.images.map(&:id) } }
-    = f.input :deleted_images, as: 'hidden', input_html: { id: 'deletedImages' }
+  .js-deletable-images{ data: { 'destroy-icon': icons.close } }
+    = f.input :deleted_images, as: 'hidden', input_html: { class: 'js-deletable-images__input' }
 
     .mt-4
       = render 'gallery', album: @album

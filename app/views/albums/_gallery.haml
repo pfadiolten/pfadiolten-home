@@ -1,11 +1,8 @@
 -# album: [Album]
 
 .row.justify-content-center
-  .col-12
-    .row.justify-content-center
-      %ul.gallery.row.list-unstyled.justify-content-center
-        - album.images.each_with_index do |image, i|
-          %li.col-6.col-md-4.col-lg-3{ data: { src: image_path(image.file.gallery) } }
-            %a.gallery__image{ href: '' }
-              %img.img-thumbnail{ src: image_path(image.file.thumbnail), alt: "Album Thumbnail ##{i + 1}" }
-              .gallery__image__overlay
+  .col.gallery
+    - album.images.each_with_index do |image, i|
+      %a.gallery__image{ data: { src: image_path(image.file) } }
+        .d-block.position-relative
+          %img{ src: image_path(image.file.gallery), alt: "Album Thumbnail ##{i + 1}", data: {  id: image.id  } }

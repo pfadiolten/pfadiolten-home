@@ -1,7 +1,8 @@
 - title @album.name
+- content_for :container_type, 'container-fluid'
 
 .row.justify-content-center
-  .col-md-10
+  .col
     .row
       .col-12.d-flex.justify-content-center
         .btn-group
@@ -20,5 +21,7 @@
 
     .row.mt-4
       .col-12
-        = render 'gallery', album: @album
+        .row.justify-content-center
+          .col-12.col-lg-11.col-xl-10
+            = render 'gallery', album: @album
 

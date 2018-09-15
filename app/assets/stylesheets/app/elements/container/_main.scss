@@ -1,4 +1,8 @@
-.container, .container--fluid { &.container--main {
+.container, .container-fluid { &.container--main {
   overflow:       auto;
   padding-bottom: 6rem;
+
+  @include media-breakpoint-down(sm) {
+    padding-bottom: 10rem;
+  }
 } }

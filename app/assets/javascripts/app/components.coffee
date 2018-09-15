@@ -4,6 +4,7 @@
 #= require app/components/link
 #= require app/components/expandable
 #= require app/components/mirror
+#= require app/components/deletable-images
 
 App.components = {}
 
