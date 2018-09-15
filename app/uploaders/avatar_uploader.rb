@@ -1,12 +1,10 @@
 class AvatarUploader < ImageUploader
-  process resize_to_fill: [ 1000, 1000 ]
+  process resize_to_fit: [ 1024, 1024 ]
 
-  version :normal do
-    process resize_to_fit: [ 500, 500 ]
-  end
-
-  version :thumbnail do
-    process resize_to_fit: [ 300, 300 ]
+  [ 32, 64, 128, 256, 512 ].each do |size|
+    version :"x#{size}" do
+      process resize_to_fill: [ size, size ]
+    end
   end
 
   def default_url(*_args)

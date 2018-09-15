@@ -1,4 +1,4 @@
-class RecreateUserAvatar < ActiveRecord::Migration[5.2]
+class RecreateUploadedImages < ActiveRecord::Migration[5.2]
   def change
     puts "--- remove this file after deploying to production"
 
@@ -7,6 +7,11 @@ class RecreateUserAvatar < ActiveRecord::Migration[5.2]
 
       user.avatar.recreate_versions!
       user.save!
+    end
+
+    Album::Image.all.each do |image|
+      image.file.recreate_versions!
+      image.save!
     end
   end
 end

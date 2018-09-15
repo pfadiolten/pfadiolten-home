@@ -1,10 +1,7 @@
 class Album::Image::Uploader < ImageUploader
-  version :thumbnail do
-    process :equal_sides
-    process resize_to_fit: [ 300, 300 ]
-  end
-
-  version :gallery do
-    process resize_to_limit: [ 1000, 1000 ]
+  [ 128, 256, 512, 1024 ].each do |size|
+    version :"x#{size}" do
+      process resize_to_limit: [ size, size ]
+    end
   end
 end

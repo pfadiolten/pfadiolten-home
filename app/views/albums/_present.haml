@@ -15,7 +15,7 @@
     .row.justify-content-center
       - album.images.first(3).each_with_index do |image, i|
         .col-3
-          %img.img-thumbnail{ src: image_path(image.file.thumbnail), alt: "Image #{i}" }
+          %img.img-thumbnail{ src: image_path(image.file.x128), alt: "Image #{i}" }
       .col-3
         %a.btn.btn-secondary.btn-block.d-flex.align-items-center.justify-content-center{ href: album_path(album), style: 'height: 100%' }
           = render '/shared/more'

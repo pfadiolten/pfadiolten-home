@@ -11,7 +11,7 @@ App.components['deletable-images'] = ($target, selector) ->
 
   children =
     $input:  $target.find("#{selector}__input")
-    $images: $target.find('img[data-id]')
+    $images: $target.find('img[data-id]:last-child')
 
   children.$images.each query arg ($image) ->
     destroyButton = new DestroyButton(icon: args.destroyIcon)
