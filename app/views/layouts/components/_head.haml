@@ -18,11 +18,11 @@
 
 - [ 180, 96, 64, 48, 32, 16 ].each do |res|
   - size = "#{res}x#{res}"
-  = favicon_link_tag "favicons/#{size}.ico", sizes: size
+  = favicon_link_tag "icons/ico/#{size}.ico", sizes: size
 
 - [ 57, 72, 114, 144 ].each do |res|
   - size = "#{res}x#{res}"
-  = favicon_link_tag "icons/#{size}.png", rel: 'apple-touch-icon', type: 'image/png', sizes: size
+  = favicon_link_tag "icons/png/#{size}.png", rel: 'apple-touch-icon', type: 'image/png', sizes: size
 
 %link{ rel: 'manifest', href: '/manifest.json' }
 %script
