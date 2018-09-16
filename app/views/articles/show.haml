@@ -1,9 +1,26 @@
 - title @article.title
 - self.image_src = image_path(@article.image) if @article.image?
 
-.row.justify-content-center
-  .col-12.col-lg-10.col-xl-8
-    = render '/articles/present',
-             article:  @article,
-             expanded: true,
-             editable: true
+
+.row
+  .col
+    - can = policy(@article)
+    - if (can_edit = can.edit?)
+      .row.mb-4
+        .col-12.d-flex.justify-content-center
+          .btn-group
+            - if can_edit
+              = link_to edit_article_path, class: 'btn btn-primary' do
+                = icons.edit
+
+    .row.justify-content-center
+      .col-12.col-lg-11
+        - if @article.image?
+          .row.mb-4
+            .col
+              %img{ src: image_path(@article.image), alt: @article.title }
+
+        .row
+          .col
+            %article
+              = @article.text.html_safe

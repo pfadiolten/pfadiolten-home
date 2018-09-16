@@ -2,16 +2,17 @@
 -# created_at: DateTime|Date
 
 - creator ||= nil
+- created_at_string = l(created_at, format: :short)
 
 - if creator.present?
   %a.btn.btn-white.d-flex.align-items-center.justify-content-end.p-1{ href: url_for(creator) }
     %div.text-right.mr-4
       = creator.scout_name
-      %small.d-block.text-muted= time_ago_in_words(created_at)
+      %small.d-block.text-muted= created_at_string
     %img.avatar.avatar-md{ src: image_path(creator.avatar) }
 - else
   .mr-4.p-2
     %small.d-block.text-muted.text-right
-      = time_ago_in_words(created_at)
+      = created_at_string
       .tag.ml-2.py-1
         = icons.time

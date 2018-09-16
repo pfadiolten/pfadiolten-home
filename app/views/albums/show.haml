@@ -4,7 +4,7 @@
 .row.justify-content-center
   .col
     .row
-      .col-12.d-flex.justify-content-center
+      .col-12.d-flex.justify-content-center.mb-4
         .btn-group
           - if policy(@album).download?
             = link_to download_album_path, class: 'btn btn-primary' do
@@ -15,7 +15,7 @@
               = icons.edit
 
     - if (description = @album.description)
-      .row.justify-content-center.mt-4
+      .row.justify-content-center
         .col-12.col-sm-11.col-md-8.col-lg-7.col-xl-6
           .text-center= description.html_safe
 

@@ -15,7 +15,7 @@
         = paginate @articles, theme: 'twitter-bootstrap-4'
 
     .row.justify-content-center
-      .col-12.col-lg-10.col-xl-8
+      .col-12
         .row.justify-content-center
           = list_any @articles, else_say: t('.no_articles') do |article|
             .col-12
