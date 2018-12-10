@@ -1,7 +1,0 @@
-
-.row.justify-content-center
-  - @posts.each_with_index do |post, i|
-    .col-10.col-md-12.d-flex.justify-content-center
-      = render 'present',
-               post: post,
-               include_script: i == 0

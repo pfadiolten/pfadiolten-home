@@ -11,7 +11,7 @@
 .row.justify-content-center
   .col.gallery{ class: [ ('gallery--no-lightbox' if disable_lightbox) ] }
     - images.each_with_index do |image, i|
-      .gallery__image{ data: { src: image_path(image.file.x512) } }
+      .gallery__image{ data: { src: image_path(image.file.x1024) } }
         .d-block.position-relative
           - shared_attributes = { alt: "Album Thumbnail ##{i + 1}", data: {  id: image.id  } }
           %img.d-sm-none{ src: image_path(image.file.x256), **shared_attributes }
