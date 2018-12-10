@@ -9,6 +9,7 @@
   color:       $gray-600;
   bottom:      0;
   line-height: 2.5rem;
+  z-index:     1000;
 
   .footer__element {
     @mixin responsiveness {
