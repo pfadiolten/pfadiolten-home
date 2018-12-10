@@ -15,4 +15,4 @@
         .d-block.position-relative
           - shared_attributes = { alt: "Album Thumbnail ##{i + 1}", data: {  id: image.id  } }
           %img.d-sm-none{ src: image_path(image.file.x256), **shared_attributes }
-          %img.d-none.d-sm-block.d-lg-none{ src: image_path(image.file.x512), **shared_attributes }
+          %img.d-none.d-sm-block{ src: image_path(image.file.x512), **shared_attributes }
