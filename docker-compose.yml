@@ -1,13 +1,17 @@
-version: '3.5'
+version: '3.7'
 services:
   web:
     image: pfadiolten-home:dev
+    build:
+      context: .
+      args:
+        - http_proxy
     command: bundle exec rails s -p 3000 -b '0.0.0.0'
     environment:
       - RAILS_ENV=development
+
       - http_proxy
-      - https_proxy
-      - no_proxy
+
       - PFADIOLTEN_OSM_ACCESS_TOKEN
       - PFADIOLTEN_INSTAGRAM_CLIENT_ID
       - PFADIOLTEN_INSTAGRAM_CLIENT_SECRET
@@ -26,10 +30,6 @@ services:
 
 volumes:
   data:
-    external:
-      name: pfadiolten-home.data
+    name: pfadiolten-home.data
   gems:
-    external:
-      name: pfadiolten-home.gems
-
-# docker volume create pfadiolten-home.data pfadiolten-home.gems
+    name: pfadiolten-home.gems

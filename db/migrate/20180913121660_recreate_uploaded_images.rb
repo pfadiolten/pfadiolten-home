@@ -13,5 +13,12 @@ class RecreateUploadedImages < ActiveRecord::Migration[5.2]
       image.file.recreate_versions!
       image.save!
     end
+
+    Article.all.each do |article|
+      next unless article.image?
+
+      article.image.recreate_versions!
+      article.save!
+    end
   end
 end

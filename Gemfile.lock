@@ -60,6 +60,8 @@ GEM
       erubi (>= 1.0.0)
       rack (>= 0.9.0)
     bindex (0.5.0)
+    bootsnap (1.3.2)
+      msgpack (~> 1.0)
     bootstrap (4.1.3)
       autoprefixer-rails (>= 6.0.3)
       popper_js (>= 1.12.9, < 2)
@@ -155,7 +157,6 @@ GEM
       dry-logic (~> 0.4, >= 0.4.0)
       dry-types (~> 0.13.1)
     erubi (1.7.1)
-    erubis (2.7.0)
     execjs (2.7.0)
     ffi (1.9.25)
     ffi (1.9.25-x64-mingw32)
@@ -163,21 +164,16 @@ GEM
       sassc (>= 1.11)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
-    haml (5.0.4)
+    hamlit (2.9.2)
       temple (>= 0.8.0)
+      thor
       tilt
-    haml-rails (1.0.0)
+    hamlit-rails (0.2.0)
       actionpack (>= 4.0.1)
       activesupport (>= 4.0.1)
-      haml (>= 4.0.6, < 6.0)
-      html2haml (>= 1.0.1)
+      hamlit (>= 1.2.0)
       railties (>= 4.0.1)
     hashie (3.6.0)
-    html2haml (2.2.0)
-      erubis (~> 2.7.0)
-      haml (>= 4.0, < 6)
-      nokogiri (>= 1.6.0)
-      ruby_parser (~> 3.5)
     httparty (0.16.2)
       multi_xml (>= 0.5.2)
     i18n (1.1.0)
@@ -207,6 +203,10 @@ GEM
     kaminari-core (1.1.1)
     leaflet-rails (1.3.1)
       rails (>= 4.2.0)
+    listen (3.1.5)
+      rb-fsevent (~> 0.9, >= 0.9.4)
+      rb-inotify (~> 0.9, >= 0.9.7)
+      ruby_dep (~> 1.2)
     loofah (2.2.2)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -227,6 +227,8 @@ GEM
     minitest (5.11.3)
     momentjs-rails (2.20.1)
       railties (>= 3.1)
+    msgpack (1.2.4)
+    msgpack (1.2.4-x64-mingw32)
     multi_xml (0.6.0)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
@@ -250,7 +252,7 @@ GEM
     puma (3.12.0)
     pundit (2.0.0)
       activesupport (>= 3.0.0)
-    rack (2.0.5)
+    rack (2.0.6)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (5.2.1)
@@ -287,8 +289,7 @@ GEM
     route_translator (5.6.3)
       actionpack (>= 5.0.0.1, < 6)
       activesupport (>= 5.0.0.1, < 6)
-    ruby_parser (3.11.0)
-      sexp_processor (~> 4.9)
+    ruby_dep (1.5.0)
     rubyzip (1.2.1)
     sanitize (4.6.6)
       crass (~> 1.0.2)
@@ -316,7 +317,6 @@ GEM
       rubyzip (~> 1.2)
     serviceworker-rails (0.5.5)
       railties (>= 3.1)
-    sexp_processor (4.11.0)
     simple_form (4.0.1)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
@@ -367,6 +367,7 @@ DEPENDENCIES
   actionview-encoded_mail_to (>= 1.0.9)
   animate-rails
   better_errors
+  bootsnap (~> 1.3.2)
   bootstrap (>= 4.1)
   bootstrap4-datetime-picker-rails
   bootstrap4-kaminari-views
@@ -385,21 +386,22 @@ DEPENDENCIES
   devise (>= 4.4.0)
   devise-i18n
   font-awesome-sass (>= 5.2)
-  haml-rails (>= 1.0.0)
+  hamlit-rails
   httparty
   i18n-recursive-lookup (>= 0.0.5)
   instagram_api_client
   jquery-rails
   kaminari (>= 1.1.1)
   leaflet-rails (>= 1.3.1)
+  listen
   meta-tags
   mini_magick (>= 4.8.0)
   momentjs-rails (>= 2.17.1)
   oprah
   pg (>= 1.0.0)
-  puma (>= 3.7)
+  puma
   pundit (>= 1.1.0)
-  rails (>= 5.1.5)
+  rails (~> 5.2)
   responders (>= 2.4.0)
   route_translator (>= 5.5.0)
   sanitize (>= 4.5.0)
@@ -411,9 +413,9 @@ DEPENDENCIES
   summernote-rails
   tabler-rubygem
   tzinfo-data
-  uglifier (>= 1.3.0)
+  uglifier
   web-console (>= 3.3.0)
   zippy (>= 0.2.3)
 
 BUNDLED WITH
-   1.16.4
+   1.17.1

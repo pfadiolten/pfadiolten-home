@@ -6,16 +6,18 @@ git_source(:github) do |repo_name|
 end
 
 # main rails gem
-gem 'rails', '>= 5.1.5'
+gem 'rails', '~> 5.2'
+
+gem 'bootsnap', '~> 1.3.2'
 
 # database
 gem 'pg', '>= 1.0.0'
 
 # app server
-gem 'puma', '>= 3.7'
+gem 'puma'
 
 # uglifier for css & js
-gem 'uglifier', '>= 1.3.0'
+gem 'uglifier'
 
 # authentication
 gem 'devise', '>= 4.4.0'
@@ -93,7 +95,7 @@ gem 'httparty'
 # ---------
 
 # haml - HTML template language
-gem 'haml-rails', '>= 1.0.0'
+gem 'hamlit-rails'
 
 # css preprocessor
 gem 'sassc-rails'
@@ -152,6 +154,8 @@ end
 
 group :development do
   gem 'web-console', '>= 3.3.0'
+
+  gem 'listen'
 end
 
 group :test do
