@@ -20,7 +20,7 @@ class AvatarUploader < ImageUploader
     make_filename if original_filename.present?
   end
 
-  private
+private
   def make_filename
     "#{model.scout_name.downcase}.png"
   end

@@ -11,8 +11,8 @@
 .row.justify-content-center
   .col.gallery{ class: [ ('gallery--no-lightbox' if disable_lightbox) ] }
     - images.each_with_index do |image, i|
-      .gallery__image{ data: { src: image_path(image.file.x1024) } }
+      .gallery__image{ data: { src: image_path(image.file.x512) } }
         .d-block.position-relative
-          %img.d-sm-none{ src: image_path(image.file.x256), alt: "Album Thumbnail ##{i + 1}", data: {  id: image.id  } }
-          %img.d-none.d-sm-block.d-lg-none{ src: image_path(image.file.x512), alt: "Album Thumbnail ##{i + 1}", data: {  id: image.id  } }
-          %img.d-none.d-lg-block{ src: image_path(image.file.x1024), alt: "Album Thumbnail ##{i + 1}", data: {  id: image.id  } }
+          - shared_attributes = { alt: "Album Thumbnail ##{i + 1}", data: {  id: image.id  } }
+          %img.d-sm-none{ src: image_path(image.file.x256), **shared_attributes }
+          %img.d-none.d-sm-block.d-lg-none{ src: image_path(image.file.x512), **shared_attributes }
