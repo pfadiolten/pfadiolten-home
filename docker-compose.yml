@@ -10,12 +10,12 @@ services:
     environment:
       - RAILS_ENV=development
 
-      - http_proxy
-
       - PFADIOLTEN_OSM_ACCESS_TOKEN
       - PFADIOLTEN_INSTAGRAM_CLIENT_ID
       - PFADIOLTEN_INSTAGRAM_CLIENT_SECRET
       - PFADIOLTEN_INSTAGRAM_ACCESS_TOKEN
+
+      - http_proxy
     volumes:
       - gems:/usr/local/bundle
       - .:/pfadiolten-home

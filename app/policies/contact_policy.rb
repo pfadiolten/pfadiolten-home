@@ -1,3 +1,2 @@
 class ContactPolicy < ApplicationPolicy
-
 end

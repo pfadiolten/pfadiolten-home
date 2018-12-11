@@ -1,8 +1,4 @@
 class UserPolicy < ApplicationPolicy
-  def index?
-    true
-  end
-
   def create?
     admin_user?
   end

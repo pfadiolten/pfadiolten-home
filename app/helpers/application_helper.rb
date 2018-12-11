@@ -76,10 +76,13 @@ module ApplicationHelper
     exists_css?(controller_asset)
   end
 
-  def list_any(records, else_say:, alert_options: {}, &block)
+  def list_any(records, else_say:, alert_options: {}, all: false, &block)
     if records.any?
-      records.each(&block)
-      return
+      if all
+        block.(records)
+      else
+        records.each(&block)
+      end
     elsif else_say.present?
       options = { class: 'alert alert-info text-center', role: 'alert'}.with_indifferent_access
       alert_options.each_pair do |k, v|

@@ -1,8 +1,4 @@
 class GroupPolicy < ApplicationPolicy
-  def index?
-    true
-  end
-
   def create?
     admin_user?
   end
@@ -13,16 +9,12 @@ class GroupPolicy < ApplicationPolicy
     end
   end
 
-  def edit_order?
-    update_order?
-  end
-
   def update_order?
     create?
   end
 
-  def destroy?
-    create?
+  def edit_order?
+    update_order?
   end
 
 private

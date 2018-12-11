@@ -11,3 +11,6 @@ de:
       instagram:  "Instagram"
       no_infos:   "keine Neuigkeiten gefunden"
       welcome:    [ "Willkommen", "bei", "der", "Pfadi Olten" ]
+
+  about_us:
+    nav: "Abteilung"

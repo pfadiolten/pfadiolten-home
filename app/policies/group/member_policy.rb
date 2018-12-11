@@ -8,8 +8,4 @@ class Group::MemberPolicy < ApplicationPolicy
       user.admin?
     end
   end
-
-  def destroy?
-    admin_user?
-  end
 end

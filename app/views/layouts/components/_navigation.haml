@@ -19,10 +19,24 @@
       %span.navbar-toggler-icon
     .collapse.navbar-collapse#navbarMainCollapse
       %ul.navbar-nav.navbar-nav--left.mr-auto
-        - Application::Navigation::ItemPresenter.all_for(self).each do |nav_item|
-          %li.nav-item
-            %a.nav-link{ class: ('active' if nav_item.active?), href: nav_item.path }
-              = nav_item.title
+        - Application::Navigation::ItemPresenter.all_for(self).each do |item|
+          - if item.children?
+            %li.nav-item.dropdown
+              %a.nav-link.dropdown-toggle{ id: item.id,
+                                           href: '#',
+                                           role: 'button',
+                                           data: { toggle: 'dropdown' },
+                                           aria: { haspopup: 'true',
+                                                   expanded: 'false', } }= item.title
+              .dropdown-menu{ aria: { labelledby: item.id } }
+                - item.children.each do |child|
+                  %a.dropdown-item{ href: child.path, class: ('active' if child.active?) }
+                    = child.title
+
+          - else
+            %li.nav-item
+              %a.nav-link{ class: ('active' if item.active?), href: item.path }
+                = item.title
 
 
       %ul.navbar-nav.navbar-nav--right
@@ -50,6 +64,3 @@
                 .nav-link--login__icon.nav-icon
                   = icons.sign_in
                 .nav-link--login__name= t('devise.sessions.new.title')
-
-
-
