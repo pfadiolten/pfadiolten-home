@@ -33,6 +33,13 @@ class User < ApplicationRecord
            foreign_key: :author_id,
            dependent: :nullify
 
+  has_one :user_avatar,
+          class_name:  'User::Avatar',
+          foreign_key: :user_id,
+          dependent:   :destroy
+
+  validates_
+
 # Attributes
   alias_attribute :admin?, :is_admin
 

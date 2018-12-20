@@ -83,6 +83,9 @@ module ApplicationHelper
       else
         records.each(&block)
       end
+
+      # dont't return data, may end up in template
+      return
     elsif else_say.present?
       options = { class: 'alert alert-info text-center', role: 'alert'}.with_indifferent_access
       alert_options.each_pair do |k, v|

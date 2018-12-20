@@ -31,5 +31,27 @@ class ApplicationRecord < ActiveRecord::Base
         end
       end
     end
+
+    def validate_file(attribute, content_type: nil, is_image: false, presence: false)
+      validator = proc do
+        file = public_send(attribute)
+        if presence
+          errors.add(:attribute, :required) unless file.attached?
+        end
+        if is_image
+          content_type = Array(content_type) + content_types_for_images
+        end
+        if content_type.present?
+          if file.attached? && !file.content_type.in?(included_in)
+            errors.add(attribute, :invalid)
+          end
+        end
+      end
+      validate validator
+    end
+
+    def content_types_for_images
+      %w[ image/png image/jpg image/jpeg ].freeze
+    end
   end
 end

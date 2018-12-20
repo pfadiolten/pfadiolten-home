@@ -10,7 +10,6 @@ class Album::Image < ApplicationRecord
 # Validations
   validates :file,
             presence: true
-
 # Scopes
   default_scope do
     order(created_at: 'desc')
