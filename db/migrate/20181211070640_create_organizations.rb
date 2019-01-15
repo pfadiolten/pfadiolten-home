@@ -25,6 +25,11 @@ class CreateOrganizations < ActiveRecord::Migration[5.2]
                null: true
 
       #
+      t.column :tasks,
+               :text,
+               null: true
+
+      #
       t.timestamps
     end
   end

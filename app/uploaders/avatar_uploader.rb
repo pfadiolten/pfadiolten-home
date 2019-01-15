@@ -1,4 +1,4 @@
-class AvatarUploader < ImageUploader
+class AvatarUploader < ApplicationImageUploader
   process resize_to_fit: [ 1024, 1024 ]
 
   [ 32, 64, 128, 256, 512 ].each do |size|

@@ -33,13 +33,6 @@ class User < ApplicationRecord
            foreign_key: :author_id,
            dependent: :nullify
 
-  has_one :user_avatar,
-          class_name:  'User::Avatar',
-          foreign_key: :user_id,
-          dependent:   :destroy
-
-  validates_
-
 # Attributes
   alias_attribute :admin?, :is_admin
 
@@ -94,13 +87,13 @@ protected
   class << self
     def find_for_database_authentication(warden_conditions)
       conditions = warden_conditions.dup
-      if login = (conditions.delete(:login) || conditions.delete(:scout_name))
+      if (login = (conditions.delete(:login) || conditions.delete(:scout_name)))
         where(conditions.to_h).where('LOWER(scout_name) = LOWER(?)', login).first
       end
     end
 
     def find_by_scout_name(scout_name)
-      find_by('LOWER(scout_name) = LOWER(?)', CGI::unescape(scout_name))
+      find_by('LOWER(scout_name) = LOWER(?)', scout_name)
     end
   end
 end

@@ -113,7 +113,7 @@ gem 'tabler-rubygem'
 gem 'jquery-rails'
 
 # font awesome - html/css icons
-gem 'font-awesome-sass', '>= 5.2'
+gem 'font-awesome-sass', '>= 5.6'
 
 # HTML select input replacement
 gem 'select2-rails', '>= 4.0.3'

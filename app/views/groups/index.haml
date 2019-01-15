@@ -16,18 +16,3 @@
       .col.col-md-10.col-lg-8.col-xl-6
         = list_any @groups, else_say: t('.no_groups') do |group|
           = render '/groups/present', group: group
-
-- if false
-  - if @groups.any?
-    - @groups.each do |group|
-      .row.gap-bottom-1
-        .col-xs-12
-          %a{ href: group_path(group) }
-            .panel.panel-default.panel-link.text-center.no-margin-bottom
-              .panel-heading
-                = group.name
-              - if group.who.present?
-                .panel-body
-                  = group.who
-  - else
-    .alert.alert-info.text-center= t('.no_users')

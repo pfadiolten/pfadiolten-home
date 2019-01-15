@@ -1,5 +1,8 @@
 .container, .container-fluid { &.container--main {
-  overflow:       auto;
+  // might need this again in some pages,
+  // currently breaks scrolling on some others (ex. group.show, if any events are present)
+  // overflow: auto;
+
   padding-bottom: 6rem;
 
   @include media-breakpoint-down(sm) {

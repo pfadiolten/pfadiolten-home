@@ -2,6 +2,7 @@ module Has::Title
   def title(title_or_options=nil)
     if title_or_options.nil? || title_or_options.is_a?(Hash)
       title = t('.title', { default: '' }.merge(title_or_options || {}))
+      raise 'no title defined' if title.blank?
       content_for(:title, title) if title.length > 0
     else
       content_for(:title, title_or_options)

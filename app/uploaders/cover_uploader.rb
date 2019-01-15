@@ -1,4 +1,4 @@
-class CoverUploader < ImageUploader
+class CoverUploader < ApplicationImageUploader
   [ 128, 256, 512, 1024 ].each do |size|
     version :"x#{size}" do
       process resize_to_limit: [ size, size ]

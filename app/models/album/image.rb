@@ -5,7 +5,7 @@ class Album::Image < ApplicationRecord
              foreign_key: :album_id
 
 # Attributes
-  mount_uploader :file, Album::Image::Uploader
+  mount_uploader :file, ImageUploader
 
 # Validations
   validates :file,

@@ -15,6 +15,7 @@ class ApplicationHelper::Icons
     end
   end
 
+  # actions
   icon new:     %w[ fas plus ],
        edit:    %w[ fas edit ],
        destroy: %w[ fas trash-alt ]
@@ -51,4 +52,7 @@ class ApplicationHelper::Icons
   icon facebook:  %w[ fab facebook ],
        instagram: %w[ fab instagram ],
        github:    %w[ fab github ]
+
+  icon event_activity: %w[ fas rocket ],
+       event_camp:     %w[ fas map-signs ]
 end

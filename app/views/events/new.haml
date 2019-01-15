@@ -5,10 +5,9 @@
     .row
       - Event.detail_types.each do |detail, _|
         %div{ class: "col-#{12 / Event.detail_types.count}" }
-          .card.text-center.hoverable.js-link{ data: { url: url_for(action: "new_#{detail}") } }
-            .card-status.card-status-left.bg-primary.hoverable__element
-            .card-body{ style: 'font-size: 2em;' }
-              %i.fe{ class: "fe-#{icons[detail]}" }
+          .card.card--hoverable.js-link{ data: { url: url_for(action: "new_#{detail}") } }
+            .card-body.text-center{ style: 'font-size: 2em;' }
+              = icons.send("event_#{detail}")
             .card-header.justify-content-center
               .card-title= t("activerecord.models.event.#{detail}.one")
 

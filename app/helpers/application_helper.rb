@@ -20,6 +20,22 @@ module ApplicationHelper
     end
   end
 
+  def submit_buttons_for(f)
+    make_submit_button = lambda do |col:|
+      content_tag('div', class: "col-#{col}") do
+        f.submit class: 'btn btn-primary btn-block'
+      end
+    end
+
+    content_tag('div', class: 'row') do
+      if f.object.persisted? && policy(f.object).destroy?
+        make_submit_button.(col: 8) << content_tag('div', class: 'col-4', &method(:destroy_button))
+      else
+        make_submit_button.(col: 12)
+      end
+    end
+  end
+
   def destroy_button(options={})
     title        ||= t("#{controller_path.gsub('/', '.')}.destroy.title", default: "")
     confirmation ||= t("#{controller_path.gsub('/', '.')}.destroy.info", default: "")

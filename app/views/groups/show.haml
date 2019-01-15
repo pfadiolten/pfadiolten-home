@@ -18,11 +18,15 @@
     .row.justify-content-center
 
       // event row
-      - if (events = @group.events.active).any?
-        .col-12.col-lg-5.col-xl-4.order-2.order-lg-1
-          = render '/events/list',
-                   events:         events,
-                   new_event_path: new_event_path(groups: @group.abbreviation)
+      .col-12.col-lg-5.col-xl-4.order-2.order-lg-1
+        - events = @group.events.active
+        .row
+          .col-12
+            = render "/events/list",
+                     events:         events,
+                     title:          t('.next_events'),
+                     new_event_path: new_event_path(groups: @group.abbreviation)
+                     
 
       // info row
       .col-12.col-lg-7.col-xl-8.order-1.order-lg-2

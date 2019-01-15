@@ -27,7 +27,7 @@ de:
       title: "Alle Stufen"
       no_groups: "Keine Stufen gefunden"
     show:
-      no_events: "Es stehen keine Aktivitäten an"
+      next_events: "Nächste Aktivitäten"
     new:
       title: "Stufe erfassen"
     edit:

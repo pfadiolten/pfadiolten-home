@@ -1,7 +1,5 @@
 class RecreateUploadedImages < ActiveRecord::Migration[5.2]
   def change
-    puts "--- remove this file after deploying to production"
-
     User.all.each do |user|
       next unless user.avatar?
 

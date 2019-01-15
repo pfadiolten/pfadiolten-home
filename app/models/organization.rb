@@ -1,4 +1,8 @@
 class Organization < ApplicationRecord
+# Relations
+  has_many :images,
+           class_name: 'Image',
+           as:         'imageable'
 
 # Callbacks
   sanitize_html_of :description

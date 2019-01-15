@@ -14,3 +14,10 @@ de:
         name: "Name"
         abbreviation: "Abkürzung"
         description: "Beschreibung"
+
+  organizations:
+    index:
+      title: "Vereine"
+      no_orgs: "Keine Vereine gefunden"
+    new:
+      title: "Verein erfassen"
