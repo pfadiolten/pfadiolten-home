@@ -136,6 +136,9 @@ gem 'serviceworker-rails'
 # wysiwyg editor
 gem 'summernote-rails'
 
+# JS asset management
+gem 'webpacker', '~> 3.5'
+
 # gem 'tui-editor-rails', path: '../tui-editor-rails'
 
 group :development, :test do

@@ -1,14 +1,33 @@
 {
   "name": "pfadiolten-home",
   "dependencies": {
+    "@rails/webpacker": "3.5",
+    "@types/react": "^16.7.19",
+    "@types/react-dom": "^16.0.11",
+    "@types/reactstrap": "^6.4.4",
+    "babel-preset-react": "^6.24.1",
     "jquery-hammerjs": "^2.0.0",
     "lightgallery": "^1.6.11",
+    "prop-types": "^15.6.2",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "reactstrap": "^7.1.0",
     "select2-bootstrap4-theme": "^1.0.0",
-    "sortablejs": "^1.7.0"
+    "sortablejs": "^1.7.0",
+    "ts-loader": "3.5.0",
+    "typescript": "^3.2.2"
   },
   "version": "1.0.1",
   "main": "index.js",
   "repository": "https://github.com/pfadiolten/pfadiolten-home.git",
   "author": "Daniel von Atzigen <daniel@vatz.ch>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jquery": "^3.3.29",
+    "tslint": "^5.12.1",
+    "tslint-config-airbnb": "^5.11.1",
+    "tslint-config-prettier": "^1.17.0",
+    "tslint-react": "^3.6.0",
+    "webpack-dev-server": "2.11.2"
+  }
 }

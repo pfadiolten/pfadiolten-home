@@ -25,3 +25,9 @@ class Organization < ApplicationRecord
     abbreviation.downcase
   end
 end
+
+class << ApplicationRecord
+  def find_by_abbreviation(abbreviation)
+    find_by('LOWER(abbreviation) = LOWER(?)', abbreviation)
+  end
+end

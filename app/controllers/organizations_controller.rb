@@ -6,6 +6,9 @@ class OrganizationsController < ApplicationController
     @orgs = policy_scope Organization.all.order(name: 'asc')
   end
 
+  def show
+  end
+
   def new
     @org = Organization.new
     authorize @org
@@ -18,7 +21,12 @@ class OrganizationsController < ApplicationController
     respond_with @org
   end
 
-  def show
+  def edit
+    @original_org = get_org
+  end
+
+  def udpate
+    @original_org = get_org
   end
 
 protected
@@ -28,7 +36,7 @@ protected
   end
 
   def get_org
-    Organization.find_by('LOWER(abbreviation) = ?', params[:abbreviation]&.downcase)
+    Organization.find_by_abbreviation(params[:abbreviation])
   end
 
 private

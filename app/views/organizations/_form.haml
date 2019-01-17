@@ -1,0 +1,16 @@
+.row.justify-content-center
+  .col-md-10.col-lg-8
+    = simple_form_for @org do |f|
+      .row
+        .col-12.col-md-8
+          = f.input :name
+        .col-12.col-md-4
+          = f.input :abbreviation
+
+      .row
+        .col
+          = f.input :description,
+                    required:   false,
+                    input_html: { class: 'text-editor' }
+
+      = submit_buttons_for f

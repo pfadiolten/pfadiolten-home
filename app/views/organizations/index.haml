@@ -4,7 +4,7 @@
   can_create = policy(@orgs).create?
 
 - if can_create
-  .row
+  .row.mb-4
     .col-12.d-flex.justify-content-center
       - if can_create
         = link_to new_organization_path, class: 'btn btn-primary' do

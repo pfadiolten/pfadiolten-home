@@ -1,0 +1,12 @@
+de:
+  routes:
+    images: "bilder"
+
+
+  organizations:
+    images:
+      show:
+        title: "Bilder"
+
+  images:
+    upload_images: 'Bilder hinzufügen'

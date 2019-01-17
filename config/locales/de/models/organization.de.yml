@@ -21,3 +21,5 @@ de:
       no_orgs: "Keine Vereine gefunden"
     new:
       title: "Verein erfassen"
+    edit:
+      title: "Verein bearbeiten"

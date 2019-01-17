@@ -1,2 +1,15 @@
 - title @org.name
 - subtitle @org.abbreviation
+
+:ruby
+  can_update = policy(@org).update?
+- if can_update
+  .row.mb-4
+    .col
+      .col.d-flex.justify-content-center
+        .btn-group
+          - if can_update
+            = link_to url_for(action: :edit), class: 'btn btn-primary' do
+              = icons.edit
+            = link_to organization_images_path(organization_abbreviation: @org.to_param), class: 'btn btn-primary' do
+              = icons.images

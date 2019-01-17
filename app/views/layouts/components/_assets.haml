@@ -2,5 +2,8 @@
   window.App = window.App || {};
   window.App.controller = '#{controller_name}';
   window.App.action     = '#{action_name}';
+
 = javascript_include_tag 'application'
 = javascript_include_tag controller_asset if controller_js?
+
+= javascript_pack_tag 'application'

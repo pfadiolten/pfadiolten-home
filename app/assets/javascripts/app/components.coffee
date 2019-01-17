@@ -1,8 +1,6 @@
 #= require_self
-#= require app/components/search-list
 #= require app/components/toggleable
 #= require app/components/link
-#= require app/components/expandable
 #= require app/components/mirror
 #= require app/components/deletable-images
 

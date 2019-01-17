@@ -1,0 +1,25 @@
+{
+  "extends": [ "tslint-config-prettier", "tslint-react", "tslint-config-airbnb" ],
+  "linterOptions": {
+    "include": [
+      "app/javascript/**/*.ts",
+      "app/javascript/**/*.tsx"
+    ],
+    "exclude": [
+      "node_modules/**/*"
+    ]
+  },
+  "rules": {
+    "variable-name":          [ true, "ban-keywords", "check-format", "allow-pascal-case", "allow-leading-underscore" ],
+    "jsx-boolean-value":      [ true, "never" ],
+    "semicolon":              [ true, "always", "ignore-interfaces", "strict-bound-class-methods" ],
+    "align":                  [ true, "parameters", "statements", "members", "elements" ],
+    "ter-indent":             [ true, 2 ],
+    "ter-arrow-parens":       [ true, "always" ],
+    "no-trailing-whitespace": [ true, "ignore-blank-lines" ],
+    "array-bracket-spacing":  [ true, "always", { "arraysInArrays": false } ],
+    "eofline":                false,
+    "import-name":            false,
+    "jsx-no-multiline-js":    false
+  }
+}

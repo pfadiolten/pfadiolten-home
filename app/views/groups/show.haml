@@ -2,15 +2,19 @@
 - subtitle @group.abbreviation
 
 .row.justify-content-center
-  - if policy(@group).update? || policy(@group.roles).index?
+  :ruby
+    can_update       = policy(@group).update?
+    can_index_roles  = policy(@group.roles).index?
+
+  - if can_update || can_index_roles
     .col-12
       .row.mb-4
         .col.d-flex.justify-content-center
           .btn-group
-            - if policy(@group).update?
+            - if can_update
               = link_to edit_group_path, class: 'btn btn-primary' do
                 = icons.edit
-            - if policy(@group.roles).index?
+            - if can_index_roles
               = link_to group_roles_path(@group), class: 'btn btn-primary' do
                 = icons.permissions
 
@@ -42,7 +46,7 @@
 
                   - %i[ who when ].each do |attribute|
                     - if (value = @group.read_attribute(attribute))
-                      .row.mt-6
+                      .row
                         .col-12
                           %h3= t("activerecord.attributes.group.#{attribute}")
                           .row
@@ -71,7 +75,7 @@
                             - role.members.each do |member|
                               - user = member.user
                               .col-6.col-md-4.col-lg-3
-                                = render '/users/present', user: user do
+                                = components.user(user) do
                                   - if policy(role).update?
                                     .d-flex.justify-content-end
                                       %a.btn.btn-primary{ href: edit_group_member_path(@group, member) }

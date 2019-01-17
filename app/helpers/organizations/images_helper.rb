@@ -1,0 +1,2 @@
+module Organizations::ImagesHelper
+end

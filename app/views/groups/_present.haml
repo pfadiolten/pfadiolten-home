@@ -1,9 +1,14 @@
 -# group: Group
 
-.card.card--hoverable.js-link{ data: { url: group_path(group) } }
-  .card-status.card-status-left.bg-primary
+.card.card--hoverable.mb-2.js-link{ data: { url: group_path(group) } }
   .card-header
-    .card-title= group.name
-  - if (who = group.who)
-    .card-body
-      = who
+    .card-title.w-100
+      - if (who = group.who)
+        .row
+          .col
+            = group.name
+          .col-auto
+            %small.text-right.text-muted.d-inline
+              = who
+      - else
+        = group.name

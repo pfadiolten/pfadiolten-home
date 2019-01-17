@@ -59,4 +59,8 @@ protected
   def admin_user?
     with_user { user.admin? }
   end
+
+  def policy(value)
+    Pundit.policy!(user, value)
+  end
 end

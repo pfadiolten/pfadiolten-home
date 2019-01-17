@@ -1,0 +1,14 @@
+:ruby
+  images          = local_assigns.fetch(:images)
+  enable_lightbox = local_assigns.fetch(:enable_lightbox) { false }
+
+= components.file_upload url: url_for(action: :create)
+
+.row.justify-content-center
+  .col.gallery{ class: [ ('gallery--no-lightbox' unless enable_lightbox) ] }
+    - images.each_with_index do |image, i|
+      .gallery__image{ data: { src: image_path(image.file.x1024) } }
+        .d-block.position-relative
+          - shared_attributes = { alt: "Thumbnail ##{i + 1}", data: {  id: image.id  } }
+          %img.d-sm-none{ src: image_path(image.file.x256), **shared_attributes }
+          %img.d-none.d-sm-block{ src: image_path(image.file.x512), **shared_attributes }

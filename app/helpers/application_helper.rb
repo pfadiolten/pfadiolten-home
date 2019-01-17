@@ -140,6 +140,10 @@ module ApplicationHelper
     @_icons ||= ApplicationHelper::Icons.new(method(:icon))
   end
 
+  def components
+    @_components ||= ApplicationHelper::Components.new(view: self)
+  end
+
 private
   def exists_js?(path)
     %w[ .coffee .coffee.erb .js .js.erb .erb ].inject(false) do |found, ext|

@@ -61,7 +61,9 @@ Rails.application.routes.draw do
 
     resources :articles
 
-    resources :organizations, param: :abbreviation
+    resources :organizations, param: :abbreviation do
+      resource :images, only: %i[ show create destroy ], controller: 'organizations/images'
+    end
 
     resources :albums, param: :name do
       member do

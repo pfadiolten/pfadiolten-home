@@ -2,14 +2,18 @@
 
 .row
   .col-12
-    - if (policy = policy(@groups)) && (policy.create? || policy.update_order?)
+    :ruby
+      can_create       = policy(@groups).create?
+      can_update_order = @groups.count > 1 && policy(@groups).update_order?
+
+    - if can_create || can_update_order
       .row.mb-4
         .col-12.d-flex.justify-content-center
-          - if policy.create?
-            = link_to new_group_path, class: 'btn btn-primary' do
+          - if can_create
+            = link_to url_for(action: :new), class: 'btn btn-primary' do
               = icons.new
-          - if policy.update_order?
-            = link_to groups_edit_order_path, class: 'btn btn-primary' do
+          - if can_update_order
+            = link_to url_for(action: :edit_order), class: 'btn btn-primary' do
               = icons.order
 
     .row.justify-content-center

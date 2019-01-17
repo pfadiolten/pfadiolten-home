@@ -6,9 +6,12 @@ services:
       context: .
       args:
         - http_proxy
-    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    command: sh -c "ruby ./bin/webpack --watch --colors --progress & bundle exec rails s -p 3000 -b '0.0.0.0'"
     environment:
       - RAILS_ENV=development
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+      - WEBPACKER_DEV_SERVER_HOST=0.0.0.0
 
       - PFADIOLTEN_OSM_ACCESS_TOKEN
       - PFADIOLTEN_INSTAGRAM_CLIENT_ID
@@ -16,13 +19,20 @@ services:
       - PFADIOLTEN_INSTAGRAM_ACCESS_TOKEN
 
       - http_proxy
-    volumes:
-      - gems:/usr/local/bundle
-      - .:/pfadiolten-home
     ports:
       - '3000:3000'
+      - '3035:3035'
+    volumes:
+      - .:/pfadiolten-home
+      - gems:/usr/local/bundle
+      - node_modules:/pfadiolten-home/node_modules
     depends_on:
       - db
+    tmpfs:
+      - /pfadiolten-home/log
+      - /pfadiolten-home/tmp
+      - /pfadiolten-home/public/packs
+
   db:
     image: postgres
     volumes:
@@ -33,3 +43,5 @@ volumes:
     name: pfadiolten-home.data
   gems:
     name: pfadiolten-home.gems
+  node_modules:
+    name: pfadiolten-home.node_modules

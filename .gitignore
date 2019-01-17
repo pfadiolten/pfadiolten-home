@@ -1,6 +1,19 @@
-public/uploads/
-public/packs/
-node_modules/
+/public/uploads/
+
+# compiled webpack output
+/public/packs/
+/public/packs-test/
+
+# node dependencies
+/node_modules/
+
+# yarn logs and stuff
+/yarn-debug.log*
+/yarn-error.log
+.yarn-integrity
+
+
+
 
 # Created by https://www.gitignore.io/api/ruby,rails,rubymine+iml
 
@@ -161,4 +174,8 @@ modules.xml
 *.ipr
 
 
-# End of https://www.gitignore.io/api/ruby,rails,rubymine+iml
+# End of https://www.gitignore.io/api/ruby,rails,rubymine+iml/public/packs
+/public/packs-test
+/node_modules
+yarn-debug.log*
+.yarn-integrity
