@@ -1,7 +1,7 @@
 -# articles: [Article]
 
 .category
-  #newsCarousel.carousel.carousel--news.carousel--swipeable.slide{ data: { ride: 'carousel' } }
+  #newsCarousel.carousel.carousel--news.slide{ data: { ride: 'carousel' } }
     %ol.carousel-indicators
       - if articles.any?
         %li.active{ data: { target: '#newsCarousel', slide_to: 0 } }

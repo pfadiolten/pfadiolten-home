@@ -1,8 +1,0 @@
-@import "select2";
-@import "select2-bootstrap4-theme/dist/select2-bootstrap4";
-
-.select2 > .selection > .select2-selection {
-  @if $enable-rounded == false {
-    border-radius: 0;
-  }
-}

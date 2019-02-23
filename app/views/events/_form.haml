@@ -11,20 +11,20 @@
         .row
           .col-12
             = fe.input :group_id,
-                       selected: @event.event_groups.map(&:group_id),
-                       collection: policy_scope(Group),
+                       as:           :select_component,
+                       selected:     @event.event_groups.map(&:group_id),
+                       collection:   policy_scope(Group),
                        label_method: :abbreviation,
-                       include_blank: false,
-                       input_html: { multiple: true, name: 'event[event_groups_attributes][][group_id]' }
+                       input_html:    { multiple: true, name: 'event[event_groups_attributes][][group_id]' }
       .row
         .col-12.col-md-4
-          = f.input :starts_at, as: :date_time
+          = f.input :starts_at, as: :date_time_component
         .col-12.col-md-8
           = f.input :start_location, as: :string
 
       .row
         .col-12.col-md-4
-          = f.input :ends_at, as: :date_time
+          = f.input :ends_at, as: :date_time_component
         .col-12.col-md-8
           = f.input :end_location,
                     as: :string,
@@ -48,9 +48,9 @@
       .row
         - if false
           .col-6.text-center
-            = f.input :is_hidden, as: :boolean, required: false
+            = f.input :is_hidden, as: :checkbox_component, required: false
         .col-12.text-center
-          = f.input :is_private, as: :boolean, required: false
+          = f.input :is_private, as: :checkbox_component, required: false
 
       .row
         .col

@@ -19,11 +19,19 @@ class ApplicationHelper::Components
     make 'UserList', users: users.map(&method(:user_props)), &block
   end
 
-private
+  def sortable(&block)
+    make 'Sortable', &block
+  end
+
   def make(name, props = {}, &block)
+    if (classes = props.delete(:class))
+      props[:className] = Array(classes).join(' ')
+    end
+
     view.content_tag('div', nil, class: 'js-component', data: { component: {  name: name, props: props } }, &block)
   end
 
+private
   attr_reader :view
 
   def user_props(user)

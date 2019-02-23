@@ -1,5 +1,5 @@
 class FilehandleInput < SimpleForm::Inputs::Base
-  def input(wrapper_options)
+  def input(wrapper_options = nil)
     attribute = I18n.t("activerecord.attributes.#{lookup_model_names.join('.')}.#{attribute_name}", default: attribute_name.to_s.capitalize)
     text = options.delete(:text) || I18n.t('select_image', attribute: attribute)
     template.content_tag(:div, class: 'handles') do

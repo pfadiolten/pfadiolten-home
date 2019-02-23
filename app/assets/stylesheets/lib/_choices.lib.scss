@@ -1,0 +1,26 @@
+$choices-primary-color:     $primary;
+$choices-bg-color:          $input-bg;
+$choices-bg-color-disabled: $input-disabled-bg;
+
+@import "choices.js/src/styles/choices";
+
+.choices {
+  $offset: 3.5px;
+
+  .choices__inner {
+    padding: 0;
+    padding: {
+      left:  $offset;
+      right: $offset;
+    }
+    min-height: 0;
+  }
+
+  .choices__input {
+    margin: $offset;
+  }
+
+  .choices__item {
+    margin-top: 1px;
+  }
+}

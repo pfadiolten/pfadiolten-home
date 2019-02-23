@@ -54,7 +54,7 @@ class FileUpload extends React.PureComponent<Props, State> {
   };
 
   private handleInput: React.ChangeEventHandler<HTMLInputElement> = async (e) => {
-    this.setState({
+    await this.setState({
       progress: 0,
     });
 
@@ -67,16 +67,17 @@ class FileUpload extends React.PureComponent<Props, State> {
     }
 
     const req = new XMLHttpRequest();
-    req.responseType = 'text';
+    // req.responseType = 'text';
 
-    req.addEventListener('load', this.handleUploadComplete, false);
-    req.addEventListener('readystatechange', this.handleUploadResponse(req), false);
+    // req.addEventListener('load', this.handleUploadComplete, false);
+    // req.addEventListener('readystatechange', this.handleUploadResponse(req), false);
 
     // TODO this does not seem to report anything
     req.upload.addEventListener('progress', this.handleUploadProgress, false);
 
-    req.open('POST', this.props.url);
+    req.open('POST', this.props.url, true);
     req.setRequestHeader('X-CSRF-Token', meta.find('csrf-token'));
+    req.setRequestHeader('Content-Type', 'multipart/form-data');
     req.send(formData);
   };
 

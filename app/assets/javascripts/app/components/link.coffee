@@ -17,3 +17,4 @@ App.components['link'] = ($target) ->
     false
   ###
 
+ö

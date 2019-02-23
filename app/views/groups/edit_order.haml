@@ -3,14 +3,15 @@
 .row.justify-content-center
   .col-12.col-md-8.sort-order
     = simple_form_for :groups, url: groups_update_order_path, method: 'PUT' do |f|
-      .form-group.js-sortable
-        - @groups.each do |group|
-          .row.group
-            .col-12
-              .card.card--hoverable.mb-0
-                .card-header.justify-content-center
-                  .card-title= group.name
-                  %input{ type: 'hidden', required: true, value: group.id, name: "#{f.object_name}[][id]", id: "#{f.object_name}_#{group.id}" }
+      .form-group
+        = components.sortable do
+          - @groups.each do |group|
+            .row.group
+              .col-12
+                .card.card--hoverable.mb-0
+                  .card-header.justify-content-center
+                    .card-title= group.name
+                    %input{ type: 'hidden', required: true, value: group.id, name: "#{f.object_name}[][id]", id: "#{f.object_name}_#{group.id}" }
 
       .row
         .col-12

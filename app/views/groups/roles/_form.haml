@@ -10,9 +10,9 @@
 
       .row.text-center
         .col-12.col-md
-          = f.input :can_edit_group, as: :boolean, required: false
+          = f.input :can_edit_group, as: :checkbox_component, required: false
         .col-12.col-md
-          = f.input :can_edit_members, as: :boolean, required: false
+          = f.input :can_edit_members, as: :checkbox_component, required: false
 
       .row
         - if @role.persisted? && policy(@role).destroy?

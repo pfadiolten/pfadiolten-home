@@ -115,20 +115,8 @@ gem 'jquery-rails'
 # font awesome - html/css icons
 gem 'font-awesome-sass', '>= 5.6'
 
-# HTML select input replacement
-gem 'select2-rails', '>= 4.0.3'
-
-# HTML datetime input for bootstrap (a.k.a. Tempus Dominus)
-gem 'bootstrap4-datetime-picker-rails'
-
-# JS datetime library, required by 'bootstrap3-datetimepicker-rails'
-gem 'momentjs-rails', '>= 2.17.1'
-
 # openstreetmap.org javascript framework
 gem 'leaflet-rails', '>= 1.3.1'
-
-# pure css animation library
-gem "animate-rails"
 
 # js service worker for rails
 gem 'serviceworker-rails'

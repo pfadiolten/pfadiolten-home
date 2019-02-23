@@ -1,5 +1,4 @@
 #= require_self
-#= require app/types/carousel--swipeable
 #= require app/types/link-parent
 
 App.types = {}

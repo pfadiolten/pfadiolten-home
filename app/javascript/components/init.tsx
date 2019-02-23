@@ -1,16 +1,22 @@
 import FileUpload from './FileUpload';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import SearchList from './SearchList';
+import CheckboxInput from './UI/Input/Checkbox';
+import DateTimeInput from './UI/Input/DateTime';
+import SelectInput from './UI/Input/Select';
 import Reference from './UI/Reference';
+import Sortable from './UI/Sortable';
 import User from './User';
 import UserList from './User/List';
 
 const components = {
   FileUpload,
-  SearchList,
   User,
   UserList,
+  DateTimeInput,
+  SelectInput,
+  CheckboxInput,
+  Sortable,
 };
 
 const componentElements = document.getElementsByClassName('js-component');

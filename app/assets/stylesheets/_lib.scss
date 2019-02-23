@@ -3,12 +3,12 @@
 
 @import "lib/bootstrap.lib";
 @import "lib/font-awesome.lib";
-@import "lib/select2.lib";
-@import "lib/animate-css.lib";
-@import "lib/tempus-dominus.lib";
 @import "lib/leaflet.lib";
 @import "lib/summernote.lib";
 @import "lib/lightgallery.lib";
 
-// TODO: replace this plugin with an npm alternative
-@import 'plugins/checkbox-x';
+
+// webpacker
+@import "lib/choices.lib";
+@import "lib/datetime.lib";
+@import "lib/pretty-checkbox.lib";

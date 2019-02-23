@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_15_162824) do
+ActiveRecord::Schema.define(version: 2019_01_15_162825) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -93,6 +93,13 @@ ActiveRecord::Schema.define(version: 2019_01_15_162824) do
     t.index ["user_in_charge_id"], name: "user_in_charge_of_event"
   end
 
+  create_table "file_images", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.integer "imageable_id", null: false
+    t.string "imageable_type", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "group_members", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "group_id", null: false
     t.uuid "user_id", null: false
@@ -143,7 +150,6 @@ ActiveRecord::Schema.define(version: 2019_01_15_162824) do
     t.string "name", null: false
     t.string "abbreviation", null: false
     t.text "description"
-    t.text "tasks"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["abbreviation"], name: "abbreviation_of_organization", unique: true

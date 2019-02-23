@@ -55,7 +55,7 @@ class Group::Role < ApplicationRecord
 
   class << self
     def rights_attributes
-      %i[ can_edit_members can_edit_group ]
+      %i[ can_edit_group can_edit_members ]
     end
   end
 end

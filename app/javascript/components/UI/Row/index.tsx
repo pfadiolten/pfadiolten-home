@@ -5,10 +5,10 @@ interface Props extends RowProps {
 
 }
 
-const Row: React.FC<Props> = ({ ...props }) => {
-
+const Row: React.FC<Props> = <T, >({ ...props }) => {
+  class RowComponent extends BootstrapRow<{}> {}
   return (
-    <BootstrapRow {...props} />
+    <RowComponent {...props} />
   );
 };
 
