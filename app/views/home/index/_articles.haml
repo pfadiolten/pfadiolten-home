@@ -1,0 +1,16 @@
+:ruby
+  articles = local_assigns.fetch(:articles)
+
+= render 'components/category', title: t('home.index.articles') do |b|
+  - b.options do
+    - if policy(Article).create?
+      %a.btn.btn-primary{ href: new_article_path }
+        = icons.new
+
+  - b.body do
+    .row
+      .col-12
+        = list_any articles, else_say: t('articles.index.no_articles') do |article|
+          = render '/articles/present',
+                   article: article
+

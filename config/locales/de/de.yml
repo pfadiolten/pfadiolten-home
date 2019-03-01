@@ -24,6 +24,9 @@ de:
     prev: "Rückwärts"
     next: "Vorwärts"
 
+    destroy:
+      title: "Wirklich löschen?"
+
   select_image: "%{attribute} auswählen"
   hosted_by:    "gehosted bei"
   source_code:  "Source Code @"

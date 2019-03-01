@@ -9,8 +9,11 @@
 
       .row
         .col
+          = f.input :introduction
+
+      .row
+        .col
           = f.input :description,
-                    required:   false,
                     input_html: { class: 'text-editor' }
 
       = submit_buttons_for f

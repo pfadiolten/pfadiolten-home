@@ -20,9 +20,14 @@ class CreateOrganizations < ActiveRecord::Migration[5.2]
               name: 'abbreviation_of_organization'
 
       #
+      t.column :introduction,
+               :text,
+               null: false
+
+      #
       t.column :description,
                :text,
-               null: true
+               null: false
 
       #
       t.timestamps

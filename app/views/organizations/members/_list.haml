@@ -1,0 +1,24 @@
+:ruby
+  members = local_assigns.fetch(:members)
+
+.row.row-cards.row-deck.justify-content-center
+  = list_any members, else_say: t('activerecord.models.organization/member.zero') do |member|
+    :ruby
+      user   = User.find_by_scout_name(member.scout_name) if member.scout_name.present?
+      avatar = (member.avatar || File::Avatar.new).file.x256
+
+    .col.col-lg-6
+      .card.text-center
+        %img.card-img-top{ src: avatar, width: '100%', alt: "avatar of #{member.name}" }
+        .card-header.justify-content-center
+          .card-title
+            = member.name
+          - if policy(member).edit?
+            .card-options
+              .d-flex.justify-content-end
+                = link_to edit_organization_member_path(member.organization, member), class: 'btn btn-primary' do
+                  = icons.edit
+        .card-body.py-1
+          .row
+            .col
+              %small.muted= member.role || t('activerecord.models.organization/member.one')

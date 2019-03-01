@@ -10,8 +10,12 @@
         = link_to new_organization_path, class: 'btn btn-primary' do
           = icons.new
 
-.row
-  .col-12
+.row.justify-content-center
+  .col-12.col-lg-10.col-xl-8
     = list_any @orgs, else_say: t('.no_orgs') do |org|
-      = link_to org do
-        = org.name
+      .card.card--hoverable.mb-2.js-link{ data: { url: organization_path(org) } }
+        .card-header
+          .card-title
+            = org.name
+        .card-body
+          = org.introduction

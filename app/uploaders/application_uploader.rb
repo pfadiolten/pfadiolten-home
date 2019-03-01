@@ -11,7 +11,7 @@ class ApplicationUploader < CarrierWave::Uploader::Base
 
 protected
   def extension
-    file.extension
+    file.extension || 'png'
   end
 
   def fallback(path)

@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Organizations::ImagesControllerTest < ActionDispatch::IntegrationTest
+class Organizations::MembersControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

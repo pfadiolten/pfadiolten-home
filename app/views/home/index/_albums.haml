@@ -1,0 +1,17 @@
+-# albums: [Album]
+
+:ruby
+  albums = local_assigns.fetch(:albums)
+
+= render 'components/category', title: t('home.index.albums') do |b|
+  - b.options do
+    - if policy(Album).create?
+      %a.btn.btn-primary{ href: new_album_path }
+        = icons.new
+
+  - b.body do
+    .row
+      .col
+        = list_any albums, else_say: t('albums.index.no_albums') do |album|
+          = render '/albums/present',
+                   album: album

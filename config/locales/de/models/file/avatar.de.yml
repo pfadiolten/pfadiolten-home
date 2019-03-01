@@ -1,0 +1,11 @@
+de:
+  activerecord:
+    models:
+      file/avatar:
+        zero:  "Kein Avatar"
+        one:   "Avatar"
+        other: "Avatare"
+
+    attributes:
+      file/avatar:
+        file: "Avatar"

@@ -62,7 +62,14 @@ Rails.application.routes.draw do
     resources :articles
 
     resources :organizations, param: :abbreviation do
-      resource :images, only: %i[ show create destroy ], controller: 'organizations/images'
+      scope module: :organizations do
+        resources :members, {
+          only:  %i[ new create edit update destroy ],
+          param: :name,
+        }
+      end
+
+
     end
 
     resources :albums, param: :name do

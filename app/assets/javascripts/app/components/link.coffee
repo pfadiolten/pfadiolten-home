@@ -16,5 +16,3 @@ App.components['link'] = ($target) ->
     $a[0].dispatchEvent(new event.constructor(event.type, event))
     false
   ###
-
-ö

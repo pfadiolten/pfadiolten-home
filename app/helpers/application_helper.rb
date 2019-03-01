@@ -4,7 +4,13 @@ module ApplicationHelper
   include Has::Calendar
 
   def model_name
-    controller_name.singularize
+    @_model_name =
+      controller.class.name
+        .split('::')
+        .map { |name| name.chomp('Controller').singularize }
+        .join('::')
+        .constantize
+        .model_name
   end
 
   def iconize(condition, options={})
@@ -38,7 +44,7 @@ module ApplicationHelper
 
   def destroy_button(options={})
     title        ||= t("#{controller_path.gsub('/', '.')}.destroy.title", default: "")
-    confirmation ||= t("#{controller_path.gsub('/', '.')}.destroy.info", default: "")
+    confirmation ||= t("#{controller_path.gsub('/', '.')}.destroy.info", default: t('controls.destroy.title'))
 
     modal_id = 'destroyModal'
     options = options.to_options
@@ -49,7 +55,7 @@ module ApplicationHelper
 
         result << content_tag('div', class: 'modal-body') do
           confirmation
-        end if confirmation.present?
+        end
 
         result << content_tag('div', class: 'modal-footer') do
           link_to(url_for(action: action), method: 'delete', class: 'btn btn-danger') do
@@ -59,7 +65,6 @@ module ApplicationHelper
             t('modal.abort')
           end
         end
-
         result
       end
     end
@@ -120,7 +125,7 @@ module ApplicationHelper
         end
       end
 
-      content_tag('div', class: 'col-12') do
+      content_tag('div', class: 'w-100') do
         content_tag('div', options) do
           else_say
         end
@@ -142,6 +147,12 @@ module ApplicationHelper
 
   def components
     @_components ||= ApplicationHelper::Components.new(view: self)
+  end
+
+  def build(*fields, &block)
+    builder = ApplicationHelper::Builder.new(self, *fields)
+    block.(builder)
+    builder
   end
 
 private

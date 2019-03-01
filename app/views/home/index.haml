@@ -5,17 +5,17 @@
   .col-12.col-md-10
     .row.justify-content-lg-end
       .order-lg-2.col-12.col-lg-8.col-xl-9
-        = render '/home/categories/carousel',
+        = render 'home/index/carousel',
                  articles: @home.news
 
       .order-lg-1.col-12.col-lg-4.col-xl-3
-        = render "/events/list",
+        = render "events/list",
                  events: @home.events
 
       .order-lg-3.col-12.col-lg-8.col-xl-6
-        = render '/home/categories/articles',
+        = render 'home/index/articles',
                  articles: @home.articles
 
       .order-lg-4.col-12.col-lg-8.col-xl-3
-        = render '/home/categories/albums',
+        = render 'home/index/albums',
                  albums: @home.albums

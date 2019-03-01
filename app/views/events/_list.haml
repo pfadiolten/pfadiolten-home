@@ -3,19 +3,17 @@
   title          = local_assigns.fetch(:title) { t('activerecord.models.event.other') }
   new_event_path = local_assigns.fetch(:new_event_path) { send(:new_event_path) }
 
-.category.category--events
-  .category__header
-    %h2.category__title
-      = title
-    .category__options
-      - if policy(events).create?
-        %a.btn.btn-primary{ href: new_event_path }
-          = icons.new
 
-  .category__body
+= render 'components/category', title: title do |b|
+  - b.options do
+    - if policy(events).create?
+      %a.btn.btn-primary{ href: new_event_path }
+        = icons.new
+
+  - b.body do
     .row.justify-content-center
       .col-11.col-sm-7.col-lg-12
         .row
-          = list_any events, else_say: t('events.index.no_events') do |event|
-            .col
+          .col
+            = list_any events, else_say: t('events.index.no_events') do |event|
               = render '/events/present', event: event

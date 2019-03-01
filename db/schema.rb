@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_15_162825) do
+ActiveRecord::Schema.define(version: 3019_02_23_102725) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -93,11 +93,22 @@ ActiveRecord::Schema.define(version: 2019_01_15_162825) do
     t.index ["user_in_charge_id"], name: "user_in_charge_of_event"
   end
 
-  create_table "file_images", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.integer "imageable_id", null: false
-    t.string "imageable_type", null: false
+  create_table "file_avatars", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "file", null: false
+    t.string "avatarable_type"
+    t.bigint "avatarable_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["avatarable_type", "avatarable_id"], name: "index_file_avatars_on_avatarable_type_and_avatarable_id"
+  end
+
+  create_table "file_images", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "file", null: false
+    t.string "imageable_type"
+    t.bigint "imageable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["imageable_type", "imageable_id"], name: "index_file_images_on_imageable_type_and_imageable_id"
   end
 
   create_table "group_members", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -137,19 +148,24 @@ ActiveRecord::Schema.define(version: 2019_01_15_162825) do
     t.index ["name"], name: "name_of_group", unique: true
   end
 
-  create_table "images", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "file", null: false
-    t.string "imageable_type"
-    t.bigint "imageable_id"
+  create_table "organization_members", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.string "scout_name"
+    t.string "role"
+    t.uuid "organization_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["imageable_type", "imageable_id"], name: "index_images_on_imageable_type_and_imageable_id"
+    t.index ["first_name", "last_name"], name: "full_name_of_organization_member", unique: true
+    t.index ["organization_id"], name: "organization_of_organization_member"
+    t.index ["scout_name"], name: "scout_name_of_organization_member", unique: true
   end
 
   create_table "organizations", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
     t.string "abbreviation", null: false
-    t.text "description"
+    t.text "introduction", null: false
+    t.text "description", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["abbreviation"], name: "abbreviation_of_organization", unique: true
@@ -188,4 +204,5 @@ ActiveRecord::Schema.define(version: 2019_01_15_162825) do
   add_foreign_key "group_members", "groups", name: "fk_group_of_member"
   add_foreign_key "group_members", "users", name: "fk_user_of_member"
   add_foreign_key "group_roles", "groups", name: "fk_group_of_role"
+  add_foreign_key "organization_members", "organizations", name: "fk_organization_of_organization_member"
 end

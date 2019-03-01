@@ -1,0 +1,33 @@
+:ruby
+  member = local_assigns.fetch(:member)
+
+.row.justify-content-center
+  .col-md-10.col-lg-8
+    - action = if member.persisted? then 'update' else 'create' end
+    = simple_form_for member, url: url_for(action: action) do |f|
+      .row
+        .col-12.col-lg
+          = f.input :first_name
+        .col-12.col-lg
+          = f.input :last_name
+
+      .row
+        .col
+          = f.input :scout_name,
+                    required: false
+
+      .row
+        .col
+          = f.input :role,
+                    required: false
+
+      = f.simple_fields_for :avatar, member.avatar || File::Avatar.new do |ff|
+        .row
+          .col
+            = ff.input :file,
+                       as:              'filehandle',
+                       label:           false,
+                       required:        false,
+                       destroy_record?: true
+
+      = submit_buttons_for f

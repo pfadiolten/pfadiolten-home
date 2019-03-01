@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :rememberable,
          :trackable
 
+  # TODO move to File::Avatar
   mount_uploader :avatar, AvatarUploader
 
 # Relations

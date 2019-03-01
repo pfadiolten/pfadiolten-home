@@ -7,8 +7,8 @@ class CreateUsers < ActiveRecord::Migration[5.1]
                null: false
 
       t.index %i[ scout_name ],
-              unique: true,
-              name: 'scout_name_of_user'
+              name: 'scout_name_of_user',
+              unique: true
 
       #
       t.column :first_name,

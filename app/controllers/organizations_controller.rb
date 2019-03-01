@@ -25,8 +25,10 @@ class OrganizationsController < ApplicationController
     @original_org = get_org
   end
 
-  def udpate
+  def update
     @original_org = get_org
+    @org.update(org_params)
+    respond_with @org, action: 'edit'
   end
 
 protected
@@ -44,6 +46,8 @@ private
     params.require(:organization).permit(
       :name,
       :abbreviation,
+      :introduction,
+      :description,
     )
   end
 end

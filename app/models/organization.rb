@@ -1,8 +1,14 @@
 class Organization < ApplicationRecord
 # Relations
-  has_many :images,
-           class_name: 'Image',
-           as:         'imageable'
+  has_many :members,
+           class_name:  'Organization::Member',
+           foreign_key: :organization_id,
+           dependent:   :destroy
+
+  has_one :image,
+          class_name: 'File::Image',
+          as:         :imageable,
+          dependent:  :destroy
 
 # Callbacks
   sanitize_html_of :description
@@ -16,9 +22,8 @@ class Organization < ApplicationRecord
             uniqueness: { case_sensitive: false },
             presence: true
 
-  validates :description,
-            presence: true,
-            allow_nil: true
+  validates :description, :introduction,
+            presence: true
 
 # Methods
   def to_param

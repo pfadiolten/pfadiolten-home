@@ -1,0 +1,19 @@
+:ruby
+  title   = local_assigns.fetch(:title)
+  link    = local_assigns.fetch(:link) { nil }
+  builder = ->(b) { yield b }
+
+- contents = build(:options, :body, &builder)
+
+.category{ class: ('js-link' if link.present?), data: { url: link } }
+  .category__header
+    %h2.category__title
+      = title
+
+    - if (options = contents.options)
+      .category__options
+        = options
+
+  - if (body = contents.body)
+    .category__body
+      = body

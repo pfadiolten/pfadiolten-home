@@ -7,11 +7,11 @@ module ApplicationController::Auth
   included do
     # Callbacks
     after_action :verify_authorized,
-                 except: %i[index],
+                 except: %i[ index ],
                  unless: ->{ is_a? SessionsController }
 
     after_action :verify_policy_scoped,
-                 only: %i[index],
+                 only: %i[ index ],
                  unless: ->{ is_a? SessionsController }
   end
 

@@ -4,8 +4,6 @@ class ApplicationController < ActionController::Base
 # Configuration
   protect_from_forgery with: :exception
 
-
-
   # helper concerns
   include Has::Alerts
 

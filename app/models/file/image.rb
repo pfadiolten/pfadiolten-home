@@ -1,4 +1,4 @@
-class Image < ApplicationRecord
+class File::Image < ApplicationRecord
 # Relations
   belongs_to :imageable,
              polymorphic: true,

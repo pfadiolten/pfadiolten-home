@@ -5,15 +5,17 @@ de:
   activerecord:
     models:
       organization:
-        zero: "Kein Verein"
-        one: "Verein"
+        zero:  "Kein Verein"
+        one:   "Verein"
         other: "Vereine"
 
     attributes:
       organization:
-        name: "Name"
+        name:         "Name"
         abbreviation: "Abkürzung"
-        description: "Beschreibung"
+        introduction: "Einleitung"
+        description:  "Beschreibung"
+        members:      "Mitglieder"
 
   organizations:
     index:

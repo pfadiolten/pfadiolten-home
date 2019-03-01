@@ -1,0 +1,11 @@
+de:
+  activerecord:
+    models:
+      file/image:
+        zero:  "Keine Bilder"
+        one:   "Bild"
+        other: "Bilder"
+
+    attributes:
+      file/image:
+        file: "Bild"

@@ -1,22 +1,11 @@
 - title
 
+- if policy(User).create?
+  .row.justify-content-center.mb-2
+    .col-auto
+      %a.btn.btn-primary.float-left{ href: new_user_path }
+        = icons.new
+
 .row.justify-content-center
   .col-md-10
     = components.user_list @users
-
-- if false
-  .row.justify-content-center.mb-4
-    .col-12.col-md-8.col-lg-6.col-xl-4
-      .row
-        .col
-          %input.form-control.h-100{ type: 'text', placeholder: t('users.index.search_users') }
-        - if policy(User).create?
-          .col-2
-            %a.btn.btn-primary.float-left{ href: new_user_path }
-              = icons.new
-
-  .row.justify-content-center
-    .col-md-10
-      .row.row-cards.row-deck.justify-content-center
-        = list_any @users, else_say: t('.no_users') do |user|
-          .col-6.col-md-4.col-lg-3{ data: { terms: [ user.scout_name, user.first_name, user.last_name  ].to_json } }

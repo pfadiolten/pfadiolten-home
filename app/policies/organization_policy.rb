@@ -1,5 +1,2 @@
 class OrganizationPolicy < ApplicationPolicy
-
-
-
 end

@@ -1,0 +1,29 @@
+de:
+  routes:
+    controllers:
+      organizations:
+        members:
+          members: "mitglieder"
+
+  activerecord:
+    models:
+      organization/member:
+        zero:  "Keine Mitglieder"
+        one:   "Mitglied"
+        other: "Mitglieder"
+
+    attributes:
+      organization/member:
+        first_name: "Vorname"
+        last_name:  "Nachname"
+        scout_name: "Pfadiname"
+        role:       "Rolle"
+        avatar:     "Avatar"
+
+  organizations:
+    members:
+      new:
+        title: "Mitglied erfassen"
+      edit:
+        title: "Mitglied bearbeiten"
+

@@ -3,6 +3,7 @@
 
 :ruby
   can_update = policy(@org).update?
+
 - if can_update
   .row.mb-4
     .col
@@ -11,5 +12,23 @@
           - if can_update
             = link_to url_for(action: :edit), class: 'btn btn-primary' do
               = icons.edit
-            = link_to organization_images_path(organization_abbreviation: @org.to_param), class: 'btn btn-primary' do
-              = icons.images
+
+.row
+  - can_create_members =  policy(@org.members).create?
+  - if can_create_members || @org.members.any?
+    .col-12.col-lg-5.col-xl-4.order-2.order-lg-1
+      // members
+      .row
+        .col
+          = render 'components/category', title: t('activerecord.attributes.organization.members') do |b|
+            - b.options do
+              - if can_create_members
+                %a.btn.btn-primary{ href: new_organization_member_path(organization_abbreviation: @org) }
+                  = icons.new
+
+            - b.body do
+              .row
+                .col
+                  = render 'organizations/members/list', members: @org.members
+  .col.order-1.order-lg-2
+    = @org.description.html_safe

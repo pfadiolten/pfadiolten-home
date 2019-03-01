@@ -22,6 +22,7 @@ class AvatarUploader < ApplicationImageUploader
 
 private
   def make_filename
-    "#{model.scout_name.downcase}.png"
+    owner = model.avatarable
+    "#{(owner.scout_name || owner.id).downcase}.#{extension}"
   end
 end

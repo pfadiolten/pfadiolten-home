@@ -1,0 +1,6 @@
+- title
+- subtitle do
+  = link_to @member.organization.name, url_for(@member.organization)
+
+= render 'form',
+         member: @member
