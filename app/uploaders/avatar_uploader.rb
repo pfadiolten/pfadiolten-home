@@ -22,7 +22,12 @@ class AvatarUploader < ApplicationImageUploader
 
 private
   def make_filename
-    owner = model.avatarable
+    owner =
+      if model.respond_to? :avatarable
+        model.avatarable
+      else
+        model
+      end
     "#{(owner.scout_name || owner.id).downcase}.#{extension}"
   end
 end
