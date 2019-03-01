@@ -44,3 +44,5 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', '
 
 set :passenger_environment_variables, { path: '/usr/local/rvm/gems/ruby-2.4.1/bin/passenger/bin:$PATH' }
 set :passenger_restart_command, 'passenger-config restart-app'
+
+set :yarn_flags, '--silent --no-progress'
