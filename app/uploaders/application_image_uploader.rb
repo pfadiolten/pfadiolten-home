@@ -4,7 +4,12 @@
 
 class ApplicationImageUploader < ApplicationUploader
   include CarrierWave::MiniMagick
-  #(MiniMagick.logger.level = Logger::DEBUG) if Rails.env.development?
+  MiniMagick.logger.level
+    if Rails.env.development?
+      Logger::DEBUG
+    else
+      Logger::ERROR
+    end
 
   process :image_defaults
 
