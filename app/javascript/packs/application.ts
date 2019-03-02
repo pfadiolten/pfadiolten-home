@@ -1,1 +1,2 @@
-import '../components/init'
+import '../components/init';
+import '../behaviour';

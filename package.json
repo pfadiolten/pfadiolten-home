@@ -4,6 +4,7 @@
     "@rails/webpacker": "3.5",
     "babel-preset-react": "^6.24.1",
     "choices.js": "^4.1.3",
+    "hammerjs": "^2.0.8",
     "lightgallery": "^1.6.11",
     "moment": "^2.23.0",
     "pretty-checkbox": "^3.0.3",
