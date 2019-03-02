@@ -7,7 +7,7 @@
   .card-body
     - if article.image?
       .col.col-xl-5.float-left.px-0.mr-2.mb-2
-        %img{ src: image_path(article.image) }
+        %img{ src: image_path(article.image.x512) }
     %article.col
     = article.summary
   .card-footer.link-parent__ignore

@@ -1,4 +1,5 @@
--# album: Album
+:ruby
+  album = local_assigns.fetch(:album)
 
 .card.card--album.card--hoverable.link-parent{ data: { url: album_path(album) } }
   .card-header

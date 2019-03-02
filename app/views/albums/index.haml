@@ -11,7 +11,8 @@
 
     .row
       .col-12
-        = list_any @albums, else_say: t('.no_albums'), all: true do
-          = render '/albums/present',
-                   collection: @albums,
-                   as: :album
+        = list_any @albums, else_say: t('.no_albums') do |album|
+          .row
+            .col
+              = render '/albums/present',
+                       album: album
