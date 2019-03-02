@@ -12,11 +12,13 @@
           - event.groups.each do |group|
             %a.tag.tag-info.mr-1{ href: group_path(group) }
               = group.abbreviation
-    .card-body.px-4.py-2.justify-content-center
-      - if (description = event.description)
+
+    - if (description = event.description)
+      .card-body.px-4.py-2.justify-content-center
         .row
-          .col-12.text-center.custom-text
-            = description.html_safe
+          .col-12
+            %span.text.text--custom
+              = description.html_safe
 
     .card-body.px-4.py-2
       .row
