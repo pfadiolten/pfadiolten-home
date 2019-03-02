@@ -107,6 +107,7 @@ gem 'coffee-rails', '>= 4.2'
 gem 'bootstrap', '>= 4'
 
 # dashboard ui kit for bootstrap4
+gem 'sass'
 gem 'tabler-rubygem'
 
 # jquery - js framework / core

@@ -13,4 +13,3 @@
 
 App.onPageLoad ->
   $('body')[0].addEventListener('touchstart', (->), passive: true)
-
