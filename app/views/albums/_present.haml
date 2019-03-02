@@ -1,7 +1,7 @@
 :ruby
   album = local_assigns.fetch(:album)
 
-.card.card--album.card--hoverable.link-parent{ data: { url: album_path(album) } }
+.card.card--album.card--hoverable.js-link{ data: { url: album_path(album) } }
   .card-header
     .card-title
       = album.name
@@ -14,8 +14,8 @@
 
   %ul.list-group.list-group-flush
   - if (description = album.description)
-    .list-group-item.link-parent__ignore
-      = description.html_safe
+    .list-group-item
+      = Nokogiri::HTML.parse(description.html_safe).text
 
     .list-group-item
       = render 'albums/gallery',
