@@ -3,7 +3,10 @@
 // If there ever are other footers, this type should be rewritten to only contain `--main` styles.
 
 .footer.footer--main {
-  position:    fixed;
+  position: static;
+  @include media-breakpoint-up(md) {
+    position:    fixed;
+  }
   clear:       both;
   width:       100%;
   color:       $gray-600;
