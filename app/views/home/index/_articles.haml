@@ -12,7 +12,7 @@
       .col-12
         = list_any articles, else_say: t('articles.index.no_articles') do |article|
           .row
-            .col
+            .col-12
               = render '/articles/present',
                        article: article
 
