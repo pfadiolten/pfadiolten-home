@@ -104,7 +104,7 @@ gem 'sassc-rails'
 gem 'coffee-rails', '>= 4.2'
 
 # bootstrap - css framework
-gem 'bootstrap', '>= 4.1'
+gem 'bootstrap', '>= 4'
 
 # dashboard ui kit for bootstrap4
 gem 'tabler-rubygem'
