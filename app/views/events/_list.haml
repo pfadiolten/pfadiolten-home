@@ -12,8 +12,6 @@
 
   - b.body do
     .row.justify-content-md-center.justify-content-lg-start.flex-nowrap.flex-md-wrap{ style: 'overflow-x: scroll;' }
-      .col-5.col-sm-6.col-lg-12
-        .row
-          .col
-            = list_any events, else_say: t('events.index.no_events') do |event|
-              = render '/events/present', event: event
+      = list_any events, else_say: t('events.index.no_events') do |event|
+        .col-11.col-5.col-sm-6.col-lg-12
+          = render '/events/present', event: event
