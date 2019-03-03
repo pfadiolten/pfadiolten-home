@@ -7,7 +7,7 @@
       user   = User.find_by_scout_name(member.scout_name) if member.scout_name.present?
       avatar = (member.avatar || File::Avatar.new).file.x256
 
-    .col.col-lg-6
+    .col-6.col-md-4.col-lg-6
       .card.text-center{ class: ('js-link card--hoverable' if user.present?), data: { url: (url_for(user) if user.present?) } }
         %img.card-img-top{ src: avatar, width: '100%', alt: "avatar of #{member.name}" }
         .card-header.justify-content-center
