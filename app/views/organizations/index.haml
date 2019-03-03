@@ -11,6 +11,11 @@
           = icons.new
 
 .row.justify-content-center
+  .col-auto
+    - model_string = if @orgs.count == 1 then 'one' else 'other' end
+    %p= t('.description', count: @orgs.count, model: t("activerecord.models.organization.#{model_string}"))
+
+.row.justify-content-center
   .col-12.col-lg-10.col-xl-8
     = list_any @orgs, else_say: t('.no_orgs') do |org|
       .card.card--hoverable.mb-2.js-link{ data: { url: organization_path(org) } }
