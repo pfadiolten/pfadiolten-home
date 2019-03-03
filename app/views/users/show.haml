@@ -21,7 +21,7 @@
             .col-12
               = title
         .row
-          .col-12
+          .col-auto
             - policy = policy(@user)
             .btn-group.d-flex.justify-content-center.justify-content-md-start{ role: 'group' }
               = mail_to @user.email, encode: :javascript, class: 'btn btn-primary' do

@@ -8,8 +8,12 @@ class ApplicationHelper::Icons
   class << self
     def icon(**args)
       args.each_pair do |name, args|
-        define_method name do
-          create.(*args)
+        define_method name do |fixed_width: true|
+          html_options = {}
+          html_options[:class] = [].tap do |cs|
+            cs << 'fa-fw' if fixed_width
+          end.join(' ')
+          create.(*args, nil, html_options)
         end
       end
     end
