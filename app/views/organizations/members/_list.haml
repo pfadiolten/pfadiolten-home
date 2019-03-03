@@ -8,7 +8,7 @@
       avatar = (member.avatar || File::Avatar.new).file.x256
 
     .col.col-lg-6
-      .card.text-center
+      .card.text-center{ class: ('js-link card--hoverable' if user.present?), data: { url: (url_for(user) if user.present?) } }
         %img.card-img-top{ src: avatar, width: '100%', alt: "avatar of #{member.name}" }
         .card-header.justify-content-center
           .card-title
