@@ -125,7 +125,7 @@ module ApplicationHelper
         end
       end
 
-      content_tag('div', class: 'w-100') do
+      content_tag('div', class: 'col-12') do
         content_tag('div', options) do
           else_say
         end

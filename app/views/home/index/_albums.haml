@@ -11,7 +11,7 @@
 
   - b.body do
     .row
-      .col
-        = list_any albums, else_say: t('albums.index.no_albums') do |album|
+      = list_any albums, else_say: t('albums.index.no_albums') do |album|
+        .col-12
           = render '/albums/present',
                    album: album

@@ -9,10 +9,8 @@
 
   - b.body do
     .row
-      .col-12
-        = list_any articles, else_say: t('articles.index.no_articles') do |article|
-          .row
-            .col-12
-              = render '/articles/present',
-                       article: article
+      = list_any articles, else_say: t('articles.index.no_articles') do |article|
+        .col-12
+          = render '/articles/present',
+                   article: article
 
