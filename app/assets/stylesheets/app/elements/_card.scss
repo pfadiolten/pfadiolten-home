@@ -1,3 +1,9 @@
 @import "card/album";
 @import "card/article";
 @import "card/hoverable";
+
+.card {
+  & > .card-img-top {
+    border-radius: 0;
+  }
+}
