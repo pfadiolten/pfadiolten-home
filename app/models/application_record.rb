@@ -16,7 +16,7 @@ class ApplicationRecord < ActiveRecord::Base
       defaultation = proc do
         value = send(attribute)
         next if value.present?
-        send("#{attribute}=", block.())
+        send("#{attribute}=", instance_exec(&block))
       end
       before_validation &defaultation
       before_save &defaultation

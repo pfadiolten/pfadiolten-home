@@ -39,7 +39,6 @@ class CreateGroups < ActiveRecord::Migration[5.1]
                :integer,
                null: false
 
-      #
       t.index %i[ index ],
               unique: true,
               name: 'index_of_group'

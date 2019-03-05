@@ -1,0 +1,18 @@
+- title model: t("activerecord.models.#{rankable_model.name.underscore}.other")
+
+.row.justify-content-center
+  .col-12.col-md-8.sort-order
+    = simple_form_for :ranks, url: url_for(action: 'update'), method: 'PUT' do |f|
+      .form-group
+        = components.sortable do
+          - @ranks.each do |rank|
+            .row.group
+              .col-12
+                .card.card--hoverable.mb-0
+                  .card-header.justify-content-center
+                    .card-title= rank.rankable.name
+                    %input{ type: 'hidden', required: true, value: rank.id, name: "#{f.object_name}[][id]", id: "#{f.object_name}_#{rank.id}" }
+
+      .row
+        .col-12
+          = f.submit class: 'btn btn-primary col-12'

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 3019_02_23_102725) do
+ActiveRecord::Schema.define(version: 2019_03_05_111509) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -96,7 +96,7 @@ ActiveRecord::Schema.define(version: 3019_02_23_102725) do
   create_table "file_avatars", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "file", null: false
     t.string "avatarable_type"
-    t.bigint "avatarable_id"
+    t.uuid "avatarable_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["avatarable_type", "avatarable_id"], name: "index_file_avatars_on_avatarable_type_and_avatarable_id"
@@ -105,7 +105,7 @@ ActiveRecord::Schema.define(version: 3019_02_23_102725) do
   create_table "file_images", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "file", null: false
     t.string "imageable_type"
-    t.bigint "imageable_id"
+    t.uuid "imageable_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["imageable_type", "imageable_id"], name: "index_file_images_on_imageable_type_and_imageable_id"
@@ -170,6 +170,16 @@ ActiveRecord::Schema.define(version: 3019_02_23_102725) do
     t.datetime "updated_at", null: false
     t.index ["abbreviation"], name: "abbreviation_of_organization", unique: true
     t.index ["name"], name: "name_of_organization", unique: true
+  end
+
+  create_table "ranks", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.integer "value", null: false
+    t.string "rankable_type"
+    t.uuid "rankable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["rankable_type", "rankable_id"], name: "index_ranks_on_rankable_type_and_rankable_id"
+    t.index ["value", "rankable_id", "rankable_type"], name: "unique_rank", unique: true
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|

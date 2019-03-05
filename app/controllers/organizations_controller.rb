@@ -3,7 +3,7 @@ class OrganizationsController < ApplicationController
                 except: %i[ index new create ]
 
   def index
-    @orgs = policy_scope Organization.all.order(name: 'asc')
+    @orgs = policy_scope Organization.ordered
   end
 
   def show

@@ -64,7 +64,7 @@ protected
     return if index.present?
 
     self.index =
-      if (last_group = Group.all.reorder(index: 'desc').first)
+      if (last_group = Group.all.last)
         last_group.index + 1
       else
         0

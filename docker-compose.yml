@@ -34,7 +34,7 @@ services:
       - /pfadiolten-home/public/packs
 
   db:
-    image: postgres
+    image: postgres:11
     volumes:
       - data:/var/lib/postgresql/data
 

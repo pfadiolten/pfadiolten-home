@@ -15,6 +15,13 @@ Rails.application.routes.draw do
     get 'users/forgot_password', to: 'users#forgot_password'
     post 'users/send_recover_token', to: 'users#send_recover_token'
 
+    concern :rankable do |options|
+      model = options.fetch(:model)
+      collection do
+        resource :ranks, only: %i[ edit update ], as: "#{model.name.pluralize.underscore}_ranks", defaults: { model: model }
+      end
+    end
+
     resources :users, param: :scout_name do
       member do
         get 'edit_password'
@@ -62,6 +69,7 @@ Rails.application.routes.draw do
     resources :articles
 
     resources :organizations, param: :abbreviation do
+      concerns :rankable, model: Organization
       scope module: :organizations do
         resources :members, {
           only:  %i[ new create edit update destroy ],

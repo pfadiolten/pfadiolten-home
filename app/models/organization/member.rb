@@ -21,6 +21,14 @@ class Organization::Member < ApplicationRecord
     find_by('LOWER(scout_name) = LOWER(?)', name) || find_by("LOWER(first_name || ' ' || last_name) = ?", name)
   end
 
+# Callbacks
+  before_validation do
+    next if avatar.file?
+
+    avatar.destroy! if avatar.persisted?
+    self.avatar = nil
+  end
+
 # Attributes
   accepts_nested_attributes_for :avatar,
                                 allow_destroy: true

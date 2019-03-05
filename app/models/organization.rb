@@ -5,13 +5,23 @@ class Organization < ApplicationRecord
            foreign_key: :organization_id,
            dependent:   :destroy
 
-  has_one :image,
-          class_name: 'File::Image',
-          as:         :imageable,
-          dependent:  :destroy
+  has_one :rank,
+          class_name: 'Rank',
+          as:         :rankable,
+          dependent:  :destroy,
+          required:   true
+
+# Scopes
+  scope :ordered, ->{
+    includes(:rank).order('ranks.value')
+  }
 
 # Callbacks
   sanitize_html_of :description
+
+  default_for :rank do
+    Rank.new(rankable: self)
+  end
 
 # Validations
   validates :name,

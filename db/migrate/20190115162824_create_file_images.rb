@@ -9,7 +9,8 @@ class CreateFileImages < ActiveRecord::Migration[5.2]
       #
       t.references :imageable,
                    polymorphic: true,
-                   index:       true
+                   index:       true,
+                   type:        :uuid
 
       #
       t.timestamps

@@ -1,6 +1,8 @@
 :ruby
   member = local_assigns.fetch(:member)
 
+= member.errors.to_a
+
 .row.justify-content-center
   .col-md-10.col-lg-8
     - action = if member.persisted? then 'update' else 'create' end

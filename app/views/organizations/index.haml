@@ -1,14 +1,18 @@
 - title
 
 :ruby
-  can_create = policy(@orgs).create?
+  can_create       = policy(@orgs).create?
+  can_update_order = @orgs.count > 1 && policy(@orgs.first.rank).update?
 
-- if can_create
+- if can_create || can_update_order
   .row.mb-4
     .col-12.d-flex.justify-content-center
       - if can_create
         = link_to new_organization_path, class: 'btn btn-primary' do
           = icons.new
+      - if can_update_order
+        = link_to edit_organizations_ranks_path, class: 'btn btn-primary' do
+          = icons.order
 
 .row.justify-content-center
   .col-auto
