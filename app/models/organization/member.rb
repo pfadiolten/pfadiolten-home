@@ -11,11 +11,9 @@ class Organization::Member < ApplicationRecord
           dependent:  :destroy
 
 # Scopes
-  default_scope do
-    order(
-      role: :asc,
-    )
-  end
+  scope :ordered, ->{
+    order(:role, :scout_name, :first_name, :last_name)
+  }
 
   def self.find_by_name(name)
     find_by('LOWER(scout_name) = LOWER(?)', name) || find_by("LOWER(first_name || ' ' || last_name) = ?", name)
