@@ -68,8 +68,6 @@ Rails.application.routes.draw do
           param: :name,
         }
       end
-
-
     end
 
     resources :albums, param: :name do

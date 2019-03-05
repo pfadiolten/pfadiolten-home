@@ -1,5 +1,5 @@
 - title @article.title
-- self.image_src = image_path(@article.image) if @article.image?
+- self.image_src = image_path(@article.image.x512) if @article.image?
 
 
 .row
@@ -18,7 +18,7 @@
         - if @article.image?
           .row.mb-4
             .col
-              %img{ src: image_path(@article.image), alt: @article.title }
+              %img{ src: image_path(@article.image.x1024), alt: @article.title }
 
         .row
           .col

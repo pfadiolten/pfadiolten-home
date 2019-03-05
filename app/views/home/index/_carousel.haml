@@ -19,7 +19,7 @@
       - articles.each do |article|
         .carousel-item
           - if article.image?
-            %img.d-block{ src: image_path(article.image), alt: "Image for #{article.title}" }
+            %img.d-block{ src: image_path(article.image.x1024), alt: "Image for #{article.title}" }
           .carousel-caption
             .row
               .col
