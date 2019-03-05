@@ -31,6 +31,11 @@ class OrganizationsController < ApplicationController
     respond_with @org, action: 'edit'
   end
 
+  def destroy
+    @org.destroy
+    respond_with @org, action: 'edit'
+  end
+
 protected
   def load_org
     @org = get_org || not_found
