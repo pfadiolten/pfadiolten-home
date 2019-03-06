@@ -4,14 +4,17 @@
 .row.row-cards.row-deck.justify-content-center
   = list_any members, else_say: t('activerecord.models.organization/member.zero') do |member|
     :ruby
-      user   = User.find_by_scout_name(member.scout_name) if member.scout_name.present?
+      user =
+        if member.scout_name.present?
+          User.find_by_scout_name(member.scout_name)
+        end
       avatar =
         if (avatar = member.avatar)
           avatar.file
-        elsif user.present?
-          user.avatar
-        else
+        elsif user.nil?
           File::Avatar.new.file
+        else
+          user.avatar
         end
 
     .col-6.col-md-4.col-lg-6

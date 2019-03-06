@@ -26,6 +26,7 @@ private
       if model.respond_to? :avatarable
         model.avatarable
       else
+        # TODO remove this (model.avatarable will be enough) as soon as `User` does not mount the uploader anymore
         model
       end
     "#{(owner.scout_name || owner.id).downcase}.#{extension}"
