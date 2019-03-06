@@ -55,7 +55,5 @@ de:
     forgot_password:
       title: "Passwort vergessen?"
     password_note: >
-      Zurzeit ist es noch nicht möglich, dein Passwort selbst zurückzusetzen. <br/>
-      Wird aber noch kommen ;) <br/>
-      Bis dann kannst du ein neues Passwort bei "%{mail}" beantragen. <br/>
-
+      Dein Password entspricht dem deines Nextcloud-Accounts.<br/>
+      Du kannst es auf %{link} zurücksetzen.

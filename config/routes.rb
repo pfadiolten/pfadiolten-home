@@ -7,13 +7,9 @@ Rails.application.routes.draw do
                path_names: {
                  sign_in:  'login',
                  sign_out: 'logout',
-                 recover:  'recover'
                },
-               skip: %i[passwords registrations],
+               only: %i[ sessions ],
                path: ''
-
-    get 'users/forgot_password', to: 'users#forgot_password'
-    post 'users/send_recover_token', to: 'users#send_recover_token'
 
     concern :rankable do |options|
       model = options.fetch(:model)

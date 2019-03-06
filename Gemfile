@@ -70,6 +70,10 @@ gem 'zippy', '>= 0.2.3'
 # instagram api client
 gem 'instagram_api_client'
 
+# http client
+gem 'faraday'
+gem 'patron'
+
 ## frontend
 # =========
 
@@ -87,9 +91,6 @@ gem 'simple_form', '>= 3.5.0'
 
 # utilites for better/easier meta tags
 gem 'meta-tags'
-
-# makes ruby http fun again
-gem 'httparty'
 
 ## HTML/CSS/JS
 # ---------

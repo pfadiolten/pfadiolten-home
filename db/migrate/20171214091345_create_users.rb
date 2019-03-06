@@ -26,11 +26,6 @@ class CreateUsers < ActiveRecord::Migration[5.1]
                null: true
 
       #
-      t.column :encrypted_password,
-               :string,
-               null: false
-
-      #
       t.column :is_admin,
                :boolean,
                null: false,
@@ -40,18 +35,6 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.column :avatar,
                :string,
                null: true
-
-      #
-      t.column :reset_password_token,
-               :string
-
-      t.index %i[ reset_password_token ],
-              unique: true,
-              name: 'reset_password_token_of_user'
-
-      #
-      t.column :reset_password_sent_at,
-               :datetime
 
       #
       t.column :remember_created_at,

@@ -1,12 +1,8 @@
 class User < ApplicationRecord
 # Configuration
-  devise :database_authenticatable,
-         :recoverable,
+  devise :nextcloud_authenticatable,
          :rememberable,
          :trackable
-
-  # TODO move to File::Avatar
-  mount_uploader :avatar, AvatarUploader
 
 # Relations
   has_many :members,
@@ -41,6 +37,11 @@ class User < ApplicationRecord
 
   sanitize_html_of :description
 
+# TODO move to File::Avatar
+  mount_uploader :avatar, AvatarUploader
+
+  attr_accessor :password
+
 # Scopes
   default_scope do
     order(scout_name: 'asc')
@@ -56,9 +57,6 @@ class User < ApplicationRecord
 
   validates :first_name, :last_name,
             presence: true
-
-  validates :password,
-            confirmation: true
 
   validates :is_admin,
             inclusion: { in: [ true, false ] }
