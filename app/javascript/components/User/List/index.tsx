@@ -10,7 +10,7 @@ interface Props {
 const UserList: React.FC<Props> = ({ users }) => (
   <Row className="row-cards row-deck justify-content-center">
       {users.map((user) => (
-        <Col sm={6} md={4} lg={3} key={user.scout_name}>
+        <Col xs={6} md={4} lg={3} key={user.scout_name}>
           <User {...user} />
         </Col>
       ))}
