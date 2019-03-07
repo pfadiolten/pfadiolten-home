@@ -1,6 +1,5 @@
 - title @article.title
-- self.image_src = image_path(@article.image.x512) if @article.image?
-
+- self.image_src = url_for(@article.image.process.resize_to_limit(512)) if @article.image.present?
 
 .row
   .col
@@ -14,11 +13,12 @@
                 = icons.edit
 
     .row.justify-content-center
-      .col-12.col-lg-11
-        - if @article.image?
-          .row.mb-4
+      .col-12.col-lg-11.col-xl-10
+        - if @article.image.present?
+          .row.mb-4.justify-content-center
             .col
-              %img{ src: image_path(@article.image.x1024), alt: @article.title }
+              = breakpoints(xs: 530, md: 700, lg: 1000) do |width|
+                %img.w-100{ src: url_for(@article.image.process.resize_to_limit(width, nil)), alt: @article.title }
 
         .row
           .col

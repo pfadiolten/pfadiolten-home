@@ -34,6 +34,9 @@ gem 'carrierwave-i18n'
 # requires installation of ImageMagick (https://imagemagick.org) with all options.
 gem 'mini_magick', '>= 4.8.0', require: false
 
+# image processing with activestorage
+gem 'image_processing'
+
 # modular response extensions for controllers
 gem 'responders', '>= 2.4.0'
 

@@ -8,18 +8,18 @@
         if member.scout_name.present?
           User.find_by_scout_name(member.scout_name)
         end
-      avatar =
+      avatar_path =
         if (avatar = member.avatar)
-          avatar.file
+          avatar.file.x256
         elsif user.nil?
-          File::Avatar.new.file
+          File::Avatar.new.file.x256
         else
-          user.avatar
+          user_avatar_path(user.avatar, size: 256)
         end
 
     .col-6.col-md-4.col-lg-6
       .card.text-center{ class: ('js-link card--hoverable' if user.present?), data: { url: (url_for(user) if user.present?) } }
-        %img.card-img-top{ src: avatar.x256, width: '100%', alt: "avatar of #{member.name}" }
+        %img.card-img-top{ src: avatar_path, width: '100%', alt: "avatar of #{member.name}" }
         .card-header.justify-content-center
           .card-title
             = member.name

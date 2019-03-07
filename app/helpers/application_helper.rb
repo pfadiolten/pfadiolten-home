@@ -155,6 +155,48 @@ module ApplicationHelper
     builder
   end
 
+  def url_for(resource)
+    if resource.respond_to?(:to_url_resource)
+      super(resource.to_url_resource)
+    else
+      super(resource)
+    end
+  end
+
+  def breakpoints(pairs, &block)
+    ordered_pairs = pairs.map do |breakpoint, value|
+      case breakpoint.to_sym
+      when :xs
+        [ 0, [ :xs, 'd-block', value ] ]
+      when :sm
+        [ 1, [ :sm, 'd-none d-sm-block', value ] ]
+      when :md
+        [ 2, [ :md, 'd-none d-md-block', value ] ]
+      when :lg
+        [ 3, [ :lg, 'd-none d-lg-block', value ] ]
+      when :xl
+        [ 4, [ :xl, 'd-none d-xl-block', value ] ]
+      else
+        raise "unknown breakpoint: #{breakpoint}"
+      end
+    end.sort_by { |key, _| key }
+
+    ordered_pairs_h = Hash[ordered_pairs]
+    find_after = lambda do |count|
+      next nil if count >= 4
+      next_count = count + 1
+      ordered_pairs_h[next_count] || find_after.(next_count)
+    end
+
+    ordered_pairs.inject(ActiveSupport::SafeBuffer.new) do |buffer, (count, (breakpoint, classes, values))|
+      next_value = find_after.(count)
+      classes = "#{classes} d-#{next_value.first}-none" if next_value.present?
+      buffer << content_tag('div', class: classes) do
+        block.(values)
+      end
+    end
+  end
+
 private
   def exists_js?(path)
     %w[ .coffee .coffee.erb .js .js.erb .erb ].inject(false) do |found, ext|

@@ -30,6 +30,12 @@ class User < ApplicationRecord
            foreign_key: :author_id,
            dependent: :nullify
 
+  has_one :stored_avatar,
+          class_name: 'File::Image',
+          as:         :imageable,
+          required:   false,
+          dependent:  :destroy
+
 # Attributes
   alias_attribute :admin?, :is_admin
 
@@ -37,7 +43,10 @@ class User < ApplicationRecord
 
   sanitize_html_of :description
 
-# TODO move to File::Avatar
+  accepts_nested_attributes_for :stored_avatar,
+                                allow_destroy: true
+
+  # TODO move to File::Avatar
   mount_uploader :avatar, AvatarUploader
 
   attr_accessor :password
@@ -49,6 +58,11 @@ class User < ApplicationRecord
 
 # Callbacks
   before_validation :make_first_user_an_admin
+
+  after_validation do
+    next if stored_avatar.nil?
+    stored_avatar.name = scout_name
+  end
 
 # Validations
   validates :scout_name,

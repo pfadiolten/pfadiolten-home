@@ -1,15 +1,17 @@
--# article: Article
+:ruby
+  article = local_assigns.fetch(:article)
 
 .card.card--article.card--hoverable.link-parent{ data: { url: article_path(article) } }
   .card-header
     .card-title
       = article.title
   .card-body
-    - if article.image?
-      .col.col-xl-5.float-left.px-0.mr-2.mb-2
-        %img{ src: image_path(article.image.x512) }
-    %article.col
-    = article.summary
+    - if article.image.present?
+      .col.col-xl-5.float-left.px-0.mr-2.mb-5
+        %img.w-100{ src: url_for(article.image.process.resize_to_limit(nil, 256)) }
+    .col
+      %article
+        = article.summary
   .card-footer.link-parent__ignore
     = render '/shared/created_by',
              creator:    article.author,

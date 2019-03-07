@@ -46,7 +46,7 @@ protected
 
 private
   def article_params
-    params.require(:article).permit(
+    p = params.require(:article).permit(
       :title,
       :summary,
       :text,
@@ -54,6 +54,17 @@ private
       :is_pinned,
       :pinned_till,
       :remove_image,
+      image_attributes: [
+        :id,
+        :_destroy,
+        :file,
+      ]
     )
+
+    # TODO remove after migrating to ActiveStorage
+    p.tap do |attrs|
+      avatar_attrs = attrs[:image_attributes] || {}
+      avatar_attrs[:old_file] = avatar_attrs[:file]
+    end
   end
 end

@@ -2,7 +2,7 @@ class Album < ApplicationRecord
   require 'zip'
 
 # Relations
-  has_many :images,
+  has_many :old_images,
            class_name:  'Album::Image',
            foreign_key: :album_id,
            dependent:   :destroy
@@ -35,7 +35,7 @@ class Album < ApplicationRecord
 
 # Actions
   def to_param
-    CGI::escape(name.downcase)
+    name.downcase
   end
 
   def save_with_images

@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params(allow_password: true))
+    @user = User.new(user_params)
     authorize @user
     @user.save
     respond_with @user
@@ -71,24 +71,26 @@ protected
 
 # params
 private
-  def user_params(allow_password: false)
-    user_attributes = [
+  def user_params
+    p = params.require(:user).permit(
       :first_name, :last_name,
       :scout_name,
       :description,
       :group_id,
       :avatar,
-      :remove_avatar
-    ]
-
-    if allow_password
-      user_attributes += [
-        :password,
-        :password_confirmation
+      :remove_avatar,
+      stored_avatar_attributes: [
+        :id,
+        :_destroy,
+        :file,
       ]
-    end
+    )
 
-    return self.params.require(:user).permit(user_attributes)
+    # TODO remove after migrating to ActiveStorage
+    p.tap do |attrs|
+      avatar_attrs = attrs[:stored_avatar_attributes]
+      avatar_attrs[:old_file] = avatar_attrs[:file]
+    end
   end
 
   def user_password_params

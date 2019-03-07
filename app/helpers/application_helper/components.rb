@@ -38,7 +38,7 @@ private
     {
       scout_name: user.scout_name,
       url:        view.user_path(user),
-      avatar:     view.image_path(user.avatar.x256)
+      avatar:     view.user_avatar_path(user, size: 256)
     }
   end
 end

@@ -1,5 +1,5 @@
 - self.tab_title = @user.scout_name
-- self.image_src = image_path(@user.avatar.x256)
+- self.image_src = user_avatar_path(@user, size: 256)
 
 .row.justify-content-center
   .col-md-8
@@ -13,7 +13,7 @@
         .text-center= title
 
       .col-12.col-md-5
-        %img.img-thumbnail{ src: image_path(@user.avatar.x512), width: '100%' }
+        %img.img-thumbnail{ src: user_avatar_path(@user, size: 512), width: '100%' }
 
       .col-12.col-md-7.mt-4.mt-md-0
         .d-none.d-md-block

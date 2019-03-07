@@ -9,10 +9,12 @@
         .col-12
           = f.input :summary, as: 'text'
 
-      .row
-        .col-12
-          = f.input :image, as: 'filehandle',
-                    input_html: { accept: 'image/*' }
+      = f.simple_fields_for :image, f.object.image || File::Image.new do |ff|
+        .row
+          .col-12
+            = ff.input :file,
+                       as: 'filehandle',
+                       input_html: { accept: 'image/*' }
 
       .row
         .col-12
