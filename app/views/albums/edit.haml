@@ -2,7 +2,7 @@
 - subtitle_to @original_album, :name
 
 = render 'form' do |f|
-  .js-deletable-images{ data: { 'destroy-icon': icons.close } }
+  .js-deletable-images{ data: { destroy_icon: icons.close } }
     = f.input :deleted_images, as: 'hidden', input_html: { class: 'js-deletable-images__input' }
 
     .mt-4

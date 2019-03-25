@@ -22,6 +22,8 @@ de:
       no_albums: "Keine Alben gefunden"
     new:
       title: "Album erfassen"
+    edit:
+      title: "Album bearbeiten"
     destroy:
       title: "Album wirklich löschen?"
 

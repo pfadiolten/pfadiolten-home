@@ -26,7 +26,7 @@ class SelectInput extends React.PureComponent<Props> {
   }
 
   public componentDidMount() {
-    const node = ReactDOM.findDOMNode(this);
+    const node = ReactDOM.findDOMNode(this) as HTMLElement;
     this.choices = new Choices(node, {
       removeItemButton: true,
 

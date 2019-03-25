@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params(allow_password: true))
+    @user = User.new(user_params)
     authorize @user
     @user.save
     respond_with @user
@@ -71,30 +71,14 @@ protected
 
 # params
 private
-  def user_params(allow_password: false)
-    user_attributes = [
+  def user_params
+    params.require(:user).permit(
       :first_name, :last_name,
       :scout_name,
       :description,
       :group_id,
       :avatar,
       :remove_avatar
-    ]
-
-    if allow_password
-      user_attributes += [
-        :password,
-        :password_confirmation
-      ]
-    end
-
-    return self.params.require(:user).permit(user_attributes)
-  end
-
-  def user_password_params
-    params.require(:user).permit(
-      :password,
-      :password_confirmation
     )
   end
 end

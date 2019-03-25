@@ -15,17 +15,7 @@
         .col-sm
           = f.input :last_name
 
-      - if @user.new_record?
-        .row
-          .col-sm
-            = f.input :password,
-                      required: true,
-                      input_html: { autocomplete: 'off' }
-          .col-sm
-            = f.input :password_confirmation,
-                      required: true,
-                      input_html: { autocomplete: 'off' }
-      - else
+      - if @user.persisted?
         .row
           .col-12
             = f.input :description, label: false, input_html: { class: 'text-editor' }
