@@ -1,0 +1,8 @@
+:ruby
+  articles = local_assigns.fetch(:articles)
+
+.row
+  = list_any articles, else_say: t('articles.index.no_articles') do |article|
+    .col-12
+      = render '/articles/present',
+               article: article

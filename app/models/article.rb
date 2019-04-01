@@ -16,16 +16,16 @@ class Article < ApplicationRecord
 
 # Scopes
   scope :order_by_release, ->{
-    order('created_at': 'desc', title: 'desc')
+    order(created_at: 'desc', title: 'desc')
   }
 
   scope :pinned, ->{
-    where('pinned?': true)
+    where(is_pinned: true)
     .where('pinned_till IS NULL OR pinned_till >= (?)', Date.today)
   }
 
   scope :not_pinned, ->{
-    where('pinned?': false)
+    where(is_pinned: true)
     .or(where('pinned_till IS NOT NULL AND pinned_till < (?)', Date.today))
   }
 

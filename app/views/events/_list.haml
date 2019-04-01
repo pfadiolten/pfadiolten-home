@@ -3,7 +3,6 @@
   title          = local_assigns.fetch(:title) { t('activerecord.models.event.other') }
   new_event_path = local_assigns.fetch(:new_event_path) { send(:new_event_path) }
 
-
 = render 'components/category', title: title do |b|
   - b.options do
     - if policy(events).create?

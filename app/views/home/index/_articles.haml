@@ -8,9 +8,6 @@
         = icons.new
 
   - b.body do
-    .row
-      = list_any articles, else_say: t('articles.index.no_articles') do |article|
-        .col-12
-          = render '/articles/present',
-                   article: article
+    = render 'articles/list',
+             articles: articles
 
