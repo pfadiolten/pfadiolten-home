@@ -1,5 +1,3 @@
--# albums: [Album]
-
 :ruby
   albums = local_assigns.fetch(:albums)
 
@@ -13,5 +11,6 @@
     .row
       = list_any albums, else_say: t('albums.index.no_albums') do |album|
         .col-12
-          = render '/albums/present',
-                   album: album
+          = render 'albums/present',
+                   album:   album,
+                   images?: false

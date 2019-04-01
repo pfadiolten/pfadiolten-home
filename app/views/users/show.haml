@@ -7,7 +7,7 @@
       - title = capture do
         = render 'layouts/components/title',
                  title:    @user.scout_name,
-                 subtitle: @user.name
+                 subtitle: (@user.name unless @user.keep_name_hidden?)
 
       .col-12.d-md-none
         .text-center= title

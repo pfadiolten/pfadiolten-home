@@ -1,5 +1,7 @@
 :ruby
-  album = local_assigns.fetch(:album)
+  album       = local_assigns.fetch(:album)
+  with_images = local_assigns.fetch(:images?) { true }
+
 
 .card.card--album.card--hoverable.js-link{ data: { url: album_path(album) } }
   .card-header
@@ -17,11 +19,12 @@
     .list-group-item
       = Nokogiri::HTML.parse(description.html_safe).text
 
-    .list-group-item
-      = render 'albums/gallery',
-                album: album,
-                limit: 6,
-                disable_lightbox: true
+    - if with_images
+      .list-group-item
+        = render 'albums/gallery',
+                  album: album,
+                  limit: 6,
+                  disable_lightbox: true
 
   .card-footer
     = render '/shared/created_by',

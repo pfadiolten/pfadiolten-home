@@ -74,6 +74,16 @@ class User < ApplicationRecord
     "#{scout_name} (#{name})"
   end
 
+  def keep_name_hidden?
+    return false if groups.any? { |it| it.name == 'Abteilungsleitung' }
+    return false if organization_memberships.any? { |it| it.role == 'Präsident' }
+    true
+  end
+
+  def organization_memberships
+    Organization::Member.where('LOWER(scout_name) = LOWER(?)', scout_name)
+  end
+
   def to_param
     scout_name.downcase
   end
