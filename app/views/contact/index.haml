@@ -6,11 +6,11 @@
           .col-12.text-center
             %h2= t('.people')
 
-        .row
-          .col-12.d-sm-flex.justify-content-sm-center
-            - Settings.contacts.people.each do |person|
+        .row.justify-content-center
+          - Settings.contacts.people.each do |person|
+            .col-12.col-md-4.d-flex.justify-content-center
               .row.text-center.mx-4.mb-4
-                .col-12.col-sm
+                .col-12
                   .row
                     .col-12
                       %strong= person.title
