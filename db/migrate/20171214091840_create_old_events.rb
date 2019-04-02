@@ -1,4 +1,4 @@
-class CreateEvents < ActiveRecord::Migration[5.1]
+class CreateOldEvents < ActiveRecord::Migration[5.1]
   def change
     create_table :events, id: :uuid do |t|
       #

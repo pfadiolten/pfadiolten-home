@@ -20,8 +20,8 @@ class User < ApplicationRecord
            through: :members,
            foreign_key: :role_id
 
-  has_many :events,
-           class_name: 'Event',
+  has_many :old_events,
+           class_name: 'OldEvent',
            foreign_key: :user_in_charge_id,
            dependent: :nullify
 
@@ -29,6 +29,11 @@ class User < ApplicationRecord
            class_name: 'Article',
            foreign_key: :author_id,
            dependent: :nullify
+
+  has_many :events,
+           class_name:  'Event',
+           foreign_key: :user_in_charge_id,
+           dependent:   :nullify
 
 # Attributes
   alias_attribute :admin?, :is_admin
@@ -39,8 +44,6 @@ class User < ApplicationRecord
 
 # TODO move to File::Avatar
   mount_uploader :avatar, AvatarUploader
-
-  attr_accessor :password
 
 # Scopes
   default_scope do

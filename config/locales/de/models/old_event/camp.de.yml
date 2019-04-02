@@ -4,13 +4,13 @@ de:
 
   activerecord:
     models:
-      event:
+      old_event:
         camp:
           zero: "Keine Lager"
           one: "Lager"
           other: "Lager"
 
-  events:
+  old_events:
     camps:
       new:
         title: "Lager erfassen"

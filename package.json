@@ -14,7 +14,8 @@
     "react-dom": "^16.7.0",
     "react-grid-gallery": "^0.5.3",
     "reactstrap": "^7.1.0",
-    "sortablejs": "^1.7.0"
+    "sortablejs": "^1.7.0",
+    "yarn": "^1.15.2"
   },
   "version": "1.0.1",
   "main": "index.js",

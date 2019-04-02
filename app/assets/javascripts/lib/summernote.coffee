@@ -30,6 +30,6 @@ App.onLoad ($root) ->
     ]
     callbacks:
       onPaste: (e) ->
-        bufferText = ((e.originalEvent || e).clipboardData || window.clipboardData).getData('Text')
-        e.preventDefault()
+        bufferText = ((e.originalOldEvent || e).clipboardData || window.clipboardData).getData('Text')
+        e.prold_eventDefault()
         document.execCommand('insertText', false, bufferText);

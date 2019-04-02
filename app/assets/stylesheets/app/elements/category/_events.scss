@@ -19,7 +19,7 @@
 
     }
     @include media-breakpoint-down(sm) {
-      // can't be center anymore, otherwise the middle event would show up first
+      // can't be center anymore, otherwise the middle old_event would show up first
       justify-content: left;
     }
     & > .event {

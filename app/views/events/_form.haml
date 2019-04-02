@@ -1,21 +1,18 @@
-- action = if @event.new_record? then :create else :update end
-
 .row.justify-content-center
-  .col-12.col-md-8
-    = simple_form_for @event, url: url_for(action: "#{action}_#{@event.detail.handle}") do |f|
+  .col-md-8
+    = simple_form_for @event do |f|
       .row
         .col-12
-          = f.input :name
+          = f.input :title
 
-      = f.simple_fields_for :event_groups, EventGroup.new do |fe|
-        .row
-          .col-12
-            = fe.input :group_id,
-                       as:           :select_component,
-                       selected:     @event.event_groups.map(&:group_id),
-                       collection:   policy_scope(Group),
-                       label_method: :abbreviation,
-                       input_html:    { multiple: true, name: 'event[event_groups_attributes][][group_id]' }
+      .row
+        .col-12
+          = f.input :groups,
+                    as:           :select_component,
+                    selected:     @event.groups.map(&:id),
+                    collection:   policy_scope(Group),
+                    label_method: :abbreviation,
+                    input_html:   { multiple: true }
       .row
         .col-12.col-md-4
           = f.input :starts_at, as: :date_time_component
@@ -30,31 +27,16 @@
                     as: :string,
                     input_html: { class: 'js-mirror',
                                   data: { 'mirror-of': '#event_start_location' } }
-
       .row
         .col-12
           = f.input :description, required: false, input_html: { class: 'text-editor' }
+
       .row
-        .col-md-4
-          = f.input :display_days_amount, required: false,
-                    hint: t('activerecord.attributes.event.display_days_amount_hint'),
-                    input_html: { min: 0 }
-        .col-12.col-md-8
+        .col-12
           = f.input :user_in_charge_id, required: true,
+                    as: :select_component,
                     collection: [[Settings.social.mail, nil]] + policy_scope(User).map { |it| [it.all_names, it.id] }
-
-      = yield f
-
-      .row
-        - if false
-          .col-6.text-center
-            = f.input :is_hidden, as: :checkbox_component, required: false
-        .col-12.text-center
-          = f.input :is_private, as: :checkbox_component, required: false
 
       .row
         .col
-          = f.submit class: 'btn btn-primary btn-block'
-        - if @event.persisted? && policy(@event).destroy?
-          .col-4
-            = destroy_button
+          = submit_buttons_for f

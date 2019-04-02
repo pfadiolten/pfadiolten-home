@@ -57,6 +57,6 @@ class ApplicationHelper::Icons
        instagram: %w[ fab instagram ],
        github:    %w[ fab github ]
 
-  icon event_activity: %w[ fas rocket ],
-       event_camp:     %w[ fas map-signs ]
+  icon old_event_activity: %w[ fas rocket ],
+       old_event_camp:     %w[ fas map-signs ]
 end

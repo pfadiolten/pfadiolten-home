@@ -6,13 +6,6 @@
 // STYLING CONVENTIONS (BEM):
 // https://medium.freecodecamp.org/css-naming-conventions-that-will-save-you-hours-of-debugging-35cea737d849
 
-.col--events {
-  @include media-breakpoint-up(lg) {
-    position: absolute;
-    left:     0;
-  }
-}
-
 // makes the nav and footer work correctly
 html {
   position: relative;

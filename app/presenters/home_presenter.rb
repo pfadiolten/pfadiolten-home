@@ -1,5 +1,5 @@
 class HomePresenter < ApplicationPresenter
-  attr_accessor :events,
+  attr_accessor :old_events,
                 :news,
                 :articles,
                 :albums

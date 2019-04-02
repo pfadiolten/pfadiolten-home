@@ -1,0 +1,16 @@
+:ruby
+  old_events         = local_assigns.fetch(:old_events)
+  title          = local_assigns.fetch(:title) { t('activerecord.models.old_event.other') }
+  new_old_event_path = local_assigns.fetch(:new_old_event_path) { send(:new_old_event_path) }
+
+= render 'components/category', title: title do |b|
+  - b.options do
+    - if policy(old_events).create?
+      %a.btn.btn-primary{ href: new_old_event_path }
+        = icons.new
+
+  - b.body do
+    .row.justify-content-md-center.justify-content-lg-start.flex-nowrap.flex-md-wrap{ style: 'overflow-x: scroll;' }
+      = list_any old_events, else_say: t('old_events.index.no_old_events') do |old_event|
+        .col-11.col-5.col-sm-6.col-lg-12
+          = render '/old_events/present', old_event: old_event

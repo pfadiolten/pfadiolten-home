@@ -2,15 +2,14 @@
 - content_for :container_type, 'container-fluid'
 
 .row.justify-content-center
-  .col-12.col-md-10
-    .row.justify-content-lg-end
+  .col-12
+    .row.justify-content-lg-end.no-gutters
       .order-lg-2.col-12.col-lg-8.col-xl-9
         = render 'home/index/carousel',
                  articles: @home.news
 
-      .order-lg-1.col-12.col-lg-4.col-xl-3.col--events
-        = render "events/list",
-                 events: @home.events
+      .order-lg-1.col-12.col-lg-4.col-xl-3
+        = render 'home/index/events'
 
       .order-lg-3.col-12.col-lg-8.col-xl-6
         = render 'home/index/articles',

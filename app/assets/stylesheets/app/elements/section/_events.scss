@@ -1,0 +1,6 @@
+section.section--events {
+  @include media-breakpoint-up(lg) {
+    position: absolute;
+    left:     0;
+  }
+}

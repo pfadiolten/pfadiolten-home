@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_06_102929) do
+ActiveRecord::Schema.define(version: 2019_04_01_154134) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -54,43 +54,25 @@ ActiveRecord::Schema.define(version: 2019_03_06_102929) do
     t.index ["author_id"], name: "author_of_article"
   end
 
-  create_table "event_activity_details", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "event_camp_details", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "event_groups", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.uuid "event_id", null: false
-    t.uuid "group_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["event_id", "group_id"], name: "unique_event_group", unique: true
-    t.index ["event_id"], name: "event_of_group"
-    t.index ["group_id"], name: "group_of_event"
-  end
-
   create_table "events", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "name", null: false
-    t.boolean "is_hidden", default: false, null: false
-    t.boolean "is_private", default: false, null: false
+    t.string "title", null: false
+    t.text "description"
     t.datetime "starts_at", null: false
     t.string "start_location", null: false
     t.datetime "ends_at", null: false
     t.string "end_location"
-    t.integer "display_days_amount"
+    t.integer "type", null: false
     t.uuid "user_in_charge_id"
-    t.string "detail_type", null: false
-    t.uuid "detail_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "description"
-    t.index ["detail_type", "detail_id"], name: "detail_of_event"
-    t.index ["user_in_charge_id"], name: "user_in_charge_of_event"
+    t.index ["user_in_charge_id"], name: "index_events_on_user_in_charge_id"
+  end
+
+  create_table "events_groups", id: false, force: :cascade do |t|
+    t.uuid "event_id", null: false
+    t.uuid "group_id", null: false
+    t.index ["event_id"], name: "index_events_groups_on_event_id"
+    t.index ["group_id"], name: "index_events_groups_on_group_id"
   end
 
   create_table "file_avatars", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -148,6 +130,45 @@ ActiveRecord::Schema.define(version: 2019_03_06_102929) do
     t.index ["name"], name: "name_of_group", unique: true
   end
 
+  create_table "old_event_activity_details", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "old_event_camp_details", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "old_event_groups", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "event_id", null: false
+    t.uuid "group_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id", "group_id"], name: "unique_event_group", unique: true
+    t.index ["event_id"], name: "event_of_group"
+    t.index ["group_id"], name: "group_of_event"
+  end
+
+  create_table "old_events", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name", null: false
+    t.boolean "is_hidden", default: false, null: false
+    t.boolean "is_private", default: false, null: false
+    t.datetime "starts_at", null: false
+    t.string "start_location", null: false
+    t.datetime "ends_at", null: false
+    t.string "end_location"
+    t.integer "display_days_amount"
+    t.uuid "user_in_charge_id"
+    t.string "detail_type", null: false
+    t.uuid "detail_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "description"
+    t.index ["detail_type", "detail_id"], name: "detail_of_event"
+    t.index ["user_in_charge_id"], name: "user_in_charge_of_event"
+  end
+
   create_table "organization_members", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "first_name", null: false
     t.string "last_name", null: false
@@ -203,12 +224,13 @@ ActiveRecord::Schema.define(version: 2019_03_06_102929) do
   add_foreign_key "album_archives", "albums", name: "fk_album_of_archive"
   add_foreign_key "album_images", "albums", name: "fk_album_of_image"
   add_foreign_key "articles", "users", column: "author_id", name: "fk_author_of_article"
-  add_foreign_key "event_groups", "events", name: "fk_event_of_group"
-  add_foreign_key "event_groups", "groups", name: "fk_group_of_event"
-  add_foreign_key "events", "users", column: "user_in_charge_id", name: "fk_user_in_charge_of_event"
+  add_foreign_key "events", "users", column: "user_in_charge_id"
   add_foreign_key "group_members", "group_roles", column: "role_id", name: "fk_role_of_member"
   add_foreign_key "group_members", "groups", name: "fk_group_of_member"
   add_foreign_key "group_members", "users", name: "fk_user_of_member"
   add_foreign_key "group_roles", "groups", name: "fk_group_of_role"
+  add_foreign_key "old_event_groups", "groups", name: "fk_group_of_event"
+  add_foreign_key "old_event_groups", "old_events", column: "event_id", name: "fk_event_of_group"
+  add_foreign_key "old_events", "users", column: "user_in_charge_id", name: "fk_user_in_charge_of_event"
   add_foreign_key "organization_members", "organizations", name: "fk_organization_of_organization_member"
 end

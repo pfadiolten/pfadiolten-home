@@ -1,0 +1,14 @@
+- title
+
+.row.justify-content-center
+  .col-12.col-md-8.col-lg-6.col-xl-5
+    .row
+      - OldEvent.detail_types.each do |detail, _|
+        %div{ class: "col-#{12 / OldEvent.detail_types.count}" }
+          .card.card--hoverable.js-link{ data: { url: url_for(action: "new_#{detail}") } }
+            .card-body.text-center{ style: 'font-size: 2em;' }
+              = icons.send("old_event_#{detail}")
+            .card-header.justify-content-center
+              .card-title= t("activerecord.models.old_old_event.#{detail}.one")
+
+

@@ -13,6 +13,6 @@ App.components['link'] = ($target) ->
     $to = $(e.toElement)
     return if $to.is('a') || $to.data('link')?
     $a = $('<a/>', href: $element.data('link'))
-    $a[0].dispatchEvent(new event.constructor(event.type, event))
+    $a[0].dispatchOldEvent(new old_old_event.constructor(old_old_event.type, old_old_event))
     false
   ###

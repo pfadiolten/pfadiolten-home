@@ -1,8 +1,8 @@
-class EventGroup < ApplicationRecord
+class OldEventGroup < ApplicationRecord
 # Relations
-  belongs_to :event,
-             class_name: 'Event',
-             foreign_key: :event_id,
+  belongs_to :old_event,
+             class_name: 'OldEvent',
+             foreign_key: :old_event_id,
              required: true
 
   belongs_to :group,
@@ -11,6 +11,6 @@ class EventGroup < ApplicationRecord
              required: true
 
 # Validations
-  validates :event_id,
+  validates :old_event_id,
             uniqueness: { scope: %i[ group_id ] }
 end

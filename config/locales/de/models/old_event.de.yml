@@ -1,0 +1,44 @@
+de:
+  routes:
+    old_events: "agenda"
+
+  activerecord:
+    models:
+      old_event:
+        zero: "Keine Aktivitäten"
+        one: "Aktivität"
+        other: "Aktivitäten"
+
+    attributes:
+      old_event:
+        name: "Titel"
+        is_hidden: "Permanent versteckt?"
+        is_private: "Nur für Leiter relevant?"
+        starts_at: "Startzeit"
+        start_location: "Startpunkt"
+        ends_at:   "Endzeit"
+        end_location: "Endpunkt"
+        display_days_amount: "Anzahl Anzeigetage"
+        display_days_amount_hint: "Anzahl der Tage vor dem Startdatum, die die ${activerecord.models.old_event.one} sichtbar ist."
+        user_in_charge_id: "Kontakt"
+        description: "Beschreibung"
+
+  old_events:
+    nav: "Agenda"
+
+    start: "Beginn"
+    end: "Ende"
+
+    index:
+      title: "Agenda"
+      no_events: "keine nächsten Aktivitäten"
+    new:
+      title: "Aktivität erfassen"
+    edit:
+      title: "Aktivität bearbeiten"
+    destroy:
+      title: "Ereignis wirklich löschen?"
+
+    cancel:
+      subject: "[Pfadi Olten] Abmeldung für \"%{event_name}\" (%{event_groups}) vom %{start_date}"
+      body: "Liebe/r %{user_in_charge}\n\nIch kann leider nicht kommen, weil {GRUND}.\n\nLiebe Pfadigrüsse\n{PFADINAME}"

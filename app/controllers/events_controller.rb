@@ -1,95 +1,32 @@
 class EventsController < ApplicationController
-  before_action :load_event, except: %i[index new create] + Event.detail_types.map { |detail, _| [ :"new_#{detail}", :"create_#{detail}" ] }.flatten
-
-  enforce_login! except: %i[index show]
+  def index
+    day = selected_day
+    @events = policy_scope Event.of_year(day.year).of_month(day.month)
+  end
 
   def new
-    authorize Event
+    starts_at = (Date.today.in_time_zone.to_date.sunday - 1.day).to_time + 14.hours
+    @event = authorize Event.new(
+      starts_at:      starts_at,
+      ends_at:        starts_at + 3.hours,
+      user_in_charge: current_user,
+    )
   end
 
-  Event.detail_types.each do |detail, type|
-    new_template = "events/#{detail.to_s.pluralize}/new"
-
-    define_method "new_#{detail}" do
-      @event = Event.new(detail: type.new, user_in_charge: current_user)
-      @event.starts_at = (Date.today.sunday.in_time_zone - 1.day).to_datetime + 14.hours
-      @event.ends_at   = @event.starts_at + 3.hours
-
-      if (groups = params[:groups])
-        groups.each do |abbr|
-          group = Group.with_abbreviation(abbr).first || raise("group with abbreviation \"#{group}\" not found")
-          @event.event_groups.build(group: group)
-        end
-      else
-        current_user.groups.each do |group|
-          @event.event_groups.build(group: group)
-        end
-      end
-      authorize @event, :new?
-      render new_template
-    end
-
-    define_method "create_#{detail}" do
-      @event = Event.new(event_params(detail))
-      @event.detail ||= type.new
-      authorize @event, :create?
-      @event.save
-      respond_with @event, action: "new_#{detail}", render: new_template, location: ->{ root_path }
-    end
-
-    define_method "edit_#{detail}" do
-      authorize @event, :edit?
-      render 'events/edit'
-    end
-
-    define_method "update_#{detail}" do
-      authorize @event, :update?
-
-      new_params = event_params(detail)
-      group_events = new_params[:event_groups_attributes] ||= []
-      @event.event_groups.each do |group_event|
-        if (group_index = group_events.find_index { |it| it[:group_id].to_s == group_event.group_id.to_s })
-          group_events.delete_at(group_index)
-        else
-          group_events << { id: group_event.id, _destroy: true }
-        end
-      end
-
-      @event.update(new_params)
-      respond_with @event, action: "edit_#{detail}", render: 'edit', location: ->{ root_path }
-    end
-  end
-
-  def destroy
-    authorize @event
-    @event.destroy
-    respond_with @event, action: "edit_#{@event.detail.handle}", location: ->{ root_path }
-  end
-
-protected
-  def load_event
-    @event = Event.find_by(id: params[:id]) || not_found
+  def create
   end
 
 private
-  def event_params(detail)
-    params.require(:event).permit(
-      :name,
-      :starts_at,
-      :start_location,
-      :ends_at,
-      :end_location,
-      :user_in_charge_id,
-      :is_hidden,
-      :is_private,
-      :display_days_amount,
-      :description,
-      event_groups_attributes: [
-        :group_id,
-      ],
-      detail_attributes: [
+  def selected_day
+    @_first_day_of_month ||= begin
+      today = Date.today
+      year  = params[:year]&.to_i  || today.year
+      month = params[:month]&.to_i || today.month
+      day   = params[:day]&.to_i   || today.day
 
-      ],
-    )
+      Date.new(year, month, day).at_beginning_of_month
+    end
   end
+
+  helper_method :selected_day
 end

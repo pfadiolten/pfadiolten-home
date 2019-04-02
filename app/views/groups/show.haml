@@ -21,15 +21,15 @@
   .col-12
     .row.justify-content-center
 
-      // event row
+      // old_old_event row
       .col-12.col-lg-5.col-xl-4.order-2.order-lg-1
-        - events = @group.events.active
+        - old_events = @group.old_events.active
         .row
           .col-12
-            = render "/events/list",
-                     events:         events,
-                     title:          t('.next_events'),
-                     new_event_path: new_event_path(groups: @group.abbreviation)
+            = render "/old_events/list",
+                     old_events:         old_events,
+                     title:          t('.next_old_events'),
+                     new_old_event_path: new_old_event_path(groups: @group.abbreviation)
 
 
       // info row

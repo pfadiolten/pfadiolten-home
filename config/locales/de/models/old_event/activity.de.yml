@@ -4,13 +4,13 @@ de:
 
   activerecord:
     models:
-      event:
+      old_event:
         activity:
           zero: "Keine Aktivitäten"
           one: "Aktivität"
           other: "Aktivitäten"
 
-  events:
+  old_events:
     activities:
       new:
         title: "Aktivität erfassen"

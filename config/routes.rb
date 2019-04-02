@@ -46,8 +46,10 @@ Rails.application.routes.draw do
       end
     end
 
-    namespace :events do
-      Event.detail_types.each do |detail, _|
+    resources :events, param: :title
+
+    namespace :old_events do
+      OldEvent.detail_types.each do |detail, _|
         get "#{detail}/new", action: "new_#{detail}"
         post "#{detail}/new", action: "create_#{detail}"
 
@@ -60,7 +62,7 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :events, except: %i[ index show edit ]
+    resources :old_events, except: %i[ index show edit ]
 
     resources :articles
 

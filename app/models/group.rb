@@ -15,15 +15,18 @@ class Group < ApplicationRecord
            through: :members,
            foreign_key: :user_id
 
-  has_many :event_groups,
-           class_name: 'EventGroup',
+  has_many :old_event_groups,
+           class_name: 'OldEventGroup',
            foreign_key: :group_id,
            dependent: :destroy
 
-  has_many :events,
-           class_name: 'Event',
-           through: :event_groups,
-           foreign_key: :event_id
+  has_many :old_events,
+           class_name: 'OldEvent',
+           through: :old_event_groups,
+           foreign_key: :old_event_id
+
+  has_and_belongs_to_many :events,
+                          class_name: 'Event'
 
 # Scopes
   default_scope do

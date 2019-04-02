@@ -1,19 +1,19 @@
--# event: Event
+-# old_old_event: OldEvent
 
 .event
   .card
     .card-body.p-3
       .row
         .col.d-flex.justify-content-center
-          .card-title.text-center= event.name
+          .card-title.text-center= old_event.name
 
       .row.mt-2
         .col.d-flex.justify-content-center
-          - event.groups.each do |group|
+          - old_event.groups.each do |group|
             %a.tag.tag-info.mr-1{ href: group_path(group) }
               = group.abbreviation
 
-    - if (description = event.description)
+    - if (description = old_event.description)
       .card-body.px-4.py-2.justify-content-center
         .row
           .col-12
@@ -23,37 +23,37 @@
     .card-body.px-4.py-2
       .row
         .col-12
-          %h4= t("events.start")
+          %h4= t("old_events.start")
       .row
         .col-12
           = icons.time
-          = l(event.starts_at, format: :long_no_year)
+          = l(old_event.starts_at, format: :long_no_year)
         .col-12
           = icons.location
-          = event.full_start_location
+          = old_event.full_start_location
 
     .card-body.px-4.py-2.text-right
       .row
         .col-12
-          %h4= t("events.end")
+          %h4= t("old_events.end")
       .row
         .col-12
-          = l(event.ends_at, format: :long_no_year)
+          = l(old_event.ends_at, format: :long_no_year)
           = icons.time
         .col-12
-          = event.full_end_location
+          = old_event.full_end_location
           = icons.location
 
-    - if (user = event.user_in_charge)
+    - if (user = old_event.user_in_charge)
       .card-footer.p-0
         .row
           .btn-group.col-12
-            - if policy(event).edit?
-              %a.btn.btn-primary.col-2.order-3{ href: url_for(action: "edit_#{event.detail.handle}", controller: 'events', id: event.id) }
+            - if policy(old_event).edit?
+              %a.btn.btn-primary.col-2.order-3{ href: url_for(action: "edit_#{old_event.detail.handle}", controller: 'old_events', id: old_event.id) }
                 = icons.edit
 
-            - subject = t('events.cancel.subject', event_name: event.name, event_groups: event.groups.map(&:abbreviation).join(', '), start_date: l(event.starts_at.to_date, format: :short))
-            - body    = t('events.cancel.body', user_in_charge: event.user_in_charge.scout_name)
+            - subject = t('old_events.cancel.subject', old_event_name: old_event.name, old_event_groups: old_event.groups.map(&:abbreviation).join(', '), start_date: l(old_event.starts_at.to_date, format: :short))
+            - body    = t('old_events.cancel.body', user_in_charge: old_event.user_in_charge.scout_name)
             = mail_to user.email, encode: :javascript, subject: subject, body: body, class: 'btn btn-danger col-5 col-lg-5' do
               Abmelden
             = link_to "bei #{user.scout_name}", user_path(user), class: 'btn btn-white text-left col'
