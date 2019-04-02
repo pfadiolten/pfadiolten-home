@@ -5,7 +5,7 @@ de:
   activerecord:
     models:
       event:
-        zero: "Keine Aktivitäten"
+        zero: "keine Aktivitäten"
         one: "Aktivität"
         other: "Aktivitäten"
 
@@ -31,7 +31,7 @@ de:
 
     index:
       title: "Agenda"
-      no_events: "keine nächsten Aktivitäten"
+      no_events: "Infos zu Aktivitäten jeweils mitte Woche"
     new:
       title: "Aktivität erfassen"
     edit:
