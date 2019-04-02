@@ -48,7 +48,8 @@
                     - if (value = @group.read_attribute(attribute))
                       .row
                         .col-12
-                          %h3= t("activerecord.attributes.group.#{attribute}")
+                          %h3.mb-1.mt-2
+                            = t("activerecord.attributes.group.#{attribute}")
                           .row
                             .col-12= value
 
