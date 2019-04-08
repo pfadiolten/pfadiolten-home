@@ -42,7 +42,8 @@
                   - if (what = @group.what)
                     .row
                       .col-12
-                        = what.html_safe
+                        %article.trix-content
+                          = what.html_safe
 
                   - %i[ who when ].each do |attribute|
                     - if (value = @group.read_attribute(attribute))

@@ -14,8 +14,7 @@
       - unless @group.new_record?
         .row
           .col
-            = f.input :what, required: false, input_html: { class: 'text-editor' }
-
+            = f.input :what, required: false, as: :editor
         .row
           .col-12.col-sm
             = f.input :who, required: false

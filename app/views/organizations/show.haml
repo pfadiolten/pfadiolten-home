@@ -32,4 +32,5 @@
                   = render 'organizations/members/list',
                            members: @org.members.ordered
   .col.order-1.order-lg-2
-    = @org.description.html_safe
+    %article.trix-content
+      = @org.description.html_safe

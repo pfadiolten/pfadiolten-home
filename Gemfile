@@ -122,9 +122,6 @@ gem 'leaflet-rails', '>= 1.3.1'
 # js service worker for rails
 gem 'serviceworker-rails'
 
-# wysiwyg editor
-gem 'summernote-rails'
-
 # JS asset management
 gem 'webpacker', '~> 3.5'
 

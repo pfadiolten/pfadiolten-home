@@ -5,4 +5,3 @@
 
 #= require lib/leaflet
 #= require lib/lightgallery
-#= require lib/summernote

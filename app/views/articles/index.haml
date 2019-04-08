@@ -19,5 +19,5 @@
         .row.justify-content-center
           = list_any @articles, else_say: t('.no_articles') do |article|
             .col-12
-              = render '/articles/present',
+              = render 'articles/present',
                        article: article

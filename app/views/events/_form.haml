@@ -33,7 +33,7 @@
 
       .row
         .col-12
-          = f.input :description, required: false, input_html: { class: 'text-editor' }
+          = f.input :description, required: false, as: :editor
       .row
         .col-md-4
           = f.input :display_days_amount, required: false,

@@ -8,12 +8,14 @@ import Reference from './UI/Reference';
 import Sortable from './UI/Sortable';
 import User from './User';
 import UserList from './User/List';
+import EditorInput from './UI/Input/Editor';
 
 const components = {
   FileUpload,
   User,
   UserList,
   DateTimeInput,
+  EditorInput,
   SelectInput,
   CheckboxInput,
   Sortable,

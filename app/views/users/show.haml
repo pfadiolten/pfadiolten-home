@@ -46,4 +46,5 @@
                 = link_to group.abbreviation, group_path(group), class: 'btn btn-info'
         .row.mt-4
           .col-12
-            = @user.description&.html_safe
+            %article.trix-content
+              = @user.description&.html_safe

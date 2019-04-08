@@ -14,7 +14,7 @@
                 = icons.edit
 
     .row.justify-content-center
-      .col-12.col-lg-11
+      .col-md-8
         - if @article.image?
           .row.mb-4
             .col
@@ -22,5 +22,5 @@
 
         .row
           .col
-            %article
+            %article.trix-content
               = @article.text.html_safe
