@@ -26,6 +26,9 @@
 
 %link{ rel: 'manifest', href: '/manifest.json' }
 
+
+= stylesheet_pack_tag 'application'
+
 = stylesheet_link_tag    'application', media: 'all'
 = stylesheet_link_tag controller_asset if controller_css?
 

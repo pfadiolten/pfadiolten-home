@@ -9,10 +9,19 @@ class SelectComponentInput < SimpleForm::Inputs::CollectionSelectInput
     label_method, value_method = detect_collection_methods
     {
       options: collection.map do |record|
-        name = record.public_send(label_method)
-        value = record.public_send(value_method)
+        name  = execute_method_on(record, label_method)
+        value = execute_method_on(record, value_method)
         { name: name, value: value }
       end
     }
+  end
+
+private
+  def execute_method_on(value, method)
+    if method.is_a?(Proc)
+      method.(value)
+    else
+      value.public_send(method)
+    end
   end
 end

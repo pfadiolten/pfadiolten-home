@@ -1,0 +1,20 @@
+.react-calendar {
+  background-color: transparent;  ;
+
+  .react-calendar__month-view {
+    .react-calendar__tile.react-calendar__tile--active {
+      background-color: $primary;
+      color: $white;
+    }
+
+    .react-calendar__month-view__days {
+      .react-calendar__month-view__days__day {
+        &.react-calendar__month-view__days__day--weekend {
+          &:not(.react-calendar__month-view__days__day--neighboringMonth):not(.react-calendar__tile--active) {
+            color: $primary;
+          }
+        }
+      }
+    }
+  }
+}

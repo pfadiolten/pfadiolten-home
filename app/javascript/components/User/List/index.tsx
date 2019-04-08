@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { Col } from 'reactstrap';
+import { Col, Row } from 'reactstrap';
 import User, { UserProps } from '../';
-import Row from '../../UI/Row';
 
 interface Props {
   users: UserProps[]

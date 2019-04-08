@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 2019_04_01_154134) do
     t.string "start_location", null: false
     t.datetime "ends_at", null: false
     t.string "end_location"
-    t.integer "type", null: false
+    t.integer "kind", null: false
     t.uuid "user_in_charge_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -92,8 +92,11 @@ gem 'simple_form', '>= 3.5.0'
 # utilites for better/easier meta tags
 gem 'meta-tags'
 
-## HTML/CSS/JS
+## frontend
 # ---------
+
+# JSON DSL
+gem 'jbuilder'
 
 # haml - HTML template language
 gem 'hamlit-rails'

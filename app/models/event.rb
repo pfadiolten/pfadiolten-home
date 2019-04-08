@@ -20,7 +20,7 @@ class Event < ApplicationRecord
     allow_nil: true,
   }
 
-  validates :type, {
+  validates :kind, {
     presence: true,
   }
 
@@ -31,7 +31,7 @@ class Event < ApplicationRecord
   validate :it_ends_after_start
 
 # Attributes
-  enum type: %i[ activity camp holidays other ]
+  enum kind: %i[ activity camp holidays other ]
 
 # Scope
   scope :active, ->{
@@ -39,11 +39,11 @@ class Event < ApplicationRecord
   }
 
   scope :of_year, ->(year) {
-    where('DATE_PART("year", starts_at) == :year OR DATE_PART("year", ends_at) == :year', year: year)
+    where("DATE_PART('year', starts_at) = :year OR DATE_PART('year', ends_at) = :year", year: year)
   }
 
   scope :of_month, ->(month) {
-    where('DATE_PART("month", starts_at) == :month OR DATE_PART("month", ends_at) == :month', month: month)
+    where("DATE_PART('month', starts_at) = :month OR DATE_PART('month', ends_at) = :month", month: month)
   }
 
 # Methods

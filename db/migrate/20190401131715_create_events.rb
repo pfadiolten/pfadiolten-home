@@ -32,7 +32,7 @@ class CreateEvents < ActiveRecord::Migration[5.2]
                null: true
 
       #
-      t.column :type,
+      t.column :kind,
                :integer,
                null: false
 

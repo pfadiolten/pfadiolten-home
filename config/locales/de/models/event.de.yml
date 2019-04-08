@@ -2,6 +2,31 @@ de:
   routes:
     events: "aktivitäten"
 
+  activerecord:
+    models:
+      event:
+        zero:  "Keine Aktivitäten"
+        one:   "Aktivität"
+        other: "Aktivitäten"
+        kinds:
+          activity: "Aktivität"
+          camp:     "Lager"
+          holidays: "Ferien"
+          other:    "Andere"
+
+    attributes:
+      event:
+        title:             "Titel"
+        starts_at:         "Startzeit"
+        start_location:    "Startpunkt"
+        ends_at:           "Endzeit"
+        end_location:      "Endpunkt"
+        user_in_charge_id: "Kontakt"
+        description:       "Beschreibung"
+        groups:            "Stufen"
+        group_ids:         "Stufen"
+        kind:              "Art"
+
   events:
     new:
       title: "Aktivität erfassen"
