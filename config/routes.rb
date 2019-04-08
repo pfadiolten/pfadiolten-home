@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  external_param = /[^\/]+/
+
   localized do
     devise_for :users,
                controllers: {
@@ -64,9 +66,9 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :events, except: %i[ index show edit ]
+    resources :events, constraints: { id: external_param }, except: %i[ index show edit ]
 
-    resources :articles
+    resources :articles, id: external_param
 
     resources :organizations, param: :abbreviation do
       concerns :rankable, model: Organization
@@ -78,7 +80,7 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :albums, param: :name do
+    resources :albums, param: :name, constraints: { name: external_param } do
       member do
         get 'download'
       end
