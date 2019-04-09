@@ -16,9 +16,9 @@
 
       .row
         .col-12
-          = f.input :text, required: false,
-                    label: false,
-                    input_html: { class: 'text-editor' }
+          = f.input :text, as: :editor,
+                    required: false,
+                    label:    false
 
       .row
         .col-12.col-sm-5.mt-6

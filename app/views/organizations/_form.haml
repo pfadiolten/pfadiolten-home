@@ -13,7 +13,6 @@
 
       .row
         .col
-          = f.input :description,
-                    input_html: { class: 'text-editor' }
+          = f.input :description, as: :editor
 
       = submit_buttons_for f

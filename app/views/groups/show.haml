@@ -42,13 +42,15 @@
                   - if (what = @group.what)
                     .row
                       .col-12
-                        = what.html_safe
+                        %article.trix-content
+                          = what.html_safe
 
                   - %i[ who when ].each do |attribute|
                     - if (value = @group.read_attribute(attribute))
                       .row
                         .col-12
-                          %h3= t("activerecord.attributes.group.#{attribute}")
+                          %h3.mb-1.mt-2
+                            = t("activerecord.attributes.group.#{attribute}")
                           .row
                             .col-12= value
 

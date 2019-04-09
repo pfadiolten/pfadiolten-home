@@ -22,12 +22,22 @@ class ApplicationRecord < ActiveRecord::Base
       before_save &defaultation
     end
 
+    SANITIZE_HTML_CONFIG = Sanitize::Config.merge(
+      Sanitize::Config::RELAXED,
+      attributes: Sanitize::Config::RELAXED[:attributes].merge(
+        all: [ :data, 'class' ],
+      ),
+    )
+
     def sanitize_html_of(*attributes)
       before_validation do
         attributes.each do |attribute|
           value = send("#{attribute}")
           break if value.blank?
-          send("#{attribute}=", Sanitize.fragment(value, Sanitize::Config::RELAXED))
+          send("#{attribute}=", Sanitize.fragment(
+            value,
+            SANITIZE_HTML_CONFIG,
+          ))
         end
       end
     end

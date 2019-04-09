@@ -35,7 +35,7 @@ class Album < ApplicationRecord
 
 # Actions
   def to_param
-    CGI::escape(name.downcase)
+    name.downcase
   end
 
   def save_with_images

@@ -18,8 +18,7 @@
       - if @user.persisted?
         .row
           .col-12
-            = f.input :description, label: false, input_html: { class: 'text-editor' }
-
+            = f.input :description, label: false, as: :editor
       .row
         .col-12
           = f.input :avatar, as: 'filehandle', input_html: { accept: 'image/*' }
