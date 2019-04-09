@@ -25,7 +25,7 @@ class ApplicationRecord < ActiveRecord::Base
     SANITIZE_HTML_CONFIG = Sanitize::Config.merge(
       Sanitize::Config::RELAXED,
       attributes: Sanitize::Config::RELAXED[:attributes].merge(
-        all: %i[ data ],
+        all: [ :data, 'class' ],
       ),
     )
 

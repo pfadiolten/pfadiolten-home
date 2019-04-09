@@ -28,7 +28,7 @@ class EditorInput extends React.Component<Props> {
           ref={this.editorRef}
           data-direct-upload-url={uploadURL}
           data-blob-url-template={blobURLTemplate}
-          className="trix-content"
+          class="trix-content"
         />
       </React.Fragment>
     );
