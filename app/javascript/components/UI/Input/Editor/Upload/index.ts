@@ -30,10 +30,16 @@ export class EditorInputUpload {
       throw new Error(`Direct upload failed: ${error}`);
     }
 
-    this.attachment.setAttributes({
+    const url = this.createBlobUrl(attributes.signed_id, attributes.filename);
+    const newAttributes = {
       sgid: attributes.attachable_sgid,
-      url: this.createBlobUrl(attributes.signed_id, attributes.filename),
-    });
+    };
+    if (attributes.content_type.startsWith('image/')) {
+      attributes.url = url;
+    } else {
+      attributes.href = url;
+    }
+    this.attachment.setAttributes(attributes);
   }
 
   createBlobUrl(signedId, filename) {

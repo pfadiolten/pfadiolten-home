@@ -2,6 +2,7 @@ import * as React from 'react';
 import 'trix/dist/trix';
 import { EditorInputUpload } from './Upload';
 
+import './i18n';
 import './index.scss';
 
 interface Props {
@@ -18,8 +19,6 @@ class EditorInput extends React.Component<Props> {
 
   public render() {
     const { uploadURL, blobURLTemplate, id, name, value } = this.props;
-    console.log(this.props);
-
     const Tag: any = 'trix-editor';
     return (
       <React.Fragment>
@@ -43,12 +42,12 @@ class EditorInput extends React.Component<Props> {
     this.editorRef.current.removeEventListener('trix-attachment-add', this.handleAttachmentAdd);
   }
 
-  private handleAttachmentAdd = ({ attachment, target }: any) => {
+  private handleAttachmentAdd = async ({ attachment, target }: any) => {
     if (!attachment.file) {
       return;
     }
     const upload = new EditorInputUpload(attachment, target);
-    upload.start();
+    await upload.start();
   };
 }
 

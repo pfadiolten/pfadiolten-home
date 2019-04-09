@@ -20,6 +20,7 @@
     "array-bracket-spacing":  [ true, "always", { "arraysInArrays": false } ],
     "eofline":                false,
     "import-name":            false,
-    "jsx-no-multiline-js":    false
+    "jsx-no-multiline-js":    false,
+    "max-line-length":        false
   }
 }

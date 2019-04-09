@@ -1,7 +1,6 @@
 - title @article.title
 - self.image_src = image_path(@article.image.x512) if @article.image?
 
-
 .row
   .col
     - can = policy(@article)
