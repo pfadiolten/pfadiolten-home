@@ -18,7 +18,8 @@
     "react-grid-gallery": "^0.5.3",
     "reactstrap": "^7.1.0",
     "sortablejs": "^1.7.0",
-    "trix": "^1.1.0"
+    "trix": "^1.1.0",
+    "wretch": "^1.5.1"
   },
   "version": "1.0.1",
   "main": "index.js",

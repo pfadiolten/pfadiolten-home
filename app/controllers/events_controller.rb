@@ -8,6 +8,7 @@ class EventsController < ApplicationController
       format.json do
         day = selected_day
         @events = policy_scope Event.of_year(day.year).of_month(day.month)
+        render layout: false
       end
     end
   end

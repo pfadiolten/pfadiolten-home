@@ -129,7 +129,7 @@ gem 'serviceworker-rails'
 # JS asset management
 gem 'webpacker', '~> 3.5'
 
-# gem 'tui-editor-rails', path: '../tui-editor-rails'
+gem 'js-routes'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]

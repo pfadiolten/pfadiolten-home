@@ -5,6 +5,11 @@
     %header
       = render 'layouts/components/navigation'
     %main
+      = cache 'routes' do
+        #routes{ style: 'display: none;' }
+          .resource--events
+            .action--index= events_path
+
       .container--main{ class: content_for(:container_type) || 'container' }
         %section.section--title
           .text-center
@@ -13,5 +18,6 @@
                      subtitle: content_for(:subtitle)
         %section.section--content
           = yield
+
     = render 'layouts/components/footer'
     = render 'layouts/components/assets'

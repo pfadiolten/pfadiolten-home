@@ -48,7 +48,7 @@ class Event < ApplicationRecord
 
 # Methods
   def to_param
-    "#{name}@#{id}"
+    "#{title}@#{id}"
   end
 
   def it_ends_after_start

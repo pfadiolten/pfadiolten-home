@@ -5,3 +5,5 @@
 
 #= require lib/leaflet
 #= require lib/lightgallery
+
+#= require js-routes

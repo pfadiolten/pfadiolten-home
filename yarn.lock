@@ -6091,8 +6091,9 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
 
 typescript@^3.2.4:
-  version "3.3.3333"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.3.3333.tgz#171b2c5af66c59e9431199117a3bcadc66fdcfd6"
+  version "3.4.2"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.4.2.tgz#9ed4e6475d906f589200193be056f5913caed481"
+  integrity sha512-Og2Vn6Mk7JAuWA1hQdDQN/Ekm/SchX80VzLhjKN9ETYrIepBFAd8PkOdOTK2nKt0FCkmMZKBJvQ1dV1gIxPu/A==
 
 ua-parser-js@^0.7.18:
   version "0.7.19"
@@ -6435,6 +6436,11 @@ wrap-ansi@^2.0.0:
 wrappy@1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/wrappy/-/wrappy-1.0.2.tgz#b5243d8f3ec1aa35f1364605bc0d1036e30ab69f"
+
+wretch@^1.5.1:
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/wretch/-/wretch-1.5.1.tgz#6422390316f88cc9fb28e7e4b4f8f68ed3747738"
+  integrity sha512-pDPaJqUNHAG7EJN5QzuvGKdbZKwIrrpyNSEJutGHG5dPkSupRgZ2ekI6sUG0wg+xQEnkHxSD7YuZItb5XKSxZA==
 
 xtend@^4.0.0, xtend@~4.0.1:
   version "4.0.1"
