@@ -1,22 +1,24 @@
 import * as React from 'react';
-import { Alert, Button, Card, CardHeader, CardTitle, Col, Row } from 'reactstrap';
-import Calendar from '../../../UI/Calendar';
+import { Alert, Button, Col, Row } from 'reactstrap';
+import Calendar from '../../UI/Calendar';
 import * as queryString from 'query-string';
-import ApiRequest from '../../../api/request';
-import routes from '../../../../utils/routes';
-import Event from '../index';
+import ApiRequest from '../../api/request';
+import routes from '../../../utils/routes';
+import RowList from '../../UI/RowList';
+import EventRecord from '../../../models/Event';
+import Event from '../Event';
 
 interface Props {
 
 }
 
 interface State {
-  date:    Date
+  date: Date
 }
 
-class EventIndex extends React.PureComponent<Props, State> {
+class Events extends React.PureComponent<Props, State> {
   public state = {
-    date: EventIndex.selectedDate,
+    date: Events.selectedDate,
   };
 
   public render() {
@@ -38,7 +40,7 @@ class EventIndex extends React.PureComponent<Props, State> {
           <Row className="justify-content-center">
             <Col className="text-center">
               <ApiRequest to={routes.events({ format: 'json' })} params={params} key={this.dateString}>
-                {(events: Event[], { routes }) => (
+                {(events: EventRecord[], { routes }) => (
                   <React.Fragment>
                     {
                       events.length === 0 ? (
@@ -46,19 +48,13 @@ class EventIndex extends React.PureComponent<Props, State> {
                           keine Ereignisse für dieses Datum gefunden
                         </Alert>
                       ) : (
-                        events.map((event) => (
-                          <Row key={event.id}>
-                            <Col xs={12}>
-                              <Card>
-                                <CardHeader>
-                                  <CardTitle>
-                                    {event.title}
-                                  </CardTitle>
-                                </CardHeader>
-                              </Card>
+                        <RowList of={events}>
+                          {(event) => (
+                            <Col xs={11} sm={6} lg={4} key={event.id}>
+                              <Event event={event} />
                             </Col>
-                          </Row>
-                        ))
+                          )}
+                        </RowList>
                       )
                     }
                     {(routes.new) && (
@@ -121,4 +117,4 @@ class EventIndex extends React.PureComponent<Props, State> {
   }
 }
 
-export default EventIndex;
+export default Events;

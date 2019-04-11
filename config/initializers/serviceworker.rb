@@ -18,7 +18,7 @@ Rails.application.configure do
     #
     # insert custom headers
     # match "/header-serviceworker.js" => "another/serviceworker.js",
-    #   headers: { "X-Resource-Header" => "A resource" }
+    #   headers: { "X-Record-Header" => "A resource" }
     #
     # anonymous glob exposes `paths` variable for interpolation
     # match "/*/serviceworker.js" => "%{paths}/serviceworker.js"

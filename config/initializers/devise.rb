@@ -189,7 +189,7 @@ Devise.setup do |config|
   # is failed attempts.
   # config.maximum_attempts = 20
 
-  # Time interval to unlock the account if :time is enabled as unlock_strategy.
+  # LocalizedTime interval to unlock the account if :time is enabled as unlock_strategy.
   # config.unlock_in = 1.hour
 
   # Warn on the last attempt before the account is locked.
@@ -200,7 +200,7 @@ Devise.setup do |config|
   # Defines which key will be used when recovering the password for an account
   # config.reset_password_keys = [:email]
 
-  # Time interval you can reset your password with a reset password key.
+  # LocalizedTime interval you can reset your password with a reset password key.
   # Don't put a too small interval or your users won't have the time to
   # change their passwords.
   config.reset_password_within = 6.hours

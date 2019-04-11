@@ -1,33 +1,34 @@
-json.data do
-  json.array! @events do |event|
-    json.(event,
-      :id,
-      :title,
-      :description,
-      :starts_at,
-      :start_location,
-      :ends_at,
-      :end_location,
+json.partial! 'components/record', record: @events, build: ->(event) {
+  json.(event,
+    :id,
+    :title,
+    :kind,
+    :description,
+    :start_location,
+    :end_location,
+  )
+
+  json.starts_at event.starts_at.to_i
+  json.ends_at   event.ends_at.to_i
+
+  json.user_in_charge do
+    next if event.user_in_charge.nil?
+    json.(event.user_in_charge,
+      :scout_name
+    )
+    2
+    json.partial! 'components/record', record: event.user_in_charge
+  end
+
+  json.groups event.groups do |group|
+    json.(group,
+      :name,
+      :abbreviation,
     )
 
-    json.url url_for(event)
-
-    json.user_in_charge do
-      next if event.user_in_charge.nil?
-      json.(event.user_in_charge,
-        :scout_name
-      )
-    end
-
-    json.groups event.groups do |group|
-      json.(group,
-        :name,
-      )
-    end
+    json.partial! 'components/record', record: group
   end
-end
 
-json.routes do
-  json.index events_path     if policy(@events).index?
-  json.new   new_event_path if policy(@events).new?
-end
+
+  json.partial! 'components/record', record: event
+}

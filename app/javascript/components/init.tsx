@@ -1,6 +1,5 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import EventList from './Event/List';
 import FileUpload from './FileUpload';
 import CheckboxInput from './UI/Input/Checkbox';
 import DateTimeInput from './UI/Input/DateTime';
@@ -10,9 +9,10 @@ import Sortable from './UI/Sortable';
 import User from './User';
 import UserList from './User/List';
 import EditorInput from './UI/Input/Editor';
+import Events from './events/Events';
 
 const components = {
-  EventList,
+  Events,
   FileUpload,
   User,
   UserList,
