@@ -1,8 +1,19 @@
 class Rank < ApplicationRecord
 # Relations
-  belongs_to :rankable,
-             polymorphic: true,
-             required:    true
+  belongs_to :rankable, {
+    polymorphic: true,
+    required:    true,
+  }
+
+# Validations
+  validates :value, {
+    presence: true,
+    numericality: {
+      greater_than_or_equal_to: 0,
+      only_integer:             true,
+    },
+    uniqueness: { scope: %i[ rankable_id rankable_type ] },
+  }
 
 # Scopes
   default_scope do
@@ -17,10 +28,4 @@ class Rank < ApplicationRecord
       0
     end
   end
-
-# Validations
-  validates :value,
-            presence: true,
-            numericality: { greater_than_or_equal_to: 0, only_integer: true },
-            uniqueness:   { scope: %i[ rankable_id rankable_type ] }
 end

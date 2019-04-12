@@ -5,35 +5,35 @@ class User < ApplicationRecord
          :trackable
 
 # Relations
-  has_many :members,
-           class_name: 'Group::Member',
-           foreign_key: :user_id,
-           dependent: :destroy
+  has_many :members, {
+    class_name:  'Group::Member',
+    foreign_key: :user_id,
+    dependent:   :destroy,
+  }
 
-  has_many :groups,
-           class_name: 'Group',
-           through: :members,
-           foreign_key: :group_id
+  has_many :groups, {
+    class_name:  'Group',
+    through:     :members,
+    foreign_key: :group_id,
+  }
 
-  has_many :roles,
-           class_name: 'Group::Role',
-           through: :members,
-           foreign_key: :role_id
+  has_many :roles, {
+    class_name:  'Group::Role',
+    through:     :members,
+    foreign_key: :role_id,
+  }
 
-  has_many :old_events,
-           class_name: 'OldEvent',
-           foreign_key: :user_in_charge_id,
-           dependent: :nullify
+  has_many :articles, {
+    class_name:  'Article',
+    foreign_key: :author_id,
+    dependent:   :nullify,
+  }
 
-  has_many :articles,
-           class_name: 'Article',
-           foreign_key: :author_id,
-           dependent: :nullify
-
-  has_many :events,
-           class_name:  'Event',
-           foreign_key: :user_in_charge_id,
-           dependent:   :nullify
+  has_many :events, {
+    class_name:  'Event',
+    foreign_key: :user_in_charge_id,
+    dependent:   :nullify,
+  }
 
 # Attributes
   alias_attribute :admin?, :is_admin
@@ -42,29 +42,37 @@ class User < ApplicationRecord
 
   sanitize_html_of :description
 
-# TODO move to File::Avatar
+  # TODO move to File::Avatar
   mount_uploader :avatar, AvatarUploader
+
+# Validations
+  validates :scout_name, {
+    presence: true,
+    uniqueness: {
+      case_sensitive: false,
+    },
+  }
+
+  validates :first_name, :last_name, {
+    presence: true,
+  }
+
+  validates :is_admin, {
+    inclusion: {
+      in: [ true, false ],
+    }
+  }
 
 # Scopes
   default_scope do
     order(scout_name: 'asc')
   end
 
+
 # Callbacks
   before_validation :make_first_user_an_admin
 
-# Validations
-  validates :scout_name,
-            uniqueness: { case_sensitive: false },
-            presence: true
-
-  validates :first_name, :last_name,
-            presence: true
-
-  validates :is_admin,
-            inclusion: { in: [ true, false ] }
-
-# Actions
+# Methods
   def name
     "#{first_name} #{last_name}"
   end
