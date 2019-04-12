@@ -1,20 +1,22 @@
 {
   "name": "pfadiolten-home",
   "dependencies": {
+    "@babel/preset-react": "^7.0.0",
     "@rails/activestorage": "^6.0.0-alpha",
-    "@rails/webpacker": "3.5",
+    "@rails/webpacker": "^4",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "babel-preset-react": "^6.24.1",
     "choices.js": "^4.1.3",
     "hammerjs": "^2.0.8",
     "lightgallery": "^1.6.11",
     "moment": "^2.23.0",
     "pretty-checkbox": "^3.0.3",
-    "prop-types": "^15.6.2",
+    "prop-types": "^15.7.2",
     "query-string": "^6.4.2",
-    "react": "^16.7.0",
+    "react": "^16.8.6",
     "react-calendar": "^2.18.1",
     "react-datetime": "^2.16.3",
-    "react-dom": "^16.7.0",
+    "react-dom": "^16.8.6",
     "react-grid-gallery": "^0.5.3",
     "reactstrap": "^7.1.0",
     "sortablejs": "^1.7.0",
@@ -38,6 +40,6 @@
     "tslint-config-prettier": "^1.17.0",
     "tslint-react": "^3.6.0",
     "typescript": "^3.2.4",
-    "webpack-dev-server": "2.11.2"
+    "webpack-dev-server": "^3"
   }
 }
