@@ -2,6 +2,16 @@
 
 .row.justify-content-center
   .col-12.col-sm-11.col-md-10.col-lg-6
+    .row
+      .col-12
+        .alert.alert-info.alert-icon.alert-dismissible{ role: alert }
+          %button.close{ type: 'button', data: { dismiss: 'alert' } }
+          %div
+            Unsere Homepage ist jetzt mit
+            %a{ href: 'https://cloud.pfadiolten.ch', rel: 'nofollow', target: '_blank' } cloud.pfadiolten.ch
+            synchronisiert.
+            Deine Anmeldedaten entsprechen der Cloud.
+
     - if (alert = flash[:alert])
       .row
         .col-12
@@ -31,15 +41,3 @@
       .row
         .col-12
           = f.submit class: 'btn btn-primary col-12'
-
-      .row.mt-2
-        .col-12.text-right
-          .btn-group
-            %button.btn.btn-warning.dropdown-toggle{ type: 'button', data: { toggle: 'dropdown' }, aria: { haspopup: true, expanded: false } }
-              = t('users.forgot_password.title')
-            .dropdown-menu.dropdown-menu-right
-              - link = capture do
-                %a{ href: 'https://cloud.pfadiolten.ch/login', target: '_blank' } cloud.pfadiolten.ch
-              %button.dropdown-item{ type: 'button', disabled: true }
-                %span{ style: 'pointer-old_events: all;' }
-                  = t('users.password_note', link: link).html_safe

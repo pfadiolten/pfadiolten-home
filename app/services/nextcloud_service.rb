@@ -19,7 +19,7 @@ class NextcloudService < ApplicationService
         password: password,
       )
     end
-    extract response, allow: [ 102 ] do |_body, code:|
+    extract response, allow: [ 102 ] do |_body, code|
       code != 102
     end
   end
@@ -44,7 +44,7 @@ private
     def result
       @_result ||=
         if extract.present?
-          extract.(data_field, code: status_code)
+          extract.(data_field, status_code)
         else
           true
         end

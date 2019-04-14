@@ -52,8 +52,3 @@ de:
       title: "Wirklich löschen?"
     destroy_image:
       title: "Wirklich löschen?"
-    forgot_password:
-      title: "Passwort vergessen?"
-    password_note: >
-      Dein Password entspricht dem deines Nextcloud-Accounts.<br/>
-      Du kannst es auf %{link} zurücksetzen.

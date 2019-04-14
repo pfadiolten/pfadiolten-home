@@ -1,6 +1,6 @@
 de:
   routes:
-    events: "aktivitäten"
+    events: "kalender"
 
   activerecord:
     models:

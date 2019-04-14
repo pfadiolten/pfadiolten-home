@@ -13,6 +13,24 @@ module ApplicationHelper
         .model_name
   end
 
+  def controller_class(of: nil, optional: false)
+    the_class =
+      case
+      when of == nil
+        controller_name.camelize.safe_constantize
+      when of.respond_to?(:model_name)
+        "#{of.model_name.plural}_controller".camelize.safe_constantize
+      else
+        raise "can't find controller via #{of}"
+      end
+    the_class || (raise "no controller for #{of} found" unless optional)
+  end
+
+  def action?(action_name, controller = nil)
+    controller = controller || controller_class
+    controller.action_methods.any? { |action| action.to_sym == action_name.to_sym }
+  end
+
   def iconize(condition, options={})
     classes = options[:class] ||= []
     classes = [ classes ] unless classes.is_a?(Array)

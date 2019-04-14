@@ -10,9 +10,11 @@ import User from './User';
 import UserList from './User/List';
 import EditorInput from './UI/Input/Editor';
 import Events from './events/Events';
+import Event from './events/Event';
 
 const components = {
   Events,
+  Event,
   FileUpload,
   User,
   UserList,

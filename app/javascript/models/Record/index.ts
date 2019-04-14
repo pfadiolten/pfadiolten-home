@@ -1,6 +1,6 @@
 interface Record {
   id: string
-  routes: {
+  links: {
     show?:    string
     edit?:    string
     destroy?: string,
@@ -9,7 +9,7 @@ interface Record {
 
 export interface List<T> {
   records: T[]
-  routes: {
+  links: {
     index?: string
     new?:   string,
   }

@@ -10,7 +10,10 @@ class Event < ApplicationRecord
     class_name: 'Group'
   }
 
-# Validations
+# Attributes
+  enum kind: %i[ activity camp holidays other ]
+
+  # Validations
   validates :title, {
     presence: true
   }
@@ -30,9 +33,6 @@ class Event < ApplicationRecord
 
   validate :it_ends_after_start
 
-# Attributes
-  enum kind: %i[ activity camp holidays other ]
-
 # Scope
   scope :active, ->{
     where('ends_at >= CURRENT_DATE')
@@ -45,6 +45,9 @@ class Event < ApplicationRecord
   scope :of_month, ->(month) {
     where("DATE_PART('month', starts_at) = :month OR DATE_PART('month', ends_at) = :month", month: month)
   }
+
+# Callbacks
+  sanitize_html_of :description
 
 # Methods
   def to_param

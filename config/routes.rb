@@ -48,7 +48,13 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :events, param: :title, constraints: { title: external_param }
+    resources :events, {
+      param:  :title,
+      except: %i[ show ],
+      constraints: {
+        title: external_param,
+      }
+    }
 
     namespace :old_events do
       OldEvent.detail_types.each do |detail, _|
