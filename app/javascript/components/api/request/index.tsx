@@ -53,6 +53,9 @@ class ApiRequest<Result> extends React.PureComponent<Props<Result>, State<Result
       });
       cache.set(url, json);
     });
+    this.setState({
+      loading: false,
+    });
   }
 
   private generateUrl() {

@@ -25,8 +25,8 @@ class Events extends React.PureComponent<Props, State> {
     const { date } = this.state;
     const params = { day: date.getDate(), month: date.getMonth() + 1, year: date.getFullYear() };
     return (
-      <Row noGutters>
-        <Col md={6} lg={4} xl={3}>
+      <Row>
+        <Col md="auto">
           <Calendar date={date} onChange={this.onDateChange} />
         </Col>
         <Col>
@@ -40,33 +40,31 @@ class Events extends React.PureComponent<Props, State> {
           <Row className="justify-content-center">
             <Col className="text-center">
               <ApiRequest to={routes.events({ format: 'json' })} params={params} key={this.dateString}>
-                {(events: EventRecord[], { routes }) => (
+                {(events: EventRecord[], { links }) => (
                   <React.Fragment>
-                    {
-                      events.length === 0 ? (
-                        <Alert color="info">
-                          keine Ereignisse für dieses Datum gefunden
-                        </Alert>
-                      ) : (
-                        <RowList of={events}>
-                          {(event) => (
-                            <Col xs={11} sm={6} lg={4} key={event.id}>
-                              <Event event={event} />
-                            </Col>
-                          )}
-                        </RowList>
-                      )
-                    }
-                    {(routes.new) && (
-                      <Row>
-                        <Col xs={12} className="d-flex justify-content-end">
-                          <a href={routes.new}>
+                    {(links.new) && (
+                      <Row className="mb-2">
+                        <Col xs={12} className="d-flex justify-content-center">
+                          <a href={links.new}>
                             <Button color="primary">
                               <i className="fas fa-plus fa-fw" />
                             </Button>
                           </a>
                         </Col>
                       </Row>
+                    )}
+                    {events.length === 0 ? (
+                      <Alert color="info">
+                        keine Ereignisse für dieses Datum gefunden
+                      </Alert>
+                    ) : (
+                      <RowList of={events}>
+                        {(event) => (
+                          <Col xs={11} sm={6} lg={4} xl={3} key={event.id}>
+                            <Event event={event} />
+                          </Col>
+                        )}
+                      </RowList>
                     )}
                   </React.Fragment>
                 )}

@@ -42,6 +42,8 @@ class User < ApplicationRecord
 
   sanitize_html_of :description
 
+  attr_accessor :password
+
   # TODO move to File::Avatar
   mount_uploader :avatar, AvatarUploader
 

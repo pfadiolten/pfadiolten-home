@@ -25,13 +25,30 @@ class EventsController < ApplicationController
   def create
     @event = authorize Event.new(event_params)
     @event.save
-    respond_with @event, location: events_path
+    respond_with @event, location: form_location
+  end
+
+  def edit
+    @event = authorize find_event
+  end
+
+  def update
+    @event = authorize find_event
+    @event.update(event_params)
+    respond_with @event, location: form_location
+  end
+
+  def destroy
+    @event = authorize find_event
+    @event.destroy
+    respond_with @event, action: 'edit', location: form_location
   end
 
 private
   def event_params
     params.require(:event).permit(
       :title,
+      :description,
       :kind,
       :starts_at,
       :start_location,
@@ -51,6 +68,15 @@ private
 
       Date.new(year, month, day).at_beginning_of_month
     end
+  end
+
+  def find_event
+    id = params.fetch(:title).split('@').last
+    Event.find_by(id: id) || not_found
+  end
+
+  def form_location
+    ->{ events_path(date: @event.starts_at.strftime('%Y.%-m.%-d')) }
   end
 
   helper_method :selected_day

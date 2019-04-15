@@ -1,6 +1,5 @@
 json.partial! 'components/record', record: @events, build: ->(event) {
   json.(event,
-    :id,
     :title,
     :kind,
     :description,
