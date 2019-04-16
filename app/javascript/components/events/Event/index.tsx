@@ -1,9 +1,8 @@
 import * as React from 'react';
 import EventRecord from '../../../models/Event';
-import { Button, Card, CardBody, CardTitle, Col, Row } from 'reactstrap';
+import { Card, CardBody, CardTitle, Col, Row } from 'reactstrap';
 import TimeAndLocation from './TimeAndLocation';
 import Html from '../../UI/Html';
-import CardOptions from '../../UI/Card/Options';
 import Footer from './Footer';
 
 interface Props {
@@ -27,14 +26,13 @@ class Event extends React.PureComponent<Props> {
       starts_at:      startsAt,
       end_location:   endLocation,
       ends_at:        endsAt,
-      links,
     } = event;
     return (
       <Card>
         <CardBody className="p-3">
           <Row>
-            <Col className="d-flex justify-content-center">
-              <CardTitle className="text-center">
+            <Col>
+              <CardTitle>
                 {title}
               </CardTitle>
             </Col>

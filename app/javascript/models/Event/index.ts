@@ -24,4 +24,10 @@ type EventKind =
   | 'other'
 ;
 
+export const event = {
+  hasEnded: ({ ends_at: endsAt }: EventRecord) => (
+    (Number(Date.now()) - (endsAt * 1000)) <= 0
+  ),
+};
+
 export default EventRecord;

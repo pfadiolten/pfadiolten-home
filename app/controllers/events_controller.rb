@@ -7,7 +7,7 @@ class EventsController < ApplicationController
       end
       format.json do
         day = selected_day
-        @events = policy_scope Event.of_year(day.year).of_month(day.month)
+        @events = policy_scope Event.of_year(day.year).of_month(day.month).of_day(day.day).order_by_date
         render layout: false
       end
     end
@@ -60,13 +60,13 @@ private
   end
 
   def selected_day
-    @_first_day_of_month ||= begin
+    @_selected_day ||= begin
       today = Date.today
       year  = params[:year]&.to_i  || today.year
       month = params[:month]&.to_i || today.month
       day   = params[:day]&.to_i   || today.day
 
-      Date.new(year, month, day).at_beginning_of_month
+      Date.new(year, month, day)
     end
   end
 

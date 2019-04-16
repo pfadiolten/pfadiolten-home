@@ -26,8 +26,12 @@ class Events extends React.PureComponent<Props, State> {
     const params = { day: date.getDate(), month: date.getMonth() + 1, year: date.getFullYear() };
     return (
       <Row>
-        <Col md="auto">
-          <Calendar date={date} onChange={this.onDateChange} />
+        <Col xs={12} md={3} className="mb-4 mb-md-0">
+          <Row className="justify-content-center">
+            <Col xs="auto">
+              <Calendar date={date} onChange={this.onDateChange} />
+            </Col>
+          </Row>
         </Col>
         <Col>
           <Row>
@@ -60,7 +64,7 @@ class Events extends React.PureComponent<Props, State> {
                     ) : (
                       <RowList of={events}>
                         {(event) => (
-                          <Col xs={11} sm={6} lg={4} xl={3} key={event.id}>
+                          <Col xs={10} sm={6} lg={5} xl={4} key={event.id}>
                             <Event event={event} />
                           </Col>
                         )}

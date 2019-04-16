@@ -46,6 +46,14 @@ class Event < ApplicationRecord
     where("DATE_PART('month', starts_at) = :month OR DATE_PART('month', ends_at) = :month", month: month)
   }
 
+  scope :of_day, ->(day) {
+    where("DATE_PART('day', starts_at) = :day OR DATE_PART('day', ends_at) = :day", day: day)
+  }
+
+  scope :order_by_date, ->() {
+    order(starts_at: :asc)
+  }
+
 # Callbacks
   sanitize_html_of :description
 
