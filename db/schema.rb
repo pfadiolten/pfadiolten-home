@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_08_084347) do
+ActiveRecord::Schema.define(version: 2019_04_18_060001) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -60,19 +60,6 @@ ActiveRecord::Schema.define(version: 2019_04_08_084347) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "name_of_album", unique: true
-  end
-
-  create_table "articles", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "title", null: false
-    t.text "summary", null: false
-    t.text "text", null: false
-    t.string "image"
-    t.boolean "is_pinned", null: false
-    t.date "pinned_till"
-    t.uuid "author_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["author_id"], name: "author_of_article"
   end
 
   create_table "events", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -149,6 +136,19 @@ ActiveRecord::Schema.define(version: 2019_04_08_084347) do
     t.index ["abbreviation"], name: "abbreviation_of_group", unique: true
     t.index ["index"], name: "index_of_group", unique: true
     t.index ["name"], name: "name_of_group", unique: true
+  end
+
+  create_table "old_articles", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "title", null: false
+    t.text "summary", null: false
+    t.text "text", null: false
+    t.string "image"
+    t.boolean "is_pinned", null: false
+    t.date "pinned_till"
+    t.uuid "author_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "author_of_article"
   end
 
   create_table "old_event_activity_details", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -245,12 +245,12 @@ ActiveRecord::Schema.define(version: 2019_04_08_084347) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "album_archives", "albums", name: "fk_album_of_archive"
   add_foreign_key "album_images", "albums", name: "fk_album_of_image"
-  add_foreign_key "articles", "users", column: "author_id", name: "fk_author_of_article"
   add_foreign_key "events", "users", column: "user_in_charge_id"
   add_foreign_key "group_members", "group_roles", column: "role_id", name: "fk_role_of_member"
   add_foreign_key "group_members", "groups", name: "fk_group_of_member"
   add_foreign_key "group_members", "users", name: "fk_user_of_member"
   add_foreign_key "group_roles", "groups", name: "fk_group_of_role"
+  add_foreign_key "old_articles", "users", column: "author_id", name: "fk_author_of_article"
   add_foreign_key "old_event_groups", "groups", name: "fk_group_of_event"
   add_foreign_key "old_event_groups", "old_events", column: "event_id", name: "fk_event_of_group"
   add_foreign_key "old_events", "users", column: "user_in_charge_id", name: "fk_user_in_charge_of_event"

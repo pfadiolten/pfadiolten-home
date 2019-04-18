@@ -1,4 +1,6 @@
-class Article < ApplicationRecord
+class Old::Article < ApplicationRecord
+  self.table_name = 'old_articles'
+
   mount_uploader :image, CoverUploader
 
   paginates_per 5

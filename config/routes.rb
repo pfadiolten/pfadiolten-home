@@ -56,8 +56,8 @@ Rails.application.routes.draw do
       }
     }
 
-    namespace :old_events do
-      OldEvent.detail_types.each do |detail, _|
+    namespace :old_events, controller: 'old/events' do
+      Old::Event.detail_types.each do |detail, _|
         get "#{detail}/new", action: "new_#{detail}"
         post "#{detail}/new", action: "create_#{detail}"
 
@@ -72,7 +72,7 @@ Rails.application.routes.draw do
 
     resources :old_events, except: %i[ index show edit ]
 
-    resources :articles, id: external_param
+    resources :articles, id: external_param, controller: 'old/articles'
 
     resources :organizations, param: :abbreviation do
       concerns :rankable, model: Organization

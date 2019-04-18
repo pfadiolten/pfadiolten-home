@@ -1,9 +1,9 @@
-class OldEvent::Detail < ApplicationRecord
+class Old::Event::Detail < ApplicationRecord
   self.abstract_class = true
 
 # Relations
   has_one :old_event,
-          class_name: 'OldEvent',
+          class_name: 'Old::Event',
           foreign_key: :detail_id
 
 # Actions

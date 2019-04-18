@@ -1,17 +1,17 @@
-class OldEventsController < ApplicationController
-  before_action :load_old_event, except: %i[index new create] + OldEvent.detail_types.map { |detail, _| [ :"new_#{detail}", :"create_#{detail}" ] }.flatten
+class Old::EventsController < ApplicationController
+  before_action :load_old_event, except: %i[index new create] + Old::Event.detail_types.map { |detail, _| [ :"new_#{detail}", :"create_#{detail}" ] }.flatten
 
   enforce_login! except: %i[index show]
 
   def new
-    authorize OldEvent
+    authorize Old::Event
   end
 
-  OldEvent.detail_types.each do |detail, type|
+  Old::Event.detail_types.each do |detail, type|
     new_template = "old_events/#{detail.to_s.pluralize}/new"
 
     define_method "new_#{detail}" do
-      @old_event = OldEvent.new(detail: type.new, user_in_charge: current_user)
+      @old_event = Old::Event.new(detail: type.new, user_in_charge: current_user)
       @old_event.starts_at = (Date.today.sunday.in_time_zone - 1.day).to_datetime + 14.hours
       @old_event.ends_at   = @old_event.starts_at + 3.hours
 
@@ -30,7 +30,7 @@ class OldEventsController < ApplicationController
     end
 
     define_method "create_#{detail}" do
-      @old_event = OldEvent.new(old_event_params(detail))
+      @old_event = Old::Event.new(old_event_params(detail))
       @old_event.detail ||= type.new
       authorize @old_event, :create?
       @old_event.save
@@ -68,7 +68,7 @@ class OldEventsController < ApplicationController
 
 protected
   def load_old_event
-    @old_event = OldEvent.find_by(id: params[:id]) || not_found
+    @old_event = Old::Event.find_by(id: params[:id]) || not_found
   end
 
 private

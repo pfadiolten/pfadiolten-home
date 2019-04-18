@@ -2,7 +2,6 @@ class Application::Navigation::ItemPresenter < ApplicationPresenter
   Item = Struct.new(:controller, :children)
 
   ITEMS = [
-    Item.new(:articles),
     Item.new(:about_us, [
       Item.new(:users),
       Item.new(:groups),

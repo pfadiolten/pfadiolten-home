@@ -1,4 +1,6 @@
-class OldEvent < ApplicationRecord
+class Old::Event < ApplicationRecord
+  self.table_name = 'old_events'
+
 # Relations
   belongs_to :user_in_charge,
              class_name: 'User',
@@ -12,7 +14,7 @@ class OldEvent < ApplicationRecord
              dependent:   :destroy
 
   has_many :old_event_groups,
-           class_name:  'OldEventGroup',
+           class_name:  'Old::EventGroup',
            inverse_of:  :old_event,
            foreign_key: :old_event_id,
            dependent:   :destroy
@@ -108,8 +110,8 @@ protected
   class << self
     def detail_types
       {
-        activity: OldEvent::ActivityDetail,
-        camp:     OldEvent::CampDetail,
+        activity: Old::Event::ActivityDetail,
+        camp:     Old::Event::CampDetail,
       }
     end
   end

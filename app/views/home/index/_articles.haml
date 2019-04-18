@@ -3,11 +3,11 @@
 
 = render 'components/category', title: t('home.index.articles') do |b|
   - b.options do
-    - if policy(Article).create?
+    - if policy(Old::Article).create?
       %a.btn.btn-primary{ href: new_article_path }
         = icons.new
 
   - b.body do
-    = render 'articles/list',
+    = render 'old/articles/list',
              articles: articles
 

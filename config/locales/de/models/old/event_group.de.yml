@@ -1,0 +1,6 @@
+de:
+  activerecord:
+    attributes:
+      old:
+        event_group:
+          group_id: "Stufen"

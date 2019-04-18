@@ -1,7 +1,9 @@
-class OldEventGroup < ApplicationRecord
+class Old::EventGroup < ApplicationRecord
+  self.table_name = 'old_event_groups'
+
 # Relations
   belongs_to :old_event,
-             class_name: 'OldEvent',
+             class_name: 'Old::Event',
              foreign_key: :old_event_id,
              required: true
 

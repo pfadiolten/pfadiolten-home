@@ -23,12 +23,6 @@ class User < ApplicationRecord
     foreign_key: :role_id,
   }
 
-  has_many :articles, {
-    class_name:  'Article',
-    foreign_key: :author_id,
-    dependent:   :nullify,
-  }
-
   has_many :events, {
     class_name:  'Event',
     foreign_key: :user_in_charge_id,

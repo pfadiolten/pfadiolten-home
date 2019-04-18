@@ -1,4 +1,4 @@
-class OldEventPolicy < ApplicationPolicy
+class Old::EventPolicy < ApplicationPolicy
   def show?
     user.present? || !record.private?
   end

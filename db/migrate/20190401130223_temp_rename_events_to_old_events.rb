@@ -1,4 +1,4 @@
-class RenameEventsToOldEvents < ActiveRecord::Migration[5.2]
+class TempRenameEventsToOldEvents < ActiveRecord::Migration[5.2]
   def change
     rename_table :events, :old_events
     rename_table :event_groups, :old_event_groups

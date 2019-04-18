@@ -1,11 +1,11 @@
-class ArticlesController < ApplicationController
+class Old::ArticlesController < ApplicationController
   before_action :load_article, except: %i[index new create]
 
   enforce_login! except: %i[index show]
 
   def index
     page = params[:page]
-    @articles = policy_scope(Article.page(page)).order_by_release
+    @articles = policy_scope(Old::Article.page(page)).order_by_release
     authorize @articles
   end
 
@@ -13,12 +13,12 @@ class ArticlesController < ApplicationController
   end
 
   def new
-    @article = Article.new(author: current_user)
+    @article = Old::Article.new(author: current_user)
     authorize @article
   end
 
   def create
-    @article = Article.new(article_params.merge(author: current_user))
+    @article = Old::Article.new(article_params.merge(author: current_user))
     authorize @article
     @article.save
     respond_with @article
@@ -40,13 +40,13 @@ class ArticlesController < ApplicationController
 protected
   def load_article
     id = params[:id].split('@')&.last || not_found
-    @article = Article.find_by(id: id) || not_found
+    @article = Old::Article.find_by(id: id) || not_found
     authorize @article
   end
 
 private
   def article_params
-    params.require(:article).permit(
+    params.require(:old_article).permit(
       :title,
       :summary,
       :text,

@@ -1,0 +1,38 @@
+de:
+  routes:
+    articles: "infos"
+
+  activerecord:
+    models:
+      old:
+        article:
+          zero: "Keine Infos"
+          one: "Info"
+          other: "Infos"
+
+    attributes:
+      old:
+        article:
+          title: "Titel"
+          summary: "Zusammenfassung"
+          text: "Text"
+          image: "Bild"
+          author_id: "AutorIn"
+          is_pinned: "unter Aktuelles erscheinen?"
+          pinned_till: "erscheint unter Aktuelles bis und mit"
+
+
+  old:
+    articles:
+      index:
+        title: "Alle Infos"
+        no_articles: "Keine Infos gefunden"
+      new:
+        title: "Info erfassen"
+      edit:
+        title: "Info bearbeiten"
+      destroy:
+        title: "Info wirklich löschen?"
+
+      select_image: "Bild auswählen"
+      more: "weiterlesen"
