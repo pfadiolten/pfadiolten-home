@@ -8,21 +8,18 @@ class UsersController < ApplicationController
 
 # actions
   def index
-    @users = present_all policy_scope(User.all)
-    authorize @users
+    @users = policy_scope(User.all)
   end
 
   def show
   end
 
   def new
-    @user = User.new
-    authorize @user
+    @user = authorize User.new
   end
 
   def create
-    @user = User.new(user_params)
-    authorize @user
+    @user = authorize User.new(user_params)
     @user.save
     respond_with @user
   end
@@ -38,6 +35,11 @@ class UsersController < ApplicationController
     respond_with @user
   end
 
+  def destroy
+    @user.destroy
+    respond_with @user, action: 'edit'
+  end
+
   def edit_password
   end
 
@@ -51,11 +53,6 @@ class UsersController < ApplicationController
   def update_admin
     @user.update(is_admin: !@user.admin?)
     respond_with @user, action: 'edit_admin'
-  end
-
-  def destroy
-    @user.destroy
-    respond_with @user, action: 'edit'
   end
 
 # helpers

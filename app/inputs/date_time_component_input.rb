@@ -2,7 +2,7 @@ class DateTimeComponentInput < SimpleForm::Inputs::Base
   include ComponentInput
 
   def input(wrapper_options = nil)
-    make 'DateTimeInput', wrapper_options
+    make 'UI/Input/DateTime', wrapper_options
   end
 
   def props(options)

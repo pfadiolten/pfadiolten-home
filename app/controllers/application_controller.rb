@@ -17,8 +17,4 @@ protected
   def not_found
     raise ActionController::RoutingError.new('Not Found')
   end
-
-  def present_all(query, **kwargs, &block)
-    "#{query.model_name}Presenter::Collection".safe_constantize.present(present(query), **kwargs, &block)
-  end
 end

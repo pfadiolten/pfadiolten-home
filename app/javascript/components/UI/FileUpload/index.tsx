@@ -1,7 +1,7 @@
 import * as React from 'react';
-import UIButton from '../UI/Button';
+import UIButton from '../Button';
 import { Col, Progress, Row } from 'reactstrap';
-import meta from '../../utils/meta';
+import meta from '../../../utils/meta';
 
 interface Props {
   title: string

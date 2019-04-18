@@ -2,7 +2,7 @@ class EditorInput < SimpleForm::Inputs::Base
   include ComponentInput
 
   def input(wrapper_options = nil)
-    make 'EditorInput', wrapper_options
+    make 'UI/Input/Editor', wrapper_options
   end
 
   def props(options)

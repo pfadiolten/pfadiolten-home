@@ -2,6 +2,9 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import Choices from 'choices.js';
 
+import styles from './index.module.scss';
+import { classes } from '../../../../utils/helpers';
+
 interface Props extends React.HTMLProps<HTMLSelectElement> {
   options: {
     name:  string
@@ -13,7 +16,7 @@ class SelectInput extends React.PureComponent<Props> {
   private choices: Choices;
 
   public render() {
-    const { options, ...selectProps } = this.props;
+    const { options, className, ...selectProps } = this.props;
     return (
       <select {...selectProps}>
         {options.map(({ name, value }) => (
@@ -35,6 +38,10 @@ class SelectInput extends React.PureComponent<Props> {
       itemSelectText: 'auswählen',
       addItemText:    '"${value}" hinzufügen',
       maxItemText:    'maximal ${maxItemCount} ausgewählte Optionen möglich',
+
+      classNames: {
+        containerOuter: classes.join('choices', styles.select),
+      },
     });
   }
 

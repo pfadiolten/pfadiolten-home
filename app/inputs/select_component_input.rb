@@ -2,7 +2,7 @@ class SelectComponentInput < SimpleForm::Inputs::CollectionSelectInput
   include ComponentInput
 
   def input(wrapper_options)
-     make 'SelectInput', wrapper_options
+     make 'UI/Input/Select', wrapper_options
   end
 
   def props(options)

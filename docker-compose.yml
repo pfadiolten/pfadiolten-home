@@ -6,7 +6,7 @@ services:
       context: .
       args:
         - http_proxy
-    command: sh -c "ruby ./bin/webpack-dev-server & bundle exec rails s -p 3000 -b '0.0.0.0'"
+    command: sh -c "ruby ./bin/webpack --webpack --colors --progress & bundle exec rails s -p 3000 -b '0.0.0.0'"
     environment:
       - RAILS_ENV=development
       - NODE_ENV=development
