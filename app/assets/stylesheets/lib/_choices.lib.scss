@@ -4,7 +4,7 @@ $choices-bg-color-disabled: $input-disabled-bg;
 
 @import "choices.js/src/styles/choices";
 
-.choices {
+.choices, .choices[data-type="select-one"], .choices[data-type="select-multiple"] {
   $offset: 3.5px;
 
   .choices__inner {
@@ -22,5 +22,16 @@ $choices-bg-color-disabled: $input-disabled-bg;
 
   .choices__item {
     margin-top: 1px;
+  }
+}
+
+.choices, .choices[data-type="select-one"] {
+  .choices__inner {
+    font-size: 1rem;
+    padding: 0.375rem 0.75rem;
+
+    .choices__list.choices__list--single {
+      padding: 0;
+    }
   }
 }
