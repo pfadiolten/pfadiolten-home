@@ -3,7 +3,7 @@
   filter: drop-shadow(#{$size} #{$size} 4px #{$color}) drop-shadow(-#{$size} -#{$size} 4px #{$color});
 }
 
-body {
+body:not(.no-nav) {
   padding-top: 9rem;
   @include media-breakpoint-down(xs) {
     padding-top: 7rem;

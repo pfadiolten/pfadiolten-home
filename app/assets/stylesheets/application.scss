@@ -53,3 +53,15 @@ h1 {
     }
   }
 }
+
+// Removes horizontal padding/margin of `.container-fluid`.
+// Necessary for full-size pages where we want the content to take up the entire page width.
+//
+// NOTE:
+// Don't know yet if it's a good idea to apply this to every `.container-fluid`.
+// Should probably make an extension class out of this if any problems ever happen with it
+// (à la `.container.container--no-padding-h`).
+.container-fluid {
+  padding-left:  0;
+  padding-right: 0;
+}

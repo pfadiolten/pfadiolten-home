@@ -1,9 +1,9 @@
 !!! 5
 %html{ lang: locale }
   %head= render '/layouts/components/head'
-  %body{ class: "#{controller_name} #{controller_name}--#{action_name}" }
+  %body{ class: [ "#{controller_name} #{controller_name}--#{action_name}", ('no-nav' if nav_disabled?) ] }
     %header
-      = render 'layouts/components/navigation'
+      = render 'layouts/components/navigation' unless nav_disabled?
     %main
       .container--main{ class: content_for(:container_type) || 'container' }
         %section.section--title

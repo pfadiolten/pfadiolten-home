@@ -97,6 +97,15 @@ module ApplicationHelper
     exists_css?(controller_asset)
   end
 
+  def disable_nav!
+    content_for(:disable_nav, true)
+  end
+
+  def nav_disabled?
+    return false unless content_for?(:disable_nav)
+    content_for(:disable_nav)
+  end
+
   def list_any(records, else_say:, alert_options: {}, all: false, &block)
     if records.any?
       if all
