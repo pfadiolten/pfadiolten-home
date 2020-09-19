@@ -17,8 +17,6 @@ services:
       - PFADIOLTEN_INSTAGRAM_CLIENT_ID
       - PFADIOLTEN_INSTAGRAM_CLIENT_SECRET
       - PFADIOLTEN_INSTAGRAM_ACCESS_TOKEN
-
-      - http_proxy
     ports:
       - '3000:3000'
       - '3035:3035'
@@ -35,6 +33,8 @@ services:
 
   db:
     image: postgres:11
+    environment:
+      POSTGRES_PASSWORD: devpass
     volumes:
       - data:/var/lib/postgresql/data
 

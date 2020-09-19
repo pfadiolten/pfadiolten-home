@@ -1,5 +1,7 @@
 FROM ruby:2.5.1-alpine3.7
 
+ENV BUNDLER_VERSION=2.1.4
+
 RUN apk --update add    \
     build-base          \
     git                 \
