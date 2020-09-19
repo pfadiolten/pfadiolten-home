@@ -19,7 +19,7 @@ class Sortable extends React.PureComponent<Props> {
   }
 
   public componentDidMount() {
-    this.element = SortableJs.create(this.ref.current, {
+    this.element = new SortableJs(this.ref.current, {
       animation: 200,
     });
   }

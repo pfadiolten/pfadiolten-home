@@ -2,6 +2,7 @@
   "name": "pfadiolten-home",
   "dependencies": {
     "@rails/activestorage": "^6.0.0-alpha",
+    "@rails/ujs": "^6.0.3-3",
     "@rails/webpacker": "3.5",
     "babel-preset-react": "^6.24.1",
     "choices.js": "^4.1.3",

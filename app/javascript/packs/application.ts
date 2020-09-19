@@ -1,5 +1,8 @@
+import Rails from '@rails/ujs';
 import * as ActiveStorage from '@rails/activestorage';
-ActiveStorage.start();
 
 import '../components/init';
 import '../behaviour';
+
+Rails.start();
+ActiveStorage.start();

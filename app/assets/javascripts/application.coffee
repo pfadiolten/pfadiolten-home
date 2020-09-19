@@ -1,5 +1,3 @@
-#= require rails-ujs
-
 ## lib
 #= require lib
 
@@ -9,7 +7,7 @@
 #= require app/components
 #= require app/types
 
-#= require app/serviceworker/companion.coffee.erb
+#= require app/serviceworker/companion
 
 App.onPageLoad ->
   $('body')[0].addEventListener('touchstart', (->), passive: true)
