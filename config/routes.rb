@@ -24,6 +24,15 @@ Rails.application.routes.draw do
       end
     end
 
+
+    resource :recipes do
+      get 'index'
+      get 'engelsbrocken'
+      get 'schoggibananen'
+      get 'fotzelschnitten'
+      get 'sandsturm'
+    end
+
     resources :users, param: :scout_name do
       member do
         get 'edit_password'

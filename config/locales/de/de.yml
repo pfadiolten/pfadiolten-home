@@ -4,6 +4,9 @@ de:
     edit: "bearbeiten"
     destroy: "löschen"
 
+    # für PR-Aktion, kann nachher gelöscht werden
+    recipes: "rezepte"
+
   helpers:
     submit:
       create: "Bestätigen"
