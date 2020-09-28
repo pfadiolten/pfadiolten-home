@@ -15,6 +15,9 @@ body:not(.no-nav) {
 
   color: $text-color;
 
+  // default is 1030, which is a bit too much for some libraries to hover over.
+  z-index: 1000;
+
   .navbar-brand {
     .navbar-logo {
       &:hover {

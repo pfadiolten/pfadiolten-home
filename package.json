@@ -7,7 +7,6 @@
     "babel-preset-react": "^6.24.1",
     "choices.js": "^4.1.3",
     "hammerjs": "^2.0.8",
-    "lightgallery": "^1.6.11",
     "moment": "^2.23.0",
     "pretty-checkbox": "^3.0.3",
     "prop-types": "^15.6.2",
@@ -15,7 +14,9 @@
     "react-datetime": "^2.16.3",
     "react-dom": "^16.7.0",
     "react-grid-gallery": "^0.5.3",
+    "react-photo-gallery": "^8.0.0",
     "reactstrap": "^7.1.0",
+    "simple-react-lightbox": "^3.3.4-1",
     "sortablejs": "^1.7.0",
     "trix": "^1.1.0"
   },

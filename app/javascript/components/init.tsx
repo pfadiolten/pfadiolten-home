@@ -9,6 +9,7 @@ import Sortable from './UI/Sortable';
 import User from './User';
 import UserList from './User/List';
 import EditorInput from './UI/Input/Editor';
+import Gallery from './Gallery';
 
 const components = {
   FileUpload,
@@ -19,6 +20,7 @@ const components = {
   SelectInput,
   CheckboxInput,
   Sortable,
+  Gallery,
 };
 
 const componentElements = document.getElementsByClassName('js-component');

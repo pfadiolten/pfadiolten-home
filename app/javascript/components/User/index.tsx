@@ -32,4 +32,4 @@ const User: React.FC<Props> = ({ scout_name, url, avatar, children }) => (
 export {
   User as default,
   Props as UserProps,
-}
+};

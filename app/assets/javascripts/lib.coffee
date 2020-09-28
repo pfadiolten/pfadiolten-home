@@ -4,4 +4,3 @@
 #= require lib/tabler
 
 #= require lib/leaflet
-#= require lib/lightgallery
