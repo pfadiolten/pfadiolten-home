@@ -3,7 +3,16 @@
     %ol.carousel-indicators
     .carousel-inner
       .carousel-item.active
-        %img.d-block{ src: image_path('welcome.png'), alt: 'welcome' }
+        :ruby
+          srcset = <<~SRCSET
+            #{image_path('welcome/w256.png')} w256,
+            #{image_path('welcome/w512.png')} w256,
+            #{image_path('welcome/w1024.png')} w1014
+          SRCSET
+
+        %img.d-block{ src:    image_path('welcome/w1024.png'),
+                      srcset: srcset,
+                      alt:    'welcome' }
         .carousel-caption.text-center.text-sm-left
           %h1.mb-0
             - t('home.index.welcome').each do |part|
