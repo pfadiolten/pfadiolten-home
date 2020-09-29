@@ -51,8 +51,6 @@ private
       :summary,
       :text,
       :image,
-      :is_pinned,
-      :pinned_till,
       :remove_image,
     )
   end

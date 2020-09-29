@@ -1,13 +1,6 @@
--# articles: [Article]
-
 .category
   #newsCarousel.carousel.carousel--news.slide{ data: { ride: 'carousel' } }
     %ol.carousel-indicators
-      - if articles.any?
-        %li.active{ data: { target: '#newsCarousel', slide_to: 0 } }
-        - articles.each_with_index do |_article, i|
-          %li{ data: { target: '#newsCarousel', slide_to: i + 1 } }
-
     .carousel-inner
       .carousel-item.active
         %img.d-block{ src: image_path('welcome.png'), alt: 'welcome' }
@@ -15,20 +8,3 @@
           %h1.mb-0
             - t('home.index.welcome').each do |part|
               %span.text-nowrap= part
-
-      - articles.each do |article|
-        .carousel-item
-          - if article.image?
-            %img.d-block{ src: image_path(article.image.x1024), alt: "Image for #{article.title}" }
-          .carousel-caption
-            .row
-              .col
-                %h2.carousel-caption__title= article.title
-            .row
-              .col
-                .carousel-text
-                  = article.text.html_safe
-              .col-auto.d-flex.justify-content-center.align-items-end
-                %a.btn.btn-secondary{ href: article_path(article) }
-                  = render '/shared/more',
-                           text: t('articles.more')

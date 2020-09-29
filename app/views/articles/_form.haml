@@ -21,15 +21,6 @@
                     label:    false
 
       .row
-        .col-12.col-sm-5.mt-6
-          = f.input :is_pinned, as: :checkbox_component
-        .col-12.col-sm-7
-          .js-toggleable.invisible{ data: { toggler: '#article_is_pinned', 'toggle-on': 'visible', 'toggle-off': 'invisible' } }
-            = f.input :pinned_till, as: :date_time_component,
-                      required: false,
-                      input_html: { date_type: :date }
-
-      .row
         - if @article.persisted? && policy(@article).destroy?
           .col-8
             = f.submit class: 'btn btn-primary col'

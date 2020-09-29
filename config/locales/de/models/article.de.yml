@@ -16,8 +16,6 @@ de:
         text: "Text"
         image: "Bild"
         author_id: "AutorIn"
-        is_pinned: "unter Aktuelles erscheinen?"
-        pinned_till: "erscheint unter Aktuelles bis und mit"
 
   articles:
     index:
