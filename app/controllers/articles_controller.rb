@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
-  before_action :load_article, except: %i[index new create]
+  before_action :load_article, except: %i[ index new create ]
 
-  enforce_login! except: %i[index show]
+  enforce_login! except: %i[ index show ]
 
   def index
     page = params[:page]

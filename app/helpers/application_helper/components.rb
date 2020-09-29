@@ -23,8 +23,8 @@ class ApplicationHelper::Components
     make 'Sortable', &block
   end
 
-  def gallery(images)
-    make 'Gallery', images: (images.map do |image|
+  def gallery(images:, disable_lightbox: false)
+    make 'Gallery', disableLightbox: disable_lightbox, images: (images.map do |image|
       {
         id: image.id,
         ratio: {

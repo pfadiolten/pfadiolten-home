@@ -10,9 +10,13 @@
               = icons.new
 
     .row
+      .col-12.d-flex.justify-content-center
+        = paginate @albums, theme: 'twitter-bootstrap-4'
+
+    .row
       .col-12
         = list_any @albums, else_say: t('.no_albums') do |album|
           .row
             .col
-              = render '/albums/present',
+              = render 'albums/present',
                        album: album

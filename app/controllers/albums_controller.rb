@@ -6,7 +6,8 @@ class AlbumsController < ApplicationController
   enforce_login! except: %i[ index show download ]
 
   def index
-    @albums = policy_scope(Album)
+    page = params[:page]
+    @albums = policy_scope(Album.page(page))
     authorize @albums
   end
 

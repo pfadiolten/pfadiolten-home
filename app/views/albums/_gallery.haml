@@ -1,21 +1,14 @@
--# album: [Album]
--# limit: Int|Null
--# disable_lightbox: Boolean = false
+-# album:            Album
+-# limit:            Int | Null = null
+-# disable_lightbox: Boolean    = false
 
-- limit ||= nil
-- disable_lightbox = true unless defined? disable_lightbox
+:ruby
+  album            = local_assigns.fetch(:album)
+  limit            = local_assigns.fetch(:limit) { nil }
+  disable_lightbox = local_assigns.fetch(:disable_lightbox) { false }
 
-- images = album.images
-- images = images.first(limit) if limit.present?
+:ruby
+  images = album.images
+  images = images.first(limit) if limit.present?
 
-= components.gallery images
-
-- if false
-  .row.justify-content-center
-    .col.gallery{ class: [ ('gallery--no-lightbox' if disable_lightbox) ] }
-      - images.each_with_index do |image, i|
-        .gallery__image{ data: { src: image_path(image.file.x1024) } }
-          .d-block.position-relative
-            - shared_attributes = { alt: "Album Thumbnail ##{i + 1}", data: {  id: image.id  } }
-            %img.d-sm-none{ src: image_path(image.file.x256), **shared_attributes }
-            %img.d-none.d-sm-block{ src: image_path(image.file.x512), **shared_attributes }
+= components.gallery images: images, disable_lightbox: disable_lightbox

@@ -3,6 +3,7 @@ import PhotoGallery, { PhotoClickHandler, PhotoProps } from 'react-photo-gallery
 import SimpleReactLightbox, { SRLWrapper } from 'simple-react-lightbox';
 
 interface Props {
+  disableLightbox: boolean
   images: {
     id: string,
     ratio: {
@@ -18,7 +19,7 @@ interface Props {
   }[]
 }
 
-const Gallery: React.FC<Props> = ({ images }) => {
+const Gallery: React.FC<Props> = ({ images, disableLightbox }) => {
   const photos: PhotoProps[] = images.map((image, i) => ({
     key:    image.id,
     src:    image.src.x256,
@@ -33,10 +34,16 @@ const Gallery: React.FC<Props> = ({ images }) => {
     ],
   }));
 
+  const gallery = (
+    <PhotoGallery photos={photos} />
+  );
+  if (disableLightbox) {
+    return gallery;
+  }
   return (
     <SimpleReactLightbox>
       <SRLWrapper>
-        <PhotoGallery photos={photos} />
+        {gallery}
       </SRLWrapper>
     </SimpleReactLightbox>
   );

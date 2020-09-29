@@ -1,6 +1,8 @@
 class Album < ApplicationRecord
   require 'zip'
 
+  paginates_per 5
+
 # Relations
   has_many :images,
            class_name:  'Album::Image',
