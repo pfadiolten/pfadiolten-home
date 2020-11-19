@@ -29,7 +29,7 @@ class HomescoutingController < ApplicationController
 private
   def load_files
     page = params[:page]
-    @files = policy_scope Homescouting::File.page(page).order(created_at: :desc)
+    @files = policy_scope Homescouting::File.order(created_at: :desc).page(page)
   end
 
   def check_upload_permissions
