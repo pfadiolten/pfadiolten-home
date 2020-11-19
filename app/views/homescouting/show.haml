@@ -31,7 +31,7 @@
 
 .row
   .col-12.d-flex.justify-content-center
-    = paginate @files, theme: 'twitter-bootstrap-4', params: { upload: params[:upload] }
+    = paginate @files, theme: 'twitter-bootstrap-4'
 
 :ruby
   images = @files.map(&:file).map do |file|
@@ -55,4 +55,4 @@
 
 .row.mt-4
   .col-12.d-flex.justify-content-center
-    = paginate @files, theme: 'twitter-bootstrap-4', params: { upload: params[:upload] }
+    = paginate @files, theme: 'twitter-bootstrap-4'
