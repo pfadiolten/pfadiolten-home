@@ -8,8 +8,14 @@
 
 - if @allow_upload
   .card
-    .card-header
-      Bilder hinzufügen
+    .card-header.justify-content-between
+      %span Bilder hinzufügen
+
+      - if @has_session
+        = link_to logout_homescouting_path, data: { method: 'delete' }, class: 'btn btn-danger' do
+          Abmelden
+          = icons.sign_out
+
     = simple_form_for Homescouting::File.new,
                       url: homescouting_path(upload: params[:upload]),
                       html: { multipart: true } do |f|
@@ -47,6 +53,6 @@
 
 = components.gallery images: images
 
-.row
+.row.mt-4
   .col-12.d-flex.justify-content-center
     = paginate @files, theme: 'twitter-bootstrap-4', params: { upload: params[:upload] }

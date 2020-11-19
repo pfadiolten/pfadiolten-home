@@ -1,0 +1,15 @@
+- title "Homescouting - Login"
+
+.row.justify-content-center
+  .col.col-md-8.col-lg-6
+    = simple_form_for :homescouting, url: login_homescouting_path do |f|
+      = f.input :password, type: :password, label: 'Passwort'
+
+      = f.submit class: 'btn btn-primary btn-block'
+
+    - if @failed
+      .alert.alert-danger.alert-dismissible.mt-4{ role: 'alert' }
+        %span.mr-2{ aria: { hidden: true } }
+          = icons.alert
+        %button.close{ type: 'button', data: { dismiss: 'alert' } }
+        Falsches Passwort.

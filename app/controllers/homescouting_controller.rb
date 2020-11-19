@@ -26,6 +26,29 @@ class HomescoutingController < ApplicationController
     render :show
   end
 
+  def login
+    skip_authorization
+  end
+
+  def login_create
+    skip_authorization
+
+    if params.permit!.dig(:homescouting, :password) == ENV['PFADIOLTEN_HOMESCOUTING_UPLOAD_KEY']
+      session[:homescouting_auth] = ENV['PFADIOLTEN_HOMESCOUTING_UPLOAD_KEY']
+      redirect_to action: :show
+    else
+      @failed = true
+      render 'login'
+    end
+  end
+
+  def logout
+    skip_authorization
+
+    session.delete(:homescouting_auth)
+    redirect_to action: :show
+  end
+
 private
   def load_files
     page = params[:page]
@@ -33,6 +56,7 @@ private
   end
 
   def check_upload_permissions
-    @allow_upload = current_user.present? || (params[:upload] == ENV['PFADIOLTEN_HOMESCOUTING_UPLOAD_KEY'])
+    @has_session = session[:homescouting_auth] == ENV['PFADIOLTEN_HOMESCOUTING_UPLOAD_KEY']
+    @allow_upload = @has_session || current_user.present?
   end
 end
