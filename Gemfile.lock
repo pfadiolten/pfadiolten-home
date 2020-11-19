@@ -387,6 +387,7 @@ DEPENDENCIES
   hamlit-rails
   httparty
   i18n-recursive-lookup (>= 0.0.5)
+  image_processing
   instagram_api_client
   jquery-rails
   kaminari (>= 1.1.1)

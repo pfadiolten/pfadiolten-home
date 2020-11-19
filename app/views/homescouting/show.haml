@@ -1,0 +1,52 @@
+- title 'Homescouting @ Pfadi Olten'
+
+%article
+  %p
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eu nisi scelerisque, pharetra metus ut, volutpat augue. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In in ante eget eros venenatis dignissim. Nulla sit amet diam magna. Vivamus mollis lacinia maximus. Nulla facilisi. Ut semper, dolor iaculis consequat gravida, diam magna facilisis urna, et placerat orci ex nec nisi. Suspendisse vestibulum tortor quis egestas semper.
+  %p
+    Aenean et elit ac arcu molestie suscipit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nullam malesuada lorem in lorem aliquet, ac varius erat ullamcorper. Etiam tristique efficitur vehicula. Integer lobortis, velit non placerat auctor, libero ante vestibulum felis, sit amet placerat est purus nec neque. Nam nulla nulla, bibendum vel finibus eu, accumsan vel turpis. Praesent viverra ante sed justo malesuada ultrices. Mauris odio enim, viverra sed auctor ac, volutpat at tortor. Etiam quis faucibus quam. Nulla ultrices feugiat quam, sit amet euismod ipsum volutpat id. In venenatis nisl in risus elementum, et lobortis est mattis. In sagittis consectetur nisl, aliquam tincidunt elit pulvinar quis. Cras sed est consectetur, luctus nisl non, cursus ipsum. In congue id sem et posuere. Fusce risus eros, pulvinar id elementum quis, dictum ut tortor. Proin imperdiet lectus vitae lacus tincidunt, eget aliquet mauris scelerisque.
+
+- if @allow_upload
+  .card
+    .card-header
+      Bilder hinzufügen
+    = simple_form_for Homescouting::File.new,
+                      url: homescouting_path(upload: params[:upload]),
+                      html: { multipart: true } do |f|
+
+      .card-body.pb-0
+        = f.input :file, as: 'filehandle',
+                  label: false,
+                  text: 'Bilder auswählen',
+                  required: true,
+                  input_html: { multiple: true, accept: 'image/jpeg, image/png, video/mp4' }
+      .card-footer.p-0
+        = f.submit 'Hochladen', class: 'btn btn-primary btn-block btn-success'
+
+.row
+  .col-12.d-flex.justify-content-center
+    = paginate @files, theme: 'twitter-bootstrap-4', params: { upload: params[:upload] }
+
+:ruby
+  images = @files.map(&:file).map do |file|
+    x1024_metadata = ActiveStorage::Analyzer::ImageAnalyzer.new(file.blob).metadata
+    {
+      id: file.id.to_s,
+      ratio: {
+        width:  x1024_metadata[:width],
+        height: x1024_metadata[:height],
+      },
+      src: {
+        x128:  variant_path(file.variant(resize: '128x128')),
+        x256:  variant_path(file.variant(resize: '256x256')),
+        x512:  variant_path(file.variant(resize: '512x512')),
+        x1024: url_for(file),
+      },
+    }
+  end
+
+= components.gallery images: images
+
+.row
+  .col-12.d-flex.justify-content-center
+    = paginate @files, theme: 'twitter-bootstrap-4', params: { upload: params[:upload] }

@@ -24,21 +24,7 @@ class ApplicationHelper::Components
   end
 
   def gallery(images:, disable_lightbox: false)
-    make 'Gallery', disableLightbox: disable_lightbox, images: (images.map do |image|
-      {
-        id: image.id,
-        ratio: {
-          width:  image.file.x1024.width,
-          height: image.file.x1024.height,
-        },
-        src: {
-          x128:  view.image_path(image.file.x128),
-          x256:  view.image_path(image.file.x256),
-          x512:  view.image_path(image.file.x512),
-          x1024: view.image_path(image.file.x1024),
-        },
-      }
-    end)
+    make 'Gallery', disableLightbox: disable_lightbox, images: images
   end
 
   def make(name, props = {}, &block)

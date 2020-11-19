@@ -164,6 +164,10 @@ module ApplicationHelper
     builder
   end
 
+  def variant_path(variant)
+    Rails.application.routes.url_helpers.rails_representation_url(variant, only_path: true)
+  end
+
 private
   def exists_js?(path)
     %w[ .coffee .coffee.erb .js .js.erb .erb ].inject(false) do |found, ext|

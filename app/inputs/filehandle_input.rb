@@ -6,7 +6,14 @@ class FilehandleInput < SimpleForm::Inputs::Base
 
     template.content_tag(:div, class: 'handles') do
       handles_element = ActiveSupport::SafeBuffer.new
-      existing = input_html_options[:multiple].nil? && object.send(attribute_name).file.present?
+      existing = input_html_options[:multiple].nil? && begin
+        file = object.send(attribute_name)
+        if file.respond_to?(:attached?)
+          file.attached?
+        else
+          file.file.present?
+        end
+      end
       handles_element << template.content_tag(:div, class: 'inputs d-none') do
         inputs_element = ActiveSupport::SafeBuffer.new
         inputs_element << @builder.file_field(attribute_name, merge_wrapper_options(merge_wrapper_options(input_html_options, wrapper_options), { class: 'attribute' }))

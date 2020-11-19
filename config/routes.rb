@@ -25,6 +25,10 @@ Rails.application.routes.draw do
     end
 
 
+    # homescouting route - remove when no longer needed (the sooner the better i guess :P)
+    resource :homescouting, controller: :homescouting
+
+    # recipes for PR team - remove sometime after 2020
     resource :recipes do
       get 'index'
       get 'engelsbrocken'

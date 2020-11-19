@@ -75,7 +75,7 @@ class FileUpload extends React.PureComponent<Props, State> {
     // TODO this does not seem to report anything
     req.upload.addEventListener('progress', this.handleUploadProgress, false);
 
-    req.open('POST', this.props.url, true);
+    req.open('POST', encodeURI(this.props.url), true);
     req.setRequestHeader('X-CSRF-Token', meta.find('csrf-token'));
     req.setRequestHeader('Content-Type', 'multipart/form-data');
     req.send(formData);
