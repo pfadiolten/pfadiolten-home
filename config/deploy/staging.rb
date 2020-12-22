@@ -35,7 +35,7 @@ role :db,  %w{deploy@login.oetiker.ch:46023}
 
 set :rvm_custom_path, '/usr/local/rvm/'
 
-set :branch, 'feature-homescouting'
+set :branch, 'master'
 
 set :deploy_to, "/var/www/dev.pfadiolten.ch"
 
