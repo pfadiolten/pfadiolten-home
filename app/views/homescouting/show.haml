@@ -1,10 +1,21 @@
-- title 'Homescouting @ Pfadi Olten'
+- title 'Willkommen in der Homescouting-Bildergallerie!'
 
-%article
+%article.text-center
   %p
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eu nisi scelerisque, pharetra metus ut, volutpat augue. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In in ante eget eros venenatis dignissim. Nulla sit amet diam magna. Vivamus mollis lacinia maximus. Nulla facilisi. Ut semper, dolor iaculis consequat gravida, diam magna facilisis urna, et placerat orci ex nec nisi. Suspendisse vestibulum tortor quis egestas semper.
+    Lass uns zusammen dieses Fotoalbum füllen.
+    %br
+    Zeig uns deine Homescouting-Aktivitäten und schicke ein Foto davon an
+    = mail_to 'homescouting@pfadiolten.ch', nil, encode: :javascript
+    oder direkt an deinen Leiter.
+    %br
+    So können wir uns gegenseitig mit dem «Pfadivirus» anstecken und gegen die Langeweile ankämpfen!
   %p
-    Aenean et elit ac arcu molestie suscipit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nullam malesuada lorem in lorem aliquet, ac varius erat ullamcorper. Etiam tristique efficitur vehicula. Integer lobortis, velit non placerat auctor, libero ante vestibulum felis, sit amet placerat est purus nec neque. Nam nulla nulla, bibendum vel finibus eu, accumsan vel turpis. Praesent viverra ante sed justo malesuada ultrices. Mauris odio enim, viverra sed auctor ac, volutpat at tortor. Etiam quis faucibus quam. Nulla ultrices feugiat quam, sit amet euismod ipsum volutpat id. In venenatis nisl in risus elementum, et lobortis est mattis. In sagittis consectetur nisl, aliquam tincidunt elit pulvinar quis. Cras sed est consectetur, luctus nisl non, cursus ipsum. In congue id sem et posuere. Fusce risus eros, pulvinar id elementum quis, dictum ut tortor. Proin imperdiet lectus vitae lacus tincidunt, eget aliquet mauris scelerisque.
+    Bleib gesund und hoffentlich bis bald im Pfadiheim!
+  %p.font-italic
+    Mit Fröid Derbi -
+    Euses Bescht -
+    Allzeit Bereit -
+    Zämme Wyter
 
 - if @allow_upload
   .card
