@@ -16,6 +16,7 @@ class HomescoutingController < ApplicationController
         .resize_to_limit(1024, 1024)
         .call(destination: image_file_path)
 
+
       file = Homescouting::File.new(file: image_file)
       authorize file
       file.save

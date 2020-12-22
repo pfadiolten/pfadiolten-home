@@ -12,10 +12,7 @@ class Homescouting::File < ApplicationRecord
       return
     end
 
-    if file.blob.byte_size > 1_000_000
-      file.purge
-      errors[:file] << 'zu gross'
-    elsif !file.blob.content_type.starts_with?('image/')
+    unless file.blob.content_type.starts_with?('image/')
       file.purge
       errors[:file] << 'hat falsches Format'
     end
