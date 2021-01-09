@@ -1,0 +1,3 @@
+# hide from web crawlers
+User-agent: *
+Disallow: /
