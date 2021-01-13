@@ -1,7 +1,8 @@
 class Homescouting::File < ApplicationRecord
   paginates_per 10
 
-  has_one_attached :file
+  has_one_attached :file,
+                   dependent: :destroy
 
   validate :validate_file
 
