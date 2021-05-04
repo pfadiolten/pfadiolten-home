@@ -127,7 +127,7 @@ gem 'leaflet-rails', '>= 1.3.1'
 gem 'serviceworker-rails'
 
 # JS asset management
-gem 'webpacker', '~> 3.5'
+gem 'webpacker'
 
 # gem 'tui-editor-rails', path: '../tui-editor-rails'
 
