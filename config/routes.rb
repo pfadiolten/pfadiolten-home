@@ -26,11 +26,11 @@ Rails.application.routes.draw do
 
 
     # homescouting route - remove when no longer needed (the sooner the better i guess :P)
-    resource :homescouting, controller: :homescouting do
-      get    'login', as: 'login'
-      post   'login', action: 'login_create'
-      delete 'logout', as: 'logout'
-    end
+    # resource :homescouting, controller: :homescouting do
+    #   get    'login', as: 'login'
+    #   post   'login', action: 'login_create'
+    #   delete 'logout', as: 'logout'
+    # end
 
     # recipes for PR team - remove sometime after 2020
     resource :recipes do

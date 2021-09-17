@@ -5,29 +5,7 @@
   .col-12.col-md-10
     .row.justify-content-lg-end
       .order-lg-2.col-12.col-lg-8.col-xl-9
-        =# render 'home/index/carousel'
-        .category
-          #newsCarousel.carousel.carousel--news.slide.mt-7.mt-sm-0{ data: { ride: 'carousel' } }
-            %ol.carousel-indicators
-            .carousel-inner
-              - Homescouting::File.first(5).map(&:file).each_with_index do |file, i|
-                .carousel-item{ class: ('active' if i == 0) }
-                  = image_tag file,
-                              class: 'd-block',
-                              alt: 'Homescouting',
-                              srcset: { variant_path(file.variant(resize: '128x128')) => '128w',
-                                        variant_path(file.variant(resize: '256x256')) => '256w',
-                                        variant_path(file.variant(resize: '512x512')) => '512w',
-                                        variant_path(file.variant(resize: '1024x1024')) => '1024w' }
-            .carousel-caption.text-center.text-sm-left{ style: 'margin-top: 5rem;' }
-              %h1.mb-0
-                - [ 'Homescouting', '@', 'Pfadi Olten' ].each do |part|
-                  %span.text-nowrap= part
-              %p.mt-2.text-right
-                Homescouting bei der Pfadi Olten - Mach mit!
-              = link_to homescouting_path, class: 'btn btn-secondary float-right' do
-                zur Galerie
-                %i.fas.fa-angle-right
+        = render 'home/index/carousel'
 
       .order-lg-1.col-12.col-lg-4.col-xl-3.col--events
         = render "events/list",
