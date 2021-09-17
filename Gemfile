@@ -108,7 +108,8 @@ gem 'sassc-rails'
 gem 'coffee-rails', '>= 4.2'
 
 # bootstrap - css framework
-gem 'bootstrap', '>= 4'
+# Needs to be on a lower level since we use the tabler-rubygem library that depends on old mixins.
+gem 'bootstrap', '~> 4.3.1'
 
 # dashboard ui kit for bootstrap4
 gem 'sass'
