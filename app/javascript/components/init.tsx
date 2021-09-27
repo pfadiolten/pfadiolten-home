@@ -23,8 +23,6 @@ const components = {
   Gallery,
 };
 
-console.log(components);
-
 const componentElements = document.getElementsByClassName('js-component');
 for (let i = 0; i < componentElements.length; i += 1) {
   const element = componentElements[i] as HTMLElement;
@@ -34,8 +32,6 @@ for (let i = 0; i < componentElements.length; i += 1) {
   if (Component == null) {
     throw new Error(`unknown component: ${componentName}`);
   }
-  console.log(componentName, Component)
-
   const children = Array.from(element.children).map((child, i) => {
     element.removeChild(child);
     return <Reference element={child} key={i} />;
