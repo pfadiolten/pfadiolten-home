@@ -8,8 +8,8 @@ import Reference from './UI/Reference';
 import Sortable from './UI/Sortable';
 import User from './User';
 import UserList from './User/List';
-import EditorInput from './UI/Input/Editor';
 import Gallery from './Gallery';
+import EditorInput from './UI/Input/Editor/Editor';
 
 const components = {
   FileUpload,
@@ -23,6 +23,8 @@ const components = {
   Gallery,
 };
 
+console.log(components);
+
 const componentElements = document.getElementsByClassName('js-component');
 for (let i = 0; i < componentElements.length; i += 1) {
   const element = componentElements[i] as HTMLElement;
@@ -32,6 +34,7 @@ for (let i = 0; i < componentElements.length; i += 1) {
   if (Component == null) {
     throw new Error(`unknown component: ${componentName}`);
   }
+  console.log(componentName, Component)
 
   const children = Array.from(element.children).map((child, i) => {
     element.removeChild(child);

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import 'trix/dist/trix';
 import { EditorInputUpload } from './Upload';
 
 import './i18n';
@@ -50,5 +49,7 @@ class EditorInput extends React.Component<Props> {
     await upload.start();
   };
 }
+
+console.log(EditorInput);
 
 export default EditorInput;
