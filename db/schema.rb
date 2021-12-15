@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_13_234808) do
+ActiveRecord::Schema.define(version: 2021_12_15_070221) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -180,9 +180,7 @@ ActiveRecord::Schema.define(version: 2021_01_13_234808) do
     t.uuid "organization_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["first_name", "last_name"], name: "full_name_of_organization_member", unique: true
     t.index ["organization_id"], name: "organization_of_organization_member"
-    t.index ["scout_name"], name: "scout_name_of_organization_member", unique: true
   end
 
   create_table "organizations", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
