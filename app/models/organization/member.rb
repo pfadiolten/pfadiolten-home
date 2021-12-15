@@ -42,8 +42,7 @@ class Organization::Member < ApplicationRecord
 
   validates :scout_name,
             presence:   true,
-            allow_nil:  true,
-            uniqueness: { scope: %i[ organization_id ], case_sensitive: false, }
+            allow_nil:  true
 
   validates :role,
             presence:  true,
