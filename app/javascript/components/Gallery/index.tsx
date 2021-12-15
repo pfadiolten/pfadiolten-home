@@ -22,7 +22,7 @@ interface Props {
 const Gallery: React.FC<Props> = ({ images, disableLightbox }) => {
   const photos: PhotoProps[] = images.map((image, i) => ({
     key:    image.id,
-    src:    image.src.x256,
+    src:    image.src.x1024,
     alt:    `Bild ${i + 1}`,
     width:  image.ratio.width,
     height: image.ratio.height,
