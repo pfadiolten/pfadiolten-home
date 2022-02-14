@@ -5,4 +5,4 @@ interface InputProps extends Omit<React.HTMLProps<HTMLInputElement>, 'value' | '
 
 export {
   InputProps,
-}
+};
