@@ -8,6 +8,12 @@
         = render 'home/index/carousel'
 
       .order-lg-1.col-12.col-lg-4.col-xl-3.col--events
+        %div
+          .alert.alert-primary
+            %a.text-nowrap{ href: 'https://heim.pfadiolten.ch', target: '_blank' }
+              = icons.external
+              Besuch das Projekt Pfadiheimsituation!
+
         = render "events/list",
                  events: @home.events
 

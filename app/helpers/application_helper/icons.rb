@@ -42,7 +42,8 @@ class ApplicationHelper::Icons
        date:        %w[ far calendar-alt ],
        location:    %w[ fas map-marker-alt ],
        download:    %w[ fas file-download ],
-       permissions: %w[ fas user-check ]
+       permissions: %w[ fas user-check ],
+       external:    %w[ fas external-link-alt ]
 
   # account
   icon mail:     %w[ fas envelope ],

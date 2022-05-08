@@ -21,7 +21,7 @@ RUN gem update bundler
 #RUN gem install --clear-sources --source http://rubygems.org bundler
 # RUN bundle install --quiet --jobs 4
 
-#RUN yarn config set proxy $http_proxyö
+#RUN yarn config set proxy $http_proxy
 RUN yarn install --silent --pure-lockfile
 
 COPY . /pfadiolten-home
