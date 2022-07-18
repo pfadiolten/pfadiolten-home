@@ -21,7 +21,7 @@ set :deploy_to, "/var/www/pfadiolten.ch"
 # Default value for :pty is false
 # set :pty, true
 
-set :rvm_ruby_version, '2.6.6'
+set :rvm_ruby_version, '2.6.6-dev'
 
 # Default value for :linked_files is []
 append :linked_files, "config/database.yml", "config/secrets.yml"
