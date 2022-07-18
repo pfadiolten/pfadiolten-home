@@ -382,6 +382,7 @@ DEPENDENCIES
   config (>= 1.6.1)
   devise (>= 4.4.0)
   devise-i18n
+  ffi
   font-awesome-sass (>= 5.6)
   hamlit-rails
   httparty
