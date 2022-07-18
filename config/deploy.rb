@@ -44,6 +44,5 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', '
 
 set :passenger_environment_variables, { path: '$GEM_HOME/bin:$PATH' }
 set :passenger_restart_command, 'passenger-config restart-app'
-set :passenger_restart_with_touch, true
 
 set :yarn_flags, '--silent --no-progress'
