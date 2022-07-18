@@ -33,8 +33,6 @@ role :db,  %w{deploy@login.oetiker.ch:46065}
 # http://capistranorb.com/documentation/getting-started/configuration/
 # Feel free to add new variables to customise your setup.
 
-set :rvm_custom_path, '/usr/share/rvm'
-
 set :branch, 'master'
 
 set :deploy_to, "/var/www/dev.pfadiolten.ch"
