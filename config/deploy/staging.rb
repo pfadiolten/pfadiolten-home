@@ -7,7 +7,7 @@
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
 
-server 'login.oetiker.ch:46023'
+server 'login.oetiker.ch:46065'
 
 # role-based syntax
 # ==================
@@ -21,9 +21,9 @@ server 'login.oetiker.ch:46023'
 # role :web, %w{user1@primary.com user2@additional.com}, other_property: :other_value
 # role :db,  %w{deploy@example.com}
 
-role :app, %w{deploy@login.oetiker.ch:46023}
-role :web, %w{deploy@login.oetiker.ch:46023}
-role :db,  %w{deploy@login.oetiker.ch:46023}
+role :app, %w{deploy@login.oetiker.ch:46065}
+role :web, %w{deploy@login.oetiker.ch:46065}
+role :db,  %w{deploy@login.oetiker.ch:46065}
 
 # Configuration
 # =============
@@ -33,7 +33,7 @@ role :db,  %w{deploy@login.oetiker.ch:46023}
 # http://capistranorb.com/documentation/getting-started/configuration/
 # Feel free to add new variables to customise your setup.
 
-set :rvm_custom_path, '/usr/local/rvm/'
+set :rvm_custom_path, '/usr/share/rvm'
 
 set :branch, 'master'
 
