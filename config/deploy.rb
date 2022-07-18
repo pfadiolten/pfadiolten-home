@@ -21,7 +21,7 @@ set :deploy_to, "/var/www/pfadiolten.ch"
 # Default value for :pty is false
 # set :pty, true
 
-# set :rvm_ruby_version, '2.4.1'
+set :rvm_ruby_version, '2.6.6'
 
 # Default value for :linked_files is []
 append :linked_files, "config/database.yml", "config/secrets.yml"
@@ -42,7 +42,7 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', '
 # Uncomment the following to require manually verifying the host key before first deploy.
 # set :ssh_options, verify_host_key: :secure
 
-#set :passenger_environment_variables, { path: '$GEM_HOME/bin:$PATH' }
+set :passenger_environment_variables, { path: '$GEM_HOME/bin:$PATH' }
 set :passenger_restart_command, 'passenger-config restart-app'
 
 set :yarn_flags, '--silent --no-progress'
