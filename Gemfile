@@ -130,9 +130,6 @@ gem 'serviceworker-rails'
 # JS asset management
 gem 'webpacker'
 
-# FFI, required by bootsnap.
-gem 'ffi'
-
 # gem 'tui-editor-rails', path: '../tui-editor-rails'
 
 group :development, :test do
