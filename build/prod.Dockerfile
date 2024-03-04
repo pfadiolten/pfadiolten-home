@@ -4,8 +4,6 @@ ENV BUNDLER_VERSION=2.1.4
 ENV RAILS_ENV=production
 ENV NODE_ENV=production
 
-
-
 RUN apk --update --no-cache add \
     build-base          \
     git                 \
@@ -21,7 +19,7 @@ COPY Gemfile.lock .
 COPY package.json .
 COPY yarn.lock    .
 
-RUN gem install bundler:2.4.1                                        \
+RUN gem install bundler:2.1.4                                        \
  && bundle install --quiet --jobs 4                                   \
  && yarn install --silent --pure-lockfile
 
