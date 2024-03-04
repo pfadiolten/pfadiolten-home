@@ -17,7 +17,7 @@ COPY Gemfile.lock .
 COPY package.json .
 COPY yarn.lock    .
 
-RUN gem update bundler                                                \
+RUN gem install bundler:2.1.4`                                        \
  && gem install --clear-sources --source https://rubygems.org bundler \
  && bundle install --quiet --jobs 4                                   \
  && yarn install --silent --pure-lockfile
