@@ -13,3 +13,10 @@ development:
 test:
   <<: *default
   database: pfadiolten_home-test
+
+production:
+  <<: *default
+  host: <%= ENV['DB_HOST'] %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+  database: <%= ENV['DB_DATABASE'] %>

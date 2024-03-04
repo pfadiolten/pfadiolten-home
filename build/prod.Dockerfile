@@ -1,6 +1,10 @@
 FROM ruby:2.6.6-alpine3.12
 
 ENV BUNDLER_VERSION=2.1.4
+ENV RAILS_ENV=production
+ENV NODE_ENV=production
+
+
 
 RUN apk --update --no-cache add \
     build-base          \
