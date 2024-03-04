@@ -24,7 +24,7 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          docker build -t ghcr.io/${{ github.repository_owner }}/pfadiolten-home:latest .
+          docker build -f build/prod.Dockerfile -t ghcr.io/${{ github.repository_owner }}/pfadiolten-home:latest .
           docker push ghcr.io/${{ github.repository_owner }}/pfadiolten-home:latest
         env:
           DOCKER_BUILDKIT: 1
