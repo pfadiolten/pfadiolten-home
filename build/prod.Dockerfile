@@ -41,5 +41,7 @@ COPY --from=builder /usr/local/bundle /usr/local/bundle
 COPY --from=builder /app/public/assets /app/public/assets
 COPY --from=builder /app/public/packs /app/public/packs
 
+RUN chmod +x bin/*                   \
+
 CMD ["bin/rails", "server", "-b", "0.0.0.0"]
 
