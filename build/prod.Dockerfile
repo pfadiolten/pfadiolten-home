@@ -21,9 +21,10 @@ COPY yarn.lock    .
 
 RUN gem install bundler:2.1.4             \
  && bundle install --quiet --jobs 4       \
- && yarn install --silent --pure-lockfile \
- && chmod +x bin/rails
+ && yarn install --silent --pure-lockfile
 
 COPY . /pfadiolten-home
+
+RUN chmod +x bin/*
 
 CMD ["bin/rails", "server", "-b", "0.0.0.0"]
