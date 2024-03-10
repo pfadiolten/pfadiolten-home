@@ -35,22 +35,12 @@ contacts:
 locations:
   maps:
     - address:
-        name: "Pfadiheim Rötzmatt"
         street: "Rötzmattweg 119"
         city: "Olten"
         zip_code: "4600"
       coordinates:
         x: 47.34481
         y: 7.89599
-
-    - address:
-        name: "Pfadiheim Tannwald"
-        street: "Tannwaldstrasse 100"
-        city: "Olten"
-        zip_code: "4600"
-      coordinates:
-        x: 47.358
-        y: 7.91388
 
   infos:
     renting: "Aus organisatorischen Gründen kann das Heim momentan leider nicht vermietet werden."
