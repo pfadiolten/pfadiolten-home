@@ -32,14 +32,14 @@ ENV NODE_ENV=production
 
 RUN apk --update --no-cache add \
     libpq                       \
+    nodejs                      \
     tzdata                      \
     imagemagick file
 
 WORKDIR /app
 COPY . .
 COPY --from=builder /usr/local/bundle /usr/local/bundle
-COPY --from=builder /app/public/assets /app/public/assets
-COPY --from=builder /app/public/packs /app/public/packs
+COPY --from=builder /app/public/ /app/public/
 
 RUN chmod +x bin/*
 
