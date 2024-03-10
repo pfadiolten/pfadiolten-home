@@ -21,7 +21,7 @@ RUN chmod +x bin/*                   \
       --jobs "$(nproc)"              \
       --without development test     \
  && yarn install --pure-lockfile     \
- && rails assets:precompile
+ && SECRET_KEY_BASE="123" rails assets:precompile
 
 
 FROM ruby:2.6.6-alpine3.12
