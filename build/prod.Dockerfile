@@ -1,8 +1,8 @@
-FROM ruby:2.6.6-alpine3.12
+FROM ruby:2.6.6-alpine3.12 as builder
 
 ENV BUNDLER_VERSION=2.1.4
-ENV RAILS_ENV=production
-ENV NODE_ENV=production
+ENV RAILS_ENV=development
+ENV NODE_ENV=development
 
 RUN apk --update --no-cache add \
     build-base          \
@@ -10,21 +10,36 @@ RUN apk --update --no-cache add \
     linux-headers       \
     postgresql-dev      \
     nodejs yarn         \
-    tzdata              \
+    tzdata
+
+WORKDIR /app
+COPY . .
+
+RUN chmod +x bin/*                   \
+ && gem install bundler:2.1.4        \
+ && bundle install                   \
+      --jobs "$(nproc)"              \
+      --without development test     \
+ && yarn install --pure-lockfile     \
+ && rails assets:precompile
+
+
+FROM ruby:2.6.6-alpine3.12
+
+ENV BUNDLER_VERSION=2.1.4
+ENV RAILS_ENV=production
+ENV NODE_ENV=production
+
+RUN apk --update --no-cache add \
+    libpq                       \
+    tzdata                      \
     imagemagick file
 
-WORKDIR /pfadiolten-home
-COPY Gemfile      .
-COPY Gemfile.lock .
-COPY package.json .
-COPY yarn.lock    .
-
-RUN gem install bundler:2.1.4             \
- && bundle install --quiet --jobs 4       \
- && yarn install --silent --pure-lockfile
-
-COPY . /pfadiolten-home
-
-RUN chmod +x bin/*
+WORKDIR /app
+COPY . .
+COPY --from=builder /usr/local/bundle /usr/local/bundle
+COPY --from=builder /app/public/assets /app/public/assets
+COPY --from=builder /app/public/packs /app/public/packs
 
 CMD ["bin/rails", "server", "-b", "0.0.0.0"]
+

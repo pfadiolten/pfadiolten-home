@@ -12,6 +12,7 @@ services:
       - NODE_ENV=development
       - CHOKIDAR_USEPOLLING=true
       - WEBPACKER_DEV_SERVER_HOST=0.0.0.0
+      - RAILS_LOG_TO_STDOUT=true
 
       - PFADIOLTEN_OSM_ACCESS_TOKEN
       - PFADIOLTEN_INSTAGRAM_CLIENT_ID
