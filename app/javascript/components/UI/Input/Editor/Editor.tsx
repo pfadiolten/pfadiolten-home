@@ -50,6 +50,4 @@ class EditorInput extends React.Component<Props> {
   };
 }
 
-console.log(EditorInput);
-
 export default EditorInput;

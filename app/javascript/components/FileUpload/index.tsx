@@ -82,7 +82,6 @@ class FileUpload extends React.PureComponent<Props, State> {
   };
 
   private handleUploadProgress = (e: ProgressEvent) => {
-    console.log(e, e.lengthComputable, e.total);
     const percent = (e.loaded / e.total) * 100;
     this.setState({
       progress: percent,
