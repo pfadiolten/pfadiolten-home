@@ -1,0 +1,1 @@
+Rails.application.config.session_store :cookie_store, key: 'pfadiolten_home_session', same_site: :strict
