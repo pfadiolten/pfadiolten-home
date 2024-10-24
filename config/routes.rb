@@ -109,4 +109,6 @@ Rails.application.routes.draw do
   end
 
   get '/robots.txt' => 'robots#index'
+
+  match '*unmatched', to: 'application#show_not_found', via: :all
 end

@@ -10,6 +10,13 @@ class ApplicationController < ActionController::Base
   # use the default responder
   self.responder = ApplicationResponder
   respond_to :html
+  
+  # Handle 404
+  rescue_from ActionController::RoutingError, with: :show_not_found
+
+  def show_not_found
+    render file: Rails.public_path.join('404.html'), status: :not_found, layout: false
+  end
 
 # Actions
 protected
