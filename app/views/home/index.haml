@@ -17,10 +17,11 @@
         = render "events/list",
                  events: @home.events
 
-      .order-lg-3.col-12.col-lg-8.col-xl-6
+      .order-lg-3.col-12.col-lg-8.col-xl-9
         = render 'home/index/articles',
                  articles: @home.articles
 
-      .order-lg-4.col-12.col-lg-8.col-xl-3
-        = render 'home/index/albums',
-                 albums: @home.albums
+      -# Disabled albums for data privacy - 2025-06-18
+      -# .order-lg-4.col-12.col-lg-8.col-xl-3
+      -#   = render 'home/index/albums',
+      -#            albums: @home.albums

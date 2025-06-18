@@ -65,3 +65,9 @@ h1 {
   padding-left:  0;
   padding-right: 0;
 }
+
+.container-fluid {
+  @include media-breakpoint-down(sm) {
+    padding-inline: 8px;
+  }
+}

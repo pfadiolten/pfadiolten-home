@@ -24,23 +24,6 @@ Rails.application.routes.draw do
       end
     end
 
-
-    # homescouting route - remove when no longer needed (the sooner the better i guess :P)
-    # resource :homescouting, controller: :homescouting do
-    #   get    'login', as: 'login'
-    #   post   'login', action: 'login_create'
-    #   delete 'logout', as: 'logout'
-    # end
-
-    # recipes for PR team - remove sometime after 2020
-    resource :recipes do
-      get 'index'
-      get 'engelsbrocken'
-      get 'schoggibananen'
-      get 'fotzelschnitten'
-      get 'sandsturm'
-    end
-
     resources :users, param: :scout_name do
       member do
         get 'edit_password'
@@ -97,11 +80,12 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :albums, param: :name, constraints: { name: external_param } do
-      member do
-        get 'download'
-      end
-    end
+    # Disabled albums for data privacy - 2025-06-18
+    # resources :albums, param: :name, constraints: { name: external_param } do
+    #   member do
+    #     get 'download'
+    #   end
+    # end
 
     get '/contact', to: 'contact#index'
 

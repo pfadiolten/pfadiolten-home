@@ -8,7 +8,6 @@ class Application::Navigation::ItemPresenter < ApplicationPresenter
       Item.new(:groups),
       Item.new(:organizations),
     ]),
-    Item.new(:albums),
     Item.new(:contact),
   ].freeze
 

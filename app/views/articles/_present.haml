@@ -4,12 +4,12 @@
   .card-header
     .card-title
       = article.title
-  .card-body
-    - if article.image?
-      .col.col-xl-5.float-left.px-0.mr-2.mb-2
-        %img{ src: image_path(article.image.x512) }
+  .card-body.row
     %article.col
-    = article.summary
+      = article.summary
+    - if article.image?
+      .col.col-lg-auto.float-left.px-0.mr-2.mb-2
+        %img{ src: image_path(article.image.x512) }
   .card-footer.link-parent__ignore
     = render '/shared/created_by',
              creator:    article.author,
