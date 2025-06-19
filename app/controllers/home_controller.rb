@@ -10,4 +10,9 @@ class HomeController < ApplicationController
     authorize @home.articles
     authorize @home.albums
   end
+
+  def calendar
+    skip_policy_scope
+    skip_authorization
+  end
 end

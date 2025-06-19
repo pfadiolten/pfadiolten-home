@@ -58,13 +58,13 @@ body:not(.no-nav) {
         top:    $border-style;
         bottom: $border-style;
       }
-      &:hover {
+      &:hover, &:active, &.active {
         border-color: $primary-inverse;
         color: $text-color;
       }
     }
     @include media-breakpoint-down(sm) {
-      &:hover, &:active, &:active {
+      &:hover, &:active {
         @include _illuminate($color: $black);
       }
     }

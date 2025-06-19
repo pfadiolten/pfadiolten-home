@@ -90,6 +90,8 @@ Rails.application.routes.draw do
     get '/contact', to: 'contact#index'
 
     root to: 'home#index'
+
+    get '/kalender', to: 'home#calendar'
   end
 
   get '/robots.txt' => 'robots#index'

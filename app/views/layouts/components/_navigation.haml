@@ -19,6 +19,9 @@
       %span.navbar-toggler-icon
     .collapse.navbar-collapse#navbarMainCollapse
       %ul.navbar-nav.navbar-nav--left.mr-auto
+        %li.nav-item
+          %a.nav-link{ class: ('active' if current_page?(controller: 'home', action: 'calendar')), href: '/kalender' }
+            Kalender
         - Application::Navigation::ItemPresenter.all_for(self).each do |item|
           - if item.children?
             %li.nav-item.dropdown
