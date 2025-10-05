@@ -1,6 +1,6 @@
-FROM ruby:2.6.6-alpine3.12 as builder
+FROM ruby:2.7.8-alpine3.16 AS builder
 
-ENV BUNDLER_VERSION=2.1.4
+ENV BUNDLER_VERSION=2.3.7
 ENV RAILS_ENV=production
 ENV NODE_ENV=development
 
@@ -15,18 +15,18 @@ RUN apk --update --no-cache add \
 WORKDIR /app
 COPY . .
 
-RUN chmod +x bin/*                   \
- && gem install bundler:2.1.4        \
- && bundle install                   \
-      --jobs "$(nproc)"              \
-      --without development test     \
- && yarn install --pure-lockfile     \
+RUN chmod +x bin/*                         \
+ && gem install bundler:${BUNDLER_VERSION} \
+ && bundle install                         \
+      --jobs "$(nproc)"                    \
+      --without development test           \
+ && yarn install --pure-lockfile           \
  && SECRET_KEY_BASE="123" rails assets:precompile
 
 
-FROM ruby:2.6.6-alpine3.12
+FROM ruby:2.7.8-alpine3.16
 
-ENV BUNDLER_VERSION=2.1.4
+ENV BUNDLER_VERSION=2.3.7
 ENV RAILS_ENV=production
 ENV NODE_ENV=production
 
@@ -41,7 +41,7 @@ COPY . .
 COPY --from=builder /usr/local/bundle /usr/local/bundle
 COPY --from=builder /app/public/ /app/public/
 
-RUN chmod +x bin/*
+RUN dos2unix bin/rails && chmod +x bin/*
 
 CMD ["bin/rails", "server", "-b", "0.0.0.0"]
 

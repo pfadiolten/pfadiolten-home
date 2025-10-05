@@ -125,7 +125,7 @@ gem 'font-awesome-sass', '>= 5.6'
 gem 'leaflet-rails', '>= 1.3.1'
 
 # js service worker for rails
-# gem 'serviceworker-rails'
+gem 'serviceworker-rails'
 
 # JS asset management
 gem 'webpacker'

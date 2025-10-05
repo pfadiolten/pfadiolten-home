@@ -2,7 +2,7 @@
 module ApplicationController::Auth
   extend ActiveSupport::Concern
 
-  include Pundit
+  include Pundit::Authorization
 
   included do
     # Callbacks
