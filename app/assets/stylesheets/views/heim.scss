@@ -1,0 +1,251 @@
+@import "../lib/bootstrap.theme";
+
+.heim-container {
+  display: grid;
+  width: 100%;
+  column-gap: 100px;
+  row-gap: 40px;
+
+  grid-template-areas:
+    'stats stats stats funding'
+    'time  time  time  funding'
+    'line1 line1 line1 line1'
+    'subscribe subscribe join a'
+    'line2 line2 line2 line2'
+    ;
+}
+
+.line {
+  width: 100%;
+  height: 2px;
+  background-color: $gray-600;
+}
+
+.line-1 {
+  grid-area: line1;
+}
+
+.line-2 {
+  grid-area: line2;
+}
+
+.input-group-append {
+  height: 38px;
+}
+
+section {
+  display: flex;
+  gap: 1rem;
+  justify-content: stretch;
+  width: 100%;
+}
+
+// Stats
+section.stats {
+  grid-area: stats;
+}
+
+.stat {
+  flex: 1 1 100%;
+}
+
+.stat .stat__title {
+  color: $gray-600;
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+.stat:last-child {
+  text-align: right;
+}
+
+.stat .stat__value {
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+
+// Timeline
+section.timeline {
+  grid-area: time;
+  height: 250px;
+  padding-inline: 50px;
+  margin-top: 50px;
+
+  &::before {
+    display: none;
+  }
+}
+
+.timeline-box {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.timeline-box > .line {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 100%;
+  height: 4px;
+  background-color: black;
+  border: 1px solid black;
+}
+
+.timeline-box > .past {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: calc(100% * var(--ratio-of-today));
+  height: 4px;
+  background-color: $primary;
+}
+
+.timeline-box > .today {
+  position: absolute;
+  left: calc(100% * var(--ratio-of-today));
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 2px;
+  height: 30px;
+  background-color: black;
+}
+
+.timeline-box .entry {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: calc(var(--ratio) * 100%);
+
+  --color: #{$primary};
+
+  &::before {
+    display: block;
+    content: ' ';
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: var(--color);
+  }
+
+  &.is-future::before {
+    --color: black;
+  }
+
+  .name {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: bold;
+
+    --offset: 2rem;
+
+    top: var(--offset);
+
+    &::before {
+      display: block;
+      position: absolute;
+      content: ' ';
+      width: 2px;
+      height: calc(var(--offset) - 10px);
+      background-color: black;
+      top: calc(var(--offset) * -1 + 10px);
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  .label {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+
+    --offset: 6rem;
+
+    bottom: var(--offset);
+
+    &::before {
+      display: block;
+      position: absolute;
+      content: ' ';
+      width: 2px;
+      height: calc(var(--offset) - 10px);
+      background-color: black;
+      bottom: calc(var(--offset) * -1 + 10px);
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  &:nth-child(odd) {
+    .name {
+      --offset: 6rem;
+    }
+
+    .label {
+      --offset: 2rem;
+    }
+  }
+}
+
+
+// funding
+.funding {
+  grid-area: funding;
+
+  display: flex;
+}
+
+.funding .title {
+  position: relative;
+  width: 40px;
+  height: 100%;
+}
+
+.funding .title h2 {
+  position: absolute;
+  transform-origin: left;
+  transform: rotate(-90deg);
+  bottom: -15px;
+  margin: 0;
+}
+
+.funding .pillar {
+  height: 100%;
+  width: 100px;
+  border: 2px solid black;
+}
+
+// subscribe
+section.subscribe {
+  grid-area: subscribe;
+  gap: 0.25rem;
+
+  display: flex;
+  flex-direction: column;
+}
+
+section.subscribe .input-group {
+  width: 500px;
+}
+
+section.subscribe button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// join
+section.join {
+  grid-area: join;
+  gap: 0.25rem;
+
+  display: flex;
+  flex-direction: column;
+}

@@ -15,6 +15,8 @@ class ApplicationController < ActionController::Base
   rescue_from ActionController::RoutingError, with: :show_not_found
 
   def show_not_found
+    skip_policy_scope
+    skip_authorization
     render file: Rails.public_path.join('404.html'), status: :not_found, layout: false
   end
 

@@ -1,0 +1,39 @@
+finish_date: 10.10.2028
+
+next_meetings:
+  - 25.09.2025
+  - 08.11.2025
+
+milestones:
+  - name: "Projektstart"
+    date: 01.08.2017
+    date_label: "Sommer 2017"
+
+  - name: "Standortentscheidung"
+    date: 24.03.2024
+    date_label: "Frühling 2014"
+
+  - name: "Baubeginn"
+    date: 01.04.2028
+    date_label: "Frühling 2028"
+
+  - name: "Einweihung"
+    date: 10.10.2028
+    date_label: "Herbst 2018"
+
+funding:
+  goal: 2_200_000
+
+  parts:
+    - name: "Beitrag Heimverein"
+      value: 125_000
+
+    - name: "Beitrag APV"
+      value: 50_000
+
+    - name: "Beitrag Abteilung"
+      value: 100_000
+
+contact:
+  name: "Grizzly"
+  email: "grizzly@pfadiolten.ch"

@@ -1,0 +1,27 @@
+@import "bootstrap/functions";
+@import "bootstrap/variables";
+@import "bootstrap/mixins";
+@import "tabler/variables";
+
+$enable-rounded: false;
+
+$font-size-base:    1rem;
+$font-family-base: 'Encode Sans Expanded', $font-family-base;
+
+$primary:   #00833B;
+$secondary: #42A13F;
+$ternary:   #8CC63F;
+
+$input-focus-border-color: $ternary;
+
+$modified-theme-colors: (
+      "primary":   $primary,
+      "secondary": $secondary,
+      "ternary":   $ternary
+);
+
+$theme-colors: map-merge($theme-colors, $modified-theme-colors);
+
+$headings-font-weight: normal;
+
+$primary-inverse: $gray-100;

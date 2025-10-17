@@ -1,0 +1,74 @@
+- content_for :container_type, 'container-fluid'
+
+- content_for :stylesheets do
+  = stylesheet_link_tag 'views/heim', media: 'all'
+
+.row.justify-content-center.w-100
+  .col-12.col-md-10
+    .heim-container
+      %section.stats
+        .stat
+          .stat__title
+            nächster Höck am
+          .stat__value
+            = I18n.l(@config.next_meeting)
+
+        .stat
+          .stat__value
+            %span.stat__title
+              ca.
+            = number_with_delimiter @config.days_until_finish_date
+            Tage
+          .stat__title
+            bis zum neuen Heim
+
+
+      %section.timeline
+        .timeline-box{ style: "--ratio-of-today: #{@config.ratio_of_today}" }
+          .line
+          .today
+          .past
+          - @config.milestones.each do |milestone|
+            .entry{ style: "--ratio: #{milestone.ratio}", class: milestone.past? ? "is-past" : "is-future" }
+              .name
+                = milestone.name
+
+              .label
+                = milestone.date_label
+
+      .funding
+        .title
+          %h2 Finanzierung
+        .pillar
+
+      .line.line-1
+
+      %section.subscribe
+        %span
+          &nbsp;
+          %br
+          Melde dich für unseren Newsletter an:
+
+        .input-group
+          %input.form-control{ type: 'text', placeholder: 'deine E-Mail-Adresse' }
+          .input-group-append
+            %button.btn.btn-primary{ data: { toggle: "tooltip" }, title: 'Registrieren' }
+              %i.fas.fa-paper-plane
+
+        %small.text-muted.d-inline
+          Der Newsletter wird vierteljährlich verschickt.
+          %br
+          Er enthält aktuelle Infos zu den Arbeiten und dem Fortschritt des Projekts.
+
+
+      %section.join
+        %span
+          Möchtest du dich direkt am Projekt beteiligen?
+          %br
+          Hast du Tipps oder Infos für uns?
+
+        %a.btn.btn-primary.w-auto{ href: "mailto:#{@config.contact.email}" }
+          Melde dich bei uns!
+
+
+      .line.line-2

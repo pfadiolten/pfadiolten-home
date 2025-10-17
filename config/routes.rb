@@ -89,6 +89,8 @@ Rails.application.routes.draw do
 
     get '/contact', to: 'contact#index'
 
+    get '/projekt-pfadiheim', to: 'heim#index'
+
     root to: 'home#index'
 
     get '/kalender', to: 'home#calendar'
